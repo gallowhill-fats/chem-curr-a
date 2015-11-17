@@ -17,6 +17,7 @@
 
 (defineTerm "carbon-13*" ':DefinableThing)
 (defineTerm "carbon-13 scale*" ':DefinableThing)
+(defineTerm "chain isomerism*" ':DefinableThing)
 (defineTerm "charge*" ':DefinableThing)
 ;;;D
 (defineTerm "d orbital*" ':DefinableThing)

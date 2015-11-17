@@ -1,36 +1,53 @@
-;;; ILO assertions
- ;;; Atoms, molecules and stereochemistry
- ;; 1. Define and use the terms relative atomic, isotopic and molecular masses, based on the carbon-13 scale.
- (assert '(Isa (DefineILO (setof "relative atomic mass*" "relative isotopic mass*" "relative molecular mass*")) "ILO class*"))
- (assert '(InTermsOf (DefineILO (setof "relative atomic mass*" "relative isotopic mass*" "relative molecular mass*")  "carbon-13 scale*") )
- ;; 2. Define and use the term mole in terms of the Avogadro constant.
- (assert '(Isa (DefineILO "mole*") "ILO class*"))
- (assert '(InTermsOf (DefineILO "mole*")  "Avogadro's constant*") )
- ;; 3. Analyse mass spectra in terms of isotopic abundances and molecular fragments.
- (assert '(Isa (AnalyseILO (every x (Isa x "mass spectrum class*"))) "ILO class*"))
- (assert '(InTermsOf (AnalyseILO (every x (Isa x "mass spectrum class*"))) "isotopic abundance"))
- (assert '(InTermsOf (AnalyseILO (every x (Isa x "mass spectrum class*"))) "molecular fragment*"))
- ;??(assert '(Isa (AnalyseILO (every x (Isa x "mass spectrum class*") (Isa x "simple things class*") )) "ILO class*"))
- ;; 4. Calculate the relative atomic mass of an element given the relative abundances of its isotopes, or its mass spectrum.
- (assert '(Isa (CalculateILO (every x (HasQuantity "relative atomic mass" y x) (Isa y "element class*") (Given (every z (HasIsotopicAbundance w y z)) ) "ILO class*"))
- (assert '(Given (CalculateILO (every x (HasQuantity "relative atomic mass*" y x) (Isa y "element class*")) () )
- (assert '(Given (CalculateILO (every x (HasQuantity "relative atomic mass*" y x) (Isa y "element class*")) (every z (HasIsotopicAbundance (every w (I) y z))
+;;; ILO assert;;; Atoms, molecules and stereochemistry
+ ;; 1. Define and use the terms relative atomic, isotopic and molecular masses, based on the carbon-13 scale. 
+(assert '(Isa (DefineILO "relative atomic mass*") "ILO class*"))
+(assert '(Isa (DefineILO "relative isotopic mass*") "ILO class*"))
+(assert '(Isa (DefineILO "relative molecular mass*") "ILO class*"))
+(assert '(InTermsOf (DefineILO "relative atomic mass*")  "carbon-13 scale*"))
+(assert '(InTermsOf (DefineILO "relative isotopic mass*") "carbon-13 scale*"))
+(assert '(InTermsOf (DefineILO "relative molecular mass*") "carbon-13 scale*"))
+;; 2. Define and use the term mole in terms of the Avogadro constant.
+(assert '(Isa (DefineILO "mole*") "ILO class*"))
+(assert '(InTermsOf (DefineILO "mole*")  "Avogadro's constant*") )
+ ; 3. Analyse mass spectra in terms of isotopic abundances and molecular fragments.
+(assert '(Isa (AnalyseILO (every x (Isa x "mass spectrum*"))) "ILO class*"))
+(assert '(inTermsOf (Isa (AnalyseILO (every x (Isa x "mass spectrum*"))) "isotopic abundance*"))
+(assert '(inTermsOf (Isa (AnalyseILO (every x (Isa x "mass spectrum*"))) "molecular fragments*"))
+;??(assert '(Isa (AnalyseILO (every x (Isa x "mass spectrum class") (Isa x "simple things class") )) "ILO class*"))
+;; 4. Calculate the relative atomic mass of an element given the relative abundances of its isotopes, or its mass spectrum.
+ (assert '(Isa (CalculateILO (every x (hasQuantity "relative atomic mass*" y x) (Isa y "element class*") (Given (every z (hasIsotopicAbundance w y z))) ))  "ILO class*"))
+ (assert '(Isa (CalculateILO (every x (hasQuantity "relative atomic mass*" y x) (Isa y "element class*") (Given (MassSpectrumOf y) )))  "ILO class*"))
  ;; 5. Write and/or construct balanced equations.
- (assert '(Isa (WriteILO (every x (Isa x "equation class*") (IsBalanced x))) "ILO class*") )
- (assert '(Isa (ConstructILO (every x (Isa x "equation class*") (IsBalanced x))) "ILO class*"))
+ (assert '(Isa (WriteILO (every x (Isa x "chemical equation class*") (IsBalanced x))) "ILO class*") )
  ; 6. Perform calculations, including use of the mole concept, involving: (i) reacting masses (from formulae and equations) (ii) volumes of gases (e.g. in the burning of hydrocarbons) (iii) volumes and concentrations of solutions.
- (assert '(Isa (Perform (every x (Isa x "calculation class*") (Involves x ("volumes of gases") ) ) "ILO class*"))
- (assert '(Isa (Perform (every x (Isa x "calculation class*") (Involves x ("reacting mass*") ) ) "ILO class*"))
- (assert '(Isa (Perform (every x (Isa x "calculation class*") (Involves x ("volumes and concentrations of solutions") ) ) "ILO class*"))
+ (assert '(Isa (PerformILO (every x (Isa x "calculation class*") (Involves x ("volumes of gases*")))) "ILO class*"))
+ (assert '(Isa (PerformILO (every x (Isa x "calculation class*") (Involves x ("reacting mass*")))) "ILO class*"))
+ (assert '(Isa (PerformILO (every x (Isa x "calculation class*") (Involves x ("volumes and concentrations of solutions")))) "ILO class*"))
  ; 7. Deduce stoichiometric relationships from calculations such as those in the above.
- (assert '(Isa (DeduceILO (every x (Isa x "stoichiometric relationship class*") ) "ILO class*"))
- ; 8. Identify and describe protons, neutrons and electrons in terms of their relative charges and relative masses. Think another type of Isa is needed for this ILO
- (assert '(Isa (IdentifyILO (every x (Isa x "proton particle class*")) ) "ILO class*"))
+ (assert '(Isa (DeduceILO  (every x (Isa x "stoichiometric relationship class*"))) "ILO class*"))
+ ; 8. Identify and describe protons, neutrons and electrons in terms of their relative charges and relative masses. 
+ (assert '(Isa (IdentifyILO (every x (Isa x "proton class*")) ) "ILO class*"))
+ (assert '(inTermsOf (IdentifyILO (every x (Isa x "proton class*"))) (setof "relative mass*" "relative charge*" )))
+ (assert '(Isa (IdentifyILO (every x (Isa x "neutron class*")) ) "ILO class*"))
+ (assert '(inTermsOf (IdentifyILO (every x (Isa% x "neutron class*"))) (setof "relative mass*" "relative charge*")))
+ (assert '(Isa (IdentifyILO (every x (Isa x "electron class*")) ) "ILO class*"))
+ (assert '(inTermsOf (IdentifyILO (every x (Isa x "electron class*"))) (setof "relative  mass*" "relative charge*")))
+ (assert '(Isa (DescribeILO (every x (Isa x "proton class*")) ) "ILO class*"))
+ (assert '(inTermsOf (DescribeILO (every x (Isa x "proton class*"))) (setof "relative mass*" "relative charge*" )))
+ (assert '(Isa (DescribeILO (every x (Isa x "neutron class*")) ) "ILO class*"))
+ (assert '(inTermsOf (DescribeILO (every x (Isa x "neutron class*"))) (setof "relative mass*" "relative charge*")))
+ (assert '(Isa (DescribeILO (every x (Isa x "electron class*")) ) "ILO class*"))
+ (assert '(inTermsOf (DescribeILO (every x (Isa x "electron class*"))) (setof "relative  mass*" "relative charge*")))
  ;; 9. Deduce the behaviour of beams of protons, neutrons and electrons in electric fields.
- (assert '(Isa (DeduceILO (BehaviorOf (setof "proton beam*" "neutron beam*" "electron beam*") )) "ILO class*"))
- (assert '(InCircumstances (BehaviorOf (setof "proton beam*" "neutron beam*" "electron beam*")) "in an electric field"))
+ (assert '(Isa (DeduceILO (BehaviorOf "proton beam*" )) "ILO class*"))
+ (assert '(inCircumstances (BehaviorOf "proton beam*") (InPresenceOf "electric field*")))
+ (assert '(Isa (DeduceILO (BehaviorOf "neutron beam*" )) "ILO class*"))
+ (assert '(inCircumstances (BehaviorOf "neutron beam*") (InPresenceOf "electric field*")))
+ (assert '(Isa (DeduceILO (BehaviorOf "electron beam*")) "ILO class*"))
+ (assert '(inCircumstances (BehaviorOf "electron beam*") (InPresenceOf "electric field*")))
  ;; 10. Describe the distribution of mass and charges within an atom.
- (assert '(Isa (DescribeILO (Distribution (setof "mass*" "charge*") "within an atom")) "ILO class*"))
+ (assert '(Isa (DescribeILO (DistributionOf "mass*" "atom*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (DistributionOf "charge*" "atom*")) "ILO class*"))
  ;; 11. Deduce the numbers of protons, neutrons and electrons present in both atoms and ions given proton and nucleon numbers (and charge).
  (assert '(Isa (DeduceILO (CardinalityOf (setof proton* electron* neutron*))) "ILO class*"))
  (assert '(ChemicalSystem (DeduceILO (CardinalityOf (setof proton* electron* neutron*))) (setof atom* ion*)))
@@ -39,91 +56,95 @@
  ; need to isolate the case where the isotopes refer to the same element
  ; REWRITE: 12a. Define the terms proton number and nucleon number.
  (assert '(Isa (DefineILO (setof "proton number*" "nucleon number*")) "ILO class*"))
- (assert '(Isa (DistinguishBetween (every x (IsotopeOf x (every y (Isa y "element class*")) ) "ILO class*"))
- (assert '(WithCriterion (DistinguishBetween (every x (IsotopeOf x y) (every y (Isa y "element class*" ))) "neutron number*"))
+ (assert '(Isa (DistinguishBetweenILO (every x (IsotopeOf x (every y (Isa y "element class*")) ) "ILO class*"))
+ (assert '(withCriterion (DistinguishBetweenILO (every x (IsotopeOf x y) (every y (Isa y "element class*" ))) "neutron number*"))
  ; 13. Describe the number and relative energies of the s, p and d orbitals for the principal quantum numbers 1, 2 and 3 and also the 4s and 4p orbitals.
  (assert '(Isa (DescribeILO (CardinalityOf (setof "s orbital*" "p orbital*" "d orbital*") )) "ILO class*"))
- (assert '(InCase (DescribeILO (CardinalityOf (setof "s orbital*" "p orbital*" "d orbital*") )) (HasValue "principal quantum number*" (setof 1 2 3))  ))
+ (assert '(inCase (DescribeILO (CardinalityOf (setof "s orbital*" "p orbital*" "d orbital*") )) (hasValue "principal quantum number*" (setof 1 2 3))  ))
  (assert '(Isa (DescribeILO (RelativeEnergyOf (setof "s orbital*" "p orbital*" "d orbital*") )) "ILO class*"))
- (assert '(InCase (DescribeILO (RelativeEnergyOf (setof "s orbital*" "p orbital*" "d orbital*") )) (hasValue "principal quantum number*" (setof 1 2 3)) ))
+ (assert '(inCase (DescribeILO (RelativeEnergyOf (setof "s orbital*" "p orbital*" "d orbital*") )) (hasValue "principal quantum number*" (setof 1 2 3)) ))
  ;; 14. Describe the shapes of s and p orbitals and d orbitals.
  (assert '(Isa (DescribeILO (EntityShape (setof "s orbital*" "p orbital*" "d-orbital*"))) "ILO class*"))
  ; 15. State the electronic configuration of atoms and ions given the proton number (and charge), using the convention 1s22s22p6 etc.
  (assert '(Isa (StateILO (every x (ElectronicConfiguration x) (Isa x "atom class*")) "ILO class*"))
  ;; 16. Explain and use the terms ionization energy and electron affinity (ii) explain the factors influencing the ionization energies of elements (iii) explain the trends in ionization energies across a Period and down a Group of the Periodic Table (see also Section 9).
- (assert '(Isa (DefineILO (setof "ionization energy*" "electron affinity*")) "ILO class*"))
+ (assert '(Isa (DefineILO "ionization energy*") "ILO class*"))
+ (assert '(Isa (DefineILO "electron affinity*") "ILO class*"))
  ;; 17. Deduce the electronic configurations of elements from successive ionisation energy data.
- (assert '(Isa (DeduceILO (every y (HasElectronicConfiguration x y) (Isa x "element class*"))) "ILO class*"))
- (assert '(Using (DeduceILO (every x (HasElectronicConfiguration x y) (Isa x "element class*"))) "successive ionization energy data"))
+ (assert '(Isa (DeduceILO (every y (hasElectronicConfiguration x y) (Isa x "element class*"))) "ILO class*"))
+ (assert '(Using (DeduceILO (every x (hasElectronicConfiguration x y) (Isa x "element class*"))) "successive ionization energy data*"))
  ; 18. Interpret successive ionisation energy data of an element in terms of the position of that element within the Periodic Table.
- (assert '(Isa (InterpretILO (TrendIn (every z (hasIonisationEnergy x y z)) (some x (Isa y "element class*")) (every z (Isa z ordinality)) )) "ILO class*"))
- (assert '(InTermsOf (InterpretILO (TrendIn (every z (HasIonisationEnergy x y z)) (some x (Isa y "element class*")) (every z (Isa z "ordinal class*")) )) (some p (HasPositionInPeriodicTable y p)))))
+ (assert '(Isa (InterpretILO (TrendIn (every z (hasIonisationEnergy x y z)) (some x (Isa y "element class*")) (every z (Isa z "ordinality class*")) )) "ILO class*"))
+ (assert '(inTermsOf (InterpretILO (TrendIn (every z (hasIonisationEnergy x y z)) (some x (Isa y "element class*")) (every z (Isa z "ordinal class*")) )) (some p (hasPositionInPeriodicTable y p)))))
  ;; 19. Describe ionic (electrovalent) bonding, as in sodium chloride and magnesium oxide, including the use of 'dot-and-cross' diagrams.
  (assert '(Isa (DescribeILO "ionic bonding*") "ILO class*"))
  (assert '(AsIn (DescribeILO "ionic bonding*") (setof "sodium chloride*" "magnesium oxide*")))
- (assert '(Including (DescribeILO "ionic bonding*") "ILO class*") (UseOf (every x (Isa x "dot-and-cross diagram class*"))))
+ (assert '(Including (DescribeILO "ionic bonding*") "ILO class*") (UseOf (every x (Isa x "dot-and-cross diagram"))))
  ; 20. Describe, including the use of 'dot-and-cross' diagrams, (i) covalent bonding, as in hydrogen, oxygen, chlorine, hydrogen chloride, carbon dioxide, methane, ethene (ii) co-ordinate (dative covalent) bonding, as in the formation of the ammonium ion and in the Al 2Cl 6 molecule.
  (assert '(Isa (DescribeILO "covalent bonding*") "ILO class*"))
  (assert '(Including (DescribeILO "covalent bonding*") "ILO class*") (UseOf (every x (Isa x "dot-and-cross diagram class*"))))
- (assert '(AsIn (DescribeILO "covalent bonding*") (setof "hydrogen*" "oxygen*" "chlorine*" "hydrogen chloride*" "carbon dioxide*" "methane*" "ethene*")))
+ (assert '(asIn (DescribeILO "covalent bonding*") (setof "hydrogen molecular entity*" "oxygen molecular entity*" "chlorine molecular entity*" "hydrogen chloride molecular entity*" "carbon dioxide molecular entity*" "methane molecular entity*" "ethene molecular entity*")))
  (assert '(Isa (DescribeILO "coordinate bonding*") "ILO class*"))
  (assert '(Including (DescribeILO "coordinate bonding*") "ILO class*") (UseOf (every x (Isa x "dot-and-cross diagram class*"))))
- (assert '(AsIn (DescribeILO "coordinate bonding*") (setof "ammonium ion*" "Al2Cl6*")))
+ (assert '(asIn (DescribeILO "coordinate bonding*") "ammonium ion molecular cationic entity*"))
+ (assert '(asIn (DescribeILO "coordinate bonding*") "aluminium chloride molecular entity*")) 
  ; 21. Explain the shapes of, and bond angles in, molecules by using the qualitative model of electron-pair repulsion (including lone pairs), using as simple examples: BF3 (trigonal), CO2 (linear), CH4 (tetrahedral), NH3 (pyramidal), H2O (non-linear), SF6 (octahedral), PF5 (trigonal bipyramid)).
- (assert '(Isa (ExplainILO (EntityShape (every x (Isa x "molecule class*")))        "ILO class*"))
- (assert '(WithExamples (ExplainILO (EntityShape (every x (Isa x "molecula class*"))) (setof BF3* CO2* CH4* NH3* H2O* SF6* PF5*)) ))
+ (assert '(Isa (ExplainILO (EntityShape (every x (Isa x "molecular entity class*")))        "ILO class*"))
+ (assert '(withExamples (ExplainILO (EntityShape (every x (Isa x "molecular entity class*"))) (setof BF3 CO2 CH4 NH3 H2O SF6 PF5)) ))
  ; 22. Describe covalent bonding in terms of orbital overlap, giving σ and π bonds, including the concept of hybridisation to form sp, sp2 and sp3 orbitals
  (assert '(Isa (DescribeILO "covalent bonding*") "ILO class*"))
- (assert '(InTermsOf (DescribeILO "covalent bonding*") "orbital overlap*"))
+ (assert '(inTermsOf (DescribeILO "covalent bonding*") "orbital overlap*"))
  ; 23. Explain the shape of, and bond angles in, the ethane, ethene and benzene molecules in terms of σ and π bonds (see also Section 10.1).
- (assert '(Isa (ExplainILO (EntityShape (setof "ethane molecule*" "ethene molecule*" "benzene molecule*" ) ) "ILO class*"))
- (assert '(Including (ExplainILO (EntityShape (setof "ethane molecule*" "ethene molecule*" "benzene molecule*" ) ) "bond angles"))
+ (assert '(Isa (ExplainILO (EntityShape (setof "ethane molecule" "ethene molecule" "benzene molecule" ) ) "ILO class*"))
+ (assert '(Including (ExplainILO (EntityShape (setof "ethane molecule" "ethene molecule" "benzene molecule" ) ) "bond angles"))
  ; The above is not right wrt "bond angles"
  ; 24. Predict the shapes of, and bond angles in, molecules analogous to those specified in (c) and (e).
- (assert '(Isa (PredictILO (EntityShape (every x (Isa x "molecule class*") (AnalogousTo x (setof "ethane molecule*" "ethene molecule*" "benzene molecule*" ) ) "ILO class*"))
+ (assert '(Isa (PredictILO (EntityShape (every x (Isa x "molecular entity class*") (AnalogousTo x (setof "ethane molecular entity*" "ethene molecular entity*" "benzene molecular entity*" ) ) "ILO class*"))
  ; 25. Describe hydrogen bonding, using ammonia and water as simple examples of molecules containing N-H and O-H groups.
  (assert '(Isa (DescribeILO "hydrogen bonding*") "ILO class*"))
- (assert '(WithExamples (DescribeILO "hydrogen bonding*") (setof ammonia* water*) ))
+ (assert '(withExamples (DescribeILO "hydrogen bonding*") (setof "ammonia molecular entity*" "water molecular entity*") ))
  ;; 26. Understand, in simple terms, the concept of electronegativity and apply it to explain the properties of molecules such as bond polarity (3h), the dipole moments of molecules (3j), the behaviour of oxides with water (9.1j) and the acidities of chlorine-substituted ethanoic acids (10.6c).
  ; REWRITE: 26. Describe, in simple terms, the concept of electronegativity and use it to explain the properties of molecules such as bond polarity (3h), the dipole moments of molecules (3j), the behaviour of oxides with water (9.1j) and the acidities of chlorine-substituted ethanoic acids (10.6c).
  (assert '(Isa (DescribeILO "electronegativity*") "ILO class*"))
- (assert '(Isa (Use "electronegativity*") "ILO class*"))
- (assert '(actHasPurpose  (Use "electronegativity") (ExplainILO "bond polarity*") ))
+ (assert '(Isa (UseILO "electronegativity*") "ILO class*"))
+ (assert '(actHasPurpose  (Use "electronegativity*") (ExplainILO "bond polarity*") ))
  (assert '(actHasPurpose  (Use "electronegativity*") (ExplainILO (QuantityOf "dipole moment*" (every x (Isa x "molecule class*") ) ))
  (assert '(actHasPurpose  (Use "electronegativity*") (ExplainILO (BehaviorOf (every x (Isa x "oxide class*") (every x (Isa x "molecule class*") ) ))
  ; 27. Explain the terms bond energy, bond length and bond polarity and use them to compare the reactivities of covalent bonds (see also 5b(ii))
- (assert '(Isa (ExplainILO (setof "bond energy*" "bond length*" "bond polarity*")) "ILO class*"))
- (assert '(Isa (Use (setof "bond energy*" "bond length*" "bond polarity*")) "ILO class*"))
- (assert '(actHasPurpose (Use (setof "bond energy*" "bond length*" "bond polarity*")) (Compare (ReactivityOf (every x (Isa x "covalent bond class*") ))
+ (assert '(Isa (ExplainILO "bond energy*") "ILO class*"))
+ (assert '(Isa (ExplainILO "bond length*") "ILO class*"))
+ (assert '(Isa (ExplainILO "bond polarity*") "ILO class*"))
+ (assert '(CompareILO (ReactivityOf "covalent bonds*" )))
+ (assert '(Using (CompareILO (ReactivityOf "covalent bonds*" )) (setof "bond energy*" "bond length*" "bond polarity*")))
  ; 28. Describe intermolecular forces (van der Waals’ forces), based on permanent and induced dipoles, as in CHCl 3(l); Br2(l) and the liquid noble gases
- (assert '(Isa (DescribeILO (every x (Isa x "intermolecular force class*"))) "ILO class*"))
- (assert '(BasedOn (DescribeILO (every x (Isa x "intermolecular force class*"))) (setof   "permanent dipole*" "induced dipole*") ))
+ (assert '(Isa (DescribeILO "intermolecular forces*")) "ILO class*"))
+ (assert '(BasedOn (DescribeILO "intermolecular forces*") (setof   "permanent dipole*" "induced dipole*") ))
  ; 29. Describe metallic bonding in terms of a lattice of positive ions surrounded by mobile electrons.
  (assert '(Isa (DescribeILO "metallic bonding*") "ILO class*"))
  ; 30. Describe, interpret and/or predict the effect of different types of bonding (ionic bonding, covalent bonding, hydrogen bonding, other intermolecular interactions, metallic bonding) on the physical properties of substances.
- (assert '(Isa (DescribeILO (EffectOfOn (setof "ionic bonding*" "covalent bonding*" "hydrogen bonding*" "metallic bonding*") (every x (Isa x (PhysicalPropertyOf x (every y (Isa y "chemical substance class*")) ) ) "ILO class*"))
+ (assert '(Isa (DescribeILO (EffectOfOn (setof "ionic bonding*" "covalent bonding*" "hydrogen bonding*" "metallic bonding*") (PhysicalPropertiesOf (every x (Isa x "chemical substance class*"))) )) "ILO class*"))
  ; 31. Deduce the type of bonding present from given information. ???
  ; omit
  ; 32. Show understanding of chemical reactions in terms of energy transfers associated with the breaking and making of chemical bonds.
- (assert '(Isa (DescribeILO (every x (Isa x "chemical reaction class*"))) "ILO class*"))
- (assert '(InTermsOf (DescribeILO (every x (Isa x "chemical reaction class*"))) (setof "bond formation*" "bond cleavage*")))
+ (assert '(Isa (DescribeILO (every x (Isa x "chemical reaction class*") "ILO class*"))
+ (assert '(inTermsOf (DescribeILO (every x (Isa x "chemical reaction class*") (setof "bond formation*" "bond cleavage*")))
  ;; 33. State the basic assumptions of the kinetic theory as applied to an ideal gas.
- (assert '(Isa (StateILO (every x (hasUnderlyingAssumption "kinetic theory of gases*" x))) "ILO class*"))
- (assert '(AsAppliedTo (every x (hasUnderlyingAssumption "kinetic theory of gases*" x)) (some y (Isa y "ideal gas class*"))))
+ (assert '(Isa (StateILO (UnderlyingAssumptionsOf "kinetic theory of gases*"))) "ILO class*"))
+ (assert '(asAppliedTo (UnderlyingAssumptionsOf "kinetic theory of gases*") "ideal gas*"))
  ;; 34. Explain qualitatively in terms of intermolecular forces and molecular size: (i) the conditions necessary for a gas to approach ideal behaviour (ii) 
  ;REWRITE
  ; 34a.  Explain qualitatively in terms of intermolecular forces and molecular size the conditions necessary for a gas to approach ideal behaviour. 
  ; 34b. Explain qualitatively in terms of intermolecular forces and molecular size the limitations of ideality at very high pressures and very low temperatures.
- (assert '(Isa (ExplainQualitativelyILO (every y (hasNecessaryCondition "gas to approach ideal behaviour" y)) ILO ))
- (assert '(Isa (ExplainQualitativelyILO (every y (hasNecessaryCondition "gas to approach ideal behaviour" y)) ILO ))
- (assert '(InTermsOf (ExplainQualitativelyILO (every y (hasNecessaryCondition "gas to approach ideal behaviour" y)) (setof (every x (Isa x "intermolecular force class*") "molecular size)))
- (assert '(InTermsOf (ExplainQualitativelyILO (every y (hasNecessaryCondition "gas to approach ideal behaviour" y)) (setof (every x (Isa x "intermolecular force class*") "molecular size)))
+ (assert '(Isa (ExplainQualitativelyILO (every y (hasNecessaryCondition "gas to approach ideal behaviour" y)) "ILO class*" ))
+ (assert '(Isa (ExplainQualitativelyILO (every y (hasNecessaryCondition "gas to approach ideal behaviour" y)) "ILO class*" ))
+ (assert '(inTermsOf (ExplainQualitativelyILO (every y (hasNecessaryCondition "gas to approach ideal behaviour" y)) (setof (every x (Isa x "intermolecular force class*") "molecular size*")))
+ (assert '(inTermsOf (ExplainQualitativelyILO (every y (hasNecessaryCondition "gas to approach ideal behaviour" y)) (setof (every x (Isa x "intermolecular force class") "molecular size*")))
  ;; 35. State and use the general gas equation pV = nRT in calculations, including the determination of Mr.
  (assert '(Isa (StateILO "ideal gas equation*") "ILO class*"))
- (assert '(Isa (Use "ideal gas equation*") "ILO class*"))
- (assert '(InOrderTo (UseILO "ideal gas equation*") (Perform (every x (Isa x "simple calculation class*")))
+ (assert '(Isa (UseILO "ideal gas equation*") "ILO class*"))
+ (assert '(inOrderTo (UseILO "ideal gas equation*") (Perform "simple calculations*")))
  ;; 36. Describe, using a kinetic-molecular model: the liquid state, melting, vaporisation, vapour pressure.
- (assert '(Isa (DescribeILO (setof "liquid state*" melting* vaporisation* "vapour pressure*"))  "ILO class*"))
+ (assert '(Isa (DescribeILO (setof "liquid state" melting vaporisation "vapour pressure"))  "ILO class*"))
  (assert '(Using (DescribeILO (setof "liquid state*" "melting*" "vaporisation*" "vapour pressure*")) "kinetic-molecular model*"))
  ; 37. Describe, in simple terms, the lattice structure of a crystalline solid which is: (i) ionic, as in sodium chloride, magnesium oxide (ii) simple molecular, as in iodine (iii) giant molecular, as in silicon(IV) oxide and the graphite and diamond allotropes of carbon (iv) hydrogen-bonded, as in ice (v) metallic, as in copper, concept of the 'unit cell’ is not required?
  ;REWRITE
@@ -132,38 +153,65 @@
  ; 37c. Describe, in simple terms, the lattice structure of a giant molecular crystalline solid, as in silicon(IV) oxide and the graphite and diamond allotropes of carbon.
  ; 37d. Describe, in simple terms, the lattice structure of a hydrogen-bonded molecular crystalline solid, as in ice.
  ; 37e. Describe, in simple terms, the lattice structure of a metallic crystalline solid, as in copper.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (LatticeStructureOf "ionic crystalline solid*") "ILO class*"))
+ (assert '(Isa (DescribeILO (LatticeStructureOf "simple molecular crystalline solid*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (LatticeStructureOf "giant molecular crystalline solid*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (LatticeStructureOf "hydrogen-bonded molecular crystalline solid*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (LatticeStructureOf "metallic crystalline solid*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (LatticeStructureOf (every x (isSolid x) (isCrystalline x) (isIonic x)) "ILO class*"))
+ (assert '(Isa (DescribeILO (LatticeStructureOf (every x (Isa x "solid chemical substance class*") (Isa x "crystalline substance class*") (Isa x "ionic substance class*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (LatticeStructureOf "simple molecular crystalline solid*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (LatticeStructureOf "giant molecular crystalline solid*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (LatticeStructureOf "hydrogen-bonded molecular crystalline solid*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (LatticeStructureOf "metallic crystalline solid*")) "ILO class*"))
+ (assert '(inManner () ))
+ (assert '(inManner () ))
+ (assert '(inManner () ))
+ (assert '(inManner () ))
+ (assert '(inManner () ))
+
  ; 38. Explain the strength, high melting point and electrical insulating properties of ceramics in terms of their giant molecular structure.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (ExplainILO (PropertyOf (every x (Isa x "ceramic class*") strength) "ILO class*"))
+ (assert '(Isa (ExplainILO (PropertyOf (every x (Isa x "ceramic class*") "high nelting point*") "ILO class*"))
+ (assert '(Isa (ExplainILO (PropertyOf (every x (Isa x "ceramic class*") "electrical insulator*") "ILO class*"))
+(assert '(inTermsOf (ExplainILO (PropertyOf (every x (Isa x "ceramic class*") strength*) "ILO class*") "giant molecular structure*")))
+(assert '(inTermsOf (ExplainILO (PropertyOf (every x (Isa x "ceramic class*") "high nelting point*") "ILO class*") "giant molecular structure*")))
+(assert '(inTermsOf (ExplainILO (PropertyOf (every x (Isa x "ceramic class*") "electrical insulator*") "ILO class*") "giant molecular structure*")))
  ; 39. Relate the uses of ceramics, based on magnesium oxide, aluminium oxide and silicon(IV) oxide, to their properties (suitable examples include furnace linings, electrical insulators, glass, crockery).
- (assert '(Isa (Relate (UsesOf (every x (Isa x "ceramic class*"))) (PropertiesOf (every y (Isa y "ceramic class*"))) ) "ILO class*"))
+ (assert '(Isa (RelateILO (UsesOf (every x (Isa x "ceramic class*"))) (PropertiesOf (every y (Isa y "ceramic class*"))) ) "ILO class*"))
  ; 40. Discuss the finite nature of materials as a resource and the importance of recycling processes. 
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DiscussILO (ImportanceOf "recycling*")) "ILO class*"))
  ; 41. Outline the importance of hydrogen bonding to the physical properties of substances, including ice and water (for example, boiling and melting points, viscosity and surface tension)
- (assert '(Isa (Outline (ImportanceOf "hydrogen bonding") ) "ILO class*"))
+ (assert '(Isa (OutlineILO (ImportanceOf "hydrogen bonding*") ) "ILO class*"))
  (assert '(inField (ImportanceOf "hydrogen bonding*")  (every x (PhysicalPropertyOf x y) (every y (Isa y "chemical substance class*")) ) ))
  ; 42. Suggest from quoted physical data the type of structure and bonding present in a substance.
- (assert '(Isa (Suggest (TypeOf (every x (hasStructure y x) (every y (Isa y "substance class*" ) "ILO class*"))
- (assert '(Given (Suggest (TypeOf (setof "structure*" "bonding*")) ) "physical data*") )
+ (assert '(Isa (SuggestILO (TypeOf (every x (hasStructure y x) (every y (Isa y "chemical substance class*" ) "ILO class*"))
+ (assert '(Given (SuggestILO (TypeOf (setof "structure*" "bonding*")) ) "physical data*") )
  ; 43. Explain that some chemical reactions are accompanied by energy changes, principally in the form of heat energy; the energy changes can be exothermic (ΔH, negative) or endothermic
- (assert '(Isa (DefineILO (setof "exothermic*" "endothermic*" "thermoneutral*")) "ILO class*"))
+ (assert '(Isa (DefineILO "exothermic*") "ILO class*"))
+ (assert '(Isa (DefineILO "endothermic*") "ILO class*"))
+ (assert '(Isa (DefineILO "thermoneutral*") "ILO class*"))
  ; 44. Explain and use the terms: (i) enthalpy change of reaction and standard conditions, with particular reference to: formation, combustion, hydration, solution, neutralisation, atomisation (ii) bond energy (ΔH positive, i.e. bond breaking) (iii) lattice energy (ΔH negative, i.e. gaseous ions to solid lattice).
- (assert '(Isa (ExplainILO ) "ILO class*"))
+ (assert '(Isa (ExplainILO "enthalpy change of reaction") "ILO class*"))
  ; 45. Calculate enthalpy changes from appropriate experimental results, including the use of the relationship enthalpy change, ΔH = –mcΔT.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (CalculateILO (every x (Isa x "enthalpy change")))  "ILO class*"))
+(assert '(Given (CalculateILO (every x (Isa x "enthalpy change"))) "experimental data"))
  ; 46. Explain, in qualitative terms, the effect of ionic charge and of ionic radius on the numerical magnitude of a lattice energy.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (ExplainILO (EffectOfOn "ionic charge*" (QuantityValue "lattice energy*") ) "ILO class*"))
+ (assert '(Isa (ExplainILO (EffectOfOn "ionic radius*" (QuantityValue "lattice energy*") ) "ILO class*"))
+
  ; 47. Apply Hess' Law to construct simple energy cycles, and carry out calculations involving such cycles and relevant energy terms, with particular reference to: (i) determining enthalpy changes that cannot be found by direct experiment, e.g. an enthalpy change of formation from enthalpy changes of combustion (ii) average bond energies (iii) the formation of a simple ionic solid and of its aqueous solution (iv) Born-Haber cycles (including ionisation energy and electron affinity).
  (assert '(Isa () "ILO class*"))
  ;; 48. Construct and interpret a reaction pathway diagram, in terms of the enthalpy change of the reaction and of the activation energy (see Section 8)
  (assert '(Isa (ConstructILO "reaction pathway diagram*") "ILO class*"))
  (assert '(Isa (InterpretILO "reaction pathway diagram*") "ILO class*"))
- (assert '(InTermsOf (InterpretILO "reaction pathway diagram*") (setof "enthalpy of reaction*" "activation energy*")))
+ (assert '(inTermsOf (InterpretILO "reaction pathway diagram*") (setof "enthalpy of reaction*" "activation energy*")))
  ; 49. Calculate oxidation numbers of elements in compounds and ions (ii) describe and explain redox processes in terms of electron transfer and/or changes in oxidation number (oxidation state) (iii) use changes in oxidation numbers to help balance chemical equations.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (CalculateILO () ) "ILO class*"))
+ (assert '(Isa (DescribeILO "redox process*") "ILO class*"))
+ (assert '(Isa (ExplainILO  "redox process*") "ILO class*"))
  ;; 50. Explain, including the electrode reactions, the industrial processes of: (i) the electrolysis of brine, using a diaphragm cell (ii) the extraction of aluminium from molten aluminium oxide/cryolite (iii) the electrolytic purification of copper.
- (assert '(Isa (ExplainILO (setof ElectrolysisOf(brine*) "bauxite process*" ElectrolyticPurificationOf(copper*))) "ILO class*"))
- (assert '(Including (ExplainILO (setof ElectrolysisOf(brine*) "bauxite process*" ElectrolyticPurificationOf(copper*))) (every x (Isa x "electrode reaction class*"))))
+ (assert '(Isa (ExplainILO (IndustrialProcess "electrolysis of brine industrial process*")) "ILO class*"))
  ;; 51. Define the terms: (i) standard electrode (redox) potential (ii) standard cell potential.
  (assert '(Isa (DefineILO (setof "standard electrode potential*" "standard cell potential*" ) "ILO class*"))
  ;; 52. Describe the standard hydrogen electrode.
@@ -176,48 +224,48 @@
  ; (every x (IsIonOf x y))
  ; (every x (Isa x metal))
  ; (every x (Isa x non-metal))
- ; (StandardElectrodePotentialOf (every x (Isa x "metal class*") (InContactWith x (some y (IsIonOf y x) ) (InAqueousSolution x))
- ; (every x (hasStandardElectrodePotentialOf x (every y (Isa y "non-metal class*")))
- (assert '(Isa (DescribeILO (every x (MethodFor x (Measure (StandardElectrodePotentialOf (every x (Isa x "metal class*") (InContactWith x (some y (IsIonOf y x) ) (InAqueousSolution x))) )  ) ) "ILO class*"))
+ ; (StandardElectrodePotentialOf (every x (Isa x "metal class") (InContactwith x (some y (IsIonOf y x) ) (InAqueousSolution x))
+ ; (every x (hasStandardElectrodePotentialOf x (every y (Isa y "non-metal class")))
+ (assert '(Isa (DescribeILO (every x (MethodFor x (Measure (StandardElectrodePotentialOf (every x (Isa x "metal class*") (InContactwith x (some y (isIonOf y x) ) (inAqueousSolution x))) )  ) ) "ILO class*"))
  ; 54. Calculate a standard cell potential by combining two standard electrode potentials.
  (assert '(Isa (CalculateILOValue (every x (Isa x "standard cell potential class*") ) "ILO class*"))
- (assert '(Using  (CalculateILOValue (every x (Isa x "standard cell potential class*") ) (EntitiesWithCount "standard electrode potential*" 2) ))
+ (assert '(Using  (CalculateILOValue (every x (Isa x "standard cell potential class*") ) (EntitieswithCount "standard electrode potential*" 2) ))
  ; 55. Use standard cell potentials to: (i) explain/deduce the direction of electron flow from a simple cell (ii) predict the feasibility of a reaction.
- (assert '(Isa (ExplainILO (DirectionOf "electron flow")) "ILO class*"))
- (assert '(inChemicalSystem (ExplainILO (DirectionOf "electron flow")) "simple electrochemical cell*"))
- (assert '(Using (ExplainILO (DirectionOf "electron flow")) (every x (Isa "standard electrode potential class*"))
+ (assert '(Isa (ExplainILO (DirectionOf "electron flow*")) "ILO class*"))
+ (assert '(inChemicalSystem (ExplainILO (DirectionOf "electron flow*")) "simple electrochemical cell*"))
+ (assert '(Using (ExplainILO (DirectionOf "electron flow*")) "standard electrode potential*"))
  ; 56. Construct redox equations using the relevant half-equations.
  (assert '(Isa (ConstructILO (every x (Isa x "redox equation class*")) "ILO class*"))
  (assert '(Using (ConstructILO (every x (Isa x "redox equation class*")) (every y (HalfEquation y x) ))
  ;; 57. Predict qualitatively how the value of an electrode potential varies with the concentration of the aqueous ion.
- (assert '(Isa (PredictQuantitatively (EffectedChange (ValueOf "electrode potential*") "concentration of the aqueous ion") "ILO class*"))
+ (assert '(Isa (PredictQuantitatively (EffectedChange (ValueOf "electrode potential*")) (ConcentrationOf "aqueous ion*")) "ILO class*"))
  ; 58. State the possible advantages of developing other types of cell, e.g. the H2/O2 fuel cell and improved batteries (as in electric vehicles) in terms of smaller size, lower mass and higher voltage.
  (assert '(Isa () "ILO class*"))
  ; 59. State the relationship, F = Le, between the Faraday constant, the Avogadro constant and the charge on the electron.
- (assert '(Isa (StateILO (RelationBetween (setof "Faraday constant*" "Avogadro constant*" "electronic charge*") ) ) "ILO class*"))
+ (assert '(Isa (StateILO (RelationBetween (setof "Faraday constant*" "Avogadro constant*" "electronic charge*"))) "ILO class*"))
  ; 60. Predict the identity of the substance liberated during electrolysis from the state of electrolyte (molten or aqueous), position in the redox series (electrode potential) and concentration.
  (assert '(Isa () "ILO class*"))
  ; 61. Calculate: (i) the quantity of charge passed during electrolysis (ii) the mass and/or volume of substance liberated during electrolysis, including those in the electrolysis of H2SO4(aq), Na2SO4(aq).
- (assert '(Isa (AmountOf "charge passed during electrolysis") "ILO class*"))
- (assert '(Isa (AmountOf "mass and/or volume of substance liberated during electrolysis") "ILO class*"))
+ (assert '(Isa (AmountOf "charge passed during electrolysis*") "ILO class*"))
+ (assert '(Isa (AmountOf "mass and/or volume of substance liberated during electrolysis*") "ILO class*"))
  ; 62. Describe the determination of a value of the Avogadro constant by an electrolytic method.
- (assert '(Isa (DescribeILO (DeterminationOf (ValueOf "Avogadro's constant") )) "ILO class*"))
- (assert '(Using (DeterminationOf (ValueOf "Avogadro's constant") )) "electrolysis"))
+ (assert '(Isa (DescribeILO (DeterminationOf (ValueOf "Avogadro constant*"))) "ILO class*"))
+ (assert '(Using (DeterminationOf (ValueOf "Avogadro constant*"))) "electrolysis*"))
  ; 63. Explain, in terms of rates of the forward and reverse reactions, what is meant by a reversible reaction and dynamic equilibrium.
- (assert '(Isa (ExplainILO "reversible reaction") "ILO class*"))
- (assert '(InTermsOf (ExplainILO "reversible reaction") (RateOf (setof "forward reaction" "reverse reaction")) ))
- (assert '(Isa (ExplainILO "dynamic equilibrium") "ILO class*"))
- (assert '(InTermsOf (ExplainILO "dynamic equilibrium") (RateOf (setof "forward reaction" "reverse reaction")) ))
+ (assert '(Isa (ExplainILO "reversible reaction*") "ILO class*"))
+ (assert '(inTermsOf (ExplainILO "reversible reaction*") (RateOf (setof "forward reaction*" "reverse reaction*")) ))
+ (assert '(Isa (ExplainILO "dynamic equilibrium*") "ILO class*"))
+ (assert '(inTermsOf (ExplainILO "dynamic equilibrium*") (RateOf (setof "forward reaction*" "reverse reaction*")) ))
  ;; 64. State Le Chatelier’s Principle and apply it to deduce qualitatively (from appropriate information) the effects of changes in temperature, concentration or pressure, on a system at equilibrium.
  ;;;REWRITe
- (assert '(Isa (StateILO "Le Chatelier’s Principle") "ILO class*"))
- (assert '(Isa (Apply "Le Chatelier’s Principle") "ILO class*"))
+ (assert '(Isa (StateILO "Le Chatelier’s Principle*") "ILO class*"))
+ (assert '(Isa (Apply "Le Chatelier’s Principle*") "ILO class*"))
  (assert '(InOrderTo 
-            (Apply "Le Chatelier’s Principle") 
+            (Apply "Le Chatelier’s Principle*") 
             (DeduceILO 
               (EffectOf 
                 (ChangeIn 
-                   (setof temperature concentration pressure) "equilibrium system"
+                   (setof temperature* concentration* pressure*) "equilibrium system*"
                 ) 
               )
             )
@@ -228,8 +276,8 @@
  ;; 66. Deduce expressions for equilibrium constants in terms of concentrations, Kc, and partial pressures, Kp of the relationship between Kp and Kc is not required?.
  (assert '(Isa () "ILO class*"))
  (assert '(Isa (DeduceILO (ExpressionFor (every x (Isa x "equilibrium constant class*"))))))
- (assert '(InTermsOf (DeduceILO (ExpressionFor (every x (Isa x "equilibrium constant class*") (hasSymbol x Kc))) concentration))
- (assert '(InTermsOf (DeduceILO (ExpressionFor (every x (Isa x "equilibrium constant") (hasSymbol x Kp))) "partial pressure"))
+ (assert '(inTermsOf (DeduceILO (ExpressionFor (every x (Isa x "equilibrium constant class*") (hasSymbol x Kc))) concentration*))
+ (assert '(inTermsOf (DeduceILO (ExpressionFor (every x (Isa x "equilibrium constant class*") (hasSymbol x Kp))) "partial pressure*"))
  ;; 67. Calculate the values of equilibrium constants in terms of concentrations or partial pressures from appropriate data.
  (assert '(
            Isa 
@@ -242,25 +290,25 @@
               ILO
            )
  )
- (assert '(InTermsOf (
+ (assert '(inTermsOf (
                CalculateILO 
                  (
                    ValueOf (every x (Isa x "equilibrium constant class*"))
                  )
-              )  (setof concentration "partial pressure"))
+              )  (setof concentration* "partial pressure*"))
  ; 68. Calculate the quantities present at equilibrium, given appropriate data (such calculations will not require the solving of quadratic equations).
  (assert '(Isa () "ILO class*"))
  ; 69. Describe and explain the conditions used in the Haber process and the Contact process, as examples of the importance of an understanding of chemical equilibrium in the chemical industry (see also Section 9.6).
  (assert '(Isa () "ILO class*"))
  ;; 70. Show understanding of, and use, the Brønstedowry theory of acids and bases, including the use of the acid-I, base-II concept.
  ;;;REwRITE
- (assert '(Isa (DescribeILO "Brønsted-Lowry theory of acids and bases") "ILO class*"))
+ (assert '(Isa (DescribeILO "Brønsted-Lowry theory of acids and bases*") "ILO class*"))
  (assert '(inManner (DescribeILO "Brønsted-Lowry theory of acids and bases*") "briefly"))
  ; 71. Explain qualitatively the differences in behaviour between strong and weak acids and bases and the pH values of their aqueous solutions in terms of the extent of dissociation.
  (assert '(Isa (ExplainILO ) "ILO class*"))
  ;; 72. Explain the terms pH, Ka, pKa, Kw and use them in calculations.
- (assert '(Isa (ExplainILO (setof "pH" "Ka" "pKa" "Kw") )))
- (assert '(Isa (Use (setof "pH" "Ka" "pKa" "Kw") )))
+ (assert '(Isa (ExplainILO (setof "pH*" "Ka*" "pKa*" "Kw*") )))
+ (assert '(Isa (Use (setof "pH*" "Ka*" "pKa*" "Kw*") )))
  
 ; 73. Calculate [H+(aq)] and pH values for strong and weak acids and strong bases.
  (assert '(Isa () "ILO class*"))
@@ -278,11 +326,11 @@
  (assert '(Isa (CalculateILO (pHOf (every x (Isa x "buffer solution class*"))) "ILO class*"))
  (assert '(Given (CalculateILO (pHOf (every x (Isa x "buffer solution class*"))) "appropriate data"))
  ; 78. Show understanding of, and use, the concept of solubility product, Ksp.
- (assert '(Isa (DefineILO "solubility product") "ILO class*"))
- (assert '(Isa (DescribeILO (UseOf "solubility product")) "ILO class*"))
+ (assert '(Isa (DefineILO "solubility product*") "ILO class*"))
+ (assert '(Isa (DescribeILO (UseOf "solubility product*")) "ILO class*"))
  ; 79. Calculate Ksp from concentrations and vice versa.
- (assert '(Isa (CalculateILO "solubility product") "ILO class*"))
- (assert '(Using (CalculateILO "solubility product") Data(concentration)))
+ (assert '(Isa (CalculateILO "solubility product*") "ILO class*"))
+ (assert '(Using (CalculateILO "solubility product*") Data(concentration*)))
  ;; 80. Show understanding of the common ion effect.
  ; REWRITE: 80a. State the common ion effect.
  ; 80b. Explain the common ion effect in terms of le Chatelier's principle.
@@ -290,52 +338,55 @@
  ; 80d. Describe the common ion effect in relation to the solubility of a sparingly soluble salt.
  (assert '(Isa (StateILO "common ion effect*") "ILO class*"))
  (assert '(Isa (ExplainILO "common ion effect*") "ILO class*"))
- (assert '(InTermsOf (ExplainILO "common ion effect*") "le Chatelier's principle"))
- (assert '(Isa (DescribeILO "common ion effect") "ILO class*"))
- (assert '(InRelationTo (DescribeILO "common ion effect*") (DissociationOf (setof (every x (Isa x "weak acid class*")) (every x (Isa x "weak base class*"))) ))
- (assert '(InRelationTo (DescribeILO "common ion effect") (SolubilityOf (every x (Isa x "sparingly soluble salt class*")))))
+ (assert '(inTermsOf (ExplainILO "common ion effect*") "le Chatelier's principle"))
+ (assert '(Isa (DescribeILO "common ion effect*") "ILO class*"))
+ (assert '(InRelationTo (DescribeILO "common ion effect*") (DissociationOf (setof (every x (Isa x "weak acid class")) (every x (Isa x "weak base class*"))) ))
+ (assert '(InRelationTo (DescribeILO "common ion effect*") (SolubilityOf (every x (Isa x "sparingly soluble salt class*")))))
  ;; 81. Explain and use the terms: rate of reaction, activation energy, catalysis, rate equation, order of reaction, rate constant, half-life of a reaction, rate-determining step.
  ; REWRITE: 81a. Define the terms rate of reaction, rate equation, order of reaction, rate constant.
- (assert '(Isa (DefineILO (setof "rate of reaction" "rate equation" "order of reaction" "rate constant") ) "ILO class*")) 
+ (assert '(Isa (DefineILO "rate of reaction*") "ILO class*")) 
+ (assert '(Isa (DefineILO "rate equation*") "ILO class*")) 
+ (assert '(Isa (DefineILO "order of reaction*") "ILO class*")) 
+ (assert '(Isa (DefineILO "rate constant*") "ILO class*")) 
  ; 81b. Distinguish between the differential rate equation and the integrated rate equation of a chemical reaction.
  ; 81c. Perform simple calculations involving rate equations.
- (assert '(Isa (Use (every x (Isa x "rate equation")) "ILO class*"))
- (assert '(inContext (Use (every x (Isa x "rate equation")) "simple calculations"))
+ (assert '(Isa (Use (every x (Isa x "rate equation class*")) "ILO class*"))
+ (assert '(inContext (Use (every x (Isa x "rate equation class*")) "simple calculations*"))
  ; 81d. Define the term activation energy.
- (assert '(Isa (DefineILO "activation energy") "ILO class*"))
+ (assert '(Isa (DefineILO "activation energy*") "ILO class*"))
  ; 81d. State the Arrhenius equation and use this to explain the effect of activation energy on reaction rate.
- (assert '(Isa (StateILO "Arrhenius equation") "ILO class*"))
- (assert '(Isa (Use "Arrhenius equation") "ILO class*"))
+ (assert '(Isa (StateILO "Arrhenius equation*") "ILO class*"))
+ (assert '(Isa (Use "Arrhenius equation*") "ILO class*"))
  ; Catalysis moved to 85.
  ; 82. Explain qualitatively, in terms of collisions, the effect of concentration changes on the rate of a reaction.
  (assert '(Isa () "ILO class*"))
  ; 83. Show understanding, including reference to the Boltzmann distribution, of what is meant by the term activation energy.
- (assert '(Isa (DefineILO "activation energy") "ILO class*"))
- (assert '(Isa (DescribeILO "activation energy") "ILO class*"))
- (assert '(InRelationTo (DescribeILO "activation energy") "Boltzmann distribution"))
+ (assert '(Isa (DefineILO "activation energy*") "ILO class*"))
+ (assert '(Isa (DescribeILO "activation energy*") "ILO class*"))
+ (assert '(InRelationTo (DescribeILO "activation energy*") "Boltzmann distribution*"))
  ; 84. Explain qualitatively, in terms both of the Boltzmann distribution and of collision frequency, the effect of temperature change on the rate of a reaction.
- (assert '(Isa (ExplainILO (EffectOf (ChangeIn temperature) "rate of reaction" )) "ILO class*"))
- (assert '(InTermsOf (ExplainILO (EffectOf (ChangeIn temperature) "rate of reaction" )) (setof "Boltzmann distribution" "collision frequency"))))
+ (assert '(Isa (ExplainILO (EffectOf (ChangeIn temperature*) "rate of reaction*" )) "ILO class*"))
+ (assert '(inTermsOf (ExplainILO (EffectOf (ChangeIn temperature*) "rate of reaction*" )) (setof "Boltzmann distribution*" "collision frequency*"))))
  ;; 85. Explain that, in the presence of a catalyst, a reaction has a different mechanism, i.e. one of lower activation energy.
  ; REWRITE: 85a. Define the term catalysis.
- (assert '(Isa (DefineILO "catalysis") "ILO class*"))
- (assert '(Isa (DefineILO "catalyst") "ILO class*"))
+ (assert '(Isa (DefineILO "catalysis*") "ILO class*"))
+ (assert '(Isa (DefineILO "catalyst*") "ILO class*"))
  ; 85b. Explain catalysis in terms of reaction mechanism and activation energy.
- (assert '(Isa (ExplainILO "catalysis") "ILO class*"))
- (assert '(InTermsOf (ExplainILO "catalysis") (setof "reaction mechanism" "activation energy") ))
+ (assert '(Isa (ExplainILO "catalysis*") "ILO class*"))
+ (assert '(inTermsOf (ExplainILO "catalysis*") (setof "reaction mechanism" "activation energy") ))
  ; 86. Interpret catalysis in terms of the Boltzmann distribution.
- (assert '(Isa (InterpretILO "catalysis") "ILO class*"))
- (assert '(InTermsOf (InterpretILO "catalysis") "Boltzmann distribution"))
+ (assert '(Isa (InterpretILO "catalysis*") "ILO class*"))
+ (assert '(inTermsOf (InterpretILO "catalysis*") "Boltzmann distribution*"))
  ; 87. Describe enzymes as biological catalysts (proteins) which may have specific activity.
- (assert '(Isa (DescribeILO "enzyme") "ILO class*"))
+ (assert '(Isa (DescribeILO "enzyme class*") "ILO class*"))
  (assert '(hasDescription "biological catalysts (proteins) which may have specific activity"))
  ; 88. Construct and use rate equations of the form rate = kA?mB?n (limited to simple cases of single step reactions and of multistep processes with a rate-determining step, for which m and n are 0, 1 or 2), including: (i) deducing the order of a reaction from concentration-time graphs, by the initial rates method and half-life methods (ii) deducing, for zero- and first-order reactions, the order of reaction from concentration-time graphs (iii) verifying that a suggested reaction mechanism is consistent with the observed kinetics (iv) predicting the order that would result from a given reaction mechanism (and vice versa) (v) calculating an initial rate using concentration data forms of rate equations are not required?.
  (assert '(Isa () "ILO class*"))
  ; 89. Show understanding that the half-life of a first-order reaction is independent of concentration (ii) use the half-life of a first-order reaction in calculations.
  (assert '(Isa (Understand (IsIndependentOf "half-life of a first-order reaction" "concentration")) "ILO class*"))
  ; 90. Calculate a rate constant, for example by using the initial rates or half-life method.
- (assert '(Isa (CalculateILO (ValueOf (every x (Isa x "rate constant")) "ILO class*"))
- (assert '(Using (CalculateILO (ValueOf (every x (Isa x "rate constant"))) (setof "initial rates method" "half-life method"))))
+ (assert '(Isa (CalculateILO (UnitaryQuantityValue (every x (Isa x "rate constant class*")) "ILO class*"))
+ (assert '(Using (CalculateILO (UnitaryQuantityValue (every x (Isa x "rate constant class*"))) (setof "initial rates method*" "half-life method*"))))
  ; REWRITE: 90a. Calculate a rate constant using the initial rates method.
  ; 90b. Calculate! a rate constant using the half-life method.
  (assert '(Isa () "ILO class*"))
@@ -344,18 +395,18 @@
  ; 92. Outline the different modes of action of homogeneous and heterogeneous catalysis, including: (i) the Haber process (ii) the catalytic removal of oxides of nitrogen in the exhaust gases from car engines (see also Section 10.2) (iii) the catalytic role of atmospheric oxides of nitrogen in the oxidation of atmospheric sulfur dioxide (iv) catalytic role of Fe3+ in the I–/S2O82?– reaction.
  (assert '(Isa () "ILO class*"))
  ; 93. Describe qualitatively (and indicate the periodicity in) the variations in atomic radius, ionic radius, melting point and electrical conductivity of the elements (see the Data Booklet).
- (assert '(Isa (DescribeILO (VariationIn (UnitaryQuantityOf "atomic radius" (every x (Isa x "element")))) "ILO class*"))
- (assert '(Isa (DescribeILO (VariationIn (UnitaryQuantityOf "ionic radius" "element"))) "ILO class*"))
- (assert '(Isa (DescribeILO (VariationIn (UnitaryQuantityOf "melting point" "element"))) "ILO class*"))
- (assert '(Isa (DescribeILO (VariationIn (UnitaryQuantityOf "electrical conductivity" "element"))) "ILO class*"))
+ (assert '(Isa (DescribeILO (VariationIn (UnitaryQuantityOf "atomic radius*" (every x (Isa x "element class*")))) "ILO class*"))
+ (assert '(Isa (DescribeILO (VariationIn (UnitaryQuantityOf "ionic radius*" (every x (Isa x "element class*")))) "ILO class*"))
+ (assert '(Isa (DescribeILO (VariationIn (UnitaryQuantityOf "melting point*" (every x (Isa x "element class*")))) "ILO class*"))
+ (assert '(Isa (DescribeILO (VariationIn (UnitaryQuantityOf "electrical conductivity*" (every x (Isa x "element class*")))) "ILO class*"))
  ; 94. Explain qualitatively the variation in atomic radius and ionic radius.
- (assert '(Isa (DescribeILO (VariationIn (UnitaryQuantityOf "ionic radius" "element"))) "ILO class*"))
- (assert '(Isa (DescribeILO (VariationIn (UnitaryQuantityOf "atomic radius" "element"))) "ILO class*"))
+ (assert '(Isa (DescribeILO (VariationIn (UnitaryQuantityOf "ionic radius*" (every x (Isa x "element class*")))) "ILO class*"))
+ (assert '(Isa (DescribeILO (VariationIn (UnitaryQuantityOf "atomic radius*" (every x (Isa x "element class*")))) "ILO class*"))
  ; 95. Interpret the variation in melting point and in electrical conductivity in terms of the presence of simple molecular, giant molecular or metallic bonding in the elements.
- (assert '(Isa (InterpretILO (VariationIn (UnitaryQuantityOf "melting point" "element"))) "ILO class*"))
- (assert '(InPresencef (InterpretILO (VariationIn (UnitaryQuantityOf "melting point" "element")))  (setof "molecular boding" "giant molecular bonding" "")))
+ (assert '(Isa (InterpretILO (VariationIn (UnitaryQuantityOf "melting point*" (every x (Isa x "element class*")))) "ILO class*"))
+ (assert '(InPresencef (InterpretILO (VariationIn (UnitaryQuantityOf "melting point*" (every x (Isa x "element class*"))))  (setof "molecular bonding*" "giant molecular bonding*" "metallic bonding*")))
  ; 96. Explain the variation in first ionisation energy.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (ExplainILO (VariationIn "first ionization energy*") "ILO class*"))
  ; 97. Describe the reactions, if any, of the elements with oxygen (to give Na2O, MgO, Al 2O3, P4O10?, SO2, SO3), chlorine (to give NaCl? , MgCl? 2, Al 2Cl 6, SiCl? 4, PCl 5) and water (Na and Mg only).
  (assert '(Isa () "ILO class*"))
  ; 98. State and explain the variation in oxidation number of the oxides and chlorides in terms of their valance shell electrons.
@@ -365,8 +416,8 @@
  ; 100. Describe and explain the acid/base behaviour of oxides and hydroxides including, where relevant, amphoteric behaviour in reaction with sodium hydroxide (only) and acids.
  (assert '(Isa () "ILO class*"))
  ;; 101. Describe and explain the reactions of the chlorides with water.
- (assert '(Isa (DescribeILO (ReactionOf (every x (Isa x chloride)) water) ) "ILO class*"))
- (assert '(Isa (ExplainILO (ReactionOf (every x (Isa x chloride)) water) ) "ILO class*"))
+ (assert '(Isa (DescribeILO (Reactionwith (setof (every x (Isa x "metal chloride substance class*")) "water substance*")) ) "ILO class*"))
+ (assert '(Isa (ExplainILO (Reactionwith (setof (every x (Isa x "metal chloride substance class*"))) "water substance*") ) "ILO class*"))
  ; 102. Interpret the variations and trends in (f), (g), (h), and (i) in terms of bonding and electronegativity.
  (assert '(Isa () "ILO class*"))
  ; 103. Suggest the types of chemical bonding present in chlorides and oxides from observations of their chemical and physical properties.
@@ -401,11 +452,11 @@
  ; 118. Describe and explain the relative stability of higher and lower oxidation states of the elements in their oxides and aqueous cations including, where relevant, E values.
  (assert '(Isa () "ILO class*"))
  ;; 119. Describe the colours of, and the trend in volatility of chlorine, bromine and iodine.
- (assert '(Isa (TrendIn (VolatilityOf (setof "chlorine" "bromine" "iodine")) ) "ILO class*"))
- (assert '(Isa (TrendIn (setof (VolatilityOf "chlorine") (VolatilityOf "bromine") (VolatilityOf "iodine"))) ) "ILO class*"))
+ (assert '(Isa (TrendIn (VolatilityOf (setof "chlorine element*" "bromine element*" "iodine element*")) ) "ILO class*"))
+ (assert '(Isa (TrendIn (setof (VolatilityOf "chlorine element*") (VolatilityOf "bromine element*") (VolatilityOf "iodine element*"))) ) "ILO class*"))
  ;; 120. Interpret the volatility of the elements in terms of van der Waals’ forces.
- (assert '(Isa (InterpretILO (Volatility of (every x (Isa x element) ) )) "ILO class*")))
- (assert '(InTermsOf (InterpretILO (Volatility of (every x (Isa x element) ) )) ("van der Waals forces") ))
+ (assert '(Isa (InterpretILO (VolatilityOf (every x (Isa x "element class*") ) )) "ILO class*")))
+ (assert '(inTermsOf (InterpretILO (Volatility of (every x (Isa x "element class*") ) )) ("van der Waals forces*") ))
  ; 121. Describe and deduce from E values the relative reactivity of the elements as oxidising agents.
  (assert '(Isa () "ILO class*"))
  ;; 122. Describe and explain the reactions of the elements with hydrogen.
@@ -419,34 +470,34 @@
  ; 126. Describe and interpret in terms of changes of oxidation number the reaction of chlorine with cold, and with hot, aqueous sodium hydroxide.
  (assert '(Isa () "ILO class*"))
  ;; 127. Explain the use of chlorine in water purification.
- (assert '(Isa (ExplainILO (UseOf hydrogen) ) "ILO class*"))
- (assert '(forPurpose (UseOf hydrogen) PurificationOf(water)))
+ (assert '(Isa (ExplainILO (UseOf "hydrogen molecular substance*") ) "ILO class*"))
+ (assert '(forPurpose (UseOf "hydrogen molecular substance*") PurificationOf(water)))
  ; 128. State the industrial importance and environmental significance of the halogens and their compounds (e.g. for bleaches, PVC, halogenated hydrocarbons as solvents, refrigerants and in aerosols) (see also Section 10.3)
- (assert '(Isa (State (IndustrialImportanceOf (every x (Isa x "halogen class*")))) "ILO class*"))
+ (assert '(Isa (State (IndustrialImportanceOf (every x (Isa x "halogen substance class*")))) "ILO class*"))
  ; 129. Explain what is meant by a transition element, in terms of d-block elements forming one or more stable ions with incomplete d orbitals.
  (assert '(Isa () "ILO class*"))
  ;; 130. State the electronic configuration of a first row transition element and of its ions.
- (assert '(Isa (StateILO (ElectronicConfigurationOf (every x (Isa x "first row tranition element") ) ) "ILO class*")))
+ (assert '(Isa (StateILO (ElectronicConfigurationOf (every x (Isa x "first row tranition element class*") ) ) "ILO class*")))
  ; 131. Contrast, qualitatively, the melting points and densities of the transition elements with those of calcium as a typical s-block element.
  (assert '(Isa () "ILO class*"))
  ; 132. Describe the tendency of transition elements to have variable oxidation states
- (assert '(Isa (DescribeILO (Tendency (every x (Isa x transition element class*)) (hasProperty "variable oxidation state*" x)) "ILO class*"))
+ (assert '(Isa (DescribeILO (Tendency (every x (Isa x "transition element class*")) (hasProperty "variable oxidation state*" x)) "ILO class*"))
  ; 133. Predict from a given electronic configuration, the likely oxidation states of a transition element.
- (assert '(Isa (Predict (OxidationStateOf (every x (Isa x "transition element") )) "ILO class*"))
- (assert '(Given (Predict (OxidationStateOf (every x (Isa x "transition element") )) ElectronicConfiguratonOf(x)))
+ (assert '(Isa (Predict (OxidationStateOf (every x (Isa x "transition element class*") )) "ILO class*"))
+ (assert '(Given (Predict (OxidationStateOf (every x (Isa x "transition element class*") )) (ElectronicConfiguratonOf x))))
  ; 134. Describe and explain the use of Fe3+/Fe2+, MnO4?−/Mn2+ and Cr2O72?−/Cr3+ as examples of redox systems (see also Section 6).
  ; 135. Predict, using E values, the likelihood of redox reactions.
- (assert '(Isa (Predict (LikelihoodOf (every x (Isa x "redox reaction") ))) ILO ))
- (assert '(Using (Predict (LikelihoodOf (every x (Isa x "redox reaction") )))(every y (Isa y "E value"))))
+ (assert '(Isa (Predict (LikelihoodOf (every x (Isa x "redox reaction class*") ))) ILO ))
+ (assert '(Using (Predict (LikelihoodOf (every x (Isa x "redox reaction class*") )))(every y (Isa y "E value class*"))))
  ; 136. Explain the reactions of transition elements with ligands to form complexes, including the complexes of copper(II) ions with water, hydroxide, ammonia and chloride ions.
  (assert '(Isa () "ILO class*"))
  ; 137. Define the term ligand as a species that contains a lone pair of electrons that forms a dative bond to a central metal atom/ion.
- (assert '(Isa (DefineILO "ligand") "ILO class*"))
+ (assert '(Isa (DefineILO "ligand*") "ILO class*"))
  ; 138. Define the term complex as a molecule or ion formed by a central metal atom/ion surrounded by one or more ligands.
- (assert '(Isa (DefineILO "complex") "ILO class*"))
+ (assert '(Isa (DefineILO "complex*") "ILO class*"))
  ; 139. Describe transition metal complexes as linear, octahedral, tetrahedral or square planar.
- (assert '(Isa (IdentifyILO ShapeOf(every x (Isa x "transition metal complex")) ) "ILO class*"))
- (assert '(FromOptions (IdentifyILO ShapeOf(every x (Isa x "transition metal complex")) ) (setof "linear" "octahedral" "tetrahedral" "square planar")))
+ (assert '(Isa (IdentifyILO ShapeOf(every x (Isa x "transition metal complex class*")) ) "ILO class*"))
+ (assert '(FromOptions (IdentifyILO ShapeOf(every x (Isa x "transition metal complex class*")) ) (setof "linear*" "octahedral*" "tetrahedral*" "square planar*")))
  ; 140. Explain qualitatively that ligand exchange may occur, including the complexes of copper(II) ions with water, hydroxide, ammonia and chloride ions.
  (assert '(Isa () "ILO class*"))
  ; 141. Describe the shape and symmetry of the d orbitals, and the splitting of degenerate d orbitals into two energy levels in octahedral complexes using the complexes of copper(II) ions with water and ammonia as examples.
@@ -458,15 +509,15 @@
  ; 144. Apply the above ideas of ligands and complexes to other metals, given information
  (assert '(Isa () "ILO class*"))
  ; 145. Explain the lack of reactivity of nitrogen
- (assert '(Isa (ExplainILO (UnreactivityOf nitrogen)) "ILO class*"))
+ (assert '(Isa (ExplainILO (UnreactivityOf "nitrogen element*")) "ILO class*"))
  ; 146. Describe and explain: (i) the basicity of ammonia (see Section 7) (ii) the structure of the ammonium ion and its formation by an acid-base reaction (iii) the displacement of ammonia from its salts.
  (assert '(Isa () "ILO class*"))
  ; 147. Describe the Haber process for the manufacture of ammonia from its elements, giving essential operating conditions, and interpret these conditions (qualitatively) in terms of the principles of kinetics and equilibria (see also Sections 7 and 8).
  ; 148. State the industrial importance of ammonia and nitrogen compounds derived from ammonia.
- (assert '(Isa (IndustrialImportanceOf (setof CompoundsOf(setof ammonia nitrogen)) )) "ILO class*"))
+ (assert '(Isa (IndustrialImportanceOf (setof CompoundsOf(setof "ammonia element*"  "nitrogen element*"))) "ILO class*"))
  ; 149. State and explain the environmental consequences of the uncontrolled use of nitrate fertilisers.
- (assert '(Isa (StateILO (ConsequencesOf (UseOf "nitrate fertiliser") "environmental")) "ILO class*"))
- (assert '(Isa (ExplainILO (ConsequencesOf (UseOf "nitrate fertiliser") "environmental")) "ILO class*"))
+ (assert '(Isa (StateILO (ConsequencesOf (UseOf (every x (Isa x "fertiliser class*") (Isa x "nitrate substance class*"))) "environmental")) "ILO class*"))
+ (assert '(Isa (ExplainILO (ConsequencesOf (UseOf (every x (Isa x "fertiliser class*") (Isa x "nitrate substance class*"))) "environmental")) "ILO class*"))
  ; can't wrap (ConsequencesOf ...) with (ofType ... environmental) - what if I later wanted to form an ILO (ofType ... political). The type has to go in as a slot.
  ; 150. State and explain the natural and man-made occurrences of oxides of nitrogen and their catalytic removal from the exhaust gases of internal combustion engines.
  (assert '(Isa () "ILO class*"))
@@ -477,30 +528,32 @@
  ; 153. State the role of sulfur dioxide in the formation of acid rain and describe the main environmental consequences of acid rain. sulfur contaminated carbonaceous fuels.
  (assert '(Isa () "ILO class*"))
  ; 154. State the main details of the Contact process for sulfuric acid production.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (DetailsOf "contact process*")) "ILO class*"))
  ; 155. Describe the use of sulfur dioxide in food preservation
- (assert '(Isa () "ILO class*"))
- ; 156. Interpret, and use the general, structural, displayed and skeletal formulae of the following classes of compound: (i) alkanes, alkenes and arenes (ii) halogenoalkanes and halogenoarenes (iii) alcohols (including primary, secondary and tertiary) and phenols (iv) aldehydes and ketones (v) carboxylic acids, esters and acyl chlorides (vi) amines (primary only), nitriles, amides and amino acids will be expected to recognise the shape of the benzene ring when it is present in organic compounds. Knowledge of benzene or its compounds is not required for AS.?
+ (assert '(Isa (DescribeILO (forPurpose (UseOf "sulfur dioxide molecular substance*") "food preservation*")) "ILO class*"))
+  ; 156. Interpret, and use the general, structural, displayed and skeletal formulae of the following classes of compound: (i) alkanes, alkenes and arenes (ii) halogenoalkanes and halogenoarenes (iii) alcohols (including primary, secondary and tertiary) and phenols (iv) aldehydes and ketones (v) carboxylic acids, esters and acyl chlorides (vi) amines (primary only), nitriles, amides and amino acids will be expected to recognise the shape of the benzene ring when it is present in organic compounds. Knowledge of benzene or its compounds is not required for AS.?
  (assert '(Isa () "ILO class*"))
  ; 157. Interpret, and use the following terminology associated with organic reactions: (i) functional group (ii) homolytic and heterolytic fission (iii) free radical, initiation, propagation, termination (iv) nucleophile, electrophile (v) addition, substitution, elimination, hydrolysis (vi) oxidation and reduction equations for organic redox reactions, the symbols [O? and H? are acceptable].
  (assert '(Isa () "ILO class*"))
  ; 158. Describe the shapes of the ethane, ethene and benzene molecules.
- (assert '(Isa (DescribeILO (ShapeOf (setof "ethane" "ethene" "benzene")) ) "ILO class*"))
+ (assert '(Isa (DescribeILO (ShapeOf "ethane molecular entity*")) "ILO class*")
+ (assert '(Isa (DescribeILO (ShapeOf "ethene molecular entity*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (ShapeOf "benzene molecular entity*")) "ILO class*"))
  ; 159. Predict the shapes of other related molecules.
  (assert '(Isa () "ILO class*"))
  ;; 160. Explain the shapes of the ethane, ethene and benzene molecules in terms of σ and π carbon-carbon bonds.
- (assert '(Isa (ExplainILO (ShapeOf (setof "ethane" "ethene" "benzene")) ) "ILO class*"))
- (assert '(InTermsOf (DescribeILO (ShapeOf (setof "ethane" "ethene" "benzene")) ) "σ and π carbon-carbon bonds"))
+ (assert '(Isa (ExplainILO (ShapeOf (setof "ethane*" "ethene*" "benzene*")) ) "ILO class*"))
+ (assert '(inTermsOf (DescribeILO (ShapeOf (setof "ethane*" "ethene*" "benzene*")) ) "σ and π carbon-carbon bonds"))
  ;; 161. Describe structural isomerism, and its division into chain, positional and functional group isomerism.
- (assert '(Isa (DescribeILO (setof "structural isomerism" "chain isomerism" "positional isomerism" "functional group isomerism")) "ILO class*"))
+ (assert '(Isa (DescribeILO (setof "structural isomerism*" "chain isomerism*" "positional isomerism*" "functional group isomerism*")) "ILO class*"))
  ;; 162. Describe stereoisomerism, and its division into geometrical (cis-trans) and optical isomerism.
- (assert '(Isa (DescribeILO (setof "stereoisomerism" "geometrical isomerism" "optical isomerism")) "ILO class*"))
+ (assert '(Isa (DescribeILO (setof "stereoisomerism*" "geometrical isomerism*" "optical isomerism*")) "ILO class*"))
  ;; 163. Describe cis-trans isomerism in alkenes, and explain its origin in terms of restricted rotation due to the presence of π bonds.
- (assert '(Isa (DescribeILO "cis-trans isomerism") "ILO class*"))
- (assert '(InTermsOf (DescribeILO "cis-trans isomerism") "restricted rotation due to the presence of π bonds"))
+ (assert '(Isa (DescribeILO "cis-trans isomerism*") "ILO class*"))
+ (assert '(inTermsOf (DescribeILO "cis-trans isomerism*") "restricted rotation due to the presence of π bonds"))
  ;; 164. Explain what is meant by a chiral centre and that such a centre gives rise to optical isomerism.
- (assert '(Isa (ExplainILO "chiral centre") "ILO class*"))
- (assert '(Isa (ExplainILOHow (GivesRiseTo "chiral centre" "optical isomerism")) ))
+ (assert '(Isa (DescribeILO "chiral centre*") "ILO class*"))
+ (assert '(Isa (ExplainILOHow (GivesRiseTo "chiral centre*" "optical isomerism*")) ))
  ; 165. Identify chiral centres and/or cis-trans isomerism in a molecule of given structural formula.
  (assert '(Isa () "ILO class*"))
  ; 166. Deduce the possible isomers for an organic molecule of known molecular formula.
@@ -508,44 +561,55 @@
  ; 167. Deduce the molecular formula of a compound, given its structural, displayed or skeletal formula (see Section 1).
  (assert '(Isa () "ILO class*"))
  ;; 168. Show awareness of the general unreactivity of alkanes, including towards polar reagents.
- (assert '(Isa (CommentOn (ReactivityOf (every x (Isa x alkane) ) )) "ILO class*"))
- (assert '(ReactivityWith (ReactivityOf (every x (Isa x alkane) ) ) (every y (Isa y "polar reagent") )
+ (assert '(Isa (CommentOn (ReactivityOf (every x (Isa x "alkane substance class*") ) )) "ILO class*"))
+ (assert '(Reactivitywith (ReactivityOf (every x (Isa x "alkane substance class*") ) ) (every y (Isa y "polar reagent class*") )
  ;; 169. Describe the chemistry of alkanes as exemplified by the following reactions of ethane: (i) combustion (ii) substitution by chlorine and by bromine.
- (assert '(Isa (DescribeILO  (ChemistryOf (every x (Isa x alkane)) )) "ILO class*"))
- (assert '(AsExemplifiedBy (ChemistryOf (every x (Isa x alkane)) ) (setof (CombustionOf ethane) "substitution by chlorine and by bromine in ethane"))))
+ (assert '(Isa (DescribeILO  (ChemistryOf (every x (Isa x "alkane substance class*")) )) "ILO class*"))
+ (assert '(AsExemplifiedBy (ChemistryOf (every x (Isa x "alkane substane class*")) ) (setof (CombustionOf ethane) "substitution by chlorine and by bromine in ethane"))))
  ;; 170. Describe the mechanism of free-radical substitution at methyl groups with particular reference to the initiation, propagation and termination reactions.
- (assert '(Isa (DescribeILO (MechanismOf "free-radical substitution")) "ILO class*"))
- (assert '(WithReferenceTo (DescribeILO "free-radical substitution") (setof |initiation reaction| |propagation reaction| termination reaction|)))
+ (assert '(Isa (DescribeILO (MechanismOf "free-radical substitution*")) "ILO class*"))
+ (assert '(withReferenceTo (DescribeILO "free-radical substitution*") (setof "initiation reaction*" "propagation reaction*" "termination reaction*")))
  ; 171. Describe the chemistry of alkenes as exemplified, where relevant, by the following reactions of ethene and propene (including the Markovnikov addition of asymmetric electrophiles to propene): (i) addition of hydrogen, steam, hydrogen halides and halogens (ii) oxidation by cold, dilute, acidified manganate(VII) ions to form the diol (iii) oxidation by hot, concentrated, acidified manganate(VII) ions leading to the rupture of the carbon-to-carbon double bond in order to determine the position of alkene linkages in larger molecules (iv) polymerisation (see also Section 10.8).
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (ChemistryOfClass "alkene substance class*") "ILO class*"))
+ (assert '(Isa (DescribeILO (AdditionReaction "hydrogen molecular substance*" "ethene molecular substance*") "ILO class*"))
+ (assert '(Isa (DescribeILO (AdditionReaction "steam*" "ethene molecular substance*") "ILO class*"))
+ (assert '(Isa (DescribeILO (AdditionReaction (every x (Isa x "hydrogen halide substance class*")) "ethene molecular substance*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (AdditionReaction "hydrogen molecular substance*" "propene molecular substance*") "ILO class*"))
+ (assert '(Isa (DescribeILO (AdditionReaction "steam*" "propene molecular substance*") "ILO class*"))
+ (assert '(Isa (DescribeILO (AdditionReaction (every x (Isa x "hydrogen halide substance class*")) "propene molecular substance*")) "ILO class*"))
  ; 172. Describe the mechanism of electrophilic addition in alkenes, using bromine/ethene and hydrogen bromide/propene as examples.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (MechanismOf )) "ILO class*"))
  ; 173. Explain the use of crude oil as a source of both aliphatic and aromatic hydrocarbons.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (UseOf "crude oil*")) "ILO class*"))
  ; 174. Suggest how 'cracking' can be used to obtain more useful alkanes and alkenes of lower Mr from larger hydrocarbon molecules.
  (assert '(Isa () "ILO class*"))
  ; 175. Describe and explain how the combustion reactions of alkanes lead to their use as fuels in industry, in the home and in transport.
  ; 176. Recognise the environmental consequences of: (i) carbon monoxide, oxides of nitrogen and unburnt hydrocarbons arising from the internal combustion engine and of their catalytic removal (ii) gases that contribute to the enhanced greenhouse effect.
  (assert '(Isa () "ILO class*"))
  ;; 177. Describe the chemistry of arenes as exemplified by the following reactions of benzene and methylbenzene:(i) substitution reactions with chlorine and with bromine (ii) nitration (iii) complete oxidation of the side-chain to give a benzoic acid(iv) hydrogenation of the benzene ring to form a cyclohexane ring.
- (assert '(Isa (DescribeILO (ChemistryOf (every x (Isa x arene)) ) ) "ILO class*"))
- (assert '(AsExemplifiedBy (ChemistryOf (every x (Isa x arene)) ) (setof "substitution reactions with chlorine and with bromine" "nitration" "complete oxidation of the side-chain to give a benzoic acid" "hydrogenation of the benzene ring to form a cyclohexane ring"))
+ (assert '(Isa (DescribeILO (ChemistryOfClass "arene molecular substance class*")) "ILO class*"))
+ (assert '(AsExemplifiedBy (ChemistryOfClass "arene molecular substance class*") (setof "substitution reactions with chlorine and with bromine" "nitration" "complete oxidation of the side-chain to give a benzoic acid" "hydrogenation of the benzene ring to form a cyclohexane ring"))
  ; 178. Describe the mechanism of electrophilic substitution in arenes, as exemplified by the formation of nitrobenzene and bromobenzene.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (MechanismOf (ReactionTypeofClass "electrophilic substitution*""arene molecular substance class*"))) "ILO class*"))
  ; 179. Suggest the mechanism of other electrophilic substitution reactions, given data.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (SuggestILO (MechanismOf (ReactionTypeOnSubstrate "electrophilic substitution*" (every x (Isa x "arene molecular substance class*"))) "ILO class*"))
  ; 180. Describe the effect of the delocalisation of electrons in arenes in such reactions.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (EffectOfOn "electron delocalisation*" (ElectrophilicSubstitutionofClass "arene molecular substance class*"))) "ILO class*"))
  ; 181. Predict whether halogenation will occur in the side-chain or aromatic nucleus in arenes depending on reaction conditions.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (PredictILO (ReactionSite )) "ILO class*"))
  ; 182. Apply the knowledge of positions of substitution in the electrophilic substitution of arenes.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (EffectOfOn "position of substitution*" (ElectrophilicSubstitutionofClass "arene molecular substance class*"))) "ILO class*"))
  ; 183. Recall the chemistry of halogenoalkanes as exemplified by (i) the following nucleophilic substitution reactions of bromoethane: hydrolysis, formation of nitriles, formation of primary amines by reaction with ammonia (ii) the elimination of hydrogen bromide from 2-bromopropane.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (ChemistryOfClass "haloalkane substance class*") "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionTypeOnSubstrate "hydrolysis reaction class*"  "bromoethane molecular substance*") "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionTypeOnSubstrate "nitrile formation reaction class*"  "bromoethane molecular substance*") "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionTypeOnSubstrate "primary amine formation reaction class*"  "bromoethane molecular substance*") "ILO class*"))
+ (assert '(Isa (DescribeILO (EliminationTypeOnSubstrate "elimination reaction class*" "hydrogen bromide molecular substance*" "2-bromopropane molecular substance*") "ILO class*"))
  ; 184. Describe the mechanism of nucleophilic substitution (by both SN1 and SN2 mechanisms) in halogenoalkanes.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionTypeofClass "sn1 nucleophilic substitution*" "halogenoalkane molecular substance class*") "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionTypeofClass "sn1 nucleophilic substitution*" "halogenoalkane molecular substance class*") "ILO class*"))
  ; 185. Interpret the different reactivities of halogenoalkanes and chlorobenzene (with particular reference to hydrolysis and to the relative strengths of the C-Hal bonds).
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (InterpretILO (DifferenceBetween (ReactivityOfClass "halogenoalkane substance class*") (ReactivityOf "chlorobenzene molecular substancce*")) "ILO class*"))
  ; 186. Explain the uses of fluoroalkanes and fluorohalogenoalkanes in terms of their relative chemical inertness.
  (assert '(Isa () "ILO class*"))
  ; 187. Recognise the concern about the effect of chlorofluoroalkanes on the ozone layer.
@@ -576,8 +640,8 @@
  ; 200. Explain the acidity of carboxylic acids and of chlorinesubstituted ethanoic acids in terms of their structures.
  (assert '(Isa () "ILO class*"))
  ; 201. Describe the hydrolysis of acyl chlorides.
- (assert '(Isa (DescribeILO (ReactionOf (every x (Isa x "acyl chloride") hydrolysis) "ILO class*"))
- (assert '(Isa (DescribeILO (HydrolysisOf (every x (Isa x "acyl chloride"))) "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionOf (every x (Isa x "acyl chloride molecular substance class") hydrolysis*) "ILO class*"))
+ (assert '(Isa (DescribeILO (HydrolysisOf (every x (Isa x "acyl chloride molecular substance class*"))) "ILO class*"))
  ; 202. Describe the reactions of acyl chlorides with alcohols, phenols and primary amines.
  (assert '(Isa () "ILO class*"))
  ; 203. Explain the relative ease of hydrolysis of acyl chlorides, alkyl chlorides and aryl chlorides.
@@ -585,7 +649,8 @@
  ; 204. Describe the formation of esters from carboxylic acids or acyl chlorides, using ethyl ethanoate and phenyl benzoate as examples.
  (assert '(Isa () "ILO class*"))
  ; 205. Describe the acid and base hydrolysis of esters.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (AcidHydrolysisOf (every x (Isa x "ester molecular substance class*")))) "ILO class*"))
+ (assert '(Isa (DescribeILO (BaseHydrolysisOf (every x (Isa x "ester molecular substance class*")))) "ILO class*"))
  ; 206. State the major commercial uses of esters e.g. solvents, perfumes, flavourings.cribe the formation of polyesters (see also Section 10.8).
  (assert '(Isa () "ILO class*"))
  ; 207. Describe the formation of alkyl amines such as ethylamine (by the reaction of ammonia with halogenoalkanes; the reduction of amides with LiAlH4?; the reduction of nitriles with LiAlH4? or H2/Ni) and of phenylamine (by the reduction of nitrobenzene with tin/concentrated HCl).
@@ -611,7 +676,7 @@
  ; 217. Describe the hydrolysis of proteins.
  (assert '(Isa () "ILO class*"))
  ; 218. Describe the formation of polyamides (see also Section 10.8).
- (assert '(Isa (DescribeILO (FormationOf (every x (Isa x polyamide)))) "ILO class*")) 
+ (assert '(Isa (DescribeILO (FormationOf (every x (Isa x "polyamide molecular substance class*")))) "ILO class*")) 
  ; 219. Describe the characteristics of addition polymerisation as exemplified by poly(ethene) and PVC.
  (assert '(Isa () "ILO class*"))
  ; 220. Recognise the difficulty of the disposal of poly(alkene)s, i.e. nonbiodegradability and harmful combustion products.
@@ -645,22 +710,24 @@
  ; 234. Explain the chemistry of DNA mutation from provided data.
  (assert '(Isa () "ILO class*"))
  ;; 235. Discuss the genetic basis of disease (for example, sickle cell anaemia) in terms of altered base sequence, causing alterations in protein structure and function.
- (assert '(Isa (DiscussILO |genetic basis of disease|) "ILO class*"))
- (assert '(ForExample (DiscussILO |genetic basis of disease|) |sickle cell anaemia|))
- (assert '(InTermsOf (DiscussILO |genetic basis of disease|) (causing |alterations in protein structure and function| |altered base sequence| )))
+ (assert '(Isa (DiscussILO "genetic basis of disease*") "ILO class*"))
+ (assert '(ForExample (DiscussILO "genetic basis of disease*") "sickle cell anaemia"))
+ (assert '(inTermsOf (DiscussILO "genetic basis of disease*") ("causing alterations in protein structure and function and altered base sequence*" )))
  (assert '(Isa () "ILO class*"))
  ; 236. Explain how modification to protein/enzyme primary structure can result in new structure and/or function.
  (assert '(Isa () "ILO class*"))
  ; 237. Outline, in terms of the hydrolysis of ATP to ADP + Pi , the provision of energy for the cell.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (OutlineILO "provision of energy for the cell*") "ILO class*"))
  ; 238. Understand why some metals are essential to life and, given information and with reference to the chemistry of the core syllabus, be able to explain the chemistry involved (for example, iron in haemoglobin (section 9.5 (g) and 11.1(e) and (j)), sodium and potassium in transmission of nerve impulses (section 3, ion solvation and section 5, energetics), zinc as an enzyme cofactor (section 10.1, nucleophilic attack, 11.1(e))).
  (assert '(Isa () "ILO class*"))
  ; 239. Recognise that some metals are toxic and discuss, in chemical terms, the problems associated with heavy metals in the environment entering the food chain, for example mercury (development of methods to detect and address these problems will be discussed in 11.2(i) and 11.3(f)).
- (assert '(Isa (RecogniseThatILO (isToxic (some x (Isa x metal class*")) ) "ILO class*"))
+ (assert '(Isa (RecogniseThatILO (isToxic (some x (Isa x "heavy metal class*")) ) "ILO class*"))
  ; 240. Describe simply the process of electrophoresis and the effect of pH, using peptides and amino acids as examples (link to 11.1 (a)).
  (assert '(Isa () "ILO class*"))
  ; 241. Explain, in simple terms, the technique of DNA fingerprinting and its applications in forensic science, archaeology and medicine.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO "DNA fingerprinting*") "ILO class*"))
+ (assert '(inManner (DescribeILO "DNA fingerprinting*") "simply*"))
+ (assert '(Isa (DescribeILO (ApplicationsOf "DNA fingerprinting*")) "ILO class*"))
  ; 242. DescribeILO the importance to modern medicine, and the challenges, of separating and characterising the proteins in cells (link to 11.1).
  (assert '(Isa () "ILO class*"))
  ; 243. Outline in simple terms the principles of nuclear magnetic resonance in 1H and be able to interpret simple NMR spectra, using chemical shift values, splitting patterns and the effect of adding D2O to a sample.
@@ -668,10 +735,10 @@
  ; 244. Show awareness of the use of NMR and X-ray crystallography in determining the structure of macromolecules and in understanding their function (link to 11.1 (c) and 11.2 (c))
  (assert '(Isa () "ILO class*"))
  ; 245. State what is meant by partition coefficient and calculate a partition coefficient for a system in which the solute is in the same molecular state in the two solvents
- (assert '(Isa (StateILO (MeaningOf |partition coefficient|)) "ILO class*"))
+ (assert '(Isa (DefineILO "partition coefficient*") "ILO class*"))
  ;; 246. Understand qualitatively paper, high performance liquid, thin layer and gas/liquid chromatography in terms of adsorption and/or partition and be able to interpret data from these techniques.
- (assert '(Isa {understand (setof |paper chromatographu| |high performance liquid chromatography| |thin layer chromatography| |gas/liquid chromatography|)) Understand"ILO class*"))
- (assert '(Manner {understand (setof |paper chromatographu| |high performance liquid chromatography| |thin layer chromatography| |gas/liquid chromatography|)) qualitatively))
+ (assert '(Isa {UnderstandILO (setof "paper chromatography*" "high performance liquid chromatography*" "thin layer chromatography*" "gas/liquid chromatography*")) "ILO class*"))
+ (assert '(inManner {UnderstandILO (setof "paper chromatography*" "high performance liquid chromatography*" "thin layer chromatography*" "gas/liquid chromatography*")) qualitatively*))
  (assert '(Isa () "ILO class*"))
  ; 247. Explain the concept of mass spectroscopy, deduce the number of carbon atoms in a compound using the M+1 peak and the presence of bromine and chlorine atoms using the M+2 peak and suggest the identity of molecules formed by simple fragmentation in a given mass spectrum (see also core syllabus, section 1 (c) and (d)).
  (assert '(Isa () "ILO class*"))
@@ -682,12 +749,17 @@
  ; 250. Discuss the challenges of drug delivery and explain in simple terms how materials may be developed to overcome these problems.
  (assert '(Isa () "ILO class*"))
  ; 251. Discuss the properties and structure of polymers based on their methods of formation (addition or condensation, link to core syllabus, section 10.8).
- (assert '(Isa (DiscussILO (every x (hasProperty x polymer*)) ) ) )
- ; 252. Discuss how the presence of side-chains and intermolecular forces affect the properties of polymeric materials (for example, spider silk).
+ (assert '(Isa (DiscussILO (PropertiesOf (every x (Isa x "polymer class*"))))))
+ (assert '(Isa (DiscussILO (StructureOf (every x (Isa x "polymer class*")))))) 
+ ;;; OR
+ (assert '(Isa (DiscussILO (ClassPropertiesOf "polymer class*"))))
+ (assert '(Isa (DiscussILO (ClassPropertyOf "structure*" "polymer class*"))))
+  ; 252. Discuss how the presence of side-chains and intermolecular forces affect the properties of polymeric materials (for example, spider silk).
  (assert '(Isa () "ILO class*"))
  ; 253. Show awareness of nanotechnology and, given information and data, be able to discuss the chemistry involved with reference to the core syllabus.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (ShowAwarenessOfILO "nanotechnology*") "ILO class*"))
+ (assert '(Isa (DiscussILO ) "ILO class*"))
  ; 254. Discuss how a knowledge of chemistry can be used to overcome environmental problems (for example, ground water contamination, oil spillage, CFCs).
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DiscussHowILO) "ILO class*"))
  ; 255. Discuss how a knowledge of chemistry can be used to extend the life of existing resources, to identify alternative resources and to improve the efficiency of energy production and use.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DiscussHowILO) "ILO class*"))

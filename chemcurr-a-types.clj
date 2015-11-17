@@ -4,7 +4,8 @@
 (defineType :Float (:Real))
 (defineType :Rational (:Real))
 (defineType :Integer (:Rational))
-;;; chemical referents
+
+;;; chemical types
 (defineType :ChemicalReferent (:Thing))
 (defineType :ChemicalSubstance (:ChemicalReferent))
 (defineType :PureChemicalSubstance (:ChemicalSubstance))
@@ -13,59 +14,23 @@
 (defineType :ChemicalEntity (:ChemicalReferent))
 (defineType :AtomicChemicalEntity (:ChemicalEntity))
 (defineType :MolecularChemicalEntity (:ChemicalEntity))
+
+;;; chemical reaction
+
+(defineType :ChemicalReaction (:Thing))
+
+;;; ILOs
+(defineType :ILO (:Act))
+
 ;;; naming
-(defineType Name (:Thing))
+(defineType :Name (:Thing))
+(defineType :NameableThing (:Thing))
 
-;;; A
+;;; properties and quantities
+(defineType :Quantity (:Thing))
 
-;;; B
 
-;;; C
 
-;;; D
 
-;;; E
-
-;;; F
-
-;;; G
-
-;;; H
-
-;;; I
-
-;;; J
-
-;;; K
-
-;;; L
-
-;;; M
-
-;;; N
-
-;;; O
-
-;;; P
-
-;;; Q
-
-;;; R
-
-;;; S
-
-;;; T
-
-;;; U
-
-;;; V
-
-;;; W
-
-;;; X
-
-;;; Y
-
-;;; Z
 
 

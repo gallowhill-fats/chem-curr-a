@@ -1,22 +1,93 @@
 
-(defineCaseframe 'Proposition '('hasClassName namable-class class-name)
-  :docstring "[namable-class] has [class-name]")
-
-(defineSlot subclass :type Category :negadjust reduce
-            :path (compose ! subclass (kstar (compose superclass- ! subclass)))
-            :docstring "Subcategories of some category/ies.")
-(defineSlot superclass :type Category :negadjust reduce
-            :path (compose ! superclass (kstar (compose subclass- ! superclass)))
-            :docstring "Supercategories of some category/ies.")
-(definePath 'class '(compose ! class (kstar (compose subclass- ! superclass))))
-(definePath 'member '(compose ! member (kstar (compose equiv- ! equiv))))
+;;; A
 
 (defineCaseframe 'Proposition '('Ako subclass superclass)
-  :docstring "every [subclass] is a [superclass]")
+  :docstring "Every [subclass] is a [superclass]")
 
-(defineCaseframe 'Proposition '(hasEntityName namable-entity entity-name)
-  :docstring "[namable-entity] has [entity-name]"
-  :fsymbols '(hasName hasSystematicName hasIupacName hasIupacNameSubstitutive 
+(defineCaseframe 'ILO '('actions analysandum)
+  :docstring "Analyse [analysandum]"
+  :fsymbols '(AnalyseILO))
+
+;;; B
+
+;;; C
+
+(defineCaseframe 'ILO '(actions object-of-calculation)
+    :docstring "Calculate [object-of-calculation]",
+    :fsymbols '(CalculateILO))
+
+;;; D
+
+(defineCaseframe 'ILO '(actions definable-thing)
+  :docstring "Define [definable-thing]"
+  :fsymbols '(DefineILO))
+
+(defineCaseframe 'ILO '(actions describable-thing)
+  :docstring "Describe [describable-thing]"
+  :fsymbols '(DescribeILO))
+
+(defineCaseframe 'Proposition '(Domain domain-predicate domain)
+      :docstring "[domain-predicate] applies to [domain]")
+      :fsymbols '(InTermsOf))
+
+
+;;; E
+
+;;; F
+
+;;; G
+
+;;; H
+
+(defineCaseframe 'Proposition '('hasClassName nameable-class class-name)
+  :docstring "[namable-class] has [class-name]")
+
+(defineCaseframe 'Proposition '(hasName nameable-thing thing-name)
+  :docstring "[nameable-thing] has [thing-name]"
+  :fsymbols '(hasSystematicName hasIupacName hasIupacNameSubstitutive 
               hasIupacNameAdditive hasAcceptableCommonName hasPreferredIupacName 
               hasGeneralIupacName hasRetainedIupacName hasTrivialName hasAtomName 
               hasElementName hasMoleculeName hasSubstanceName hasOtherName))
+
+(defineCaseframe 'Proposition '('hasQuantity thing-with-quantity quantity)
+  :docstring "[thing-with-quantity] has [quantity]")
+
+;;; I
+
+;;; J
+
+;;; K
+
+;;; L
+
+;;; M
+
+;;; N
+
+;;; O
+
+;;; P
+
+;;; Q
+
+;;; R
+
+;;; S
+
+;;; T
+
+;;; U
+
+(defineCaseframe 'ILO '(actions instrument)
+  :docstring "Use [instrument]"
+  :fsymbols '(UseILO))
+
+;;; V
+
+;;; W
+
+;;; X
+
+;;; Y
+
+;;; Z
