@@ -1,26 +1,45 @@
 ;;; A
 
+(defineSlot Act :type :Thing)
 (defineSlot analysandum :type :Thing)
 (defineSlot AnalyseILO :type :Thing)
+(defineSlot AscertainILO :type :Thing)
 
 ;;; B
+
+(defineSlot beam-constituent :type :Thing)
 
 ;;; C
 
 (defineSlot CalculateILO :type :Thing)
+(defineSlot CarryOut :type :Thing)
 (defineSlot class-name :type :Name)
+(defineSlot content :type :Thing)
+(defineSlot Circumstance :type :Thing)
+(defineSlot circumstances :type :Thing)
+
 
 ;;; D
 
+(defineSlot DeduceHowILO :type :Thing)
+(defineSlot DeduceILO :type :Thing)
 (defineSlot definable-thing :type :Thing)
+(defineSlot DeriveILO :type :Thing)
 (defineSlot describable-thing :type :Thing)
+(defineSlot DetermineILO :type :Thing)
+(defineSlot Do :type :Thing)
 (defineSlot Domain :type :Thing)
 (defineSlot domain :type :Thing)
 (defineSlot domain-predicate :type :Thing)
 
 ;;; E
 
+(defineSlot entity-with-circumstances :type :Thing)
+(defineSlot ExecuteILO :type :Thing)
+
 ;;; F
+
+(defineSlot FigureOutILO :type :Thing)
 
 ;;; G
 
@@ -43,16 +62,25 @@
 (defineSlot hasSystematicName :type :Thing)
 
 
-
 ;;; I
 
-(defineSlot InTermsOf :type :Thing)
+(defineSlot identifiable-thing :type :Thing)
+(defineSlot IdentifyILO :type :Thing)
+(defineSlot inChemicalSystem :type :Thing)
+(defineSlot inCircumstances :type :Thing)
+(defineSlot InferILO :type :Thing)
+(defineSlot inSystem :type :Thing)
+(defineSlot IntentionallyAct :type :Thing)
+(defineSlot inRelationTo :type :Thing)
+(defineSlot inTermsOf :type :Thing)
 
 ;;; J
 
 ;;; K
 
 ;;; L
+
+(defineSlot locality-of-distribution :type :Thing)
 
 ;;; M
 
@@ -67,7 +95,9 @@
 
 ;;; P
 
+(defineSlot Perform :type :Thing)
 (defineSlot pure-chemical-substance-name :type :Thing)
+(defineSlot PuzzleOutILO :type :Thing)
 
 ;;; Q
 
@@ -77,6 +107,10 @@
 
 ;;; S
 
+(defineSlot shape :type :Thing)
+(defineSlot shape-property :type :Thing)
+
+
 (defineSlot subclass :type Category :negadjust reduce
             :path (compose ! subclass (kstar (compose superclass- ! subclass)))
             :docstring "Subcategories of some category/ies.")
@@ -84,11 +118,17 @@
 (defineSlot superclass :type Category :negadjust reduce
             :path (compose ! superclass (kstar (compose subclass- ! superclass)))
             :docstring "Supercategories of some category/ies.")
+(defineSlot SurmiseILO :type :Name)
 
 ;;; T
 
+(defineSlot thing-in-presence :type :Thing)
 (defineSlot thing-name :type :Name)
+(defineSlot thing-with-behavior :type :Thing)
+(defineSlot thing-with-distribution :type :Thing)
+(defineSlot thing-with-presence :type :Thing)
 (defineSlot thing-with-quantity :type :Thing)
+(defineSlot thing-with-shape :type :Thing)
 
 ;;; U
 
@@ -96,8 +136,20 @@
 
 ;;; W
 
+(defineSlot withParticularReferenceTo :type :Thing)
+(defineSlot withReferenceTo :type :Thing)
+(defineSlot withRegardsTo :type :Thing)
+(defineSlot WorkOutILO :type :Thing)
+(defineSlot writable :type :Thing)
+
 ;;; X
 
 ;;; Y
 
 ;;; Z
+
+(defineCaseframe 'Proposition '('hasShapeProperty shape shape-property)
+     :docstring "[shape] has [shape-property]")
+
+
+

@@ -1,4 +1,6 @@
 ;;;A
+
+(defineTerm "addition reaction*" ':DefinableThing)
 (defineTerm "angular momentum*" ':DefinableThing)
 (defineTerm "atom*" ':DefinableThing)
 (defineTerm "atomic mass*" ':DefinableThing)
@@ -29,17 +31,29 @@
 (defineTerm "electrochemical series*" ':DefinableDescribableThing)
 (defineTerm "electronic configuration*" ':DefinableThing)
 (defineTerm "electron affinity*" ':DefinableThing)
+(defineTerm "electrophile*" ':DefinableThing)
 (defineTerm "element*" ':DefinableThing)
+(defineTerm "elimination reaction*" ':DefinableThing)
 (defineTerm "energy*" ':DefinableThing)
 ;;;F
 (defineTerm "f orbital*" ':DefinableThing)
+(defineTerm "free radical*" ':DefinableThing)
+(defineTerm "functional group*" ':DefinableThing)
+(defineTerm "functional group isomer*" ':DefinableThing)
+(defineTerm "functional group isomerism*" ':DefinableThing)
 ;;;G
 (defineTerm "geometric isomer*" ':DefinableThing)
+(defineTerm "geometric isomerism*" ':DefinableThing)
 ;;;H
+(defineTerm "heterolytic fission*" ':DefinableThing)
+(defineTerm "homolytic fission*" ':DefinableThing)
 (defineTerm "hybridization*" ':DefinableThing)
 (defineTerm "hydrocarbon*" ':DefinableThing)
+(defineTerm "hydrolysis reaction*" ':DefinableThing)
 ;;;I
+(defineTerm "initiation reaction*" ':DefinableThing)
 (defineTerm "ion*" ':DefinableThing)
+
 (defineTerm "ionic bonding*" ':DefinableThing)
 (defineTerm "ionization energy*" ':DefinableThing)
 (defineTerm "isomer*" ':DefinableThing)
@@ -61,15 +75,21 @@
 (defineTerm "momentum*" ':DefinableThing)
 ;;;N
 (defineTerm "nucleon number*" ':DefinableThing)
+(defineTerm "nucleophile*" ':DefinableThing)
 (defineTerm "neutron*" ':DefinableThing)
 (defineTerm "neutron number*" ':DefinableThing)
 ;;;O
+(defineTerm "optical isomer*" ':DefinableThing)
+(defineTerm "optical isomerism*" ':DefinableThing)
 (defineTerm "orbital*" ':DefinableThing)
 (defineTerm "orbital angular momentum*" ':DefinableThing)
 (defineTerm "orbital angular momentum quantum number*" ':DefinableThing)
 ;;;P
 (defineTerm "p orbital*" ':DefinableThing)
+(defineTerm "positional isomer*" ':DefinableThing)
+(defineTerm "positional isomerism*" ':DefinableThing)
 (defineTerm "principal quantum number*" ':DefinableThing)
+(defineTerm "propagation reaction*" ':DefinableThing)
 (defineTerm "proton*" ':DefinableThing)
 (defineTerm "proton number*" ':DefinableThing)
 ;;;Q
@@ -82,10 +102,15 @@
 ;;;S
 (defineTerm "s orbital*" ':DefinableThing)
 (defineTerm "stereoisomer*" ':DefinableThing)
+(defineTerm "stereoisomerism*" ':DefinableThing)
 (defineTerm "structural isomer*" ':DefinableThing)
+(defineTerm "structural isomerism*" ':DefinableThing)
 (defineTerm "stoichiometry*" ':DefinableThing)
+(defineTerm "substitution reaction*" ':DefinableThing)
 
 ;;;T
+
+(defineTerm "termination reaction*" ':DefinableThing)
 
 ;;;U
 

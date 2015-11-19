@@ -3,12 +3,12 @@
 (assert '(Isa (DefineILO "relative atomic mass*") "ILO class*"))
 (assert '(Isa (DefineILO "relative isotopic mass*") "ILO class*"))
 (assert '(Isa (DefineILO "relative molecular mass*") "ILO class*"))
-(assert '(InTermsOf (DefineILO "relative atomic mass*")  "carbon-13 scale*"))
-(assert '(InTermsOf (DefineILO "relative isotopic mass*") "carbon-13 scale*"))
-(assert '(InTermsOf (DefineILO "relative molecular mass*") "carbon-13 scale*"))
+(assert '(inTermsOf (DefineILO "relative atomic mass*")  "carbon-13 scale*"))
+(assert '(inTermsOf (DefineILO "relative isotopic mass*") "carbon-13 scale*"))
+(assert '(inTermsOf (DefineILO "relative molecular mass*") "carbon-13 scale*"))
 ;; 2. Define and use the term mole in terms of the Avogadro constant.
 (assert '(Isa (DefineILO "mole*") "ILO class*"))
-(assert '(InTermsOf (DefineILO "mole*")  "Avogadro's constant*") )
+(assert '(InTermsOf (DefineILO "mole*")  "Avogadro constant*") )
  ; 3. Analyse mass spectra in terms of isotopic abundances and molecular fragments.
 (assert '(Isa (AnalyseILO (every x (Isa x "mass spectrum*"))) "ILO class*"))
 (assert '(inTermsOf (Isa (AnalyseILO (every x (Isa x "mass spectrum*"))) "isotopic abundance*"))
@@ -18,7 +18,7 @@
  (assert '(Isa (CalculateILO (every x (hasQuantity "relative atomic mass*" y x) (Isa y "element class*") (Given (every z (hasIsotopicAbundance w y z))) ))  "ILO class*"))
  (assert '(Isa (CalculateILO (every x (hasQuantity "relative atomic mass*" y x) (Isa y "element class*") (Given (MassSpectrumOf y) )))  "ILO class*"))
  ;; 5. Write and/or construct balanced equations.
- (assert '(Isa (WriteILO (every x (Isa x "chemical equation class*") (IsBalanced x))) "ILO class*") )
+ (assert '(Isa (WriteILO (every x (Isa x "chemical equation class*") (isBalanced x))) "ILO class*") )
  ; 6. Perform calculations, including use of the mole concept, involving: (i) reacting masses (from formulae and equations) (ii) volumes of gases (e.g. in the burning of hydrocarbons) (iii) volumes and concentrations of solutions.
  (assert '(Isa (PerformILO (every x (Isa x "calculation class*") (Involves x ("volumes of gases*")))) "ILO class*"))
  (assert '(Isa (PerformILO (every x (Isa x "calculation class*") (Involves x ("reacting mass*")))) "ILO class*"))
@@ -29,7 +29,7 @@
  (assert '(Isa (IdentifyILO (every x (Isa x "proton class*")) ) "ILO class*"))
  (assert '(inTermsOf (IdentifyILO (every x (Isa x "proton class*"))) (setof "relative mass*" "relative charge*" )))
  (assert '(Isa (IdentifyILO (every x (Isa x "neutron class*")) ) "ILO class*"))
- (assert '(inTermsOf (IdentifyILO (every x (Isa% x "neutron class*"))) (setof "relative mass*" "relative charge*")))
+ (assert '(inTermsOf (IdentifyILO (every x (Isa x "neutron class*"))) (setof "relative mass*" "relative charge*")))
  (assert '(Isa (IdentifyILO (every x (Isa x "electron class*")) ) "ILO class*"))
  (assert '(inTermsOf (IdentifyILO (every x (Isa x "electron class*"))) (setof "relative  mass*" "relative charge*")))
  (assert '(Isa (DescribeILO (every x (Isa x "proton class*")) ) "ILO class*"))
@@ -39,12 +39,12 @@
  (assert '(Isa (DescribeILO (every x (Isa x "electron class*")) ) "ILO class*"))
  (assert '(inTermsOf (DescribeILO (every x (Isa x "electron class*"))) (setof "relative  mass*" "relative charge*")))
  ;; 9. Deduce the behaviour of beams of protons, neutrons and electrons in electric fields.
- (assert '(Isa (DeduceILO (BehaviorOf "proton beam*" )) "ILO class*"))
- (assert '(inCircumstances (BehaviorOf "proton beam*") (InPresenceOf "electric field*")))
- (assert '(Isa (DeduceILO (BehaviorOf "neutron beam*" )) "ILO class*"))
- (assert '(inCircumstances (BehaviorOf "neutron beam*") (InPresenceOf "electric field*")))
- (assert '(Isa (DeduceILO (BehaviorOf "electron beam*")) "ILO class*"))
- (assert '(inCircumstances (BehaviorOf "electron beam*") (InPresenceOf "electric field*")))
+ (assert '(Isa (DeduceILO (BehaviorOf (BeamOf proton*) )) "ILO class*"))
+ (assert '(inCircumstances (BehaviorOf (BeamOf proton*)) (inPresenceOf "electric field*")))
+ (assert '(Isa (DeduceILO (BehaviorOf (BeamOf neutron*) )) "ILO class*"))
+ (assert '(inCircumstances (BehaviorOf (BeamOf neutron*)) (inPresenceOf "electric field*")))
+ (assert '(Isa (DeduceILO (BehaviorOf (BeamOf electron*))) "ILO class*"))
+ (assert '(inCircumstances (BehaviorOf (BeamOf electron*)) (inPresenceOf "electric field*")))
  ;; 10. Describe the distribution of mass and charges within an atom.
  (assert '(Isa (DescribeILO (DistributionOf "mass*" "atom*")) "ILO class*"))
  (assert '(Isa (DescribeILO (DistributionOf "charge*" "atom*")) "ILO class*"))
@@ -64,7 +64,7 @@
  (assert '(Isa (DescribeILO (RelativeEnergyOf (setof "s orbital*" "p orbital*" "d orbital*") )) "ILO class*"))
  (assert '(inCase (DescribeILO (RelativeEnergyOf (setof "s orbital*" "p orbital*" "d orbital*") )) (hasValue "principal quantum number*" (setof 1 2 3)) ))
  ;; 14. Describe the shapes of s and p orbitals and d orbitals.
- (assert '(Isa (DescribeILO (EntityShape (setof "s orbital*" "p orbital*" "d-orbital*"))) "ILO class*"))
+ (assert '(Isa (DescribeILO (ShapeOf (setof "s orbital*" "p orbital*" "d-orbital*"))) "ILO class*"))
  ; 15. State the electronic configuration of atoms and ions given the proton number (and charge), using the convention 1s22s22p6 etc.
  (assert '(Isa (StateILO (every x (ElectronicConfiguration x) (Isa x "atom class*")) "ILO class*"))
  ;; 16. Explain and use the terms ionization energy and electron affinity (ii) explain the factors influencing the ionization energies of elements (iii) explain the trends in ionization energies across a Period and down a Group of the Periodic Table (see also Section 9).
@@ -89,17 +89,17 @@
  (assert '(asIn (DescribeILO "coordinate bonding*") "ammonium ion molecular cationic entity*"))
  (assert '(asIn (DescribeILO "coordinate bonding*") "aluminium chloride molecular entity*")) 
  ; 21. Explain the shapes of, and bond angles in, molecules by using the qualitative model of electron-pair repulsion (including lone pairs), using as simple examples: BF3 (trigonal), CO2 (linear), CH4 (tetrahedral), NH3 (pyramidal), H2O (non-linear), SF6 (octahedral), PF5 (trigonal bipyramid)).
- (assert '(Isa (ExplainILO (EntityShape (every x (Isa x "molecular entity class*")))        "ILO class*"))
- (assert '(withExamples (ExplainILO (EntityShape (every x (Isa x "molecular entity class*"))) (setof BF3 CO2 CH4 NH3 H2O SF6 PF5)) ))
+ (assert '(Isa (ExplainILO (ShapeOf (every x (Isa x "molecular entity class*")))        "ILO class*"))
+ (assert '(withExamples (ExplainILO (ShapeOf (every x (Isa x "molecular entity class*"))) (setof BF3 CO2 CH4 NH3 H2O SF6 PF5)) ))
  ; 22. Describe covalent bonding in terms of orbital overlap, giving σ and π bonds, including the concept of hybridisation to form sp, sp2 and sp3 orbitals
  (assert '(Isa (DescribeILO "covalent bonding*") "ILO class*"))
  (assert '(inTermsOf (DescribeILO "covalent bonding*") "orbital overlap*"))
  ; 23. Explain the shape of, and bond angles in, the ethane, ethene and benzene molecules in terms of σ and π bonds (see also Section 10.1).
- (assert '(Isa (ExplainILO (EntityShape (setof "ethane molecule" "ethene molecule" "benzene molecule" ) ) "ILO class*"))
- (assert '(Including (ExplainILO (EntityShape (setof "ethane molecule" "ethene molecule" "benzene molecule" ) ) "bond angles"))
+ (assert '(Isa (ExplainILO (ShapeOf (setof "ethane molecule" "ethene molecule" "benzene molecule" ) ) "ILO class*"))
+ (assert '(Including (ExplainILO (ShapeOf (setof "ethane molecule" "ethene molecule" "benzene molecule" ) ) "bond angles"))
  ; The above is not right wrt "bond angles"
  ; 24. Predict the shapes of, and bond angles in, molecules analogous to those specified in (c) and (e).
- (assert '(Isa (PredictILO (EntityShape (every x (Isa x "molecular entity class*") (AnalogousTo x (setof "ethane molecular entity*" "ethene molecular entity*" "benzene molecular entity*" ) ) "ILO class*"))
+ (assert '(Isa (PredictILO (ShapeOf (every x (Isa x "molecular entity class*") (AnalogousTo x (setof "ethane molecular entity*" "ethene molecular entity*" "benzene molecular entity*" ) ) "ILO class*"))
  ; 25. Describe hydrogen bonding, using ammonia and water as simple examples of molecules containing N-H and O-H groups.
  (assert '(Isa (DescribeILO "hydrogen bonding*") "ILO class*"))
  (assert '(withExamples (DescribeILO "hydrogen bonding*") (setof "ammonia molecular entity*" "water molecular entity*") ))
@@ -115,10 +115,10 @@
  (assert '(Isa (ExplainILO "bond length*") "ILO class*"))
  (assert '(Isa (ExplainILO "bond polarity*") "ILO class*"))
  (assert '(CompareILO (ReactivityOf "covalent bonds*" )))
- (assert '(Using (CompareILO (ReactivityOf "covalent bonds*" )) (setof "bond energy*" "bond length*" "bond polarity*")))
+ (assert '(Using (CompareILO (ReactivityOf "covalent bond*" )) (setof "bond energy*" "bond length*" "bond polarity*")))
  ; 28. Describe intermolecular forces (van der Waals’ forces), based on permanent and induced dipoles, as in CHCl 3(l); Br2(l) and the liquid noble gases
- (assert '(Isa (DescribeILO "intermolecular forces*")) "ILO class*"))
- (assert '(BasedOn (DescribeILO "intermolecular forces*") (setof   "permanent dipole*" "induced dipole*") ))
+ (assert '(Isa (DescribeILO (every x (Isa x "intermolecular force class*"))) "ILO class*"))
+ (assert '(BasedOn (DescribeILO (every x (Isa x "intermolecular force class*"))) (setof   "permanent dipole*" "induced dipole*") ))
  ; 29. Describe metallic bonding in terms of a lattice of positive ions surrounded by mobile electrons.
  (assert '(Isa (DescribeILO "metallic bonding*") "ILO class*"))
  ; 30. Describe, interpret and/or predict the effect of different types of bonding (ionic bonding, covalent bonding, hydrogen bonding, other intermolecular interactions, metallic bonding) on the physical properties of substances.
@@ -534,13 +534,28 @@
   ; 156. Interpret, and use the general, structural, displayed and skeletal formulae of the following classes of compound: (i) alkanes, alkenes and arenes (ii) halogenoalkanes and halogenoarenes (iii) alcohols (including primary, secondary and tertiary) and phenols (iv) aldehydes and ketones (v) carboxylic acids, esters and acyl chlorides (vi) amines (primary only), nitriles, amides and amino acids will be expected to recognise the shape of the benzene ring when it is present in organic compounds. Knowledge of benzene or its compounds is not required for AS.?
  (assert '(Isa () "ILO class*"))
  ; 157. Interpret, and use the following terminology associated with organic reactions: (i) functional group (ii) homolytic and heterolytic fission (iii) free radical, initiation, propagation, termination (iv) nucleophile, electrophile (v) addition, substitution, elimination, hydrolysis (vi) oxidation and reduction equations for organic redox reactions, the symbols [O? and H? are acceptable].
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DefineILO "functional group*") "ILO class*"))
+ (assert '(Isa (DefineILO "homolytic fission*") "ILO class*"))
+ (assert '(Isa (DefineILO "heterolytic fission*") "ILO class*"))
+ (assert '(Isa (DefineILO "free radical*") "ILO class*"))
+ (assert '(Isa (DefineILO "initiation reaction*") "ILO class*"))
+ (assert '(Isa (DefineILO "propagation reaction*") "ILO class*"))
+ (assert '(Isa (DefineILO "termination reaction*") "ILO class*"))
+ (assert '(Isa (DefineILO nucleophile*) "ILO class*"))
+ (assert '(Isa (DefineILO electrophile*) "ILO class*"))
+ (assert '(Isa (DefineILO "addition reaction*") "ILO class*"))
+ (assert '(Isa (DefineILO "substitution reaction*") "ILO class*"))
+ (assert '(Isa (DefineILO "elimination reaction*") "ILO class*"))
+ (assert '(Isa (DefineILO "hydrolysis reaction*") "ILO class*"))
+ (assert '(Isa (DefineILO "redox reaction*") "ILO class*"))
  ; 158. Describe the shapes of the ethane, ethene and benzene molecules.
  (assert '(Isa (DescribeILO (ShapeOf "ethane molecular entity*")) "ILO class*")
  (assert '(Isa (DescribeILO (ShapeOf "ethene molecular entity*")) "ILO class*"))
  (assert '(Isa (DescribeILO (ShapeOf "benzene molecular entity*")) "ILO class*"))
  ; 159. Predict the shapes of other related molecules.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (PredictILO (ShapeOf (every x (Isa x "alkane molecular entity class*")))) "ILO class*"))
+ (assert '(Isa (PredictILO (ShapeOf (every x (Isa x "alkene molecular entity class*")))) "ILO class*"))
+ (assert '(Isa (PredictILO (ShapeOf (every x (Isa x "aromatic molecular entity class*")))) "ILO class*"))
  ;; 160. Explain the shapes of the ethane, ethene and benzene molecules in terms of σ and π carbon-carbon bonds.
  (assert '(Isa (ExplainILO (ShapeOf (setof "ethane*" "ethene*" "benzene*")) ) "ILO class*"))
  (assert '(inTermsOf (DescribeILO (ShapeOf (setof "ethane*" "ethene*" "benzene*")) ) "σ and π carbon-carbon bonds"))
