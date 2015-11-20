@@ -1,22 +1,33 @@
 ;;; A
 
+(defineSlot AccountFor :type :Thing)
 (defineSlot Act :type :Thing)
 (defineSlot analysandum :type :Thing)
 (defineSlot AnalyseILO :type :Thing)
 (defineSlot AscertainILO :type :Thing)
+(defineSlot assumption-set :type :Thing)
 
 ;;; B
 
+(defineSlot base :type :Thing)
+(defineSlot BasedOn :type :Thing)
+(defineSlot Basing :type :Thing)
 (defineSlot beam-constituent :type :Thing)
+(defineSlot BuiltOn :type :Thing)
 
 ;;; C
 
 (defineSlot CalculateILO :type :Thing)
 (defineSlot CarryOut :type :Thing)
-(defineSlot class-name :type :Name)
-(defineSlot content :type :Thing)
 (defineSlot Circumstance :type :Thing)
 (defineSlot circumstances :type :Thing)
+(defineSlot class-name :type :Name)
+(defineSlot CompareILO :type :Thing)
+(defineSlot comparison-set :type :Thing)
+(defineSlot ConstructedOn :type :Thing)
+(defineSlot Containing :type :Thing)
+(defineSlot content :type :Thing)
+
 
 
 ;;; D
@@ -24,6 +35,7 @@
 (defineSlot DeduceHowILO :type :Thing)
 (defineSlot DeduceILO :type :Thing)
 (defineSlot definable-thing :type :Thing)
+(defineSlot dependent-entity :type :Entity)
 (defineSlot DeriveILO :type :Thing)
 (defineSlot describable-thing :type :Thing)
 (defineSlot DetermineILO :type :Thing)
@@ -34,8 +46,15 @@
 
 ;;; E
 
-(defineSlot entity-with-circumstances :type :Thing)
+(defineSlot entity-with-base :type :Entity)
+(defineSlot entity-with-circumstances :type :Entity)
 (defineSlot ExecuteILO :type :Thing)
+(defineSlot entity-with-explanation :type :Entity)
+(defineSlot Explain :type :Thing)
+(defineSlot ExplainWhy :type :Thing)
+(defineSlot ExplainTerm :type :Thing)
+(defineSlot ExplainAndUseTerm :type :Thing)
+
 
 ;;; F
 
@@ -68,8 +87,13 @@
 (defineSlot IdentifyILO :type :Thing)
 (defineSlot inChemicalSystem :type :Thing)
 (defineSlot inCircumstances :type :Thing)
+(defineSlot Including :type :Thing)
+(defineSlot inclusion-set :type :Entity)
 (defineSlot InferILO :type :Thing)
+(defineSlot influencing-entity :type :Entity)
 (defineSlot inSystem :type :Thing)
+(defineSlot Incorporating :type :Thing)
+(defineSlot Integrating :type :Thing)
 (defineSlot IntentionallyAct :type :Thing)
 (defineSlot inRelationTo :type :Thing)
 (defineSlot inTermsOf :type :Thing)
@@ -84,6 +108,8 @@
 
 ;;; M
 
+(defineSlot MatchILO :type :Thing)
+
 ;;; N
 
 (defineSlot nameable-class :type :Category)
@@ -91,6 +117,7 @@
 
 ;;; O
 
+(defineSlot ObjectiveInfluence :type :Thing)
 (defineSlot object-of-calculation :type :Thing)
 
 ;;; P
@@ -104,6 +131,8 @@
 (defineSlot quantity :type :Quantity)
 
 ;;; R
+
+(defineSlot reactive-entity :type :ChemicalReferent)
 
 ;;; S
 
@@ -148,8 +177,12 @@
 
 ;;; Z
 
-(defineCaseframe 'Proposition '('hasShapeProperty shape shape-property)
-     :docstring "[shape] has [shape-property]")
+
+
+
+
+
+
 
 
 

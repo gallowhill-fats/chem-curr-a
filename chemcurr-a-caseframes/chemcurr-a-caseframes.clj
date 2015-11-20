@@ -10,6 +10,10 @@
 
 ;;; B
 
+(defineCaseframe 'Proposition '(Basing entity-with-base base)
+    :docstring "[entity-with-base] is based on [base]"
+    :fsymbols '(BasedOn BuiltOn ConstructedOn))
+
 (defineCaseframe 'Thing '('BeamOf beam-constituent)
   :docstring "a beam of [beam-constituent]s")
 
@@ -22,9 +26,13 @@
     :docstring "Calculate [object-of-calculation]",
     :fsymbols '(CalculateILO))
 
-(defineCaseframe 'Proposition '(Circumstance entity-with-circumstances circumstances)
+(defineCaseframe 'Proposition '(Circumstancing entity-with-circumstances circumstances)
     :docstring "[entity-with-circumstances] takes place in [circumstances]"
     :fsymbols '(inCircumstances inSystem inChemicalSystem))
+
+(defineCaseframe 'ILO '(actions comparison-set)
+  :docstring "compare [comparison-set]"
+  :fsymbols '(CompareILO MatchILO))
 
 ;;; D
 
@@ -34,7 +42,7 @@
 
 (defineCaseframe 'ILO '(actions describable-thing)
   :docstring "Describe [describable-thing]"
-  :fsymbols '(DescribeILO))
+  :fsymbols '(DescribeILO OutlineILO))
 
 (defineCaseframe 'ILO '(actions content)
     :docstring "deduce [content]"
@@ -49,6 +57,10 @@
 
 
 ;;; E
+
+(defineCaseframe 'ILO '(actions entity-with-explanation)
+    :docstring "Explain the [entity-with-explanation]"
+    :fsymbols '(Explain ExplainWhy AccountFor ExplainTerm ExplainAndUseTerm))
 
 ;;; F
 
@@ -81,6 +93,10 @@
     :docstring "identify [identifiable-thing]"
     :fsymbols '(IdentifyILO))
 
+(defineCaseframe 'Proposition '(Inclusion inclusion-set)
+  :docstring "including [inclusion-set]"
+  :fsymbols '(Including Containing Integrating Incorporating))
+
 (defineCaseframe 'ILO '(actions act)
   :docstring "intentionally carry out [act]"
   :fsymbols '(IntentionallyActILO ActILO CarryOutILO PerformILO DoILO ExecuteILO))
@@ -100,20 +116,34 @@
 
 ;;; O
 
+(defineCaseframe 'Thing '(ObjectiveInfluence influencing-entity dependent-entity)
+  :docstring "effect of [influencing-entity] on [dependent-entity]"
+  :fsymbols '(EffectOfOn))
+
 ;;; P
 
 ;;; Q
 
 ;;; R
 
+(defineCaseframe 'Thing '(ReactivityOf reactive-entity)
+  :docstring "reactivity of [reactive-entity]")
+
 ;;; S
 
 (defineCaseframe 'Thing '('ShapeOf thing-with-shape)
      :docstring "shape of a [thing-with-shape]")
 
+(defineCaseframe 'ILO '(actions topic)
+  :docstring "summarise [topic]"
+  :fsymbols '(SummariseILO OutlineILO SumUpILO ProvideSynopsisOfILO))
+
 ;;; T
 
 ;;; U
+
+(defineCasefrme 'Thing '(UnderlyingAssumptionsOf assumption-set)
+  :docstring "underlying assumptions of [assumption-set]")
 
 (defineCaseframe 'ILO '(actions instrument)
   :docstring "Use [instrument]"

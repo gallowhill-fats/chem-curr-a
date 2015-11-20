@@ -7,6 +7,7 @@
 
 ;;; chemical types
 (defineType :ChemicalReferent (:Thing))
+(defineType :ChemicalEntity (:ChemicalReferent))
 (defineType :ChemicalSubstance (:ChemicalReferent))
 (defineType :PureChemicalSubstance (:ChemicalSubstance))
 (defineType :ChemicalSpecies (:PureChemicalSubstance))
