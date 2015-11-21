@@ -28,6 +28,8 @@
 (defineType :NameableThing (:Thing))
 
 ;;; properties and quantities
+(defineType :Property (:Thing))
+(defineType :NonPhysicalProperty (:Property))
 (defineType :Quantity (:Thing))
 
 

@@ -4,6 +4,7 @@
 (defineSlot Act :type :Thing)
 (defineSlot analysandum :type :Thing)
 (defineSlot AnalyseILO :type :Thing)
+(defineSlot ApplyILO :type :Thing)
 (defineSlot AscertainILO :type :Thing)
 (defineSlot assumption-set :type :Thing)
 
@@ -46,6 +47,7 @@
 
 ;;; E
 
+(defineSlot EmployILO :type :Thing)
 (defineSlot entity-with-base :type :Entity)
 (defineSlot entity-with-circumstances :type :Entity)
 (defineSlot ExecuteILO :type :Thing)
@@ -114,15 +116,19 @@
 
 (defineSlot nameable-class :type :Category)
 (defineSlot nameable-thing :type :NameableThing)
+(defineSlot non-physical-property :type :NonPhysicalProperty)
 
 ;;; O
 
 (defineSlot ObjectiveInfluence :type :Thing)
 (defineSlot object-of-calculation :type :Thing)
+(defineSlot OperateILO :type :Thing)
 
 ;;; P
 
 (defineSlot Perform :type :Thing)
+(defineSlot property :type :Property)
+(defineSlot ProposeILO :type :Thing)
 (defineSlot pure-chemical-substance-name :type :Thing)
 (defineSlot PuzzleOutILO :type :Thing)
 
@@ -133,21 +139,28 @@
 ;;; R
 
 (defineSlot reactive-entity :type :ChemicalReferent)
+(defineSlot RecountILO :type :Thing)
+(defineSlot RelateILO :type :Thing)
+(defineSlot ReportILO :type :Thing)
 
 ;;; S
 
 (defineSlot shape :type :Thing)
 (defineSlot shape-property :type :Thing)
+(defineSlot statable-thing :type :Thing)
+(defineSlot StateILO :type :Thing)
 
 
 (defineSlot subclass :type Category :negadjust reduce
             :path (compose ! subclass (kstar (compose superclass- ! subclass)))
             :docstring "Subcategories of some category/ies.")
 
+(defineSlot SuggestILO :type :Thing)
+
 (defineSlot superclass :type Category :negadjust reduce
             :path (compose ! superclass (kstar (compose subclass- ! superclass)))
             :docstring "Supercategories of some category/ies.")
-(defineSlot SurmiseILO :type :Name)
+(defineSlot SurmiseILO :type :Thing)
 
 ;;; T
 
@@ -156,8 +169,12 @@
 (defineSlot thing-with-behavior :type :Thing)
 (defineSlot thing-with-distribution :type :Thing)
 (defineSlot thing-with-presence :type :Thing)
+(defineSlot thing-with-property :type :Thing)
 (defineSlot thing-with-quantity :type :Thing)
 (defineSlot thing-with-shape :type :Thing)
+(defineSlot topic :type :Thing)
+(defineSlot type-of-alteration :type :Thing)
+
 
 ;;; U
 
@@ -170,16 +187,14 @@
 (defineSlot withRegardsTo :type :Thing)
 (defineSlot WorkOutILO :type :Thing)
 (defineSlot writable :type :Thing)
+(defineSlot WriteDownILO :type :Thing)
+(defineSlot WriteILO :type :Thing)
 
 ;;; X
 
 ;;; Y
 
 ;;; Z
-
-
-
-
 
 
 

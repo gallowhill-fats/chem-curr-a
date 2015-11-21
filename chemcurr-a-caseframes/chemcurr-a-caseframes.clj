@@ -8,6 +8,9 @@
   :docstring "Analyse [analysandum]"
   :fsymbols '(AnalyseILO))
 
+(defineCaseframe 'Act '('AlterPropertyOf type-of-alteration property thing-with-property)
+  :docstring "make [type-of-alteration] to [property] of [thing-with-property]")
+
 ;;; B
 
 (defineCaseframe 'Proposition '(Basing entity-with-base base)
@@ -114,6 +117,9 @@
 
 ;;; N
 
+(defineCaseframe 'Thing '('NonPhysicalPropertyOf non-physical-property thing-with-property)
+  :docstring "[thing-wth-property] has [non-physical-property]")
+
 ;;; O
 
 (defineCaseframe 'Thing '(ObjectiveInfluence influencing-entity dependent-entity)
@@ -138,6 +144,10 @@
   :docstring "summarise [topic]"
   :fsymbols '(SummariseILO OutlineILO SumUpILO ProvideSynopsisOfILO))
 
+(defineCaseframe 'ILO '(actions statable-thing)
+    :docstring "state [statable-thing]"
+    :fsymbols '(StateILO WriteILO WriteDownILO ProposeILO RecountILO ReportILO SuggestILO RelateILO))
+
 ;;; T
 
 ;;; U
@@ -147,7 +157,7 @@
 
 (defineCaseframe 'ILO '(actions instrument)
   :docstring "Use [instrument]"
-  :fsymbols '(UseILO))
+  :fsymbols '(UseILO ApplyILO EmployILO OperateILO))
 
 ;;; V
 
