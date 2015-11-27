@@ -22,6 +22,7 @@
 (defineSlot CarryOut :type :Thing)
 (defineSlot Circumstance :type :Thing)
 (defineSlot circumstances :type :Thing)
+(defineSlot circumstances-of-use :type :Thing)
 (defineSlot class-name :type :Name)
 (defineSlot CompareILO :type :Thing)
 (defineSlot comparison-set :type :Thing)
@@ -93,11 +94,12 @@
 (defineSlot inclusion-set :type :Entity)
 (defineSlot InferILO :type :Thing)
 (defineSlot influencing-entity :type :Entity)
-(defineSlot inSystem :type :Thing)
 (defineSlot Incorporating :type :Thing)
+(defineSlot instrument :type :Thing)
 (defineSlot Integrating :type :Thing)
 (defineSlot IntentionallyAct :type :Thing)
 (defineSlot inRelationTo :type :Thing)
+(defineSlot inSystem :type :Thing)
 (defineSlot inTermsOf :type :Thing)
 
 ;;; J
@@ -130,6 +132,7 @@
 (defineSlot property :type :Property)
 (defineSlot ProposeILO :type :Thing)
 (defineSlot pure-chemical-substance-name :type :Thing)
+(defineSlot purpose :type :Thing)
 (defineSlot PuzzleOutILO :type :Thing)
 
 ;;; Q
@@ -195,7 +198,6 @@
 ;;; Y
 
 ;;; Z
-
 
 
 

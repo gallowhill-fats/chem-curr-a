@@ -54,9 +54,10 @@
 (defineCaseframe 'Thing '('DistributionOf thing-with-distribution locality-of-distribution)
   :docstring "the distribution of [thing-with-distribution] over [locality-of-distribution]")
 
-(defineCaseframe 'Proposition '(Domain domain-predicate domain)
-  :docstring "[domain-predicate] relates to, refers to, is expressed in terms belonging to [domain]"
-  :fsymbols '(inTermsOf inRelationTo withReferenceTo withRegardsTo withParticularReferenceTo))
+(defineCaseframe 'Thing '('Domain domain)
+  :docstring "the [domain]")
+
+
 
 
 ;;; E
@@ -100,6 +101,10 @@
   :docstring "including [inclusion-set]"
   :fsymbols '(Including Containing Integrating Incorporating))
 
+(defineCaseframe 'Proposition '(inDomain domain-predicate domain)
+  :docstring "[domain-predicate] relates to, refers to, is expressed in terms belonging to [domain]"
+  :fsymbols '(inTermsOf inRelationTo withReferenceTo withRegardsTo withParticularReferenceTo))
+
 (defineCaseframe 'ILO '(actions act)
   :docstring "intentionally carry out [act]"
   :fsymbols '(IntentionallyActILO ActILO CarryOutILO PerformILO DoILO ExecuteILO))
@@ -128,6 +133,9 @@
 
 ;;; P
 
+(defineCaseframe 'Thing '('Purpose purpose)
+  :docstring "the [purpose]")
+
 ;;; Q
 
 ;;; R
@@ -152,12 +160,22 @@
 
 ;;; U
 
-(defineCasefrme 'Thing '(UnderlyingAssumptionsOf assumption-set)
+(defineCasefrme 'Thing '('UnderlyingAssumptionsOf assumption-set)
   :docstring "underlying assumptions of [assumption-set]")
 
 (defineCaseframe 'ILO '(actions instrument)
   :docstring "Use [instrument]"
   :fsymbols '(UseILO ApplyILO EmployILO OperateILO))
+
+(defineCasefrane 'Thing '('UseOf instrument)
+  :docstring "use of [instrument]")
+
+(defineCasefrane 'Thing '('UseOf instrument circumstances-of-use)
+  :docstring "use of [instrument] with [circumstances-of-use]")
+
+
+
+
 
 ;;; V
 
