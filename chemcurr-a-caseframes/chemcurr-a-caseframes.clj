@@ -29,9 +29,21 @@
     :docstring "Calculate [object-of-calculation]",
     :fsymbols '(CalculateILO))
 
+(defineCaseframe 'Thing '('ChangeIn thing-with-change)
+  :docstring "change in [thing-with-change]")
+
 (defineCaseframe 'Proposition '(Circumstancing entity-with-circumstances circumstances)
     :docstring "[entity-with-circumstances] takes place in [circumstances]"
     :fsymbols '(inCircumstances inSystem inChemicalSystem))
+
+(defineCaseframe 'Thing '('ClassPhysicalPropertiesOf class-with-physical-properties)
+  :docstring "physical properties of [class-with-physical-properties]")
+
+(defineCaseframe 'Thing '('ClassPropertiesOf class-with-properties)
+  :docstring "properties of [class-with-properties]")
+
+(defineCaseframe 'Comparative '(ComparativeOf comparative  comparative-thing)
+  :docstring "comparative of [property] of [comparative-thing] in [comparative-sense]")
 
 (defineCaseframe 'ILO '(actions comparison-set)
   :docstring "compare [comparison-set]"
@@ -51,6 +63,9 @@
     :docstring "deduce [content]"
     :fsymbols '(DeduceILO  WorkOutILO DeriveILO AscertainILO DetermineILO FigureOutILO InferILO PuzzleOutILO SurmiseILO DeduceHowILO))
 
+(defineCaseframe 'Thing '('DeterminationOf thing-to-be-determined)
+  :docstring "determination of [thing-to-be-determined]")
+
 (defineCaseframe 'Thing '('DistributionOf thing-with-distribution locality-of-distribution)
   :docstring "the distribution of [thing-with-distribution] over [locality-of-distribution]")
 
@@ -69,6 +84,9 @@
 ;;; F
 
 ;;; G
+
+(defineCaseframe 'GreaterComparative '('GreaterComparative property)
+  :docstring "greater comparative of [property]")
 
 ;;; H
 
@@ -122,8 +140,11 @@
 
 ;;; N
 
-(defineCaseframe 'Thing '('NonPhysicalPropertyOf non-physical-property thing-with-property)
+(defineCaseframe 'Thing '('NamedNonPhysicalPropertyOf non-physical-property thing-with-property)
   :docstring "[thing-wth-property] has [non-physical-property]")
+
+(defineCaseframe 'Thing '('NamedPhysicalPropertyOf physical-property thing-with-property)
+  :docstring "[thing-wth-property] has [physical-property]")
 
 ;;; O
 
@@ -132,6 +153,12 @@
   :fsymbols '(EffectOfOn))
 
 ;;; P
+
+(defineCaseframe 'Act '('PerformActionOn type-of-action object-of-action)
+  :docstring "perform [type-of-action] on [object-of-action]")
+
+(defineCaseframe 'Thing '('PropertiesOf thing-with-property)
+  :docstring "properties of [thing-with-property]")
 
 (defineCaseframe 'Thing '('Purpose purpose)
   :docstring "the [purpose]")
@@ -146,15 +173,24 @@
 ;;; S
 
 (defineCaseframe 'Thing '('ShapeOf thing-with-shape)
-     :docstring "shape of a [thing-with-shape]")
+  :docstring "shape of a [thing-with-shape]")
+
+(defineCaseframe 'SmallerComparative '('SmallerComparative property)
+  :docstring "smaller comparative of [property]")
 
 (defineCaseframe 'ILO '(actions topic)
   :docstring "summarise [topic]"
   :fsymbols '(SummariseILO OutlineILO SumUpILO ProvideSynopsisOfILO))
 
+(defineCaseframe 'Thing '('StabilisationOf stabilised-thing)
+  :docstring "stabilisation of [stabilised-thing]")
+
+(defineCaseframe 'Thing '('StabilisationOfBy stabilised-thing stabilisation-agency)
+  :docstring "stabilisation of [stabilised-thing] through [stabilisation-agency]")
+
 (defineCaseframe 'ILO '(actions statable-thing)
-    :docstring "state [statable-thing]"
-    :fsymbols '(StateILO WriteILO WriteDownILO ProposeILO RecountILO ReportILO SuggestILO RelateILO))
+  :docstring "state [statable-thing]"
+  :fsymbols '(StateILO WriteILO WriteDownILO ProposeILO RecountILO ReportILO SuggestILO RelateILO))
 
 ;;; T
 
@@ -164,7 +200,7 @@
   :docstring "underlying assumptions of [assumption-set]")
 
 (defineCaseframe 'ILO '(actions instrument)
-  :docstring "Use [instrument]"
+  :docstring "use [instrument]"
   :fsymbols '(UseILO ApplyILO EmployILO OperateILO))
 
 (defineCasefrane 'Thing '('UseOf instrument)

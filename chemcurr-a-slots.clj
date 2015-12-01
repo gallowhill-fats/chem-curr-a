@@ -20,10 +20,16 @@
 
 (defineSlot CalculateILO :type :Thing)
 (defineSlot CarryOut :type :Thing)
+(defineSlot chemical-property :type :ChemicalProperty)
 (defineSlot Circumstance :type :Thing)
 (defineSlot circumstances :type :Thing)
 (defineSlot circumstances-of-use :type :Thing)
 (defineSlot class-name :type :Name)
+(defineSlot class-with-physical-properties :type :Category)
+(defineSlot class-with-properties :type :Category)
+(defineSlot comparative-aspect :type :Comparative)
+(defineSlot comparative-thing :type :Thing)
+(defineSlot comparative-sense :type :Thing)
 (defineSlot CompareILO :type :Thing)
 (defineSlot comparison-set :type :Thing)
 (defineSlot ConstructedOn :type :Thing)
@@ -51,8 +57,10 @@
 (defineSlot EmployILO :type :Thing)
 (defineSlot entity-with-base :type :Entity)
 (defineSlot entity-with-circumstances :type :Entity)
-(defineSlot ExecuteILO :type :Thing)
 (defineSlot entity-with-explanation :type :Entity)
+(defineSlot essential-for :type :Thing)
+(defineSlot essential-thing :type :Thing)
+(defineSlot ExecuteILO :type :Thing)
 (defineSlot Explain :type :Thing)
 (defineSlot ExplainWhy :type :Thing)
 (defineSlot ExplainTerm :type :Thing)
@@ -84,6 +92,7 @@
 (defineSlot hasSystematicName :type :Thing)
 
 
+
 ;;; I
 
 (defineSlot identifiable-thing :type :Thing)
@@ -108,7 +117,9 @@
 
 ;;; L
 
+
 (defineSlot locality-of-distribution :type :Thing)
+
 
 ;;; M
 
@@ -123,15 +134,17 @@
 ;;; O
 
 (defineSlot ObjectiveInfluence :type :Thing)
+(defineSlot object-of-action :type :Thing)
 (defineSlot object-of-calculation :type :Thing)
 (defineSlot OperateILO :type :Thing)
 
 ;;; P
 
 (defineSlot Perform :type :Thing)
+(defineSlot physical-property :type :PhysicalProeprty)
 (defineSlot property :type :Property)
 (defineSlot ProposeILO :type :Thing)
-(defineSlot pure-chemical-substance-name :type :Thing)
+(defineSlot pure-chemical-substance-name :type :Name)
 (defineSlot purpose :type :Thing)
 (defineSlot PuzzleOutILO :type :Thing)
 
@@ -150,6 +163,9 @@
 
 (defineSlot shape :type :Thing)
 (defineSlot shape-property :type :Thing)
+(defineSlot Smaller :type :Thing)
+(defineSlot stabilised-thing :type :Thing)
+(defineSlot stabilisation-agency :type :Thing)
 (defineSlot statable-thing :type :Thing)
 (defineSlot StateILO :type :Thing)
 
@@ -169,13 +185,16 @@
 
 (defineSlot thing-in-presence :type :Thing)
 (defineSlot thing-name :type :Name)
+(defineSlot thing-to-be-determined :type :Thing)
 (defineSlot thing-with-behavior :type :Thing)
+(defineSlot thing-with-change :type :Thing)
 (defineSlot thing-with-distribution :type :Thing)
 (defineSlot thing-with-presence :type :Thing)
 (defineSlot thing-with-property :type :Thing)
 (defineSlot thing-with-quantity :type :Thing)
 (defineSlot thing-with-shape :type :Thing)
 (defineSlot topic :type :Thing)
+(defineSlot type-of-action :type :Thing)
 (defineSlot type-of-alteration :type :Thing)
 
 
@@ -198,6 +217,9 @@
 ;;; Y
 
 ;;; Z
+
+
+
 
 
 

@@ -20,6 +20,12 @@
 
 (defineType :ChemicalReaction (:Thing))
 
+;;; comparatives
+
+(defineType :Comparative (:Thing))
+(defineType :GreaterComparative (:Comparative))
+(defineType :SmallerComparative (:Comparative))
+
 ;;; ILOs
 (defineType :ILO (:Act))
 
@@ -29,7 +35,9 @@
 
 ;;; properties and quantities
 (defineType :Property (:Thing))
+(defineType :PhysicalProperty (:Property))
 (defineType :NonPhysicalProperty (:Property))
+(defineType :ChemicalProperty (:Property))
 (defineType :Quantity (:Thing))
 
 
