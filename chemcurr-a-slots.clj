@@ -2,6 +2,7 @@
 
 (defineSlot AccountFor :type :Thing)
 (defineSlot Act :type :Thing)
+(defineSlot act :type :Act)
 (defineSlot analysandum :type :Thing)
 (defineSlot AnalyseILO :type :Thing)
 (defineSlot ApplyILO :type :Thing)
@@ -22,6 +23,7 @@
 (defineSlot CarryOut :type :Thing)
 (defineSlot chemical-property :type :ChemicalProperty)
 (defineSlot Circumstance :type :Thing)
+(defineSlot Circumstancing :type :Thing)
 (defineSlot circumstances :type :Thing)
 (defineSlot circumstances-of-use :type :Thing)
 (defineSlot class-name :type :Name)
@@ -100,7 +102,9 @@
 (defineSlot inChemicalSystem :type :Thing)
 (defineSlot inCircumstances :type :Thing)
 (defineSlot Including :type :Thing)
+(defineSlot Inclusion :type :Thing)
 (defineSlot inclusion-set :type :Entity)
+(defineSlot inDomain :type :Thing)
 (defineSlot InferILO :type :Thing)
 (defineSlot influencing-entity :type :Entity)
 (defineSlot Incorporating :type :Thing)
@@ -141,7 +145,7 @@
 ;;; P
 
 (defineSlot Perform :type :Thing)
-(defineSlot physical-property :type :PhysicalProeprty)
+(defineSlot physical-property :type :PhysicalProperty)
 (defineSlot property :type :Property)
 (defineSlot ProposeILO :type :Thing)
 (defineSlot pure-chemical-substance-name :type :Name)

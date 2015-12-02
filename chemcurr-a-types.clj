@@ -40,6 +40,12 @@
 (defineType :ChemicalProperty (:Property))
 (defineType :Quantity (:Thing))
 
+;;; UseOf
+
+(defineType :UseAndCircumstance (:Thing))
+
+
+
 
 
 

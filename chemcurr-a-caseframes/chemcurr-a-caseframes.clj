@@ -4,7 +4,7 @@
 (defineCaseframe 'Proposition '('Ako subclass superclass)
   :docstring "Every [subclass] is a [superclass]")
 
-(defineCaseframe 'ILO '('actions analysandum)
+(defineCaseframe 'ILO '(actions analysandum)
   :docstring "Analyse [analysandum]"
   :fsymbols '(AnalyseILO))
 
@@ -42,8 +42,8 @@
 (defineCaseframe 'Thing '('ClassPropertiesOf class-with-properties)
   :docstring "properties of [class-with-properties]")
 
-(defineCaseframe 'Comparative '(ComparativeOf comparative  comparative-thing)
-  :docstring "comparative of [property] of [comparative-thing] in [comparative-sense]")
+(defineCaseframe 'Comparative '('ComparativeOf comparative-sense  comparative-thing)
+  :docstring "comparative of [comparative-thing] in [comparative-sense]")
 
 (defineCaseframe 'ILO '(actions comparison-set)
   :docstring "compare [comparison-set]"
@@ -167,7 +167,7 @@
 
 ;;; R
 
-(defineCaseframe 'Thing '(ReactivityOf reactive-entity)
+(defineCaseframe 'Thing '('ReactivityOf reactive-entity)
   :docstring "reactivity of [reactive-entity]")
 
 ;;; S
@@ -196,17 +196,17 @@
 
 ;;; U
 
-(defineCasefrme 'Thing '('UnderlyingAssumptionsOf assumption-set)
+(defineCaseframe 'Thing '('UnderlyingAssumptionsOf assumption-set)
   :docstring "underlying assumptions of [assumption-set]")
 
 (defineCaseframe 'ILO '(actions instrument)
   :docstring "use [instrument]"
   :fsymbols '(UseILO ApplyILO EmployILO OperateILO))
 
-(defineCasefrane 'Thing '('UseOf instrument)
+(defineCaseframe 'Thing '('UseOf instrument)
   :docstring "use of [instrument]")
 
-(defineCasefrane 'Thing '('UseOf instrument circumstances-of-use)
+(defineCaseframe 'Thing '('UseAndCircumstanceOf instrument circumstances-of-use)
   :docstring "use of [instrument] with [circumstances-of-use]")
 
 
