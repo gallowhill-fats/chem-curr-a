@@ -27,6 +27,7 @@
 (defineSlot circumstances :type :Thing)
 (defineSlot circumstances-of-use :type :Thing)
 (defineSlot class-name :type :Name)
+(defineSlot class-with-behavior :type :Category)
 (defineSlot class-with-physical-properties :type :Category)
 (defineSlot class-with-properties :type :Category)
 (defineSlot comparative-aspect :type :Comparative)
@@ -223,7 +224,8 @@
 ;;; Z
 
 
-
+(defineCaseframe 'Thing '('ClassBehaviorOf class-with-behavior)
+  :docstring "behavior of [class-with-behavior]")
 
 
 

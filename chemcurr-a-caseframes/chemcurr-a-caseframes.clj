@@ -36,6 +36,9 @@
     :docstring "[entity-with-circumstances] takes place in [circumstances]"
     :fsymbols '(inCircumstances inSystem inChemicalSystem))
 
+(defineCaseframe 'Thing '('ClassBehaviorOf class-with-behavior)
+  :docstring "behavior of [class-with-behavior]")
+
 (defineCaseframe 'Thing '('ClassPhysicalPropertiesOf class-with-physical-properties)
   :docstring "physical properties of [class-with-physical-properties]")
 
