@@ -470,27 +470,39 @@
  (assert '(Isa (DescribeILO ()) "ILO class*"))
  (assert '(Isa (DescribeILO ()) "ILO class*"))
  ; 116. Describe and explain the reactions of the tetrachlorides with water in terms of structure and bonding.
- (assert '(Isa (DescribeILO (ReactionBetween (setof "tetrachloride substance class*" ))) "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionBetween (setof "tetrachloride substance class*" "water substance*"))) "ILO class*"))
+ (assert '(Isa (ExplainILO (ReactionBetween (setof "tetrachloride substance class*" "water substance*"))) "ILO class*"))
+ (assert '(ILOQualifier (DescribeILO (ReactionBetween (setof "tetrachloride substance class*" "water substance*"))) (inTermsOf (setof "structure*" "bonding*")))))
+ (assert '(ILOQualifier (ExplainILO (ReactionBetween (setof "tetrachloride substance class*" "water substance*"))) (inTermsOf (setof "structure*" "bonding*")))))
  ; 117. Describe and explain the bonding, acid-base nature and thermal stability of the oxides of oxidation states II and IV.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (PhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (hasOxidationState x "II")) "ILO class*"))
+ (assert '(Isa (DescribeILO (PhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (hasOxidationState x "IV")) "ILO class*"))
+ (assert '(Isa (DescribeILO (PhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (hasOxidationState x "II")) "ILO class*"))
+ (assert '(Isa (DescribeILO (PhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (hasOxidationState x "IV")) "ILO class*"))
+ (assert '(Isa (DescribeILO (PhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (hasOxidationState x "II")) "ILO class*"))
+ (assert '(Isa (DescribeILO (PhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (hasOxidationState x "IV")) "ILO class*"))
  ; 118. Describe and explain the relative stability of higher and lower oxidation states of the elements in their oxides and aqueous cations including, where relevant, E values.
  (assert '(Isa () "ILO class*"))
  ;; 119. Describe the colours of, and the trend in volatility of chlorine, bromine and iodine.
- (assert '(Isa (TrendIn (VolatilityOf (setof "chlorine element*" "bromine element*" "iodine element*")) ) "ILO class*"))
- (assert '(Isa (TrendIn (setof (VolatilityOf "chlorine element*") (VolatilityOf "bromine element*") (VolatilityOf "iodine element*"))) ) "ILO class*"))
+  (assert '(Isa (DescribeILO )(TrendInSet (setof (NamedPhysicalPropertyOf "volatility*" "chlorine element*") (NamedPhysicalPropertyOf "volatility*" "bromine element*") (NamedPhysicalPropertyOf "volatility*" "iodine element*"))) ) "ILO class*"))
  ;; 120. Interpret the volatility of the elements in terms of van der Waals’ forces.
- (assert '(Isa (InterpretILO (VolatilityOf (every x (Isa x "element class*") ) )) "ILO class*")))
- (assert '(inTermsOf (InterpretILO (Volatility of (every x (Isa x "element class*") ) )) ("van der Waals forces*") ))
+ (assert '(Isa (InterpretILO (NamedPhysicalPropertyOfClass "volatility" "element class*") )) "ILO class*")))
+ (assert '(inTermsOf (InterpretILO (NamedPhysicalPropertyOfClass "volatility*" "element class*")))) ("van der Waals forces*") ))
  ; 121. Describe and deduce from E values the relative reactivity of the elements as oxidising agents.
  (assert '(Isa () "ILO class*"))
  ;; 122. Describe and explain the reactions of the elements with hydrogen.
- (assert '(Isa (ReactionsBetween () ) "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionsBetween (setof (every x (Isa x "element class*") "hydrogen element*" ))))) "ILO class*"))
+ (assert '(Isa (ExplainILO (ReactionsBetween (setof (every x (Isa x "element class*") "hydrogen element*" ))))) "ILO class*"))
  ; 123. Describe and explain the relative thermal stabilities of the hydrides (ii) interpret these relative stabilities in terms of bond energies.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (RelativeNamedPhysicalpropertyOfClass  "thermal stability*" "hydride substance class*")) "ILO class*"))
+ (assert '(Isa (ExplainILO (RelativeNamedPhysicalpropertyOfClass  "thermal stability*" "hydride substance class*")) "ILO class*"))
+ (assert '(Isa (InterpretILO (RelativeNamedPhysicalpropertyOfClass  "thermal stability*" "hydride substance class*")) "ILO class*"))
+ (assert '(ILOQualifier (InterpretILO (RelativeNamedPhysicalpropertyOfClass  "thermal stability*" "hydride substance class*")) (inTermsOf "bond energy*")))
  ; 124. Describe and explain the reactions of halide ions with (i) aqueous silver ions followed by aqueous ammonia (ii) concentrated sulfuric acid.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionBetween "halide ion species class*" (QualifiedSubstance  "silver ion species class*" (setof (State "aqueous*") (Temperature "hot*"))))) "ILO class*")) ;;; followed by?
+ (assert '(Isa (DescribeILO (ReactionBetween "halide ion species class*" "concentrated sulfuric acid*")) "ILO class*"))
  ; 125. Outline a method for the manufacture of chlorine from brine by a diaphragm cell (see also Section 6).
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (OutlineILO ()) "ILO class*"))
  ; 126. Describe and interpret in terms of changes of oxidation number the reaction of chlorine with cold, and with hot, aqueous sodium hydroxide.
  (assert '(Isa () "ILO class*"))
  ;; 127. Explain the use of chlorine in water purification.
@@ -630,7 +642,7 @@
  (assert '(Isa () "ILO class*"))
  ;; 177. Describe the chemistry of arenes as exemplified by the following reactions of benzene and methylbenzene:(i) substitution reactions with chlorine and with bromine (ii) nitration (iii) complete oxidation of the side-chain to give a benzoic acid(iv) hydrogenation of the benzene ring to form a cyclohexane ring.
  (assert '(Isa (DescribeILO (ChemistryOfClass "arene molecular substance class*")) "ILO class*"))
- (assert '(AsExemplifiedBy (ChemistryOfClass "arene molecular substance class*") (setof "substitution reactions with chlorine and with bromine" "nitration" "complete oxidation of the side-chain to give a benzoic acid" "hydrogenation of the benzene ring to form a cyclohexane ring"))
+ (assert '(asExemplifiedBy (ChemistryOfClass "arene molecular substance class*") (setof "substitution reactions with chlorine and with bromine" "nitration" "complete oxidation of the side-chain to give a benzoic acid" "hydrogenation of the benzene ring to form a cyclohexane ring"))
  ; 178. Describe the mechanism of electrophilic substitution in arenes, as exemplified by the formation of nitrobenzene and bromobenzene.
  (assert '(Isa (DescribeILO (MechanismOf (ReactionTypeofClass "electrophilic substitution*""arene molecular substance class*"))) "ILO class*"))
  ; 179. Suggest the mechanism of other electrophilic substitution reactions, given data.
@@ -653,13 +665,16 @@
  ; 185. Interpret the different reactivities of halogenoalkanes and chlorobenzene (with particular reference to hydrolysis and to the relative strengths of the C-Hal bonds).
  (assert '(Isa (InterpretILO (DifferenceBetween (ReactivityOfClass "halogenoalkane substance class*") (ReactivityOf "chlorobenzene molecular substancce*")) "ILO class*"))
  ; 186. Explain the uses of fluoroalkanes and fluorohalogenoalkanes in terms of their relative chemical inertness.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (ExplainILO (UseOf "fluoroalkane substance class*")) "ILO class*"))
+ (assert '(Isa (ExplainILO (UseOf "fluorohalogenoalkane substance class*")) "ILO class*"))
+ (assert '(ILOQualifier (UseOf "fluoroalkane substance class*") (inTermsOf (QualifiedProperty "relative" "chemical inertness*"))))
  ; 187. Recognise the concern about the effect of chlorofluoroalkanes on the ozone layer.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DiscussILO (EffectOfOn "chlorofluoroalkane substance class*" "ozone layer*"))) "ILO class*"))
  ; 188. Recall the chemistry of alcohols, exemplified by ethanol: (i) combustion (ii) substitution to give halogenoalkanes (iii) reaction with sodium (iv) oxidation to carbonyl compounds and carboxylic acids (v) dehydration to alkenes (vi) formation of esters by esterification with carboxylic acids and acylation with acyl chlorides.
  (assert '(Isa () "ILO class*"))
  ; 189. Classify hydroxy compounds into primary, secondary and tertiary alcohols (ii) suggest characteristic distinguishing reactions, e.g. mild oxidation.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (ClassifyILO "hydroxy substance class*") "ILO class*"))
+ (assert '(ILOQualifier (ClassifyILO "hydroxy substance class*") (ClassificationCategories "primary alcohol class*" "secondary alcohol class*" "tertiary alcohol class*")))
  ; 190. Deduce the presence of a CH3CH(OH)– group in an alcohol from its reaction with alkaline aqueous iodine to form tri-iodomethane
  (assert '(Isa () "ILO class*"))
  ; 191. Recall the chemistry of phenol, as exemplified by the following reactions: (i) with bases (ii) with sodium (iii) with diazonium salts (Section 10.7) (iv) nitration of, and bromination of, the aromatic ring.
@@ -677,29 +692,31 @@
  ; 197. Describe the reaction of CH3CO– compounds with alkaline aqueous iodine to give tri-iodomethane.
  (assert '(Isa () "ILO class*"))
  ; 198. Describe the formation of carboxylic acids from alcohols, aldehydes and nitriles.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (TypedReactionOfClass "formation*" "carboxylic acid substance class*"))) "ILO class*"))
  ; 199. Describe the reactions of carboxylic acids in the formation of (i) salts, by the use of reactive metals, alkalis or carbonates (ii) esters (iii) acyl chlorides.
  (assert '(Isa () "ILO class*"))
  ; 200. Explain the acidity of carboxylic acids and of chlorinesubstituted ethanoic acids in terms of their structures.
  (assert '(Isa () "ILO class*"))
  ; 201. Describe the hydrolysis of acyl chlorides.
- (assert '(Isa (DescribeILO (ClassReactionOf hydrolysis* "acyl chloride molecular substance class*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (ClassReactionOf "hydrolysis*" "acyl chloride molecular substance class*")) "ILO class*"))
   ; 202. Describe the reactions of acyl chlorides with alcohols, phenols and primary amines.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionBetween "acyl chloride substance class*" "alcohol substance class*" ) "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionBetween "acyl chloride substance class*" "phenol substance class*" ) "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionBetween "acyl chloride substance class*" "primary amine substance class*" ) "ILO class*"))
  ; 203. Explain the relative ease of hydrolysis of acyl chlorides, alkyl chlorides and aryl chlorides.
  (assert '(Isa () "ILO class*"))
  ; 204. Describe the formation of esters from carboxylic acids or acyl chlorides, using ethyl ethanoate and phenyl benzoate as examples.
  (assert '(Isa () "ILO class*"))
  ; 205. Describe the acid and base hydrolysis of esters.
- (assert '(Isa (DescribeILO (ClassReactionOf "acid hydrolysis*" "ester molecular substance class*"))) "ILO class*"))
- (assert '(Isa (DescribeILO (ClassReactionOf "base hydrolysis*" "ester molecular substance class*"))) "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionOfClass "acid hydrolysis*" "ester molecular substance class*"))) "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionOfClass "base hydrolysis*" "ester molecular substance class*"))) "ILO class*"))
  ; 206. State the major commercial uses of esters e.g. solvents, perfumes, flavourings.cribe the formation of polyesters (see also Section 10.8).
  (assert '(Isa () "ILO class*"))
  ; 207. Describe the formation of alkyl amines such as ethylamine (by the reaction of ammonia with halogenoalkanes; the reduction of amides with LiAlH4?; the reduction of nitriles with LiAlH4? or H2/Ni) and of phenylamine (by the reduction of nitrobenzene with tin/concentrated HCl).
  (assert '(Isa () "ILO class*"))
  ; 208. Describe and explain the basicity of amines.
- (assert '(Isa (DescribeILO (NamedPropertyOf "basicity*" "amine substance class*")) "ILO class*"))
- (assert '(Isa (ExplainILO (NamedPropertyOf "basicity*" "amine substance class*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (NamedPropertyOfClass "basicity*" "amine substance class*")) "ILO class*"))
+ (assert '(Isa (ExplainILO (NamedPropertyOfClass "basicity*" "amine substance class*")) "ILO class*"))
  ; 209. Explain the relative basicities of ammonia, ethylamine and phenylamine in terms of their structures.
  (assert '(Isa (ExplainILO (NamedRelativeProperty "basicity*" (setof "ammonia substance*" "ethylamine substance*" "phenylamine substance*"))) "ILO class*"))
  ; 210. Describe the reaction of phenylamine with: (i) aqueous bromine (ii) nitrous acid to give the diazonium salt and phenol.
@@ -707,120 +724,129 @@
  (assert '(Isa (DescribeILO (ChemaicalRaction (setof "phenylamine substance*" "nitrous acid substance*") (setof "diazonium salt*" "phenol substance*"))) "ILO class*"))
  ; 211. Describe the coupling of benzenediazonium chloride and phenol and the use of similar reactions in the formation of dyestuff.
  (assert '(Isa () "ILO class*"))
- ; 212. Describe the coupling of benzenediazonium chloride and phenol and the use of similar reactions in the formation of dyestuff.
- (assert '(Isa () "ILO class*"))
- ; 213. Describe the formation of amides from the reaction between RNH2 and R’COCl.
- (assert '(Isa (DescribeILO (TypeOfReactionOf "formation*" "amide substance class*") "ILO class*"))
- (assert '(withCriteria (DescribeILO (ClassReactionOf "formation*" "amide class*") (ReactionBetween "primary amine class*" "acyl chloride class*"))))
- ; 214. Recognise that amides are neutral.
- (assert '(Isa () "ILO class*"))
- ; 215. Describe amide hydrolysis on treatment with aqueous alkali or acid (ii) describe the reduction of amides with LiAlH4? (i) describe the acid/base properties of amino acids and the formation of zwitterions.
- (assert '(Isa () "ILO class*"))
- ; 216. Describe the formation of peptide bonds between amino acids and, hence, explain protein formation
- (assert '(Isa (ExplainILO (NamedProcessOf "formation*" "protein class**")) "ILO class*"))
- (assert '(inTermsOf (ExplainILO (NamedProcessOf "formation*" "protein class*")) ))
- ; 217. Describe the hydrolysis of proteins.
- (assert '(Isa () "ILO class*"))
- ; 218. Describe the formation of polyamides (see also Section 10.8).
- (assert '(Isa (DescribeILO (FormationOf (every x (Isa x "polyamide molecular substance class*")))) "ILO class*")) 
- ; 219. Describe the characteristics of addition polymerisation as exemplified by poly(ethene) and PVC.
- (assert '(Isa () "ILO class*"))
- ; 220. Recognise the difficulty of the disposal of poly(alkene)s, i.e. nonbiodegradability and harmful combustion products.
- (assert '(Isa () "ILO class*")) 
- ; 221. Describe the characteristics of condensation polymerisation (i) in polyesters as exemplified by Terylene (ii) in polyamides as exemplified by peptides, proteins, nylon 6 and nylon 6,6.
- (assert '(Isa () "ILO class*"))
- ; 222. Predict the type of polymerisation reaction for a given monomer or pair of monomers.
- (assert '(Isa () "ILO class*"))
- ; 223. Deduce the repeat unit of a polymer obtained from a given monomer or pair of monomers.
- (assert '(Isa () "ILO class*"))
- ; 224. Deduce the type of polymerisation reaction which produces a given section of a polymer molecule.
- (assert '(Isa () "ILO class*"))
- ; 225. Identify the monomer(s) present in a given section of a polymer molecule.
- (assert '(Isa () "ILO class*"))
- ; 226. Recall that proteins are condensation polymers formed from amino acid monomers and recognise and describe the generalised structure of amino acids (link to core syllabus, sections 10.7 and 10.8).
+  ; 212. Describe the formation of amides from the reaction between RNH2 and R’COCl.
+ (assert '(Isa (DescribeILO (TypeOfReactionOfClass "formation*" "amide substance class*") "ILO class*"))
+ (assert '(withCriteria (DescribeILO (TypeOfReactionOfClass "formation*" "amide class*") (ReactionBetween "primary amine class*" "acyl chloride class*"))))
+ ; 213. Recognise that amides are neutral.
+ (assert '(Isa (RecogniseILO (every x (Isa x "amide substance class*") (Isa x "neutral substance class*"))))) "ILO class*"))
+ ; 214. Describe amide hydrolysis on treatment with aqueous alkali or acid (ii) describe the reduction of amides with LiAlH4? (i) describe the acid/base properties of amino acids and the formation of zwitterions.
+ (assert '(Isa (DescribeILO (TypedChemicalReactionOfClass "hydrolysis*" "amide substance class*")) "ILO class*"))
+ ; 215. Describe the formation of peptide bonds between amino acids and, hence, explain protein formation
+ (assert '(Isa (ExplainILO (TypedChemicalReactionOfClass "formation*" "protein substance class*")) "ILO class*"))
+ (assert '(inTermsOf (ExplainILO (TypedChemicalReactionOfClass "formation*" "protein substance class*")) ))
+ ; 216. Describe the hydrolysis of proteins.
+ (assert '(Isa ((DescribeILO (TypedChemicalReactionOfClass "hydrolysis*" "protein substance class*"))) "ILO class*"))
+ ; 217. Describe the formation of polyamides (see also Section 10.8).
+ (assert '(Isa (DescribeILO (TypedChemicalReactionOfClass "formation*" "polyamide substance class*")) "ILO class*")) 
+ ; 218. Describe the characteristics of addition polymerisation as exemplified by poly(ethene) and PVC.
+ (assert '(Isa (DescribeILO (CharacteristicsOf "addition polymerisation*")) "ILO class*"))
+ (assert '(ILOQualifier (DescribeILO (CharacteristicsOf "additionpolymerisation*")) (asExemplifiedBy "polyethene*")))
+ (assert '(ILOQualifier (DescribeILO (CharacteristicsOf "additionpolymerisation*")) (asExemplifiedBy "PVC*")))
+ ; 219. Recognise the difficulty of the disposal of poly(alkene)s, i.e. nonbiodegradability and harmful combustion products.
+ (assert '(Isa (RecogniseILO (DifficultyOf (NamedProcessOfClass "disposal*" "polyalkene class*" ))) "ILO class*")) 
+ ; 220. Describe the characteristics of condensation polymerisation (i) in polyesters as exemplified by Terylene (ii) in polyamides as exemplified by peptides, proteins, nylon 6 and nylon 6,6.
+ (assert '(Isa (DescribeILO (CharacteristicsOf "condensation polymerisation*")) "ILO class*"))
+ (assert '(ILOQualifier (DescribeILO (CharacteristicsOf "condensation polymerisation*")) (setof (withReferenceTo "polyester polymer class*") (asExemplifiedBy "Terylene*"))))
+ (assert '(ILOQualifier (DescribeILO (CharacteristicsOf "condensation polymerisation*")) (setof (withReferenceTo "polyamide polymer class*") (asExemplifiedByClass "peptide class*"))))
+ (assert '(ILOQualifier (DescribeILO (CharacteristicsOf "condensation polymerisation*")) (setof (withReferenceTo "polyamide polymer class*") (asExemplifiedByClass "protein class*"))))
+ (assert '(ILOQualifier (DescribeILO (CharacteristicsOf "condensation polymerisation*")) (setof (withReferenceTo "polyamide polymer class*") (asExemplifiedBy "nylon 6*"))))
+ (assert '(ILOQualifier (DescribeILO (CharacteristicsOf "condensation polymerisation*")) (setof (withReferenceTo "polyamide polymer class*") (asExemplifiedBy "nylon 6,6*"))))
+ ; 221. Predict the type of polymerisation reaction for a given monomer or pair of monomers.
+ (assert '(Isa (PredictILO (TypeOf "polymerisation*")) "ILO class*"))
+ (assert '(ILOQualifier (PredictILO (TypeOf "polymerisation*")) (Given "monomer*")))
+ (assert '(ILOQualifier (PredictILO (TypeOf "polymerisation*")) (Given (PairOf "monomer*"))))
+ ; 222. Deduce the repeat unit of a polymer obtained from a given monomer or pair of monomers.
+ (assert '(Isa (DeduceILO (NamedPropertyOfClass "mer*" "polymer class*")) "ILO class*"))
+ (assert '(ILOQualifier (DeduceILO (NamedPropertyOfClass "mer*" "polymer class*")) (Given "monomer*")))
+ (assert '(ILOQualifier (DeduceILO (NamedPropertyOfClass "mer*" "polymer class*")) (Given (PairOf "monomer*"))))
+ ; 223. Deduce the type of polymerisation reaction which produces a given section of a polymer molecule.
+ (assert '(Isa (DeduceILO (TypeOf "polymerisation reaction*")) "ILO class*"))
+ (assert '(ILOQualifier (DeduceILO (TypeOf "polymerisation reaction*")) (Given (ArbitraryTypedPartOfClass "section" "polymer class*"))))
+ ; 224. Identify the monomer(s) present in a given section of a polymer molecule.
+ (assert '(Isa (IdentifyILO (every x (Isa x "mer class*") (isPresentIn x  (ArbitraryTypedPartOfClass "section" "polymer class*")))))) "ILO class*"))
+ ; 225. Recall that proteins are condensation polymers formed from amino acid monomers and recognise and describe the generalised structure of amino acids (link to core syllabus, sections 10.7 and 10.8).
  (assert '(Isa (RecallILO (Isa (every x (Isa x "protein class*")) "condensation polymer class*")) "ILO class*"))
- ; 227. Explain the importance of amino acid sequence (primary structure) in determining the properties of proteins.
+ ; 226. Explain the importance of amino acid sequence (primary structure) in determining the properties of proteins.
  (assert '(Isa (ExplainILO (NamedAspectOf "importance*" "primary structure*")) "ILO class*"))
- ; 228. Distinguish between the primary, secondary (α-helix and β-sheet) and tertiary structures of proteins and explain the stabilisation of secondary (through hydrogen bonding between C=O and N-H bonds of peptide groups) and tertiary (through interactions between R-groups) structure using the chemistry learnt in the core syllabus, sections 3 and 10.7.
+ ; 227. Distinguish between the primary, secondary (α-helix and β-sheet) and tertiary structures of proteins and explain the stabilisation of secondary (through hydrogen bonding between C=O and N-H bonds of peptide groups) and tertiary (through interactions between R-groups) structure using the chemistry learnt in the core syllabus, sections 3 and 10.7.
  (assert '(Isa (DistinguishBetweenILO ("protein primary structure*" "protein secondary structure*" "protein tertiary structure*")) "ILO class*"))
  (assert '(Isa (ExplainILO (StabilisationOfBy "protein secondary structure*" "hydrogen bonding*")) "ILO class*"))
  (assert '(Isa (ExplainILO (StabilisationOfBy "tertiary secondary structure*" "hydrophobic interaction*")) "ILO class*"))
- ; 229. DescribeILO and explain the characteristics of enzyme catalysis, including (i) specificity (using a simple lock and key model) and the idea of competitive inhibition (ii) structural integrity in relation to denaturation and noncompetitive inhibition.
+ ; 228. DescribeILO and explain the characteristics of enzyme catalysis, including (i) specificity (using a simple lock and key model) and the idea of competitive inhibition (ii) structural integrity in relation to denaturation and noncompetitive inhibition.
  (assert '(Isa (DescribeILO "enzyme catalysis*") "ILO class*"))
  (assert '(Including (DescribeILO "enzyme catalysis*") (setof "specificity*" "competitive inhibition*")))
  (assert '(Including (DescribeILO "enzyme catalysis*") (setof "denaturation*" "non-competitive inhibition*")))
- ; 230. Given information, use core chemistry to explain how small molecules interact with proteins and how they can modify the structure and function of biological systems (for example, as enzyme inhibitors or cofactors, disrupting protein-protein interactions, blocking ion channels) (link to 11.3 (a)).
+ ; 229. Given information, use core chemistry to explain how small molecules interact with proteins and how they can modify the structure and function of biological systems (for example, as enzyme inhibitors or cofactors, disrupting protein-protein interactions, blocking ion channels) (link to 11.3 (a)).
  (assert '(Isa () "ILO class*"))
- ; 231.  DescribeILO the double helical structure of DNA in terms of a sugar-phosphate backbone and attached bases (Candidates will be expected to know the general structure in terms of a block diagram but will not be expected to recall the detailed structures of the components involved. Where these are required they will be given in the question paper.)
+ ; 230.  DescribeILO the double helical structure of DNA in terms of a sugar-phosphate backbone and attached bases (Candidates will be expected to know the general structure in terms of a block diagram but will not be expected to recall the detailed structures of the components involved. Where these are required they will be given in the question paper.)
  (assert '(Isa (DescribeILO ) "ILO class*"))
- ; 232. Explain the significance of hydrogen-bonding in the pairing of bases in DNA in relation to the replication of genetic information.
+ ; 231. Explain the significance of hydrogen-bonding in the pairing of bases in DNA in relation to the replication of genetic information.
  (assert '(Isa (ExplainILO (NamedAspectOf "significance*" "hydrogen bonding*")) "ILO class*"))
  (assert '(inRelationTo (ExplainILO (NamedAspectOf "significance*" "hydrogen bonding*")) (setof "DNA base pairing*" "replication of genetic information*")))
- ; 233. Explain in outline how DNA encodes for the amino acid sequence of proteins with reference to mRNA, tRNA and the ribosome in translation and transcription.
+ ; 232. Explain in outline how DNA encodes for the amino acid sequence of proteins with reference to mRNA, tRNA and the ribosome in translation and transcription.
  (assert '(Isa (ExplainHowILO "DNA encodes for the amino acid sequence of proteins*") "ILO class*"))
  (assert '(withReferenceTo (ExplainHowILO "DNA encodes for the amino acid sequence of proteins*") (setof "messenger rna*" "transfer rna*" "ribosome*"  )
  (assert '(inDomain (ExplainHowILO "DNA encodes for the amino acid sequence of proteins*") (setof translation* transcription*)))
- ; 234. Explain the chemistry of DNA mutation from provided data.
+ ; 233. Explain the chemistry of DNA mutation from provided data.
  (assert '(Isa (ExplainILO (ChemistryOf "DNA mutation*")) "ILO class*"))
- ;; 235. Discuss the genetic basis of disease (for example, sickle cell anaemia) in terms of altered base sequence, causing alterations in protein structure and function.
+ ;; 234. Discuss the genetic basis of disease (for example, sickle cell anaemia) in terms of altered base sequence, causing alterations in protein structure and function.
  (assert '(Isa (DiscussILO "genetic basis of disease*") "ILO class*"))
  (assert '(ForExample (DiscussILO "genetic basis of disease*") "sickle cell anaemia*"))
  (assert '(inTermsOf (DiscussILO "genetic basis of disease*") ("causing alterations in protein structure and function and altered base sequence*" )))
-  ; 236. Explain how modification to protein/enzyme primary structure can result in new structure and/or function.
+  ; 235 Explain how modification to protein/enzyme primary structure can result in new structure and/or function.
  (assert '(Isa (ExplainHowILO (ResultsIn (ModificationOf "protein primary structure*" "new structure and/or function*"))) "ILO class*"))
- ; 237. Outline, in terms of the hydrolysis of ATP to ADP + Pi , the provision of energy for the cell.
+ ; 236. Outline, in terms of the hydrolysis of ATP to ADP + Pi , the provision of energy for the cell.
  (assert '(Isa (OutlineILO "provision of energy for the cell*") "ILO class*"))
- ; 238. Understand why some metals are essential to life and, given information and with reference to the chemistry of the core syllabus, be able to explain the chemistry involved (for example, iron in haemoglobin (section 9.5 (g) and 11.1(e) and (j)), sodium and potassium in transmission of nerve impulses (section 3, ion solvation and section 5, energetics), zinc as an enzyme cofactor (section 10.1, nucleophilic attack, 11.1(e))).
+ ; 237. Understand why some metals are essential to life and, given information and with reference to the chemistry of the core syllabus, be able to explain the chemistry involved (for example, iron in haemoglobin (section 9.5 (g) and 11.1(e) and (j)), sodium and potassium in transmission of nerve impulses (section 3, ion solvation and section 5, energetics), zinc as an enzyme cofactor (section 10.1, nucleophilic attack, 11.1(e))).
  (assert '(Isa (UnderstandWhy (isEssentialTo  (some y ()  (Isa y "metal class*")) "life*")) "ILO class*"))
- ; 239. Recognise that some metals are toxic and discuss, in chemical terms, the problems associated with heavy metals in the environment entering the food chain, for example mercury (development of methods to detect and address these problems will be discussed in 11.2(i) and 11.3(f)).
+ ; 238. Recognise that some metals are toxic and discuss, in chemical terms, the problems associated with heavy metals in the environment entering the food chain, for example mercury (development of methods to detect and address these problems will be discussed in 11.2(i) and 11.3(f)).
  (assert '(Isa (RecogniseThatILO (isToxic (some x (Isa x "metal class*")) ) "ILO class*"))
  (assert '(Isa (DiscussILO (NamedAspectOf "problem*" (Entering (every x (Isa x "heavy metal class*") (IsIn x "environment*")) "food chain*"))) "ILO class*"))
- ; 240. Describe simply the process of electrophoresis and the effect of pH, using peptides and amino acids as examples (link to 11.1 (a)).
+ ; 239. Describe simply the process of electrophoresis and the effect of pH, using peptides and amino acids as examples (link to 11.1 (a)).
  (assert '(Isa (DescribeILO electrophoresis*) "ILO class*"))
  (assert '(inManner (DescribeILO electrophoresis*) simply*))
  (assert '(Isa (DescribeILO (EffectOfOn pH* electrophoresis*)) "ILO class*"))
  (assert '(usingAsExample (DescribeILO (EffectOfOn pH* electrophoresis*)) (setof "peptide class*" "amino acid class*")))
- ; 241. Explain, in simple terms, the technique of DNA fingerprinting and its applications in forensic science, archaeology and medicine.
+ ; 240 . Explain, in simple terms, the technique of DNA fingerprinting and its applications in forensic science, archaeology and medicine.
  (assert '(Isa (DescribeILO "DNA fingerprinting*") "ILO class*"))
  (assert '(inManner (DescribeILO "DNA fingerprinting*") "simply*"))
  (assert '(Isa (DescribeILO (NamedAspectOf "applications*" "DNA fingerprinting*")) "ILO class*"))
- ; 242. Describe the importance to modern medicine, and the challenges, of separating and characterising the proteins in cells (link to 11.1).
+ ; 241. Describe the importance to modern medicine, and the challenges, of separating and characterising the proteins in cells (link to 11.1).
  (assert '(Isa () "ILO class*"))
- ; 243. Outline in simple terms the principles of nuclear magnetic resonance in 1H and be able to interpret simple NMR spectra, using chemical shift values, splitting patterns and the effect of adding D2O to a sample.
+ ; 242. Outline in simple terms the principles of nuclear magnetic resonance in 1H and be able to interpret simple NMR spectra, using chemical shift values, splitting patterns and the effect of adding D2O to a sample.
  (assert '(Isa (OutlineILO (NamedAspectOf "principle class*" "proton nuclear magnetic resonace*")) "ILO class*"))
- ; 244. Show awareness of the use of NMR and X-ray crystallography in determining the structure of macromolecules and in understanding their function (link to 11.1 (c) and 11.2 (c))
+ ; 243. Show awareness of the use of NMR and X-ray crystallography in determining the structure of macromolecules and in understanding their function (link to 11.1 (c) and 11.2 (c))
  (assert '(Isa (ShowAwarenessOfILO (UseOfFor NMR* (DeterminationOf (AspectOf "structure*""macromolecule class*")))) "ILO class*"))
  (assert '(Isa (ShowAwarenessOfILO (UseOfFor "x-ray crystallography*" (DeterminationOf (Aspectof "structure*" "macromolecule class*")))) "ILO class*"))
  (assert '(Isa (ShowAwarenessOfILO (UseOfFor NMR* (UnderstandingOf (AspectOf function* "macromolecule class*")))) "ILO class*"))
  (assert '(Isa (ShowAwarenessOfILO (UseOfFor "x-ray crystallography*" (UnderstandingOf (AspectOf function* "macromolecule class*")))) "ILO class*"))
- ; 245. State what is meant by partition coefficient and calculate a partition coefficient for a system in which the solute is in the same molecular state in the two solvents
+ ; 244. State what is meant by partition coefficient and calculate a partition coefficient for a system in which the solute is in the same molecular state in the two solvents
  (assert '(Isa (DefineILO "partition coefficient*") "ILO class*"))
- ;; 246. Understand qualitatively paper, high performance liquid, thin layer and gas/liquid chromatography in terms of adsorption and/or partition and be able to interpret data from these techniques.
+ ;; 245. Understand qualitatively paper, high performance liquid, thin layer and gas/liquid chromatography in terms of adsorption and/or partition and be able to interpret data from these techniques.
  (assert '(Isa {UnderstandILO (setof "paper chromatography*" "high performance liquid chromatography*" "thin layer chromatography*" "gas/liquid chromatography*")) "ILO class*"))
  (assert '(inManner {UnderstandILO (setof "paper chromatography*" "high performance liquid chromatography*" "thin layer chromatography*" "gas/liquid chromatography*")) qualitatively*))
- (assert '(Isa () "ILO class*"))
- ; 247. Explain the concept of mass spectroscopy, deduce the number of carbon atoms in a compound using the M+1 peak and the presence of bromine and chlorine atoms using the M+2 peak and suggest the identity of molecules formed by simple fragmentation in a given mass spectrum (see also core syllabus, section 1 (c) and (d)).
+  ; 246. Explain the concept of mass spectroscopy, deduce the number of carbon atoms in a compound using the M+1 peak and the presence of bromine and chlorine atoms using the M+2 peak and suggest the identity of molecules formed by simple fragmentation in a given mass spectrum (see also core syllabus, section 1 (c) and (d)).
  (assert '(Isa (ExplainILO "mass spectrometry*") "ILO class*"))
- ; 248. Draw conclusions given appropriate information and data from environmental monitoring (for example, PCBs in the atmosphere, isotopic ratios in ice cores).
+ ; 247. Draw conclusions given appropriate information and data from environmental monitoring (for example, PCBs in the atmosphere, isotopic ratios in ice cores).
  (assert '(Isa () "ILO class*"))
- ; 249. Discuss the challenges of drug design and explain in simple terms how molecules may be identified and developed to overcome these problems
+ ; 248. Discuss the challenges of drug design and explain in simple terms how molecules may be identified and developed to overcome these problems
  (assert '(Isa (DiscussILO (AspectOf challenge* "drug design*")) "ILO class*"))
- ; 250. Discuss the challenges of drug delivery and explain in simple terms how materials may be developed to overcome these problems.
+ ; 249. Discuss the challenges of drug delivery and explain in simple terms how materials may be developed to overcome these problems.
  (assert '(Isa () "ILO class*"))
- ; 251. Discuss the properties and structure of polymers based on their methods of formation (addition or condensation, link to core syllabus, section 10.8).
+ ; 250. Discuss the properties and structure of polymers based on their methods of formation (addition or condensation, link to core syllabus, section 10.8).
  (assert '(Isa (DiscussILO (PropertiesOf (every x (Isa x "polymer class*"))))))
  (assert '(Isa (DiscussILO (StructureOf (every x (Isa x "polymer class*")))))) 
  ;;; OR
  (assert '(Isa (DiscussILO (ClassPropertiesOf "polymer class*"))))
  (assert '(Isa (DiscussILO (ClassPropertyOf "structure*" "polymer class*"))))
-  ; 252. Discuss how the presence of side-chains and intermolecular forces affect the properties of polymeric materials (for example, spider silk).
+  ; 251. Discuss how the presence of side-chains and intermolecular forces affect the properties of polymeric materials (for example, spider silk).
  (assert '(Isa () "ILO class*"))
- ; 253. Show awareness of nanotechnology and, given information and data, be able to discuss the chemistry involved with reference to the core syllabus.
+ ; 252. Show awareness of nanotechnology and, given information and data, be able to discuss the chemistry involved with reference to the core syllabus.
  (assert '(Isa (ShowAwarenessOfILO "nanotechnology*") "ILO class*"))
  (assert '(Isa (DiscussILO ) "ILO class*"))
- ; 254. Discuss how a knowledge of chemistry can be used to overcome environmental problems (for example, ground water contamination, oil spillage, CFCs).
+ ; 253. Discuss how a knowledge of chemistry can be used to overcome environmental problems (for example, ground water contamination, oil spillage, CFCs).
  (assert '(Isa (DiscussILO (UseOfTo chemistry* )) "ILO class*"))
- ; 255. Discuss how a knowledge of chemistry can be used to extend the life of existing resources, to identify alternative resources and to improve the efficiency of energy production and use.
+ ; 254. Discuss how a knowledge of chemistry can be used to extend the life of existing resources, to identify alternative resources and to improve the efficiency of energy production and use.
  (assert '(Isa (DiscussILO (UseOfTo chemistry* (AlterPropertyOf extend* life* "natural resources*"))) "ILO class*")) ;; Use NamedPropertyOf for property
  (assert '(Isa (DiscussILO (UseOfTo chemistry* (AlterPropertyOf improve* efficiency* (ProductionOf energy*)))) "ILO class*")) ;; Use NamedPropertyOf for property
  (assert '(Isa (DiscussILO (UseOfTo chemistry* (AlterPropertyOf improve* efficiency* (UseOf energy*)))) "ILO class*")) ;; Use NamedPropertyOf for property
