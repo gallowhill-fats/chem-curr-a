@@ -581,8 +581,7 @@
  ; 149. State and explain the environmental consequences of the uncontrolled use of nitrate fertilisers.
  (assert '(Isa (StateILO (QualifiedTerm "environmental*" (ConsequencesOf (NamedUseOfClass "fertiliser**" "nitrate substance class*"))))) "ILO class*"))
  (assert '(Isa (ExplainILO (QualifiedTerm "environmental*" (ConsequencesOf (NamedUseOfClass "fertiliser*" "nitrate substance class*"))))) "ILO class*"))
- ; can't wrap (ConsequencesOf ...) with (ofType ... environmental) - what if I later wanted to form an ILO (ofType ... political). The type has to go in as a slot.
- ; 150. State and explain the natural and man-made occurrences of oxides of nitrogen and their catalytic removal from the exhaust gases of internal combustion engines.
+  ; 150. State and explain the natural and man-made occurrences of oxides of nitrogen and their catalytic removal from the exhaust gases of internal combustion engines.
  (assert '(Isa () "ILO class*"))
  ; 151. Explain why atmospheric oxides of nitrogen are pollutants, including their catalytic role in the oxidation of atmospheric sulfur dioxide.
  (assert '(Isa () "ILO class*"))
@@ -633,11 +632,12 @@
  (assert '(Isa (DescribeILO "chiral centre*") "ILO class*"))
  (assert '(Isa (ExplainHowILO (GivesRiseTo "chiral centre*" "optical isomerism*")) ))
  ; 165. Identify chiral centres and/or cis-trans isomerism in a molecule of given structural formula.
- (assert '(Isa () "ILO class*"))
- ; 166. Deduce the possible isomers for an organic molecule of known molecular formula.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (IdentifyILO (every x (isChiralCentreOf x y) (Isa y "organic molecule class*") (Given (StructuralFormulaOf y))))  "ILO class*"))
+ (assert '(Isa (IdentifyILO (every x (isGeometricIsomerOf x y) (Isa y "organic molecule class*") (Given (StructuralFormulaOf y))))  "ILO class*"))
+  ; 166. Deduce the possible isomers for an organic molecule of known molecular formula.
+ (assert '(Isa (DeduceILO (every x (isIsomerOf x y) (Isa y "organic molecule class*") (Given (TypedFormulaOf "structural formula" y)))) "ILO class*"))
  ; 167. Deduce the molecular formula of a compound, given its structural, displayed or skeletal formula (see Section 1).
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DeduceILO ( (every x (hasMolecularFormula y x) (Given (TypedFormulaOf "structural formula*" y))))))  "ILO class*"))
  ;; 168. Show awareness of the general unreactivity of alkanes, including towards polar reagents.
  (assert '(Isa (CommentOnILO (ReactivityOf (every x (Isa x "alkane substance class*") ) )) "ILO class*"))
  (assert '(Reactivitywith (ReactivityOf (every x (Isa x "alkane substance class*") ) ) (every y (Isa y "polar reagent class*") )
@@ -656,27 +656,44 @@
  (assert '(Isa (DescribeILO (AdditionReaction "steam*" "propene molecular substance*") "ILO class*"))
  (assert '(Isa (DescribeILO (AdditionReaction (every x (Isa x "hydrogen halide substance class*")) "propene molecular substance*")) "ILO class*"))
  ; 172. Describe the mechanism of electrophilic addition in alkenes, using bromine/ethene and hydrogen bromide/propene as examples.
- (assert '(Isa (DescribeILO (MechanismOf )) "ILO class*"))
+ (assert '(Isa (DescribeILO (MechanismOfReactionType "electrophilic addition*")) "ILO class*"))
+ (assert '(ILOQualifier (DescribeILO (MechanismOfReactionType "electrophilic addition*")) (setof (forSubstrateClass "alkene substance class*") (withExample (ReactionBetween "bromine element*" "ethene substance*")))))
+ (assert '(ILOQualifier (DescribeILO (MechanismOfReactionType "electrophilic addition*")) (setof (forSubstrateClass "alkene substance class*") (withExample (ReactionBetween "bromide ion species*" "propene substance*")))))
  ; 173. Explain the use of crude oil as a source of both aliphatic and aromatic hydrocarbons.
- (assert '(Isa (DescribeILO (UseOf "crude oil*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (UseOfFor "crude oil*" (ProductionOfClass "aliphatic hydrocarbon class*")))) "ILO class*"))
+ (assert '(Isa (DescribeILO (UseOfFor "crude oil*" (ProductionOfClass "aromatic hydrocarbon class*")))) "ILO class*"))
  ; 174. Suggest how 'cracking' can be used to obtain more useful alkanes and alkenes of lower Mr from larger hydrocarbon molecules.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO "catalytic cracking*") "ILO class*"))
  ; 175. Describe and explain how the combustion reactions of alkanes lead to their use as fuels in industry, in the home and in transport.
+ (assert '(Isa (DescribeILO (UseOf (TypedReactionOfClass "combustion*" "alkane substance class*"))) "ILO class*"))
+ (assert '(ILOQualifier (DescribeILO (UseOf (TypedReactionOfClass "combustion*" "alkane substance class*"))) (inContext "industry*")))
+ (assert '(ILOQualifier (DescribeILO (UseOf (TypedReactionOfClass "combustion*" "alkane substance class*"))) (inContext "the home*")))
+ (assert '(ILOQualifier (DescribeILO (UseOf (TypedReactionOfClass "combustion*" "alkane substance class*"))) (inContext "transport")))
+ (assert '(Isa (ExplainILO (UseOf (TypedReactionOfClass "combustion*" "alkane substance class*"))) "ILO class*"))
+ (assert '(ILOQualifier (ExplainILO (UseOf (TypedReactionOfClass "combustion*" "alkane substance class*"))) (inContext "industry*")))
+ (assert '(ILOQualifier (ExplainILO (UseOf (TypedReactionOfClass "combustion*" "alkane substance class*"))) (inContext "the home*")))
+ (assert '(ILOQualifier (ExplainILO (UseOf (TypedReactionOfClass "combustion*" "alkane substance class*"))) (inContext "transport")))
  ; 176. Recognise the environmental consequences of: (i) carbon monoxide, oxides of nitrogen and unburnt hydrocarbons arising from the internal combustion engine and of their catalytic removal (ii) gases that contribute to the enhanced greenhouse effect.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (EffectOfOn "carbon monoxide*" "atmosphere")) "ILO class*"))
+ (assert '(ILOQualifier (EffectOfOn "carbon monoxide*" "atmosphere")) (inTermsOf (EffectOn "the environment*")))
+ (assert '(Isa (DescribeILO (EffectOfOn "nitrogen oxides class*" "atmosphere")) "ILO class*"))
+ (assert '(ILOQualifier (EffectOfOn "nitrogen oxides class*" "atmosphere")) (inTermsOf (EffectOn "the environment*")))
+ (assert '(Isa (DescribeILO (EffectOfOn "hydrocarbon class*" "atmosphere")) "ILO class*"))
+ (assert '(ILOQualifier (EffectOfOn "hydrocarbon class*" "atmosphere")) (inTermsOf (EffectOn "the environment*")))
  ;; 177. Describe the chemistry of arenes as exemplified by the following reactions of benzene and methylbenzene:(i) substitution reactions with chlorine and with bromine (ii) nitration (iii) complete oxidation of the side-chain to give a benzoic acid(iv) hydrogenation of the benzene ring to form a cyclohexane ring.
  (assert '(Isa (DescribeILO (ChemistryOfClass "arene molecular substance class*")) "ILO class*"))
  (assert '(asExemplifiedBy (ChemistryOfClass "arene molecular substance class*") (setof "substitution reactions with chlorine and with bromine" "nitration" "complete oxidation of the side-chain to give a benzoic acid" "hydrogenation of the benzene ring to form a cyclohexane ring"))
  ; 178. Describe the mechanism of electrophilic substitution in arenes, as exemplified by the formation of nitrobenzene and bromobenzene.
  (assert '(Isa (DescribeILO (MechanismOf (ReactionTypeofClass "electrophilic substitution*""arene molecular substance class*"))) "ILO class*"))
  ; 179. Suggest the mechanism of other electrophilic substitution reactions, given data.
- (assert '(Isa (SuggestILO (MechanismOf (ReactionTypeOnSubstrate "electrophilic substitution*" (every x (Isa x "arene molecular substance class*"))) "ILO class*"))
+ (assert '(Isa (SuggestILO (MechanismOfReactionType "electrophilic substitution*")) "ILO class*"))
+ (assert '(ILOQualifier (SuggestILO (MechanismOfReactionType "electrophilic substitution*")) (inSystem 
  ; 180. Describe the effect of the delocalisation of electrons in arenes in such reactions.
  (assert '(Isa (DescribeILO (EffectOfOn "electron delocalisation*" (ElectrophilicSubstitutionofClass "arene molecular substance class*"))) "ILO class*"))
  ; 181. Predict whether halogenation will occur in the side-chain or aromatic nucleus in arenes depending on reaction conditions.
  (assert '(Isa (PredictILO (ReactionSite )) "ILO class*"))
  ; 182. Apply the knowledge of positions of substitution in the electrophilic substitution of arenes.
- (assert '(Isa (DescribeILO (EffectOfOn "position of substitution*" (ElectrophilicSubstitutionofClass "arene molecular substance class*"))) "ILO class*"))
+ (assert '(Isa (DescribeILO (EffectOfOn "position of substitution*" (ReactionTypeofClass "electrophilic substitution*" "arene molecular substance class*"))) "ILO class*"))
  ; 183. Recall the chemistry of halogenoalkanes as exemplified by (i) the following nucleophilic substitution reactions of bromoethane: hydrolysis, formation of nitriles, formation of primary amines by reaction with ammonia (ii) the elimination of hydrogen bromide from 2-bromopropane.
  (assert '(Isa (DescribeILO (ChemistryOfClass "haloalkane substance class*") "ILO class*"))
  (assert '(Isa (DescribeILO (ReactionTypeOnSubstrate "hydrolysis reaction class*"  "bromoethane molecular substance*") "ILO class*"))
@@ -695,16 +712,18 @@
  ; 187. Recognise the concern about the effect of chlorofluoroalkanes on the ozone layer.
  (assert '(Isa (DiscussILO (EffectOfOn "chlorofluoroalkane substance class*" "ozone layer*"))) "ILO class*"))
  ; 188. Recall the chemistry of alcohols, exemplified by ethanol: (i) combustion (ii) substitution to give halogenoalkanes (iii) reaction with sodium (iv) oxidation to carbonyl compounds and carboxylic acids (v) dehydration to alkenes (vi) formation of esters by esterification with carboxylic acids and acylation with acyl chlorides.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (SummariseILO (ChemistryOfClass "alcohol substance class")) "ILO class*"))
+ (assert '(ILOQualifier (SummariseILO (ChemistryOfClass "alcohol substance class")) (setof (asExemplifiedBy "ethanol substance*") (Including "combustion*"))
  ; 189. Classify hydroxy compounds into primary, secondary and tertiary alcohols (ii) suggest characteristic distinguishing reactions, e.g. mild oxidation.
  (assert '(Isa (ClassifyILO "hydroxy substance class*") "ILO class*"))
  (assert '(ILOQualifier (ClassifyILO "hydroxy substance class*") (ClassificationCategories "primary alcohol class*" "secondary alcohol class*" "tertiary alcohol class*")))
  ; 190. Deduce the presence of a CH3CH(OH)– group in an alcohol from its reaction with alkaline aqueous iodine to form tri-iodomethane
  (assert '(Isa () "ILO class*"))
  ; 191. Recall the chemistry of phenol, as exemplified by the following reactions: (i) with bases (ii) with sodium (iii) with diazonium salts (Section 10.7) (iv) nitration of, and bromination of, the aromatic ring.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (SummariseILO (ChemistryOf "phenol substance*")) "ILO class*"))
+ (assert '(ILOQualifier (SummariseILO (ChemistryOf "phenol substance*")) (asExemplifiedBy (setof (ReactionBetween "phenol substance*" (every x (Isa x "base class*")))))
  ; 192. Describe and explain the relative acidities of water, phenol and ethanol.
- (assert '(Isa (DescribeILO (NamedRelativePropertyOf "acidity*" (setof "water molecular substance*" "phenol molecular substance*" "ethanol molecular substance*"))) "ILO class*"))
+ (assert '(Isa (DescribeILO (NamedRelativePropertyOf "acidity*" (setof "water substance*" "phenol substance*" "ethanol substance*"))) "ILO class*"))
  ; 193. Describe (i) the formation of aldehydes and ketones from primary and secondary alcohols respectively using Cr2O7? 2–/H+ (ii) the reduction of aldehydes and ketones e.g. using NaBH4 or LiAlH4? (iii) the reaction of aldehydes and ketones with HCN and NaCN.
  (assert '(Isa () "ILO class*"))
  ; 194. Describe the mechanism of the nucleophilic addition reactions of hydrogen cyanide with aldehydes and ketones.
@@ -836,13 +855,14 @@
  (assert '(inManner (DescribeILO "DNA fingerprinting*") "simply*"))
  (assert '(Isa (DescribeILO (NamedAspectOf "applications*" "DNA fingerprinting*")) "ILO class*"))
  ; 241. Describe the importance to modern medicine, and the challenges, of separating and characterising the proteins in cells (link to 11.1).
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (NamedAspectOf "importance*" (SeparationOf "cell protein class*") (CharacterisationOf "cell protein class*"))) "ILO class*"))
+ (assert '(ILOQualifier (DescribeILO (NamedAspectOf "importance*" (SeparationOf "cell protein class*") (CharacterisationOf "cell protein class*"))) (inDomain "medicine*")))
  ; 242. Outline in simple terms the principles of nuclear magnetic resonance in 1H and be able to interpret simple NMR spectra, using chemical shift values, splitting patterns and the effect of adding D2O to a sample.
  (assert '(Isa (OutlineILO (NamedAspectOf "principle class*" "proton nuclear magnetic resonace*")) "ILO class*"))
  ; 243. Show awareness of the use of NMR and X-ray crystallography in determining the structure of macromolecules and in understanding their function (link to 11.1 (c) and 11.2 (c))
- (assert '(Isa (ShowAwarenessOfILO (UseOfFor NMR* (DeterminationOf (AspectOf "structure*""macromolecule class*")))) "ILO class*"))
+ (assert '(Isa (ShowAwarenessOfILO (UseOfFor "NMR spectroscopy*" (DeterminationOf (AspectOf "structure*""macromolecule class*")))) "ILO class*"))
  (assert '(Isa (ShowAwarenessOfILO (UseOfFor "x-ray crystallography*" (DeterminationOf (Aspectof "structure*" "macromolecule class*")))) "ILO class*"))
- (assert '(Isa (ShowAwarenessOfILO (UseOfFor NMR* (UnderstandingOf (AspectOf function* "macromolecule class*")))) "ILO class*"))
+ (assert '(Isa (ShowAwarenessOfILO (UseOfFor "NMR spectroscopy*" (UnderstandingOf (AspectOf function* "macromolecule class*")))) "ILO class*"))
  (assert '(Isa (ShowAwarenessOfILO (UseOfFor "x-ray crystallography*" (UnderstandingOf (AspectOf function* "macromolecule class*")))) "ILO class*"))
  ; 244. State what is meant by partition coefficient and calculate a partition coefficient for a system in which the solute is in the same molecular state in the two solvents
  (assert '(Isa (DefineILO "partition coefficient*") "ILO class*"))
@@ -854,15 +874,15 @@
  ; 247. Draw conclusions given appropriate information and data from environmental monitoring (for example, PCBs in the atmosphere, isotopic ratios in ice cores).
  (assert '(Isa () "ILO class*"))
  ; 248. Discuss the challenges of drug design and explain in simple terms how molecules may be identified and developed to overcome these problems
- (assert '(Isa (DiscussILO (AspectOf challenge* "drug design*")) "ILO class*"))
+ (assert '(Isa (DiscussILO (NamedAspectOf challenge* "drug design*")) "ILO class*"))
  ; 249. Discuss the challenges of drug delivery and explain in simple terms how materials may be developed to overcome these problems.
  (assert '(Isa () "ILO class*"))
  ; 250. Discuss the properties and structure of polymers based on their methods of formation (addition or condensation, link to core syllabus, section 10.8).
- (assert '(Isa (DiscussILO (PropertiesOf (every x (Isa x "polymer class*"))))))
- (assert '(Isa (DiscussILO (StructureOf (every x (Isa x "polymer class*")))))) 
+ (assert '(Isa (DiscussILO (PropertiesOfClass "polymer class*"))))
+ (assert '(Isa (DiscussILO (NamedPropertyOfClass "structure*" "polymer class*"))))
  ;;; OR
- (assert '(Isa (DiscussILO (ClassPropertiesOf "polymer class*"))))
- (assert '(Isa (DiscussILO (ClassPropertyOf "structure*" "polymer class*"))))
+ (assert '(Isa (DiscussILO (PropertiesOfClass "polymer class*"))))
+ (assert '(Isa (DiscussILO (NamedPropertyOfClass "structure*" "polymer class*"))))
   ; 251. Discuss how the presence of side-chains and intermolecular forces affect the properties of polymeric materials (for example, spider silk).
  (assert '(Isa () "ILO class*"))
  ; 252. Show awareness of nanotechnology and, given information and data, be able to discuss the chemistry involved with reference to the core syllabus.
@@ -871,6 +891,6 @@
  ; 253. Discuss how a knowledge of chemistry can be used to overcome environmental problems (for example, ground water contamination, oil spillage, CFCs).
  (assert '(Isa (DiscussILO (UseOfTo chemistry* )) "ILO class*"))
  ; 254. Discuss how a knowledge of chemistry can be used to extend the life of existing resources, to identify alternative resources and to improve the efficiency of energy production and use.
- (assert '(Isa (DiscussILO (UseOfTo chemistry* (AlterPropertyOf extend* life* "natural resources*"))) "ILO class*")) ;; Use NamedPropertyOf for property
+ (assert '(Isa (DiscussILO (UseOfTo chemistry* (AlterPropertyOf extend* life* "natural resource class*"))) "ILO class*")) ;; Use NamedPropertyOf for property
  (assert '(Isa (DiscussILO (UseOfTo chemistry* (AlterPropertyOf improve* efficiency* (ProductionOf energy*)))) "ILO class*")) ;; Use NamedPropertyOf for property
  (assert '(Isa (DiscussILO (UseOfTo chemistry* (AlterPropertyOf improve* efficiency* (UseOf energy*)))) "ILO class*")) ;; Use NamedPropertyOf for property
