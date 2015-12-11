@@ -376,8 +376,17 @@
  (assert '(Isa (DescribeILO "enzyme class*") "ILO class*"))
  (assert '(hasDescription "biological catalysts (proteins) which may have specific activity"))
  ; 88. Construct and use rate equations of the form rate = kA?mB?n (limited to simple cases of single step reactions and of multistep processes with a rate-determining step, for which m and n are 0, 1 or 2), including: (i) deducing the order of a reaction from concentration-time graphs, by the initial rates method and half-life methods (ii) deducing, for zero- and first-order reactions, the order of reaction from concentration-time graphs (iii) verifying that a suggested reaction mechanism is consistent with the observed kinetics (iv) predicting the order that would result from a given reaction mechanism (and vice versa) (v) calculating an initial rate using concentration data forms of rate equations are not required?.
-  ; 89. Show understanding that the half-life of a first-order reaction is independent of concentration (ii) use the half-life of a first-order reaction in calculations.
- (assert '(Isa (UnderstandILO (IsIndependentOf "half-life of a first-order reaction" "concentration")) "ILO class*"))
+ (assert '(Isa (DeduceILO "reaction order*") "ILO class*"))
+ (assert '(ILOQualifier (DeduceILO "total order of reaction*") (Using (GraphOf "concentration*" "time*")) (withMeans "half-life method*")))
+ (assert '(ILOQualifier (DeduceILO "total order of reactionr*") (Using (GraphOf "concentration*" "time*")) (withMeans "initial rates method*")))
+ (assert '(ILOQualifier (DeduceILO "total order of reaction*") (Using (GraphOf "concentration*" "time*")) (fprSystem "zero-order reaction**")))
+ (assert '(ILOQualifier (DeduceILO "total order of reaction*") (Using (GraphOf "concentration*" "time*")) (forSystem "first-order reaction**")))
+ (assert '(Isa (VerifyILO (isConsistentWith (every x (Isa x "reaction mechanism*")) (NamedPropertyOfReaction "kinetics*" x))) "ILO class*"))
+ (assert '(ILOQualifier (DeduceILO "total order of reaction*") (Given "reaction mechanism*")))
+ (assert '(Isa (DeduceILO "reaction mechanism*") "ILO class*"))
+ (assert '(ILOQualifier (DeduceILO "reaction mechanism*") (Given "total order of reaction*")))
+   ; 89. Show understanding that the half-life of a first-order reaction is independent of concentration (ii) use the half-life of a first-order reaction in calculations.
+ (assert '(Isa (UnderstandILO (isIndependentOf (NamedQuantityOf "half-life*" "first-order reaction*") "concentration")) "ILO class*"))
  ; 90. Calculate a rate constant, for example by using the initial rates or half-life method.
   ; REWRITE: 90a. Calculate a rate constant using the initial rates method.
  ; 90b. Calculate a rate constant using the half-life method.
@@ -410,12 +419,12 @@
  ; 96. Explain the variation in first ionisation energy.
  (assert '(Isa (ExplainILO (VariationIn "first ionization energy*") "ILO class*"))
  ; 97. Describe the reactions, if any, of the elements with oxygen (to give Na2O, MgO, Al 2O3, P4O10?, SO2, SO3), chlorine (to give NaCl? , MgCl? 2, Al 2Cl 6, SiCl? 4, PCl 5) and water (Na and Mg only).
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (ChemicalReactionBySpecies (Reactant (setof "sodium element*" "oxygen element*")) (Product )) "ILO class*"))
  ; 98. State and explain the variation in oxidation number of the oxides and chlorides in terms of their valance shell electrons.
  (assert '(Isa (StateILO (VariationIn (NamedQuantityyOfClass "oxidation number*" "oxide substance class*"))) "ILO class*"))
  (assert '(inTermsOf (StateILO (VariationIn (NamedQuantityOfClass "oxidation number*" "oxide substance class*"))) "valence shell electrons*"))
  (assert '(Isa (StateILO (VariationIn (NamedQuantityOfClass "oxidation number*" "chloride substance class*"))) "ILO class*"))
- (assert '(inTermsOf (StateILO (VariationIn (NamedQuantityOfClass "oxidation number*" "chloride substance class*"))) "valence shell electrons*"))
+ (assert '(ILOQualifier (StateILO (VariationIn (NamedQuantityOfClass "oxidation number*" "chloride substance class*"))) (inTermsOf "valence shell electrons*")))
  ; 99. Describe the reactions of the oxides with water of peroxides and superoxides is not required?.
  (assert '(Isa (DescribeILO (ReactionBetween (setof "oxide substance class*" "water substance*")))  "ILO class*"))
   ; 100. Describe and explain the acid/base behaviour of oxides and hydroxides including, where relevant, amphoteric behaviour in reaction with sodium hydroxide (only) and acids.
@@ -427,32 +436,32 @@
  ; 102. Interpret the variations and trends in (f), (g), (h), and (i) in terms of bonding and electronegativity.
  (assert '(Isa (InterpretILO ) "ILO class*"))
  ; 103. Suggest the types of chemical bonding present in chlorides and oxides from observations of their chemical and physical properties.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (SuggestILO (NamedPropertyOf "bonding*" (every x (Isa x "chloride substance class*") (Given (setof (ChemicalPropertiesOf x) (PhysicalPropertiesOf x)))))) "ILO class*"))
  ; 104. Predict the characteristic properties of an element in a given group by using knowledge of chemical periodicity.
  (assert '(Isa (PredictILO (every x (Isa x "element class*") (inGroup x (every y (Isa y "periodic table group class*")))))  "ILO class*"))
  (assert '(Using (PredictILO (every x (Isa x "element class*") (inGroup x (every y (Isa y "periodic table group class*"))))) "chemical periodicity*"))
  ; 105. Deduce the nature, possible position in the Periodic Table, and identity of unknown elements from given information about physical and chemical properties.
  (assert '(Isa () "ILO class*"))
  ; 106. describe the reactions of the elements with oxygen, water and dilute acids.
- (assert '(Isa (DescribeILO (ReactioBetween (setof "element class*" "oxygen element*"))) "ILO class*"))
- (assert '(Isa (DescribeILO (ReactioBetween (setof "element class*" "water substance**"))) "ILO class*"))
- (assert '(Isa (DescribeILO (ReactioBetween (setof "element class*" "dilute acid class*"))) "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactioBetween (setof (every x (Isa x "element class*")) "oxygen element*"))) "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactioBetween (setof (every x (Isa x "element class*")) "water substance*"))) "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactioBetween (setof (every x (Isa x "element class*")) (every y (Isa y "dilute acid class*"))))) "ILO class*"))
  ; 107. Describe the behaviour of the oxides, hydroxides and carbonates with water and with dilute acids.
  (assert '(Isa (DescribeILO (ReactionBetween  (setof "hydroxide substance class*" "water substance*"))) "ILO class*"))
  (assert '(Isa (DescribeILO (ReactionBetween  (setof "carbonate substance class*" "water substance*"))) "ILO class*"))
- (assert '(Isa (DescribeILO (ReactionBetween  (setof "hydroxide substance class*" "dilute acid class*"))) "ILO class*"))
- (assert '(Isa (DescribeILO (ReactionBetween  (setof "carbonate substance class*" "dilute acid class**"))) "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionBetween  (setof "hydroxide substance class*" (every y (Isa y "dilute acid class*"))))) "ILO class*"))
+ (assert '(Isa (DescribeILO (ReactionBetween  (setof "carbonate substance class*" (every y (Isa y "dilute acid class*"))))) "ILO class*"))
  (assert '(Isa () "ILO class*"))
  ; 108. Describe the thermal decomposition of the nitrates and carbonates.
- (assert '(Isa (DescribeILO (TypeOfReactionOf "thermal decomposition*" "nitrate substance class*")) "ILO class*"))
- (assert '(Isa (DescribeILO (TypeOfReactionOf "thermal decomposition*" "carbonate substance class*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (TypeOfReactionOfClass "thermal decomposition*" "nitrate substance class*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (TypeOfReactionOfClass "thermal decomposition*" "carbonate substance class*")) "ILO class*"))
  ; 109. Interpret, and make predictions from, the trends in physical and chemical properties of the elements and their compounds.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (InterpretILO (Trend) "ILO class*"))
  ; 110. Explain the use of magnesium oxide as a refractory lining material.
- (assert '(Isa (ExplainILO (UseOf "magnesium oxide substance*" (Purpose "refractory lining material*"))) "ILO class*"))
+ (assert '(Isa (ExplainILO (UseOfFor "magnesium oxide substance*" (Purpose "refractory lining material*"))) "ILO class*"))
   ; 111. Describe and explain the use of lime in agriculture.
- (assert '(Isa (DescribeILO (UseOfIn lime* "agriculture*")) "ILO class*"))
- (assert '(Isa (ExplainILO (UseOfIn lime* "agriculture*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (UseOfIn "lime*" "agriculture*")) "ILO class*"))
+ (assert '(Isa (ExplainILO (UseOfIn "lime*" "agriculture*")) "ILO class*"))
  ; 112. Interpret and explain qualitatively the trend in the thermal stability of the nitrates and carbonates in terms of the charge density of the cation and the polarisability of the large anion.
  (assert '(Isa (ExplainILO (TrendIn (NamedPhysicalPropertyOfClass "thermal stability*" "nitrate substance class*"))) "ILO class*"))
 (assert '(inTermsOf (ExplainILO (TrendIn (NamedPhysicalPropertyOfClass "thermal stability*" "nitrate substance class*"))) (setof (NamedPhysicalPropertyOf "charge density*" "cation*") (NamedPhysicalPropertyOf "polarisability*" "anion*"))
@@ -493,10 +502,10 @@
  (assert '(Isa (DescribeILO (RelativeStabilityOfClass (every x (Isa x "element oxide substance class*") (hasNamedQuantityNamedRange "oxidation state*" x "lower*")) "ILO class*"))
  (assert '(Isa (DescribeILO (RelativeStabilityOfClass (every x (Isa x "element oxide substance class*") (hasNamedQuantityNamedRange "oxidation state*" x "higher*")) "ILO class*"))
  ;; 119. Describe the colours of, and the trend in volatility of chlorine, bromine and iodine.
-  (assert '(Isa (DescribeILO )(TrendInSet (setof (NamedPhysicalPropertyOf "volatility*" "chlorine element*") (NamedPhysicalPropertyOf "volatility*" "bromine element*") (NamedPhysicalPropertyOf "volatility*" "iodine element*"))) ) "ILO class*"))
+  (assert '(Isa (DescribeILO (TrendInSet (setof (NamedPhysicalPropertyOf "volatility*" "chlorine element*") (NamedPhysicalPropertyOf "volatility*" "bromine element*") (NamedPhysicalPropertyOf "volatility*" "iodine element*"))) ) "ILO class*"))
  ;; 120. Interpret the volatility of the elements in terms of van der Waals’ forces.
- (assert '(Isa (InterpretILO (NamedPhysicalPropertyOfClass "volatility" "element class*") )) "ILO class*")))
- (assert '(inTermsOf (InterpretILO (NamedPhysicalPropertyOfClass "volatility*" "element class*")))) ("van der Waals forces*") ))
+ (assert '(Isa (InterpretILO (NamedPhysicalPropertyOfClass "volatility" "element class*")) "ILO class*"))
+ (assert '(ILOQualifier (InterpretILO (NamedPhysicalPropertyOfClass "volatility*" "element class*")) (inTermsOf "van der Waals forces*")))
  ; 121. Describe and deduce from E values the relative reactivity of the elements as oxidising agents.
  (assert '(Isa (DeduceILO (RelativeReactivityOf (every x (Isa x "element class*") (Isa x "oxidising agent class*"))))) "ILO class*"))
  (assert '(ILOQualifier (DeduceILO (RelativeReactivityOf (every x (Isa x "element class*") (Isa x "oxidising agent class*"))))) (Grounds "E value*"))
@@ -517,13 +526,12 @@
  (assert '(Isa (DescribeILO (ReactionBetween (setof "chlorine element*" (QualifiedSubstance "sodium hydroxide substance*" (setof (State "aqueous*") (Temperature "hot*")))))) "ILO class*"))
  (assert '(Isa (DescribeILO (ReactionBetween (setof "chlorine element*" (QualifiedSubstance "sodium hydroxide substance*" (setof (State "aqueous*") (Temperature "cold*")))))) "ILO class*"))
  ;; 127. Explain the use of chlorine in water purification.
- (assert '(Isa (ExplainILO (UseOf "hydrogen molecular substance*") ) "ILO class*"))
- (assert '(forPurpose (UseOf "hydrogen molecular substance*") (PurificationOf "water substance*")))
- ; 128. State the industrial importance and environmental significance of the halogens and their compounds (e.g. for bleaches, PVC, halogenated hydrocarbons as solvents, refrigerants and in aerosols) (see also Section 10.3)
+ (assert '(Isa (ExplainILO (UseOfFor "hydrogen molecular substance*" (PurificationOf "water substance*")) ) "ILO class*"))
+  ; 128. State the industrial importance and environmental significance of the halogens and their compounds (e.g. for bleaches, PVC, halogenated hydrocarbons as solvents, refrigerants and in aerosols) (see also Section 10.3)
  (assert '(Isa (State (NamedNonPhysicalPropertyOfClass "industrial importance*" "halogen substance class*"))) "ILO class*"))
  ; 129. Explain what is meant by a transition element, in terms of d-block elements forming one or more stable ions with incomplete d orbitals.
  (assert '(Isa (ExplainTerm "transition element*") "ILO class*"))
- (assert '(ILOQualifier (ExplainTerm "transition element*") (inTermsOf )))
+ (assert '(ILOQualifier (ExplainTerm "transition element*") (inTermsOf (FormationOfClass "complex ion class*"))))
  ;; 130. State the electronic configuration of a first row transition element and of its ions.
  (assert '(Isa (StateILO (ElectronicConfigurationOf (every x (Isa x "first row transition element class*"))) "ILO class*")))
  ; 131. Contrast, qualitatively, the melting points and densities of the transition elements with those of calcium as a typical s-block element.
@@ -532,21 +540,23 @@
  ; 132. Describe the tendency of transition elements to have variable oxidation states
  (assert '(Isa (DescribeILO (Tendency (every x (Isa x "transition element class*")) (hasProperty "variable oxidation state*" x)) "ILO class*"))
  ; 133. Predict from a given electronic configuration, the likely oxidation states of a transition element.
- (assert '(Isa (Predict (OxidationStateOf (every x (Isa x "transition element class*") )) "ILO class*"))
- (assert '(Given (Predict (OxidationStateOf (every x (Isa x "transition element class*") )) (ElectronicConfiguratonOf x))))
+ (assert '(Isa (PredictILO (NamedQuantityOf "oxidation state*" (every x (Isa x "transition element class*") )) "ILO class*"))
+ (assert '(ILOQuantifier (PredictILO (NamedQuantityOf "oxidation state*" (every x (Isa x "transition element class*") )) (Given (ElectronicConfiguratonOf x)))))
  ; 134. Describe and explain the use of Fe3+/Fe2+, MnO4?−/Mn2+ and Cr2O72?−/Cr3+ as examples of redox systems (see also Section 6).
+ (assert '(Isa (DescribeILO (UseOf (RedoxSystem ))) "ILO class*"))
  ; 135. Predict, using E values, the likelihood of redox reactions.
- (assert '(Isa (Predict (LikelihoodOf (every x (Isa x "redox reaction class*") ))) ILO ))
- (assert '(Using (Predict (LikelihoodOf (every x (Isa x "redox reaction class*") )))(every y (Isa y "E value class*"))))
+ (assert '(Isa (PredictILO (LikelihoodOf (every x (Isa x "redox reaction class*") ))) ILO ))
+ (assert '(ILOQualifier  (PredictILO (LikelihoodOf (every x (Isa x "redox reaction class*") ))) (Given (every y (Isa y "E value class*")))))
  ; 136. Explain the reactions of transition elements with ligands to form complexes, including the complexes of copper(II) ions with water, hydroxide, ammonia and chloride ions.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (TypedChemicalReactionsOfClass "formation*" "complex ion class*" )) "ILO class*"))
+ (assert '(ILOQualifier (DescribeILO (TypedChemicalReactionsOfClass "formation*" "complex ion class*" )) (Including (setof (ComplexIon "copper element*" "2" "water molecule*") (ComplexIon "copper element*" "2" "ammonia molecular entity*") (ComplexIon "copper element*" "2" "chloride anionic entity*")))))
  ; 137. Define the term ligand as a species that contains a lone pair of electrons that forms a dative bond to a central metal atom/ion.
  (assert '(Isa (DefineILO "ligand*") "ILO class*"))
  ; 138. Define the term complex as a molecule or ion formed by a central metal atom/ion surrounded by one or more ligands.
  (assert '(Isa (DefineILO "complex*") "ILO class*"))
  ; 139. Describe transition metal complexes as linear, octahedral, tetrahedral or square planar.
  (assert '(Isa (IdentifyILO (ShapeOf (every x (Isa x "transition metal complex class*"))))  "ILO class*"))
- (assert '(fromOptions (IdentifyILO (ShapeOf (every x (Isa x "transition metal complex class*")) )) (setof "linear*" "octahedral*" "tetrahedral*" "square planar*")))
+ (assert '(ILOQualifier (IdentifyILO (ShapeOf (every x (Isa x "transition metal complex class*")) )) (fromOptions (setof "linear*" "octahedral*" "tetrahedral*" "square planar*"))))
  ; 140. Explain qualitatively that ligand exchange may occur, including the complexes of copper(II) ions with water, hydroxide, ammonia and chloride ions.
  (assert '(Isa (DescribeILO "ligand exchange*") "ILO class*") 
  (assert '(ILOQualifier (DescribeILO "ligand exchange*") (withReferenceTo (setof (InteractionBetween "copper II complex class*" "water substance*") (InteractionBetween "copper II complex class*" "ammonia substance*") (InteractionBetween "copper II complex class*" "chloride ion species*")) ))) 
@@ -557,11 +567,13 @@
  (assert '(ILOQualifier (DescribeILO (RemovelOfFrom "degeneracy*" "d-orbital class*")) (setof (withReferenceTo "octahedral complex class*") (withExamples "copper II water complex class*"))))
  (assert '(ILOQualifier (DescribeILO (RemovelOfFrom "degeneracy*" "d-orbital class*"))  (setof (withReferenceTo "octahedral complex class*") (withExamples "copper II ammonia complex class*"))))
   ; 142. Explain the origin of colour in transition element complexes resulting from the absorption of light energy as an electron moves between two non-degenerate d orbitals.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (ExplainILO (OriginOf "color*")) "ILO class*"))
+ (assert '(ILOQualifier (ExplainILO (OriginOf "color*")) (inDomain "transition element complex ion class*")))
  ; 143. Describe, in qualitative terms, the effects of different ligands on absorption, and hence colour, using the complexes of copper(II) ions with water, hydroxide, ammonia and chloride ions as examples.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (EffectOfOn (every x (Isa x "ligand class*")) "color**") "ILO class*"))
+ (assert '(ILOQualifier (DescribeILO (EffectOfOn (every x (Isa x "ligand class*")) "color**") (withExamples (setof (ComplexIon "copper element*" "2" "water molecule*") (ComplexIon "copper element*" "2" "ammonia molecular entity*") (ComplexIon "copper element*" "2" "chloride anionic entity*"))))))
  ; 144. Apply the above ideas of ligands and complexes to other metals, given information
- (assert '(Isa () "ILO class*"))
+ ;; ??
  ; 145. Explain the lack of reactivity of nitrogen
  (assert '(Isa (ExplainILO (NamedChemicalPropertyOf "unreactivity*"  "nitrogen element*")) "ILO class*"))
  ; 146. Describe and explain: (i) the basicity of ammonia (see Section 7) (ii) the structure of the ammonium ion and its formation by an acid-base reaction (iii) the displacement of ammonia from its salts.
@@ -575,19 +587,26 @@
  (assert '(Isa (StateILO (QualifiedTerm "environmental*" (ConsequencesOf (NamedUseOfClass "fertiliser**" "nitrate substance class*"))))) "ILO class*"))
  (assert '(Isa (ExplainILO (QualifiedTerm "environmental*" (ConsequencesOf (NamedUseOfClass "fertiliser*" "nitrate substance class*"))))) "ILO class*"))
   ; 150. State and explain the natural and man-made occurrences of oxides of nitrogen and their catalytic removal from the exhaust gases of internal combustion engines.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (ExplainILO (NamedAspectOfClass "natural occurrence*" "oxide of nirogen class*")) "ILO class*"))
+ (assert '(Isa (ExplainILO (NamedAspectOfClass "man-made  occurrence*" "oxide of nitrogen class*")) "ILO class*"))
  ; 151. Explain why atmospheric oxides of nitrogen are pollutants, including their catalytic role in the oxidation of atmospheric sulfur dioxide.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (ExplainWhyILO (every x (Isa x (oxide of nitrogen class*)) (Isa x "atmospheric pollutant class*"))) "ILO class*"))
  ; 152. Describe the formation of atmospheric sulfur dioxide from the combustion of sulfur contaminated carbonaceous fuels.
- (assert '(Isa () "ILO class*"))
- ; 153. State the role of sulfur dioxide in the formation of acid rain and describe the main environmental consequences of acid rain. sulfur contaminated carbonaceous fuels.
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (DescribeILO (NamedAspectOf "origin*" "sulfur dioxide substance*")) "ILO class*"))
+ (assert '(ILOQualifier (DescribeILO (NamedAspectOf "origin*" "sulfur dioxide substance*")) (inDomain "atmosphere*")))
+ ; 153. State the role of sulfur dioxide in the formation of acid rain and describe the main environmental consequences of acid rain. .
+ (assert '(Isa (StateILO (RoleOfIn "sulfur dioxide substance*" (FormationOf "acid rain*"))) "ILO class*"))
+ (assert '(Isa (DescribeILO (every x (isConsequenceOf x "acid rain*")) "ILO class*"))
+ (assert '(ILOQualifier (DescribeILO (every x (isConsequenceOf x "acid rain*")) (inDomain "environment*"))))
  ; 154. State the main details of the Contact process for sulfuric acid production.
- (assert '(Isa (DescribeILO (DetailsOf "contact process*")) "ILO class*"))
+ (assert '(Isa (DescribeILO "contact process*") "ILO class*"))
  ; 155. Describe the use of sulfur dioxide in food preservation
- (assert '(Isa (DescribeILO (forPurpose (UseOf "sulfur dioxide molecular substance*") "food preservation*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (UseOfFor "sulfur dioxide molecular substance*" "food preservation*")) "ILO class*"))
   ; 156. Interpret, and use the general, structural, displayed and skeletal formulae of the following classes of compound: (i) alkanes, alkenes and arenes (ii) halogenoalkanes and halogenoarenes (iii) alcohols (including primary, secondary and tertiary) and phenols (iv) aldehydes and ketones (v) carboxylic acids, esters and acyl chlorides (vi) amines (primary only), nitriles, amides and amino acids will be expected to recognise the shape of the benzene ring when it is present in organic compounds. Knowledge of benzene or its compounds is not required for AS.?
- (assert '(Isa () "ILO class*"))
+ (assert '(Isa (InterpretILO (every y (Isa y "structural formula class*") (hasStructuralFormula x y) (Isa x "alkane molecular substance class*")))) "ILO class*"))
+ (assert '(Isa (UseILO (every y (Isa y "structural formula class*") (hasStructuralFormula x y) (Isa x "alkane molecular substance class*")))) "ILO class*"))
+ (assert '(Isa (InterpretILO (every y (Isa y "structural formula class*") (hasStructuralFormula x y) (Isa x "alkene molecular substance class*")))) "ILO class*"))
+ (assert '(Isa (UseILO (every y (Isa y "structural formula class*") (hasStructuralFormula x y) (Isa x "alkene molecular substance class*")))) "ILO class*"))
  ; 157. Interpret, and use the following terminology associated with organic reactions: (i) functional group (ii) homolytic and heterolytic fission (iii) free radical, initiation, propagation, termination (iv) nucleophile, electrophile (v) addition, substitution, elimination, hydrolysis (vi) oxidation and reduction equations for organic redox reactions, the symbols [O? and H? are acceptable].
  (assert '(Isa (DefineILO "functional group*") "ILO class*"))
  (assert '(Isa (DefineILO "homolytic fission*") "ILO class*"))
@@ -596,8 +615,8 @@
  (assert '(Isa (DefineILO "initiation reaction*") "ILO class*"))
  (assert '(Isa (DefineILO "propagation reaction*") "ILO class*"))
  (assert '(Isa (DefineILO "termination reaction*") "ILO class*"))
- (assert '(Isa (DefineILO nucleophile*) "ILO class*"))
- (assert '(Isa (DefineILO electrophile*) "ILO class*"))
+ (assert '(Isa (DefineILO "nucleophile*") "ILO class*"))
+ (assert '(Isa (DefineILO "electrophile*") "ILO class*"))
  (assert '(Isa (DefineILO "addition reaction*") "ILO class*"))
  (assert '(Isa (DefineILO "substitution reaction*") "ILO class*"))
  (assert '(Isa (DefineILO "elimination reaction*") "ILO class*"))
