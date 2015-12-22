@@ -23,6 +23,9 @@
 (defineCaseframe 'Thing '('BehaviorOf thing-with-behavior)
   :docstring "behavior of [thing-with-behavior]")
 
+(defineCaseframe 'Means '('byReactionOf reactants)
+  :docstring "by reaction of [reactants]")
+
 ;;; C
 
 (defineCaseframe 'ILO '(actions object-of-calculation)
@@ -80,6 +83,9 @@
 
 ;;; E
 
+(defineCaseframe 'Thing '('EffectOfOn influence object-of-influence)
+  :docstring "effect of [influence] on [object-of-influence]")
+
 (defineCaseframe 'ILO '(actions entity-with-explanation)
     :docstring "Explain the [entity-with-explanation]"
     :fsymbols '(Explain ExplainWhy AccountFor ExplainTerm ExplainAndUseTerm))
@@ -117,6 +123,12 @@
 (defineCaseframe 'ILO '(actions identifiable-thing)
     :docstring "identify [identifiable-thing]"
     :fsymbols '(IdentifyILO))
+
+(defineCaseframe 'Proposition  '('ILOModification ilo clause modification)
+  :docstring "[clause] of [ilo] is modified by [modification]")
+
+(defineCaseframe 'Proposition  '('ILOQualication ilo qualification)
+  :docstring "[ilo] is qualified by [qualification]")
 
 (defineCaseframe 'Proposition '(Inclusion inclusion-set)
   :docstring "including [inclusion-set]"
@@ -196,6 +208,9 @@
   :fsymbols '(StateILO WriteILO WriteDownILO ProposeILO RecountILO ReportILO SuggestILO RelateILO))
 
 ;;; T
+
+(defineCaseframe 'Thing '('TypedChemicalReactionOfClass reaction-type reactant-class)
+  :docstring "[reaction-type] of [reactant-class]")
 
 ;;; U
 

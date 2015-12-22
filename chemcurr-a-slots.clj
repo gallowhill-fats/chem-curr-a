@@ -30,6 +30,7 @@
 (defineSlot class-with-behavior :type :Category)
 (defineSlot class-with-physical-properties :type :Category)
 (defineSlot class-with-properties :type :Category)
+(defineSlot clause :type :Thing)
 (defineSlot comparative-aspect :type :Comparative)
 (defineSlot comparative-thing :type :Thing)
 (defineSlot comparative-sense :type :Thing)
@@ -100,6 +101,7 @@
 
 (defineSlot identifiable-thing :type :Thing)
 (defineSlot IdentifyILO :type :Thing)
+(defineSlot ilo :type :ILO)
 (defineSlot inChemicalSystem :type :Thing)
 (defineSlot inCircumstances :type :Thing)
 (defineSlot Including :type :Thing)
@@ -107,6 +109,7 @@
 (defineSlot inclusion-set :type :Entity)
 (defineSlot inDomain :type :Thing)
 (defineSlot InferILO :type :Thing)
+(defineSlot influence :Thing)
 (defineSlot influencing-entity :type :Entity)
 (defineSlot Incorporating :type :Thing)
 (defineSlot instrument :type :Thing)
@@ -129,6 +132,7 @@
 ;;; M
 
 (defineSlot MatchILO :type :Thing)
+(defineSlot modification :type :Thing)
 
 ;;; N
 
@@ -141,6 +145,7 @@
 (defineSlot ObjectiveInfluence :type :Thing)
 (defineSlot object-of-action :type :Thing)
 (defineSlot object-of-calculation :type :Thing)
+(defineSlot object-of-influence :type :Thing)
 (defineSlot OperateILO :type :Thing)
 
 ;;; P
@@ -155,11 +160,15 @@
 
 ;;; Q
 
+(defineSlot qualification :type :Thing)
 (defineSlot quantity :type :Quantity)
 
 ;;; R
 
-(defineSlot reactive-entity :type :ChemicalReferent)
+(defineSlot reactants :type :Thing)
+(defineSlot reactant-class :type :Category)
+
+(defineSlot reaction-type :type :ReactionType)
 (defineSlot RecountILO :type :Thing)
 (defineSlot RelateILO :type :Thing)
 (defineSlot ReportILO :type :Thing)
@@ -224,8 +233,7 @@
 ;;; Z
 
 
-(defineCaseframe 'Thing '('ClassBehaviorOf class-with-behavior)
-  :docstring "behavior of [class-with-behavior]")
+
 
 
 

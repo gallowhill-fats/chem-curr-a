@@ -44,6 +44,10 @@
 
 (defineType :UseAndCircumstance (:Thing))
 
+;;; type of chemical reaction
+
+(defineType :ReactionType (:Thing))
+
 
 
 
