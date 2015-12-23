@@ -124,10 +124,10 @@
     :docstring "identify [identifiable-thing]"
     :fsymbols '(IdentifyILO))
 
-(defineCaseframe 'Proposition  '('ILOModification ilo clause modification)
+(defineCaseframe 'Proposition  '('ILOModifier ilo clause modification)
   :docstring "[clause] of [ilo] is modified by [modification]")
 
-(defineCaseframe 'Proposition  '('ILOQualication ilo qualification)
+(defineCaseframe 'Proposition  '('ILOQualifier ilo qualification)
   :docstring "[ilo] is qualified by [qualification]")
 
 (defineCaseframe 'Proposition '(Inclusion inclusion-set)
@@ -152,6 +152,10 @@
 ;;; L
 
 ;;; M
+
+(defineCaseframe 'Modifier '(modInDomain domain)
+  :docstring "[domain]"
+  :fsymbols '(modInTermsOf modInRelationTo modWithReferenceTo modWithRegardsTo modWithParticularReferenceTo))
 
 ;;; N
 

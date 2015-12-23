@@ -46,7 +46,7 @@
 
 (defineSlot DeduceHowILO :type :Thing)
 (defineSlot DeduceILO :type :Thing)
-(defineSlot definable-thing :type :Thing)
+(defineSlot definable-thing :type :DefinableThing)
 (defineSlot dependent-entity :type :Entity)
 (defineSlot DeriveILO :type :Thing)
 (defineSlot describable-thing :type :Thing)
@@ -133,6 +133,12 @@
 
 (defineSlot MatchILO :type :Thing)
 (defineSlot modification :type :Thing)
+(defineSlot modInDomain :type :Thing)
+(defineSlot modInTermsOf :type :Thing)
+(defineSlot modInRelationTo :type :Thing)
+(defineSlot modWithReferenceTo :type :Thing)
+(defineSlot modWithRegardsTo :type :Thing)
+(defineSlot modWithParticularReferenceTo :type :Thing)
 
 ;;; N
 
@@ -167,7 +173,7 @@
 
 (defineSlot reactants :type :Thing)
 (defineSlot reactant-class :type :Category)
-
+(defineSlot reactive-entity :type :Thing)
 (defineSlot reaction-type :type :ReactionType)
 (defineSlot RecountILO :type :Thing)
 (defineSlot RelateILO :type :Thing)
@@ -182,6 +188,8 @@
 (defineSlot stabilisation-agency :type :Thing)
 (defineSlot statable-thing :type :Thing)
 (defineSlot StateILO :type :Thing)
+(defineSlot symbol :type :Thing)
+(defineSlot symboled-entity :type :Thing)
 
 
 (defineSlot subclass :type Category :negadjust reduce
@@ -231,6 +239,7 @@
 ;;; Y
 
 ;;; Z
+
 
 
 

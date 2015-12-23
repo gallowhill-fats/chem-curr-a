@@ -1,3 +1,7 @@
+;;; analysing
+
+(defineType :Analysable (:Thing))
+
 ;;; number
 (defineType :Number (:Thing))
 (defineType :Real (:Number))
@@ -47,6 +51,18 @@
 ;;; type of chemical reaction
 
 (defineType :ReactionType (:Thing))
+
+;;; Means
+
+(defineType :Means (:Thing))
+
+;;; Defining
+
+(defineType :DefinableThing (:Thing))
+
+;;; Modifier
+
+(defineType :Modifier (:Thing))
 
 
 

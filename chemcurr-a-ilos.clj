@@ -3,20 +3,21 @@
 (assert '(Isa (DefineILO "relative atomic mass*") "ILO class*"))
 (assert '(Isa (DefineILO "relative isotopic mass*") "ILO class*"))
 (assert '(Isa (DefineILO "relative molecular mass*") "ILO class*"))
-(assert '(ILOQualifier (DefineILO "relative atomic mass*")  (inTermsOf "carbon-13 scale*")))
-(assert '(ILOQualifier (DefineILO "relative isotopic mass*") (inTermsOf "carbon-13 scale*")))
-(assert '(ILOQualifier (DefineILO "relative molecular mass*") (inTermsOf "carbon-13 scale*")))
+(assert '(ILOQualifier (DefineILO "relative atomic mass*")  (modInTermsOf "carbon-13 scale*")))
+(assert '(ILOQualifier (DefineILO "relative isotopic mass*") (modInTermsOf "carbon-13 scale*")))
+(assert '(ILOQualifier (DefineILO "relative molecular mass*") (modInTermsOf "carbon-13 scale*")))
 ;; 2. Define and use the term mole in terms of the Avogadro constant.
 (assert '(Isa (DefineILO "mole*") "ILO class*"))
-(assert '(ILOQualifier (DefineILO "mole*")  (inTermsOf "Avogadro constant*")))
+(assert '(ILOQualifier (DefineILO "mole*")  (modInTermsOf "Avogadro constant*")))
  ; 3. Analyse mass spectra in terms of isotopic abundances and molecular fragments.
-(assert '(Isa (AnalyseILO (every x (Isa x "mass spectrum*"))) "ILO class*"))
-(assert '(ILOQualifier (AnalyseILO (every x (Isa x "mass spectrum*"))) (inTermsOf "isotopic abundance*")))
-(assert '(ILOQualifier (AnalyseILO (every x (Isa x "mass spectrum*"))) (inTermsOf "molecular fragments*")))
+(assert '(Isa (AnalyseILO (every x (Isa x "mass spectrum class*") (Isa x Analysable))) "ILO class*"))
+(assert '(ILOQualifier (AnalyseILO (every x (Isa x "mass spectrum class*") (Isa x Analysable))) (modInTermsOf "isotopic abundance*")))
+(assert '(ILOQualifier (AnalyseILO (every x (Isa x "mass spectrum class*") (Isa x Analysable))) (modInTermsOf "molecular fragments*")))
 ;??(assert '(Isa (AnalyseILO (every x (Isa x "mass spectrum class") (Isa x "simple things class") )) "ILO class*"))
 ;; 4. Calculate the relative atomic mass of an element given the relative abundances of its isotopes, or its mass spectrum.
- (assert '(Isa (CalculateILO (every x (hasQuantity "relative atomic mass*" y x) (Isa y "element class*") (Given (every z (hasIsotopicAbundance w y z))) ))  "ILO class*"))
- (assert '(Isa (CalculateILO (every x (hasQuantity "relative atomic mass*" y x) (Isa y "element class*") (Given (MassSpectrumOf y) )))  "ILO class*"))
+ (assert '(Isa (CalculateILO (ValueOf (NamedQuantityOfClassMember "relative atomic mass*" "element class*")))  "ILO class*"))
+ (assert '(ILOQualifier (CalculateILO (ValueOf (NamedQuantityOfClassMember "relative atomic mass*" "element class*"))) (Given )))
+(assert '(ILOQualifier (CalculateILO (ValueOf (NamedQuantityOfClassMember "relative atomic mass*" "element class*"))) (Given )))
  ;; 5. Write and/or construct balanced equations.
  (assert '(Isa (WriteILO (every x (Isa x "chemical equation class*") (isBalanced x))) "ILO class*") )
  ; 6. Perform calculations, including use of the mole concept, involving: (i) reacting masses (from formulae and equations) (ii) volumes of gases (e.g. in the burning of hydrocarbons) (iii) volumes and concentrations of solutions.
