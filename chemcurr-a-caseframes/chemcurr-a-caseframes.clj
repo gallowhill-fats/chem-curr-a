@@ -57,16 +57,23 @@
 
 ;;; D
 
+(defineCaseframe 'Thing '('Data thing-with-data)
+  :docstring "data on [thing-with-data]")
+
 (defineCaseframe 'ILO '(actions definable-thing)
   :docstring "Define [definable-thing]"
   :fsymbols '(DefineILO))
+
+(defineCaseframe 'ILO '(actions definable-thing modification)
+  :docstring "Define [definable-thing] with [modification]"
+  :fsymbols '(DefineILO2))
 
 (defineCaseframe 'ILO '(actions describable-thing)
   :docstring "Describe [describable-thing]"
   :fsymbols '(DescribeILO OutlineILO))
 
-(defineCaseframe 'ILO '(actions content)
-    :docstring "deduce [content]"
+(defineCaseframe 'ILO '(actions deducible-entity)
+    :docstring "deduce [deducible-entity]"
     :fsymbols '(DeduceILO  WorkOutILO DeriveILO AscertainILO DetermineILO FigureOutILO InferILO PuzzleOutILO SurmiseILO DeduceHowILO))
 
 (defineCaseframe 'Thing '('DeterminationOf thing-to-be-determined)
@@ -93,6 +100,9 @@
 ;;; F
 
 ;;; G
+
+(defineCaseframe 'Modifier '('Given thing-given)
+ :docstring "given [thing-given]")
 
 (defineCaseframe 'GreaterComparative '('GreaterComparative property)
   :docstring "greater comparative of [property]")
@@ -145,6 +155,12 @@
 (defineCaseframe 'Proposition '('inPresenceOf thing-in-presence thing-with-presence)
   :docstring "[thing-in-presence] is in presence of [thing-with-presence]")
 
+(defineCaseframe 'Proposition '('Involves involving-entity involvate)
+  :docstring "[involving-entity] involves [involvate]")
+
+(defineCaseframe 'Proposition '('isBalanced chemical-equation)
+  :docstring "[chemical-equation] is balanced")
+
 ;;; J
 
 ;;; K
@@ -164,6 +180,9 @@
 
 (defineCaseframe 'Thing '('NamedPhysicalPropertyOf physical-property thing-with-property)
   :docstring "[thing-wth-property] has [physical-property]")
+
+(defineCaseframe 'Thing '('NamedQuantityOfClass  class-quantity  class)
+  :docstring "[class-quantity] of [class]")
 
 ;;; O
 
@@ -236,6 +255,9 @@
 
 
 ;;; V
+
+(defineCaseframe 'Thing '('ValueOf quantity)
+ :docstring "value of [quantity]")
 
 ;;; W
 

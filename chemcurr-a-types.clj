@@ -24,6 +24,10 @@
 
 (defineType :ChemicalReaction (:Thing))
 
+;;; chemical equation
+
+(defineType :ChemicalEquation (:Thing))
+
 ;;; comparatives
 
 (defineType :Comparative (:Thing))
@@ -42,7 +46,7 @@
 (defineType :PhysicalProperty (:Property))
 (defineType :NonPhysicalProperty (:Property))
 (defineType :ChemicalProperty (:Property))
-(defineType :Quantity (:Thing))
+(defineType :Quantity (:DefinableThing))
 
 ;;; UseOf
 
@@ -60,9 +64,16 @@
 
 (defineType :DefinableThing (:Thing))
 
+
 ;;; Modifier
 
 (defineType :Modifier (:Thing))
+
+;;; subatomic particle
+
+(defineType :SubatomicParticle (:DefinableThing))
+
+
 
 
 

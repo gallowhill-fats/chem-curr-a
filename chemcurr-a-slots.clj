@@ -21,12 +21,14 @@
 
 (defineSlot CalculateILO :type :Thing)
 (defineSlot CarryOut :type :Thing)
+(defineSlot chemical-equation :type :ChemicalEquation)
 (defineSlot chemical-property :type :ChemicalProperty)
 (defineSlot Circumstance :type :Thing)
 (defineSlot Circumstancing :type :Thing)
 (defineSlot circumstances :type :Thing)
 (defineSlot circumstances-of-use :type :Thing)
 (defineSlot class-name :type :Name)
+(defineSlot class-quantity :type :Quantity)
 (defineSlot class-with-behavior :type :Category)
 (defineSlot class-with-physical-properties :type :Category)
 (defineSlot class-with-properties :type :Category)
@@ -45,6 +47,7 @@
 ;;; D
 
 (defineSlot DeduceHowILO :type :Thing)
+(defineSlot deducible-entity :type :Entity)
 (defineSlot DeduceILO :type :Thing)
 (defineSlot definable-thing :type :DefinableThing)
 (defineSlot dependent-entity :type :Entity)
@@ -118,6 +121,8 @@
 (defineSlot inRelationTo :type :Thing)
 (defineSlot inSystem :type :Thing)
 (defineSlot inTermsOf :type :Thing)
+(defineSlot involving-entity :type :Entity)
+(defineSlot involvate :type :Entity)
 
 ;;; J
 
@@ -132,7 +137,7 @@
 ;;; M
 
 (defineSlot MatchILO :type :Thing)
-(defineSlot modification :type :Thing)
+(defineSlot modification :type :Thing :min 0)
 (defineSlot modInDomain :type :Thing)
 (defineSlot modInTermsOf :type :Thing)
 (defineSlot modInRelationTo :type :Thing)
@@ -205,10 +210,12 @@
 
 ;;; T
 
+(defineSlot thing-given :type :Thing)
 (defineSlot thing-in-presence :type :Thing)
 (defineSlot thing-name :type :Name)
 (defineSlot thing-to-be-determined :type :Thing)
 (defineSlot thing-with-behavior :type :Thing)
+(defineSlot thing-with-data :type :Thing)
 (defineSlot thing-with-change :type :Thing)
 (defineSlot thing-with-distribution :type :Thing)
 (defineSlot thing-with-presence :type :Thing)
@@ -241,7 +248,8 @@
 ;;; Z
 
 
-
+(defineCaseframe 'Proposition '('Involves involving-entity involvate)
+  :docstring "[involving-entity] involves [involvate]")
 
 
 

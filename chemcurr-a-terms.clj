@@ -27,7 +27,7 @@
 (defineTerm "dot and cross diagram*" ':DefinableThing)
 ;;;E
 (defineTerm "electric field*" ':DefinableThing)
-(defineTerm "electron*" ':Thing)
+(defineTerm "electron*" ':SubatomicParticle)
 (defineTerm "electrochemical series*" ':DefinableDescribableThing)
 (defineTerm "electronic configuration*" ':DefinableThing)
 (defineTerm "electron affinity*" ':DefinableThing)
@@ -76,7 +76,7 @@
 ;;;N
 (defineTerm "nucleon number*" ':DefinableThing)
 (defineTerm "nucleophile*" ':DefinableThing)
-(defineTerm "neutron*" ':DefinableThing)
+(defineTerm "neutron*" ':SubatomicParticle)
 (defineTerm "neutron number*" ':DefinableThing)
 ;;;O
 (defineTerm "optical isomer*" ':DefinableThing)
@@ -90,7 +90,7 @@
 (defineTerm "positional isomerism*" ':DefinableThing)
 (defineTerm "principal quantum number*" ':DefinableThing)
 (defineTerm "propagation reaction*" ':DefinableThing)
-(defineTerm "proton*" ':DefinableThing)
+(defineTerm "proton*" ':SubatomicParticle)
 (defineTerm "proton number*" ':DefinableThing)
 ;;;Q
 (defineTerm "quantum number*" ':DefinableThing)
