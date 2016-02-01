@@ -48,11 +48,23 @@
  (assert '(Isa (DeduceILO (BehaviorOf (BeamOf electron*))) "ILO class*"))
  (assert '(ILOModifier (DeduceILO (BehaviorOf (BeamOf electron*))) (BehaviorOf (BeamOf electron*))  (inPresenceOf  "electric field*")))
  ;; 10. Describe the distribution of mass and charges within an atom.
- (assert '(Isa (DescribeILO (DistributionOfIn "mass*" "atom*")) "ILO class*"))
- (assert '(Isa (DescribeILO (DistributionOfIn "charge*" "atom*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (DistributionOf "mass*")) "ILO class*"))
+ (assert '(ILOModifier (DescribeILO (DistributionOf "mass*")) (DistributionOf "mass*") (inSystem "atom*")))
+ (assert '(Isa (DescribeILO (DistributionOf "charge*")) "ILO class*"))
+ (assert '(ILOModifier (DescribeILO (DistributionOf "charge*")) (DistributionOf "mass*") (inSystem "atom*")))
  ;; 11. Deduce the numbers of protons, neutrons and electrons present in both atoms and ions given proton and nucleon numbers (and charge).
- (assert '(Isa (DeduceILO (CardinalityOf (setof proton* electron* neutron*))) "ILO class*"))
- (assert '(ILOQualifier (DeduceILO (CardinalityOf (setof proton* electron* neutron*))) (setof (inSystem (setof atom* ion*)) (Given (setof "proton number*" "neutron number*" charge*)))))
+ (assert '(Isa (DeduceILO (CardinalityOf "proton*")) "ILO class*"))
+ (assert '(ILOQualifier (DeduceILO (CardinalityOf "proton*"))  (Given (setof "proton number*" "neutron number*" "charge*"))))
+ (assert '(ILOModifier (DeduceILO (CardinalityOf "proton*")) (CardinalityOf "proton*") (inSystem "atom"* "ion*")))
+ (assert '(ILOModifier (DeduceILO (CardinalityOf "proton*")) (CardinalityOf "proton*") (inSystem "ion*")))
+ (assert '(Isa (DeduceILO (CardinalityOf "electron*")) "ILO class*"))
+ (assert '(ILOQualifier (DeduceILO (CardinalityOf "electron*")) (Given (setof "proton number*" "neutron number*" "charge*"))))
+ (assert '(ILOModifier (DeduceILO (CardinalityOf "electron*")) (CardinalityOf "electron*") (inSystem "atom*")))
+ (assert '(ILOModifier (DeduceILO (CardinalityOf "electron*")) (CardinalityOf "electron*") (inSystem "ion*")))
+ (assert '(Isa (DeduceILO (CardinalityOf "neutron*")) "ILO class*"))
+ (assert '(ILOQualifier (DeduceILO (CardinalityOf "neutron*")) (Given (setof "proton number*" "neutron number*" "charge*"))))
+ (assert '(ILOModifier (DeduceILO (CardinalityOf "neutron*")) (CardinalityOf "neutron*") (inSystem "atom*")))
+ (assert '(ILOModifier (DeduceILO (CardinalityOf "neutron*")) (CardinalityOf "neutron*") (inSystem "ion*")))
   ;; 12. Describe the contribution of protons and neutrons to atomic nuclei in terms of proton number and nucleon number (ii) distinguish between isotopes on the basis of different numbers of neutrons present (iii) recognise and use the symbolism A y x for isotopes, where x is a the nucleon number and y is the proton number.))
  ; need to isolate the case where the isotopes refer to the same element
  ; REWRITE: 12a. Define the terms proton number and nucleon number.
@@ -66,15 +78,20 @@
  (assert '(Isa (DescribeILO (RelativeEnergyOf (setof "s orbital*" "p orbital*" "d orbital*") )) "ILO class*"))
  (assert '(ILOQualifier (DescribeILO (RelativeEnergyOf (setof "s orbital*" "p orbital*" "d orbital*") )) (inCase (hasValue "principal quantum number*" (setof 1 2 3)))))
  ;; 14. Describe the shapes of s and p orbitals and d orbitals.
- (assert '(Isa (DescribeILO (ShapeOf (setof "s orbital*" "p orbital*" "d-orbital*"))) "ILO class*"))
+ (assert '(Isa (DescribeILO (ShapeOf "s orbital*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (ShapeOf "p orbital*")) "ILO class*"))
+ (assert '(Isa (DescribeILO (ShapeOf "d-orbital*")) "ILO class*"))
  ; 15. State the electronic configuration of atoms and ions given the proton number (and charge), using the convention 1s22s22p6 etc.
- (assert '(Isa (StateILO (every x (ElectronicConfigurationOf x) (Isa x "atom class*")) "ILO class*"))
+ (assert '(Isa (StateILO (every x (Isa x "atomic electronic configuration class*"))))  "ILO class*"))
+ (assert '(ILOQualifier (StateILO (every x (Isa x "atomic electronic configuration class*"))) (Given "proton number*"))))
+ (assert '(Isa (StateILO (every x (Isa x "atomic ion electronic configuration class*"))))  "ILO class*"))
+ (assert '(ILOQualifier (StateILO (every x (Isa x "atomic ion electronic configuration class*"))) (Given (setof "proton number*" "ionic charge*")))))
  ;; 16. Explain and use the terms ionization energy and electron affinity (ii) explain the factors influencing the ionization energies of elements (iii) explain the trends in ionization energies across a Period and down a Group of the Periodic Table (see also Section 9).
  (assert '(Isa (DefineILO "ionization energy*") "ILO class*"))
  (assert '(Isa (DefineILO "electron affinity*") "ILO class*"))
  ;; 17. Deduce the electronic configurations of elements from successive ionisation energy data.
- (assert '(Isa (DeduceILO (every y (hasElectronicConfiguration x y) (Isa x "element class*"))) "ILO class*"))
- (assert '(ILOQualifier (DeduceILO (every x (hasElectronicConfiguration x y) (Isa x "element class*"))) (Using "successive ionization energy data*")))
+ (assert '(Isa (DeduceILO (every x (Isa x "electronic configuration class*") (hasElectronicConfiguration x y) (Isa y "element class*"))) "ILO class*"))
+ (assert '(ILOQualifier (DeduceILO (every x (Isa x "electronic configuration class*") (hasElectronicConfiguration x y) (Isa y "element class*"))) (Using "successive ionization energy data*")))
  ; 18. Interpret successive ionisation energy data of an element in terms of the position of that element within the Periodic Table.
  (assert '(Isa (InterpretILO (TrendIn (every z (hasIonisationEnergy x y z)) (some x (Isa y "element class*")) (every z (Isa z "ordinality class*")) )) "ILO class*"))
  (assert '(ILOQualifier  (InterpretILO (TrendIn (every z (hasIonisationEnergy x y z)) (some x (Isa y "element class*")) (every z (Isa z "ordinal class*")))) (inTermsOf (some p (hasPositionInPeriodicTable y p)))))
@@ -83,7 +100,7 @@
  (assert '(ILOQualifier (DescribeILO "ionic bonding*") (setof (asIn (setof "sodium chloride*" "magnesium oxide*")) (Including (UseOf "dot-and-cross diagram*")))))
   ; 20. Describe, including the use of 'dot-and-cross' diagrams, (i) covalent bonding, as in hydrogen, oxygen, chlorine, hydrogen chloride, carbon dioxide, methane, ethene (ii) co-ordinate (dative covalent) bonding, as in the formation of the ammonium ion and in the Al 2Cl 6 molecule.
  (assert '(Isa (DescribeILO "covalent bonding*") "ILO class*"))
- (assert '(ILOQualifier (DescribeILO "covalent bonding*")  Including (UseOf (every x (Isa x "dot-and-cross diagram*")))))
+ (assert '(ILOQualifier (DescribeILO "covalent bonding*")  Including (UseOf (every x (Isa x "dot-and-cross diagram class*")))))
  (assert '(ILOQualifier (DescribeILO "covalent bonding*") (asIn (setof "hydrogen molecular entity*" "oxygen molecular entity*" "chlorine molecular entity*" "hydrogen chloride molecular entity*" "carbon dioxide molecular entity*" "methane molecular entity*" "ethene molecular entity*"))))
  (assert '(Isa (DescribeILO "coordinate bonding*") "ILO class*"))
  (assert '(ILOQualifier (DescribeILO "coordinate bonding*")  (setof (Including (UseOf "dot-and-cross diagram*")) (asIn (setof "ammonium ion molecular cationic entity*" "aluminium chloride molecular entity*")))))
@@ -115,8 +132,8 @@
  (assert '(Isa (ExplainILO "bond energy*") "ILO class*"))
  (assert '(Isa (ExplainILO "bond length*") "ILO class*"))
  (assert '(Isa (ExplainILO "bond polarity*") "ILO class*"))
- (assert '(CompareILO (ReactivityOf (every x (Isa x  "covalent bond class*"))) (ReactivityOf (every y (Isa y  "covalent bond class*")))))
- (assert '(ILOQualifier (CompareILO (ReactivityOf (every x (Isa x  "covalent bond class*"))) (ReactivityOf (every y (Isa y  "covalent bond class*")))) (Using (setof "bond energy*" "bond length*" "bond polarity*"))))
+ (assert '(CompareILO (NamedChemicalPropertyOf "reactivity*" (every x (Isa x  "covalent bond class*"))) (NamedChemicalPropertyOf "reactivity*" (every y (Isa y  "covalent bond class*")))))
+ (assert '(ILOQualifier (CompareILO (NamedChemicalPropertyOf "reactivity*" (every x (Isa x  "covalent bond class*"))) (NamedChemicalPropertyOf "raectivity*" (every y (Isa y  "covalent bond class*")))) (Using (setof "bond energy*" "bond length*" "bond polarity*"))))
  ; 28. Describe intermolecular forces (van der Waals’ forces), based on permanent and induced dipoles, as in CHCl 3(l); Br2(l) and the liquid noble gases
  (assert '(Isa (DescribeILO "van der Waals forces*") "ILO class*"))
  (assert '(ILOQualifier (DescribeILO "van der Waals forces*") (BasedOn (setof "permanent dipole*" "induced dipole*"))))

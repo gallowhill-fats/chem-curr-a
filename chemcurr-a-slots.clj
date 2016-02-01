@@ -21,6 +21,7 @@
 
 (defineSlot CalculateILO :type :Thing)
 (defineSlot CarryOut :type :Thing)
+(defineSlot chemical-entity :type :ChemicalEntity)
 (defineSlot chemical-equation :type :ChemicalEquation)
 (defineSlot chemical-property :type :ChemicalProperty)
 (defineSlot Circumstance :type :Thing)
@@ -54,6 +55,7 @@
 (defineSlot DeriveILO :type :Thing)
 (defineSlot describable-thing :type :Thing)
 (defineSlot DetermineILO :type :Thing)
+(defineSlot distinguishable-things :type :Thing)
 (defineSlot Do :type :Thing)
 (defineSlot Domain :type :Thing)
 (defineSlot domain :type :Thing)
@@ -61,7 +63,9 @@
 
 ;;; E
 
+(defineSlot element :type :Thing)
 (defineSlot EmployILO :type :Thing)
+(defineSlot electronic-configuration :type :Property)
 (defineSlot entity-with-base :type :Entity)
 (defineSlot entity-with-circumstances :type :Entity)
 (defineSlot entity-with-explanation :type :Entity)
@@ -123,6 +127,7 @@
 (defineSlot inTermsOf :type :Thing)
 (defineSlot involving-entity :type :Entity)
 (defineSlot involvate :type :Entity)
+(defineSlot isotope :type :Thing)
 
 ;;; J
 
@@ -136,6 +141,7 @@
 
 ;;; M
 
+(defineSlot magnitude :type :Number)
 (defineSlot MatchILO :type :Thing)
 (defineSlot modification :type :Thing :min 0)
 (defineSlot modInDomain :type :Thing)
@@ -187,6 +193,7 @@
 ;;; S
 
 (defineSlot shape :type :Thing)
+(defineSlot sign :type :Thing)
 (defineSlot shape-property :type :Thing)
 (defineSlot Smaller :type :Thing)
 (defineSlot stabilised-thing :type :Thing)
@@ -195,6 +202,10 @@
 (defineSlot StateILO :type :Thing)
 (defineSlot symbol :type :Thing)
 (defineSlot symboled-entity :type :Thing)
+(defineSlot derived-property :type :DerivedProperty)
+(defineSlot symbolic-property-element :type :Thing)
+(defineSlot symbolic-property-class :type :Category)
+(defineSlot systen :type :Thing)
 
 
 (defineSlot subclass :type Category :negadjust reduce
@@ -215,8 +226,10 @@
 (defineSlot thing-name :type :Name)
 (defineSlot thing-to-be-determined :type :Thing)
 (defineSlot thing-with-behavior :type :Thing)
+(defineSlot thing-with-cardinality :type :Thing)
 (defineSlot thing-with-data :type :Thing)
 (defineSlot thing-with-change :type :Thing)
+(defineSlot thing-with-charge :type :Thing)
 (defineSlot thing-with-distribution :type :Thing)
 (defineSlot thing-with-presence :type :Thing)
 (defineSlot thing-with-property :type :Thing)
@@ -248,8 +261,11 @@
 ;;; Z
 
 
-(defineCaseframe 'Proposition '('Involves involving-entity involvate)
-  :docstring "[involving-entity] involves [involvate]")
+
+
+
+
+
 
 
 

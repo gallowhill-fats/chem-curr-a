@@ -32,6 +32,9 @@
     :docstring "Calculate [object-of-calculation]",
     :fsymbols '(CalculateILO))
 
+(defineCaseframe 'Thing '('CardinalityOf thing-with-cardinality)
+  :docstring "cardinality of [thing-with-cardinality]")
+
 (defineCaseframe 'Thing '('ChangeIn thing-with-change)
   :docstring "change in [thing-with-change]")
 
@@ -79,8 +82,12 @@
 (defineCaseframe 'Thing '('DeterminationOf thing-to-be-determined)
   :docstring "determination of [thing-to-be-determined]")
 
-(defineCaseframe 'Thing '('DistributionOf thing-with-distribution locality-of-distribution)
-  :docstring "the distribution of [thing-with-distribution] over [locality-of-distribution]")
+(defineCaseframe 'ILO '(action distinguishable-things)
+  :docstring "distinguish between [distinguishable-things]"
+  :fsymbol '(DistinguishBetween))
+
+(defineCaseframe 'Thing '('DistributionOf thing-with-distribution)
+  :docstring "the distribution of [thing-with-distribution]")
 
 (defineCaseframe 'Thing '('Domain domain)
   :docstring "the [domain]")
@@ -89,6 +96,9 @@
 
 
 ;;; E
+
+(defineCaseframe 'Thing '('ElectronicConfigurationOf chemical-entity)
+  :docstring "electronic configuration of [chemical entity]")
 
 (defineCaseframe 'Thing '('EffectOfOn influence object-of-influence)
   :docstring "effect of [influence] on [object-of-influence]")
@@ -112,12 +122,21 @@
 (defineCaseframe 'Proposition '('hasClassName nameable-class class-name)
   :docstring "[namable-class] has [class-name]")
 
+(defineCaseframe 'Proposition '('hasElectronicConfiguration chemical-referent electronic-configuration)
+  :docstring "[chemical-referent] has [electronic-configuration]")
+
+(defineCaseframe 'Proposition '('hasElectrostaticCharge thing-with-charge sign magnitude)
+  :docstring "[thing-with-charge] has charge of [sign] and [magnitude]")
+
 (defineCaseframe 'Proposition '(hasName nameable-thing thing-name)
   :docstring "[nameable-thing] has [thing-name]"
   :fsymbols '(hasSystematicName hasIupacName hasIupacNameSubstitutive 
               hasIupacNameAdditive hasAcceptableCommonName hasPreferredIupacName 
               hasGeneralIupacName hasRetainedIupacName hasTrivialName hasAtomName 
               hasElementName hasMoleculeName hasSubstanceName hasOtherName))
+
+(defineCaseframe 'Proposition '('hasSymbolicPropertyElement symbolic-property-class thing-with-property symbolic-property-element)
+  :docstring "[thing-with-property] has [symbolic-property-element] in [symbolic-property-class]")
 
 (defineCaseframe 'Proposition '('hasQuantity thing-with-quantity quantity)
   :docstring "[thing-with-quantity] has [quantity]")
@@ -155,11 +174,17 @@
 (defineCaseframe 'Proposition '('inPresenceOf thing-in-presence thing-with-presence)
   :docstring "[thing-in-presence] is in presence of [thing-with-presence]")
 
+(defineCaseframe 'Modifier '('inSystem system)
+  :docstring "in [system]")
+
 (defineCaseframe 'Proposition '('Involves involving-entity involvate)
   :docstring "[involving-entity] involves [involvate]")
 
 (defineCaseframe 'Proposition '('isBalanced chemical-equation)
   :docstring "[chemical-equation] is balanced")
+
+(defineCaseframe 'Proposition  '('IsotopeOf isotope element)
+  :docstring "[isotope] is an isotope of [element]")
 
 ;;; J
 
@@ -175,11 +200,18 @@
 
 ;;; N
 
+(defineCaseframe 'Thing '('NamedChemicalPropertyOf chemical-property thing-with-property)
+  :docstring "[chemical-property] of [thing-with-property]")
+
+(defineCaseframe 'Thing '('NamedDerivedPropertyOf derived-property thing-with-property)
+  :docstring "[derived-property] of [thing-with-property]")
+
 (defineCaseframe 'Thing '('NamedNonPhysicalPropertyOf non-physical-property thing-with-property)
-  :docstring "[thing-wth-property] has [non-physical-property]")
+  :docstring "[non-physical-property] of [thing-with-property]")
 
 (defineCaseframe 'Thing '('NamedPhysicalPropertyOf physical-property thing-with-property)
-  :docstring "[thing-wth-property] has [physical-property]")
+  :docstring "[physical-property] of [thing-with-property]")
+
 
 (defineCaseframe 'Thing '('NamedQuantityOfClass  class-quantity  class)
   :docstring "[class-quantity] of [class]")

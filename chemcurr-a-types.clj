@@ -42,10 +42,12 @@
 (defineType :NameableThing (:Thing))
 
 ;;; properties and quantities
-(defineType :Property (:Thing))
-(defineType :PhysicalProperty (:Property))
-(defineType :NonPhysicalProperty (:Property))
+
 (defineType :ChemicalProperty (:Property))
+(defineType :NonPhysicalProperty (:Property))
+(defineType :NominalProperty (:Property))
+(defineType :PhysicalProperty (:Property))
+(defineType :Property (:Thing))
 (defineType :Quantity (:DefinableThing))
 
 ;;; UseOf
