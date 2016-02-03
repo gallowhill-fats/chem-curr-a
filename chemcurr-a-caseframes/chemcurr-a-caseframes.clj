@@ -11,6 +11,13 @@
 (defineCaseframe 'Act '('AlterPropertyOf type-of-alteration property thing-with-property)
   :docstring "make [type-of-alteration] to [property] of [thing-with-property]")
 
+(defineCaseframe 'Proposition '(Arriving arriving-thing thing-arrived-at)
+  :docstring "[arriving-thing] approaches [thing-arived-at]"
+  :fsymbols '(ApproachOfTo ArriveAt))
+
+(defineCaseframe 'Thing '('AssumptionsOf thing-with-assumptions)
+  :docstring "assumptions of  [thing-with-assumptions]")
+
 ;;; B
 
 (defineCaseframe 'Proposition '(Basing entity-with-base base)
@@ -57,6 +64,9 @@
 (defineCaseframe 'ILO '(actions comparison-set)
   :docstring "compare [comparison-set]"
   :fsymbols '(CompareILO MatchILO))
+
+(defineCaseframe 'Thing '('ConditionsFor thing-with-conditions)
+  :docstring "conditions for [thing-with-conditions]")
 
 ;;; D
 
@@ -165,7 +175,7 @@
 
 (defineCaseframe 'Proposition '(inDomain domain-predicate domain)
   :docstring "[domain-predicate] relates to, refers to, is expressed in terms belonging to [domain]"
-  :fsymbols '(inTermsOf inRelationTo withReferenceTo withRegardsTo withParticularReferenceTo))
+  :fsymbols '(inTermsOf inRelationTo withReferenceTo withRegardsTo withParticularReferenceTo asAppliedTo))
 
 (defineCaseframe 'ILO '(actions act)
   :docstring "intentionally carry out [act]"
@@ -174,8 +184,8 @@
 (defineCaseframe 'Proposition '('inPresenceOf thing-in-presence thing-with-presence)
   :docstring "[thing-in-presence] is in presence of [thing-with-presence]")
 
-(defineCaseframe 'Modifier '('inSystem system)
-  :docstring "in [system]")
+(defineCaseframe 'Proposition '('inPhysicalState physical-state chemical-substance)
+  :docstring "[chemical-substance] in [physical-state]")
 
 (defineCaseframe 'Proposition '('Involves involving-entity involvate)
   :docstring "[involving-entity] involves [involvate]")
@@ -196,7 +206,7 @@
 
 (defineCaseframe 'Modifier '(modInDomain domain)
   :docstring "[domain]"
-  :fsymbols '(modInTermsOf modInRelationTo modWithReferenceTo modWithRegardsTo modWithParticularReferenceTo))
+  :fsymbols '(modInTermsOf modInRelationTo modWithReferenceTo modWithRegardsTo modWithParticularReferenceTo modAsAppliedTo))
 
 ;;; N
 
@@ -227,6 +237,12 @@
 (defineCaseframe 'Act '('PerformActionOn type-of-action object-of-action)
   :docstring "perform [type-of-action] on [object-of-action]")
 
+(defineCaseframe 'Thing '('PhysicalPropertiesOf thing-with-property)
+  :docstring "physical properties of [thing-with-property]")
+
+(defineCaseframe 'Thing '('PhysicalPropertiesOfClass class)
+  :docstring "physical properties of [class]")
+
 (defineCaseframe 'Thing '('PropertiesOf thing-with-property)
   :docstring "properties of [thing-with-property]")
 
@@ -234,6 +250,9 @@
   :docstring "the [purpose]")
 
 ;;; Q
+
+(defineCaseframe 'Thing '('NamedQuantityOf quantity thing-with-quantity)
+  :docstring "the [quantity] of [thing-with-quantity")
 
 ;;; R
 

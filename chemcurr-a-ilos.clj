@@ -125,8 +125,8 @@
  (assert '(Isa (UseILO "electronegativity*") "ILO class*"))
  (assert '(Isa (ExplainILO "bond polarity*") "ILO class*"))
  (assert '(ILOQualifier (ExplainILO "bond polarity*") (Using "electronegativity*")))
- (assert '(Isa (ExplainILO (ExplainILO (QuantityOf "dipole moment*" (every x (Isa x "molecular entity class*")))) "ILO class*"))
- (assert '(ILOQualifier (ExplainILO (QuantityOf "dipole moment*" (every x (Isa x "molecular entity class*")))) (Using "elecronegativity*")))
+ (assert '(Isa (ExplainILO (ExplainILO (NamedQuantityOf "dipole moment*" (every x (Isa x "molecular entity class*")))) "ILO class*"))
+ (assert '(ILOQualifier (ExplainILO (NamedQuantityOf "dipole moment*" (every x (Isa x "molecular entity class*")))) (Using "elecronegativity*")))
  (assert '(ILOQualifier (ExplainILO (BehaviorOf (every x (Isa x "oxide substance class*")))) (Using "electronegativity*")))
  ; 27. Explain the terms bond energy, bond length and bond polarity and use them to compare the reactivities of covalent bonds (see also 5b(ii))
  (assert '(Isa (ExplainILO "bond energy*") "ILO class*"))
@@ -136,28 +136,30 @@
  (assert '(ILOQualifier (CompareILO (NamedChemicalPropertyOf "reactivity*" (every x (Isa x  "covalent bond class*"))) (NamedChemicalPropertyOf "raectivity*" (every y (Isa y  "covalent bond class*")))) (Using (setof "bond energy*" "bond length*" "bond polarity*"))))
  ; 28. Describe intermolecular forces (van der Waals’ forces), based on permanent and induced dipoles, as in CHCl 3(l); Br2(l) and the liquid noble gases
  (assert '(Isa (DescribeILO "van der Waals forces*") "ILO class*"))
- (assert '(ILOQualifier (DescribeILO "van der Waals forces*") (BasedOn (setof "permanent dipole*" "induced dipole*"))))
+ (assert '(ILOQualifier (DescribeILO "van der Waals forces*")  (setof (inTermsOf (setof "permanent dipole*" "induced dipole*")) )(asIn (setof  (inPhysicalState "liquid state*" "chloroform molecular substance*") (inPhysicalState "liquid state*" "bromine molecular substance*") (inPhysicalState "liquid state*" (every x (Isa x "noble gas element class*"))) ))))
  ; 29. Describe metallic bonding in terms of a lattice of positive ions surrounded by mobile electrons.
  (assert '(Isa (DescribeILO "metallic bonding*") "ILO class*"))
  ; 30. Describe, interpret and/or predict the effect of different types of bonding (ionic bonding, covalent bonding, hydrogen bonding, other intermolecular interactions, metallic bonding) on the physical properties of substances.
- (assert '(Isa (DescribeILO (EffectOfOn (setof "ionic bonding*" "covalent bonding*" "hydrogen bonding*" "metallic bonding*") (PhysicalPropertiesOf "chemical substance class*") )) "ILO class*"))
+ (assert '(Isa (DescribeILO (EffectOfOn "ionic bonding*"  (PhysicalPropertiesOfClass "chemical substance class*") )) "ILO class*"))
+ (assert '(Isa (DescribeILO (EffectOfOn "covalent bonding*"  (PhysicalPropertiesOfClass "chemical substance class*") )) "ILO class*"))
+ (assert '(Isa (DescribeILO (EffectOfOn "hydrogen bonding*" (PhysicalPropertiesOfClass "chemical substance class*") )) "ILO class*"))
+ (assert '(Isa (DescribeILO (EffectOfOn "metallic bonding*" (PhysicalPropertiesOfClass "chemical substance class*") )) "ILO class*"))
  ; 31. Deduce the type of bonding present from given information. ???
- ; omit
- (assert '(Isa (DeduceILO (BondingIn (every x (Isa x "chemical substance class*")))) "ILO class*"))
- (assert '(ILOQualifier (DeduceILO (BondingIn (every x (Isa x "chemical substance class*")))) (Given "physical data*")))
- ; 32. Show understanding of chemical reactions in terms of energy transfers associated with the breaking and making of chemical bonds.
+ ; re-phrase - Deduce the type of bonding in a substance from its physical properties
+ (assert '(Isa (DeduceILO (BondingIn (every x (Isa x "chemical substance class*") (Given (PhysicalPropertiesOf x))) ))))
+  ; 32. Show understanding of chemical reactions in terms of energy transfers associated with the breaking and making of chemical bonds.
  (assert '(Isa (DescribeILO (every x (Isa x "chemical reaction class*"))) "ILO class*"))
  (assert '(ILOQualifier (DescribeILO (every x (Isa x "chemical reaction class*"))) (inTermsOf (setof "bond formation*" "bond cleavage*"))))
  ;; 33. State the basic assumptions of the kinetic theory as applied to an ideal gas.
- (assert '(Isa (StateILO (UnderlyingAssumptionsOf "kinetic theory of gases*"))) "ILO class*"))
- (assert '(ILOModifier  (StateILO (UnderlyingAssumptionsOf "kinetic theory of gases*")) (UnderlyingAssumptionsOf "kinetic theory of gases*") (asAppliedTp "ideal gas*")))
+ (assert '(Isa (StateILO (AssumptionsOf "kinetic theory of gases*"))) "ILO class*"))
+ (assert '(ILOModifier  (StateILO (AssumptionsOf "kinetic theory of gases*")) (AssumptionsOf "kinetic theory of gases*") (modAsAppliedTo "ideal gas*")))
  ;; 34. Explain qualitatively in terms of intermolecular forces and molecular size: (i) the conditions necessary for a gas to approach ideal behaviour (ii) 
  ;REWRITE
  ; 34a.  Explain qualitatively in terms of intermolecular forces and molecular size the conditions necessary for a gas to approach ideal behaviour. 
  ; 34b. Explain qualitatively in terms of intermolecular forces and molecular size the limitations of ideality at very high pressures and very low temperatures.
- (assert '(Isa (ExplainILO )(every y (hasNecessaryConditions "gas to approach ideal behaviour" y)) "ILO class*" ))
- (assert '(Isa (ExplainILO (every y (hasNecessaryConditions "gas to approach ideal behaviour" y))) "ILO class*" ))
- (assert '(ILOQualifier (ExplainILO (every y (hasNecessaryConditions "gas to approach ideal behaviour" y))) (setof (inTermsOf (setof (every x (Isa x "intermolecular force class*") "molecular size*")) (inManner "qualitative*")))))
+ (assert '(Isa (ExplainILO (ConditionsFor (ApproachOfTo  (BehaviorOfClass "gas substance class*")  (BehaviorOfClass "ideal gas substance class*"))))  "ILO class*" ))
+ 
+ (assert '(ILOQualifier (ExplainILO (ConditionsFor (ApproachOfTo  (BehaviorOfClass "gas substance class*")  (BehaviorOfClass "ideal gas substance class*"))))  (setof (inTermsOf (setof (every x (Isa x "intermolecular force class*") "molecular size*")) (inManner "qualitative*")))))
  (assert '(ILOQualifier (ExplainILO (every y (hasNecessaryConditions "gas to approach ideal behaviour" y))) (setof (inTermsOf (setof (every x (Isa x "intermolecular force class") "molecular size*"))) (inManner "qualitative*"))))
  ;; 35. State and use the general gas equation pV = nRT in calculations, including the determination of Mr.
  (assert '(Isa (StateILO "ideal gas equation*") "ILO class*"))

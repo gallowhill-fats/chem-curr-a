@@ -50,6 +50,12 @@
 (defineType :Property (:Thing))
 (defineType :Quantity (:DefinableThing))
 
+;;; State
+
+(defineType :State (:Thing))
+(defineType :PhysicalState (:State))
+
+
 ;;; UseOf
 
 (defineType :UseAndCircumstance (:Thing))

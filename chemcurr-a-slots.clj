@@ -6,6 +6,10 @@
 (defineSlot analysandum :type :Thing)
 (defineSlot AnalyseILO :type :Thing)
 (defineSlot ApplyILO :type :Thing)
+(defineSlot ApproachOfTo :type :Thing)
+(defineSlot ArriveAt :type :Thing)
+(defineSlot Arriving :type :Thing)
+(defineSlot arriving-thing :type :Thing)
 (defineSlot AscertainILO :type :Thing)
 (defineSlot assumption-set :type :Thing)
 
@@ -144,6 +148,7 @@
 (defineSlot magnitude :type :Number)
 (defineSlot MatchILO :type :Thing)
 (defineSlot modification :type :Thing :min 0)
+(defineSlot modAsAppliedTo :type :Thing)
 (defineSlot modInDomain :type :Thing)
 (defineSlot modInTermsOf :type :Thing)
 (defineSlot modInRelationTo :type :Thing)
@@ -169,6 +174,7 @@
 
 (defineSlot Perform :type :Thing)
 (defineSlot physical-property :type :PhysicalProperty)
+(defineSlot physical-state :type :PhysicalState)
 (defineSlot property :type :Property)
 (defineSlot ProposeILO :type :Thing)
 (defineSlot pure-chemical-substance-name :type :Name)
@@ -221,15 +227,18 @@
 
 ;;; T
 
+(defineSlot thing-arrived-at :type :Thing)
 (defineSlot thing-given :type :Thing)
 (defineSlot thing-in-presence :type :Thing)
 (defineSlot thing-name :type :Name)
 (defineSlot thing-to-be-determined :type :Thing)
+(defineSlot thing-with-assumptions :type :Thing)
 (defineSlot thing-with-behavior :type :Thing)
 (defineSlot thing-with-cardinality :type :Thing)
 (defineSlot thing-with-data :type :Thing)
 (defineSlot thing-with-change :type :Thing)
 (defineSlot thing-with-charge :type :Thing)
+(defineSlot thing-with-conditions :type :Thing)
 (defineSlot thing-with-distribution :type :Thing)
 (defineSlot thing-with-presence :type :Thing)
 (defineSlot thing-with-property :type :Thing)
