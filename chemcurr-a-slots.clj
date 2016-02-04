@@ -7,8 +7,8 @@
 (defineSlot AnalyseILO :type :Thing)
 (defineSlot ApplyILO :type :Thing)
 (defineSlot ApproachOfTo :type :Thing)
-(defineSlot ArriveAt :type :Thing)
-(defineSlot Arriving :type :Thing)
+(defineSlot ArrivalAt :type :Thing)
+(defineSlot Arrival :type :Thing)
 (defineSlot arriving-thing :type :Thing)
 (defineSlot AscertainILO :type :Thing)
 (defineSlot assumption-set :type :Thing)
@@ -56,9 +56,15 @@
 (defineSlot DeduceILO :type :Thing)
 (defineSlot definable-thing :type :DefinableThing)
 (defineSlot dependent-entity :type :Entity)
+(defineSlot departing-thing :type :Thing)
+(defineSlot Departure :type :Thing)
+(defineSlot DepartureOfFrom :type :Thing)
+(defineSlot dependent-entity :type :Entity)
 (defineSlot DeriveILO :type :Thing)
 (defineSlot describable-thing :type :Thing)
 (defineSlot DetermineILO :type :Thing)
+(defineSlot DiscussILO :type :Thing)
+(defineSlot discussible-thing :type :Thing)
 (defineSlot distinguishable-things :type :Thing)
 (defineSlot Do :type :Thing)
 (defineSlot Domain :type :Thing)
@@ -193,7 +199,9 @@
 (defineSlot reactive-entity :type :Thing)
 (defineSlot reaction-type :type :ReactionType)
 (defineSlot RecountILO :type :Thing)
-(defineSlot RelateILO :type :Thing)
+(defineSlot relate-source :type :Thing)
+(defineSlot relate-sink :type :Thing)
+(defineSlot RelateToILO :type :Thing)
 (defineSlot ReportILO :type :Thing)
 
 ;;; S
@@ -228,6 +236,7 @@
 ;;; T
 
 (defineSlot thing-arrived-at :type :Thing)
+(defineSlot thing-departed-from :type :Thing)
 (defineSlot thing-given :type :Thing)
 (defineSlot thing-in-presence :type :Thing)
 (defineSlot thing-name :type :Name)
@@ -269,6 +278,9 @@
 
 ;;; Z
 
+(defineCaseframe 'ILO '(action discussible-thing)
+  :docstring "discuss [discussible-thing]"
+  :fsymbol '(DiscussILO))
 
 
 

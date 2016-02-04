@@ -11,9 +11,10 @@
 (defineCaseframe 'Act '('AlterPropertyOf type-of-alteration property thing-with-property)
   :docstring "make [type-of-alteration] to [property] of [thing-with-property]")
 
-(defineCaseframe 'Proposition '(Arriving arriving-thing thing-arrived-at)
-  :docstring "[arriving-thing] approaches [thing-arived-at]"
-  :fsymbols '(ApproachOfTo ArriveAt))
+; FrameNet: derived from Arriving
+(defineCaseframe 'Thing '(Arrival arriving-thing thing-arrived-at)
+  :docstring "arrival of [arriving-thing] at  [thing-arived-at]"
+  :fsymbols '(ApproachOfTo ArrivalAt))
 
 (defineCaseframe 'Thing '('AssumptionsOf thing-with-assumptions)
   :docstring "assumptions of  [thing-with-assumptions]")
@@ -36,7 +37,7 @@
 ;;; C
 
 (defineCaseframe 'ILO '(actions object-of-calculation)
-    :docstring "Calculate [object-of-calculation]",
+    :docstring "calculate [object-of-calculation]"
     :fsymbols '(CalculateILO))
 
 (defineCaseframe 'Thing '('CardinalityOf thing-with-cardinality)
@@ -49,7 +50,7 @@
     :docstring "[entity-with-circumstances] takes place in [circumstances]"
     :fsymbols '(inCircumstances inSystem inChemicalSystem))
 
-(defineCaseframe 'Thing '('ClassBehaviorOf class-with-behavior)
+(defineCaseframe 'Thing '('BehaviorOfClass class-with-behavior)
   :docstring "behavior of [class-with-behavior]")
 
 (defineCaseframe 'Thing '('ClassPhysicalPropertiesOf class-with-physical-properties)
@@ -89,12 +90,21 @@
     :docstring "deduce [deducible-entity]"
     :fsymbols '(DeduceILO  WorkOutILO DeriveILO AscertainILO DetermineILO FigureOutILO InferILO PuzzleOutILO SurmiseILO DeduceHowILO))
 
+; FrameNet: derived from Departing
+(defineCaseframe 'Thing '(Departure thing-departing thing-departed-from)
+  :docstring "departure of [departing-thing] from [thing-departed-from]"
+  :fsymbols '(DepartureOfFrom))
+
 (defineCaseframe 'Thing '('DeterminationOf thing-to-be-determined)
   :docstring "determination of [thing-to-be-determined]")
 
+(defineCaseframe 'ILO '(action discussible-thing)
+  :docstring "discuss [discussible-thing]"
+  :fsymbol '(DiscussILO))
+
 (defineCaseframe 'ILO '(action distinguishable-things)
   :docstring "distinguish between [distinguishable-things]"
-  :fsymbol '(DistinguishBetween))
+  :fsymbol '(DistinguishBetweenILO))
 
 (defineCaseframe 'Thing '('DistributionOf thing-with-distribution)
   :docstring "the distribution of [thing-with-distribution]")
@@ -259,6 +269,10 @@
 (defineCaseframe 'Thing '('ReactivityOf reactive-entity)
   :docstring "reactivity of [reactive-entity]")
 
+(defineCaseframe 'ILO '(action relate-source relate-sink)
+  :docstring "relate [relate-source] to [relate-sink]"
+  :fsymbols '(RelateToILO))
+
 ;;; S
 
 (defineCaseframe 'Thing '('ShapeOf thing-with-shape)
@@ -301,7 +315,8 @@
 (defineCaseframe 'Thing '('UseAndCircumstanceOf instrument circumstances-of-use)
   :docstring "use of [instrument] with [circumstances-of-use]")
 
-
+(defineCaseframe 'Thing '('UsesOfClass class)
+  :docstring "uses of [class]")
 
 
 
