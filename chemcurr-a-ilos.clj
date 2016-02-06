@@ -208,56 +208,59 @@
  (assert '(Isa (OutlineILO (NamedAspectOf "importance*" "hydrogen bonding*")) "ILO class*"))
  (assert '(ILOQualifier (OutlineILO (NamedAspectOf "importance*" "hydrogen bonding*")  (inRelationTo (PhysicalPropertiesOfClass "chemical substance class*"))))
  ; 42. Suggest from quoted physical data the type of structure and bonding present in a substance.
- (assert '(Isa (SuggestILO (TypeOf (every x (hasStructure y x) (every y (Isa y "chemical substance class*" ) "ILO class*"))
- (assert '(ILOQualifier (SuggestILO (PhysicalProperty (setof "structure*" "bonding*")) ) (Given "physical data*")))
+ (assert '(Isa (SuggestILO (TypeOf (every x (Isa x "chemical structure class*") (every y (Isa y "chemical substance class*") (hasChemicalStructure x y)))  (Given (PhysicalPropertyOf x))))  "ILO class*"))
  ; 43. Explain that some chemical reactions are accompanied by energy changes, principally in the form of heat energy; the energy changes can be exothermic (ΔH, negative) or endothermic
+ (assert '(Isa (DefineILO "thermochemistry*") "ILO class*"))
  (assert '(Isa (DefineILO "exothermic*") "ILO class*"))
  (assert '(Isa (DefineILO "endothermic*") "ILO class*"))
  (assert '(Isa (DefineILO "thermoneutral*") "ILO class*"))
  ; 44. Explain and use the terms: (i) enthalpy change of reaction and standard conditions, with particular reference to: formation, combustion, hydration, solution, neutralisation, atomisation (ii) bond energy (ΔH positive, i.e. bond breaking) (iii) lattice energy (ΔH negative, i.e. gaseous ions to solid lattice).
- (assert '(Isa (ExplainILO "enthalpy change of reaction*") "ILO class*"))
+ (assert '(Isa (DefineILO "enthalpy of formation*") "ILO class*"))
+ (assert '(Isa (DefineILO "enthalpy of combustion*") "ILO class*"))
+ (assert '(Isa (DefineILO "enthalpy of hydration*") "ILO class*"))
+ (assert '(Isa (DefineILO "enthalpy of solution*") "ILO class*"))
+ (assert '(Isa (DefineILO "enthalpy of neutralisation*") "ILO class*"))
+ (assert '(Isa (DefineILO "enthalpy of atomisation*") "ILO class*"))
+ (assert '(Isa (DefineILO "enthalpy change of reaction*") "ILO class*"))
+ (assert '(Isa (DefineILO "standard conditions*") "ILO class*"))
+ (assert '(Isa (DefineILO "bond energy*") "ILO class*"))
+ (assert '(Isa (DefineILO "lattice energy*") "ILO class*"))
  ; 45. Calculate enthalpy changes from appropriate experimental results, including the use of the relationship enthalpy change, ΔH = –mcΔT.
- (assert '(Isa (CalculateILO (ChangeIn "enthalpy*"))  "ILO class*"))
- (assert '(ILOQualifier (CalculateILO (ChangeIn "enthalpy*")) (Given "experimental data*")))
- ; 46. Explain, in qualitative terms, the effect of ionic charge and of ionic radius on the numerical magnitude of a lattice energy.
+ (assert '(Isa (PerformCalculationsILO "ΔH = –mcΔT")  "ILO class*"))
+  ; 46. Explain, in qualitative terms, the effect of ionic charge and of ionic radius on the numerical magnitude of a lattice energy.
  (assert '(Isa (ExplainILO (EffectOfOn "ionic charge*" (QuantityValue "lattice energy*")) "ILO class*"))
  (assert '(Isa (ExplainILO (EffectOfOn "ionic radius*" (QuantityValue "lattice energy*")) "ILO class*"))
  ; 47. Apply Hess' Law to construct simple energy cycles, and carry out calculations involving such cycles and relevant energy terms, with particular reference to: (i) determining enthalpy changes that cannot be found by direct experiment, e.g. an enthalpy change of formation from enthalpy changes of combustion (ii) average bond energies (iii) the formation of a simple ionic solid and of its aqueous solution (iv) Born-Haber cycles (including ionisation energy and electron affinity).
- (assert '(Isa (ApplyILO "Hess's law*") "ILO class*"))
- (assert '(ILOQualifier (ApplyILO "Hess's law*") (inOrderTo (PerformActionOn "construct*" "energy cycle*"))))
+ (assert '(Isa (PerformCalculationsILO "Hess's law*") "ILO class*"))
+ (assert '(ILOQualifier (PerformCalculationsILO "Hess's law*") (inOrderTo (PerformActionOn "construct*"  (every x (Isa x "energy cycle class*"))))  ))
+ (assert '(Isa (PerformCalculationsILO "Hess's law*") "ILO class*"))
+ (assert '(ILOQualifier (PerformCalculationsILO "Hess's law*") (Using (every x (Isa x "mean bond energy class*"))))  ))
  ;; 48. Construct and interpret a reaction pathway diagram, in terms of the enthalpy change of the reaction and of the activation energy (see Section 8)
- (assert '(Isa (ConstructILO "reaction pathway diagram*") "ILO class*"))
- (assert '(Isa (InterpretILO "reaction pathway diagram*") "ILO class*"))
- (assert '(ILOQualifier (InterpretILO "reaction pathway diagram*") (inTermsOf (setof "enthalpy of reaction*" "activation energy*"))))
+ (assert '(Isa (ConstructILO (every x (Isa x "reaction pathway diagram class*"))) "ILO class*"))
+ (assert '(Isa (InterpretILO (every x (Isa x "reaction pathway diagram class*"))) "ILO class*"))
+ (assert '(ILOQualifier (InterpretILO (every x (Isa x "reaction pathway diagram class*"))) (inTermsOf (setof "enthalpy change of reaction*" "activation energy*"))))
  ; 49. Calculate oxidation numbers of elements in compounds and ions (ii) describe and explain redox processes in terms of electron transfer and/or changes in oxidation number (oxidation state) (iii) use changes in oxidation numbers to help balance chemical equations.
  (assert '(Isa (CalculateILO (NamedQuantityOf "oxidation number*" (every x (Isa x "element class*") (isConstituentOf x (every y (or (Isa y "chemical substance class*") (Isa y "chemical substance class*")))) "ILO class*"))
- (assert '(Isa (DescribeILO "redox process class *") "ILO class*"))
- (assert '(Isa (ExplainILO  "redox process class*") "ILO class*"))
+ (assert '(Isa (DescribeILO "redox process*") "ILO class*"))
+ (assert '(Isa (ExplainILO  "redox process*") "ILO class*"))
  ;; 50. Explain, including the electrode reactions, the industrial processes of: (i) the electrolysis of brine, using a diaphragm cell (ii) the extraction of aluminium from molten aluminium oxide/cryolite (iii) the electrolytic purification of copper.
- (assert '(Isa (ExplainILO (IndustrialProcess "electrolysis of brine industrial process*")) "ILO class*"))
+ (assert '(Isa (ExplainILO "electrolysis of brine industrial process*") "ILO class*"))
+ (assert '(Isa (ExplainILO "hall-herault industrial process*") "ILO class*"))
+ (assert '(Isa (ExplainILO "electrolytic purification of copper*") "ILO class*"))
  ;; 51. Define the terms: (i) standard electrode (redox) potential (ii) standard cell potential.
  (assert '(Isa (DefineILO "standard electrode potential*" "ILO class*"))
  (assert '(Isa (DefineILO "standard cell potential*" "ILO class*"))
  ;; 52. Describe the standard hydrogen electrode.
  (assert '(Isa (DescribeILO "standard hydrogen electrode*") "ILO class*"))
  ; 53. Describe methods used to measure the standard electrode potentials of: (i) metals or non-metals in contact with their ions in aqueous solution (ii) ions of the same element in different oxidation states.
- ; measure the standard electrode potential of metals in contact with their ions in aqueous solution
- ; measure the standard electrode potential of non-metals in contact with their ions in aqueous solution
- ; measure the standard electrode potential of ions of the same element in different oxidation states
- ; (StandardElectrodePotentialOf x)
- ; (every x (IsIonOf x y))
- ; (every x (Isa x metal))
- ; (every x (Isa x non-metal))
- ; (StandardElectrodePotentialOf (every x (Isa x "metal class") (InContactwith x (some y (IsIonOf y x) ) (InAqueousSolution x))
- ; (every x (hasStandardElectrodePotentialOf x (every y (Isa y "non-metal class")))
- (assert '(Isa (DescribeILO (every x (MethodFor x (Measure (NamedQuantityOf "standard electrode potential*" (every x (Isa x "metal class*") (inContactwith x (some y (isIonOf y x) ) (inAqueousSolution x)))))))) "ILO class*"))
+  (assert '(Isa (DescribeHowILO ((Measure (NamedQuantityOf "standard electrode potential*" (every x (or (Isa x "metal class*") (Isa x "non-metal class*")) (inContactwith x (some y (isIonOf y x) ) (inState "aqueous solution state*"  x)))))))) "ILO class*"))
  ; 54. Calculate a standard cell potential by combining two standard electrode potentials.
- (assert '(Isa (CalculateILO (every x (Isa x "standard cell potential class*")) "ILO class*"))
- (assert '(ILOQualifier  (CalculateILO (every x (Isa x "standard cell potential class*") ) (Using (EntitieswithCount "standard electrode potential*" 2))))
+ (assert '(Isa (CalculateILO (every x (Isa x "standard cell potential class*"))) "ILO class*"))
+ (assert '(ILOQualifier (CalculateILO (every x (Isa x "standard cell potential class*"))) (Using (some y () (Isa y "standard electrode potential class*")))) ;where card y = 2?
  ; 55. Use standard cell potentials to: (i) explain/deduce the direction of electron flow from a simple cell (ii) predict the feasibility of a reaction.
  (assert '(Isa (ExplainILO (DirectionOf "electron flow*")) "ILO class*"))
  (assert '(ILOQualifier  (ExplainILO (DirectionOf "electron flow*")) (inChemicalSystem "electrochemical cell*")))
- (assert '(ILOQualifier (ExplainILO (DirectionOf "electron flow*")) (Using "standard electrode potential*")))
+ (assert '(ILOQualifier (ExplainILO (DirectionOf "electron flow*")) (Using (some x () "standard electrode potential class*"))))
  ; 56. Construct redox equations using the relevant half-equations.
  (assert '(Isa (ConstructILO (every x (Isa x "redox equation class*")) "ILO class*"))
  (assert '(Using (ConstructILO (every x (Isa x "redox equation class*")) (every y (HalfEquation y x) ))

@@ -66,6 +66,8 @@
 
 ;;;L
 
+(defineTerm "lattice energy*" ':PhysicalProperty)
+
 ;;;M
 (defineTerm "magnetic quantum number*" ':DefinableThing)
 (defineTerm "mass*" ':Thing)
@@ -111,6 +113,7 @@
 ;;;T
 
 (defineTerm "termination reaction*" ':DefinableThing)
+(defineTerm "thermochemistry*" ':DefinableThing)
 
 ;;;U
 
