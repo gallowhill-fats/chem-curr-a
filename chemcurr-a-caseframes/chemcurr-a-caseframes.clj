@@ -142,11 +142,17 @@
 (defineCaseframe 'Proposition '('hasClassName nameable-class class-name)
   :docstring "[namable-class] has [class-name]")
 
+(defineCaseframe 'Proposition '('hasElectrodePotential electrode electrode-potential
+  :docstring "[electrode] has [electrode-potential]"))
+
 (defineCaseframe 'Proposition '('hasElectronicConfiguration chemical-referent electronic-configuration)
   :docstring "[chemical-referent] has [electronic-configuration]")
 
 (defineCaseframe 'Proposition '('hasElectrostaticCharge thing-with-charge sign magnitude)
   :docstring "[thing-with-charge] has charge of [sign] and [magnitude]")
+
+(defineCasefreme 'Proposition '('hasHalfReaction redox-reaction half-reaction)
+  :docstring "[redox-reaction] has [half-reaction]")
 
 (defineCaseframe 'Proposition '(hasName nameable-thing thing-name)
   :docstring "[nameable-thing] has [thing-name]"

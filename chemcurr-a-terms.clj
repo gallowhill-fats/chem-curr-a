@@ -5,7 +5,7 @@
 (defineTerm "atom*" ':DefinableThing)
 (defineTerm "atomic mass*" ':DefinableThing)
 (defineTerm "atomic nucleus*" ':DefinableThing)
-(defineTerm "Avogadro constant*" ':DefinableThing)
+(defineTerm "Avogadro constant*" ':FundamentalConstant)
 (defineTerm "azimuthal quantum number*" ':DefinableThing)
 ;;;B
 (defineTerm "balanced chemical equation*" ':DefinableThing)
@@ -28,6 +28,7 @@
 ;;;E
 (defineTerm "electric field*" ':DefinableThing)
 (defineTerm "electron*" ':SubatomicParticle)
+(defineTerm "electronic charge*" ':FundamentalConstant)
 (defineTerm "electrochemical series*" ':DefinableDescribableThing)
 (defineTerm "electronic configuration*" ':DefinableThing)
 (defineTerm "electron affinity*" ':DefinableThing)
@@ -37,6 +38,7 @@
 (defineTerm "energy*" ':DefinableThing)
 ;;;F
 (defineTerm "f orbital*" ':DefinableThing)
+(defineTerm "Faraday constant*" ':FundamentalConstant)
 (defineTerm "free radical*" ':DefinableThing)
 (defineTerm "functional group*" ':DefinableThing)
 (defineTerm "functional group isomer*" ':DefinableThing)

@@ -73,6 +73,8 @@
 
 ;;; E
 
+(defineSlot electrode :type :Electrode)
+(defineSlot electrode-potential :type :ElectrodePotential)
 (defineSlot element :type :Thing)
 (defineSlot EmployILO :type :Thing)
 (defineSlot electronic-configuration :type :Property)
@@ -96,6 +98,7 @@
 
 ;;; H
 
+(defineSlot half-reaction :type :HalfReaction)
 (defineSlot hasAcceptableCommonName :type :Thing)
 (defineSlot hasAtomName :type :Thing)
 (defineSlot hasChemicalName :type :Thing)
@@ -199,6 +202,7 @@
 (defineSlot reactive-entity :type :Thing)
 (defineSlot reaction-type :type :ReactionType)
 (defineSlot RecountILO :type :Thing)
+(defineSlot redox-reaction :type :RedoxReaction)
 (defineSlot relate-source :type :Thing)
 (defineSlot relate-sink :type :Thing)
 (defineSlot RelateToILO :type :Thing)

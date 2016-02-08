@@ -23,6 +23,9 @@
 ;;; chemical reaction
 
 (defineType :ChemicalReaction (:Thing))
+(defineType :RedoxReaction (:ChemicalReaction))
+(defineType :HalfReaction (:ChemicalReaction))
+
 
 ;;; chemical equation
 
@@ -35,6 +38,7 @@
 (defineType :SmallerComparative (:Comparative))
 
 ;;; ILOs
+
 (defineType :ILO (:Act))
 
 ;;; naming
@@ -72,6 +76,9 @@
 
 (defineType :DefinableThing (:Thing))
 
+;;; fundamental constants
+
+(defineType :FundamentalConstant (:DefinableThing))
 
 ;;; Modifier
 
@@ -80,6 +87,12 @@
 ;;; subatomic particle
 
 (defineType :SubatomicParticle (:DefinableThing))
+
+;;; electrochem
+
+(defineType :Electrode (:Thing))
+(defineType :ElectrodePotential (:Thing))
+
 
 
 
