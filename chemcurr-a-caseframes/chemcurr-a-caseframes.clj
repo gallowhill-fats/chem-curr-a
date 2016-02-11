@@ -5,18 +5,18 @@
   :docstring "Every [subclass] is a [superclass]")
 
 (defineCaseframe 'ILO '(actions analysandum)
-  :docstring "Analyse [analysandum]"
-  :fsymbols '(AnalyseILO))
+  :docstring "analyse [analysandum]"
+  :fsymbols '(analyseILO))
 
-(defineCaseframe 'Act '('AlterPropertyOf type-of-alteration property thing-with-property)
+(defineCaseframe 'Act '('alterPropertyOf type-of-alteration property thing-with-property)
   :docstring "make [type-of-alteration] to [property] of [thing-with-property]")
 
 ; FrameNet: derived from Arriving
-(defineCaseframe 'Thing '(Arrival arriving-thing thing-arrived-at)
+(defineCaseframe 'Thing '(arrival arriving-thing thing-arrived-at)
   :docstring "arrival of [arriving-thing] at  [thing-arived-at]"
-  :fsymbols '(ApproachOfTo ArrivalAt))
+  :fsymbols '(approachOfTo arrivalAt))
 
-(defineCaseframe 'Thing '('AssumptionsOf thing-with-assumptions)
+(defineCaseframe 'Thing '('assumptionsOf thing-with-assumptions)
   :docstring "assumptions of  [thing-with-assumptions]")
 
 ;;; B
@@ -25,10 +25,10 @@
     :docstring "[entity-with-base] is based on [base]"
     :fsymbols '(BasedOn BuiltOn ConstructedOn))
 
-(defineCaseframe 'Thing '('BeamOf beam-constituent)
+(defineCaseframe 'Thing '('beamOf beam-constituent)
   :docstring "a beam of [beam-constituent]s")
 
-(defineCaseframe 'Thing '('BehaviorOf thing-with-behavior)
+(defineCaseframe 'Thing '('behaviorOf thing-with-behavior)
   :docstring "behavior of [thing-with-behavior]")
 
 (defineCaseframe 'Means '('byReactionOf reactants)
@@ -38,45 +38,45 @@
 
 (defineCaseframe 'ILO '(actions object-of-calculation)
     :docstring "calculate [object-of-calculation]"
-    :fsymbols '(CalculateILO))
+    :fsymbols '(calculateILO))
 
-(defineCaseframe 'Thing '('CardinalityOf thing-with-cardinality)
+(defineCaseframe 'Thing '('cardinalityOf thing-with-cardinality)
   :docstring "cardinality of [thing-with-cardinality]")
 
-(defineCaseframe 'Thing '('ChangeIn thing-with-change)
+(defineCaseframe 'Thing '('changeIn thing-with-change)
   :docstring "change in [thing-with-change]")
 
 (defineCaseframe 'Proposition '(Circumstancing entity-with-circumstances circumstances)
     :docstring "[entity-with-circumstances] takes place in [circumstances]"
-    :fsymbols '(inCircumstances inSystem inChemicalSystem))
+    :fsymbols '(InCircumstances InSystem InChemicalSystem))
 
-(defineCaseframe 'Thing '('BehaviorOfClass class-with-behavior)
+(defineCaseframe 'Thing '('behaviorOfClass class-with-behavior)
   :docstring "behavior of [class-with-behavior]")
 
-(defineCaseframe 'Thing '('ClassPhysicalPropertiesOf class-with-physical-properties)
+(defineCaseframe 'Thing '('physicalPropertiesOfClass class-with-physical-properties)
   :docstring "physical properties of [class-with-physical-properties]")
 
-(defineCaseframe 'Thing '('ClassPropertiesOf class-with-properties)
+(defineCaseframe 'Thing '('propertiesOfClass class-with-properties)
   :docstring "properties of [class-with-properties]")
 
-(defineCaseframe 'Comparative '('ComparativeOf comparative-sense  comparative-thing)
+(defineCaseframe 'Comparative '('comparativeOf comparative-sense  comparative-thing)
   :docstring "comparative of [comparative-thing] in [comparative-sense]")
 
 (defineCaseframe 'ILO '(actions comparison-set)
   :docstring "compare [comparison-set]"
-  :fsymbols '(CompareILO MatchILO))
+  :fsymbols '(compareILO matchILO))
 
-(defineCaseframe 'Thing '('ConditionsFor thing-with-conditions)
+(defineCaseframe 'Thing '('conditionsFor thing-with-conditions)
   :docstring "conditions for [thing-with-conditions]")
 
 ;;; D
 
-(defineCaseframe 'Thing '('Data thing-with-data)
+(defineCaseframe 'Thing '('data thing-with-data)
   :docstring "data on [thing-with-data]")
 
 (defineCaseframe 'ILO '(actions definable-thing)
-  :docstring "Define [definable-thing]"
-  :fsymbols '(DefineILO))
+  :docstring "define [definable-thing]"
+  :fsymbols '(defineILO))
 
 (defineCaseframe 'ILO '(actions definable-thing modification)
   :docstring "Define [definable-thing] with [modification]"
@@ -88,28 +88,28 @@
 
 (defineCaseframe 'ILO '(actions deducible-entity)
     :docstring "deduce [deducible-entity]"
-    :fsymbols '(DeduceILO  WorkOutILO DeriveILO AscertainILO DetermineILO FigureOutILO InferILO PuzzleOutILO SurmiseILO DeduceHowILO))
+    :fsymbols '(deduceILO  workOutILO deriveILO ascertainILO determineILO figureOutILO inferILO puzzleOutILO surmiseILO deduceHowILO))
 
 ; FrameNet: derived from Departing
-(defineCaseframe 'Thing '(Departure thing-departing thing-departed-from)
+(defineCaseframe 'Thing '(departure thing-departing thing-departed-from)
   :docstring "departure of [departing-thing] from [thing-departed-from]"
-  :fsymbols '(DepartureOfFrom))
+  :fsymbols '(departureOfFrom))
 
-(defineCaseframe 'Thing '('DeterminationOf thing-to-be-determined)
+(defineCaseframe 'Thing '('determinationOf thing-to-be-determined)
   :docstring "determination of [thing-to-be-determined]")
 
 (defineCaseframe 'ILO '(action discussible-thing)
   :docstring "discuss [discussible-thing]"
-  :fsymbol '(DiscussILO))
+  :fsymbol '(discussILO))
 
 (defineCaseframe 'ILO '(action distinguishable-things)
   :docstring "distinguish between [distinguishable-things]"
-  :fsymbol '(DistinguishBetweenILO))
+  :fsymbol '(distinguishBetweenILO))
 
-(defineCaseframe 'Thing '('DistributionOf thing-with-distribution)
-  :docstring "the distribution of [thing-with-distribution]")
+(defineCaseframe 'Thing '('distributionOf thing-with-distribution)
+  :docstring "distribution of [thing-with-distribution]")
 
-(defineCaseframe 'Thing '('Domain domain)
+(defineCaseframe 'Thing '('domain domain)
   :docstring "the [domain]")
 
 
@@ -117,67 +117,67 @@
 
 ;;; E
 
-(defineCaseframe 'Thing '('ElectronicConfigurationOf chemical-entity)
+(defineCaseframe 'Thing '('electronicConfigurationOf chemical-entity)
   :docstring "electronic configuration of [chemical entity]")
 
-(defineCaseframe 'Thing '('EffectOfOn influence object-of-influence)
+(defineCaseframe 'Thing '('effectOfOn influence object-of-influence)
   :docstring "effect of [influence] on [object-of-influence]")
 
 (defineCaseframe 'ILO '(actions entity-with-explanation)
-    :docstring "Explain the [entity-with-explanation]"
-    :fsymbols '(Explain ExplainWhy AccountFor ExplainTerm ExplainAndUseTerm))
+    :docstring "explain the [entity-with-explanation]"
+    :fsymbols '(explain explainWhy accountFor explainTerm explainAndUseTerm))
 
 ;;; F
 
 ;;; G
 
-(defineCaseframe 'Modifier '('Given thing-given)
+(defineCaseframe 'Modifier '('given thing-given)
  :docstring "given [thing-given]")
 
-(defineCaseframe 'GreaterComparative '('GreaterComparative property)
+(defineCaseframe 'GreaterComparative '('greaterComparative property)
   :docstring "greater comparative of [property]")
 
 ;;; H
 
-(defineCaseframe 'Proposition '('hasClassName nameable-class class-name)
+(defineCaseframe 'Proposition '('HasClassName nameable-class class-name)
   :docstring "[namable-class] has [class-name]")
 
-(defineCaseframe 'Proposition '('hasElectrodePotential electrode electrode-potential
+(defineCaseframe 'Proposition '('HasElectrodePotential electrode electrode-potential
   :docstring "[electrode] has [electrode-potential]"))
 
-(defineCaseframe 'Proposition '('hasElectronicConfiguration chemical-referent electronic-configuration)
+(defineCaseframe 'Proposition '('HasElectronicConfiguration chemical-referent electronic-configuration)
   :docstring "[chemical-referent] has [electronic-configuration]")
 
 (defineCaseframe 'Proposition '('hasElectrostaticCharge thing-with-charge sign magnitude)
   :docstring "[thing-with-charge] has charge of [sign] and [magnitude]")
 
-(defineCasefreme 'Proposition '('hasHalfReaction redox-reaction half-reaction)
+(defineCasefreme 'Proposition '('HasHalfReaction redox-reaction half-reaction)
   :docstring "[redox-reaction] has [half-reaction]")
 
-(defineCaseframe 'Proposition '(hasName nameable-thing thing-name)
+(defineCaseframe 'Proposition '(HasName nameable-thing thing-name)
   :docstring "[nameable-thing] has [thing-name]"
-  :fsymbols '(hasSystematicName hasIupacName hasIupacNameSubstitutive 
-              hasIupacNameAdditive hasAcceptableCommonName hasPreferredIupacName 
-              hasGeneralIupacName hasRetainedIupacName hasTrivialName hasAtomName 
-              hasElementName hasMoleculeName hasSubstanceName hasOtherName))
+  :fsymbols '(HasSystematicName HasIupacName HasIupacNameSubstitutive 
+              HasIupacNameAdditive HasAcceptableCommonName HasPreferredIupacName 
+              HasGeneralIupacName HasRetainedIupacName HasTrivialName HasAtomName 
+              HasElementName HasMoleculeName HasSubstanceName HasOtherName))
 
-(defineCaseframe 'Proposition '('hasSymbolicPropertyElement symbolic-property-class thing-with-property symbolic-property-element)
+(defineCaseframe 'Proposition '('HasSymbolicPropertyElement symbolic-property-class thing-with-property symbolic-property-element)
   :docstring "[thing-with-property] has [symbolic-property-element] in [symbolic-property-class]")
 
-(defineCaseframe 'Proposition '('hasQuantity thing-with-quantity quantity)
+(defineCaseframe 'Proposition '('HasQuantity thing-with-quantity quantity)
   :docstring "[thing-with-quantity] has [quantity]")
 
-(defineCaseframe 'Proposition '('hasShape thing-with-shape shape)
+(defineCaseframe 'Proposition '('HasShape thing-with-shape shape)
      :docstring "[thing-with-shape] has [shape]")
 
-(defineCaseframe 'Proposition '('hasShapeProperty shape shape-property)
+(defineCaseframe 'Proposition '('HasShapeProperty shape shape-property)
      :docstring "[shape] has [shape-property]")
 
 ;;; I
 
 (defineCaseframe 'ILO '(actions identifiable-thing)
     :docstring "identify [identifiable-thing]"
-    :fsymbols '(IdentifyILO))
+    :fsymbols '(identifyILO))
 
 (defineCaseframe 'Proposition  '('ILOModifier ilo clause modification)
   :docstring "[clause] of [ilo] is modified by [modification]")
@@ -185,31 +185,31 @@
 (defineCaseframe 'Proposition  '('ILOQualifier ilo qualification)
   :docstring "[ilo] is qualified by [qualification]")
 
-(defineCaseframe 'Proposition '(Inclusion inclusion-set)
+(defineCaseframe 'Modifier '(including inclusion-set)
   :docstring "including [inclusion-set]"
-  :fsymbols '(Including Containing Integrating Incorporating))
+  :fsymbols '(including containing integrating incorporating))
 
-(defineCaseframe 'Proposition '(inDomain domain-predicate domain)
+(defineCaseframe 'Proposition '(InDomain domain-predicate domain)
   :docstring "[domain-predicate] relates to, refers to, is expressed in terms belonging to [domain]"
-  :fsymbols '(inTermsOf inRelationTo withReferenceTo withRegardsTo withParticularReferenceTo asAppliedTo))
+  :fsymbols '(InTermsOf InRelationTo WithReferenceTo WithRegardsTo WithParticularReferenceTo AsAppliedTo))
 
 (defineCaseframe 'ILO '(actions act)
   :docstring "intentionally carry out [act]"
-  :fsymbols '(IntentionallyActILO ActILO CarryOutILO PerformILO DoILO ExecuteILO))
+  :fsymbols '(intentionallyActILO actILO carryOutILO performILO doILO executeILO))
 
-(defineCaseframe 'Proposition '('inPresenceOf thing-in-presence thing-with-presence)
+(defineCaseframe 'Proposition '('InPresenceOf thing-in-presence thing-with-presence)
   :docstring "[thing-in-presence] is in presence of [thing-with-presence]")
 
-(defineCaseframe 'Proposition '('inPhysicalState physical-state chemical-substance)
+(defineCaseframe 'Proposition '('InPhysicalState physical-state chemical-substance)
   :docstring "[chemical-substance] in [physical-state]")
 
 (defineCaseframe 'Proposition '('Involves involving-entity involvate)
   :docstring "[involving-entity] involves [involvate]")
 
-(defineCaseframe 'Proposition '('isBalanced chemical-equation)
+(defineCaseframe 'Proposition '('IsBalanced chemical-equation)
   :docstring "[chemical-equation] is balanced")
 
-(defineCaseframe 'Proposition  '('IsotopeOf isotope element)
+(defineCaseframe 'Proposition  '('IsIsotopeOf isotope element)
   :docstring "[isotope] is an isotope of [element]")
 
 ;;; J
@@ -226,116 +226,116 @@
 
 ;;; N
 
-(defineCaseframe 'Thing '('NamedChemicalPropertyOf chemical-property thing-with-property)
+(defineCaseframe 'Thing '('namedChemicalPropertyOf chemical-property thing-with-property)
   :docstring "[chemical-property] of [thing-with-property]")
 
-(defineCaseframe 'Thing '('NamedDerivedPropertyOf derived-property thing-with-property)
+(defineCaseframe 'Thing '('namedDerivedPropertyOf derived-property thing-with-property)
   :docstring "[derived-property] of [thing-with-property]")
 
-(defineCaseframe 'Thing '('NamedNonPhysicalPropertyOf non-physical-property thing-with-property)
+(defineCaseframe 'Thing '('namedNonPhysicalPropertyOf non-physical-property thing-with-property)
   :docstring "[non-physical-property] of [thing-with-property]")
 
-(defineCaseframe 'Thing '('NamedPhysicalPropertyOf physical-property thing-with-property)
+(defineCaseframe 'Thing '('namedPhysicalPropertyOf physical-property thing-with-property)
   :docstring "[physical-property] of [thing-with-property]")
 
 
-(defineCaseframe 'Thing '('NamedQuantityOfClass  class-quantity  class)
+(defineCaseframe 'Thing '('namedQuantityOfClass  class-quantity  class)
   :docstring "[class-quantity] of [class]")
 
 ;;; O
 
-(defineCaseframe 'Thing '(ObjectiveInfluence influencing-entity dependent-entity)
+(defineCaseframe 'Thing '(objectiveInfluence influencing-entity dependent-entity)
   :docstring "effect of [influencing-entity] on [dependent-entity]"
-  :fsymbols '(EffectOfOn))
+  :fsymbols '(effectOfOn))
 
 ;;; P
 
-(defineCaseframe 'Act '('PerformActionOn type-of-action object-of-action)
+(defineCaseframe 'Act '('performActionOn type-of-action object-of-action)
   :docstring "perform [type-of-action] on [object-of-action]")
 
-(defineCaseframe 'Thing '('PhysicalPropertiesOf thing-with-property)
+(defineCaseframe 'Thing '('physicalPropertiesOf thing-with-property)
   :docstring "physical properties of [thing-with-property]")
 
-(defineCaseframe 'Thing '('PhysicalPropertiesOfClass class)
+(defineCaseframe 'Thing '('physicalPropertiesOfClass class)
   :docstring "physical properties of [class]")
 
-(defineCaseframe 'Thing '('PropertiesOf thing-with-property)
+(defineCaseframe 'Thing '('propertiesOf thing-with-property)
   :docstring "properties of [thing-with-property]")
 
-(defineCaseframe 'Thing '('Purpose purpose)
+(defineCaseframe 'Thing '('purpose purpose)
   :docstring "the [purpose]")
 
 ;;; Q
 
-(defineCaseframe 'Thing '('NamedQuantityOf quantity thing-with-quantity)
-  :docstring "the [quantity] of [thing-with-quantity")
+(defineCaseframe 'Thing '('namedQuantityOf quantity thing-with-quantity)
+  :docstring "[quantity] of [thing-with-quantity")
 
 ;;; R
 
-(defineCaseframe 'Thing '('ReactivityOf reactive-entity)
+(defineCaseframe 'Thing '('reactivityOf reactive-entity)
   :docstring "reactivity of [reactive-entity]")
 
 (defineCaseframe 'ILO '(action relate-source relate-sink)
   :docstring "relate [relate-source] to [relate-sink]"
-  :fsymbols '(RelateToILO))
+  :fsymbols '(relateToILO))
 
 ;;; S
 
-(defineCaseframe 'Thing '('ShapeOf thing-with-shape)
+(defineCaseframe 'Thing '('shapeOf thing-with-shape)
   :docstring "shape of a [thing-with-shape]")
 
-(defineCaseframe 'SmallerComparative '('SmallerComparative property)
+(defineCaseframe 'SmallerComparative '('smallerComparative property)
   :docstring "smaller comparative of [property]")
 
 (defineCaseframe 'ILO '(actions topic)
   :docstring "summarise [topic]"
-  :fsymbols '(SummariseILO OutlineILO SumUpILO ProvideSynopsisOfILO))
+  :fsymbols '(summariseILO outlineILO sumUpILO provideSynopsisOfILO))
 
-(defineCaseframe 'Thing '('StabilisationOf stabilised-thing)
+(defineCaseframe 'Thing '('stabilisationOf stabilised-thing)
   :docstring "stabilisation of [stabilised-thing]")
 
-(defineCaseframe 'Thing '('StabilisationOfBy stabilised-thing stabilisation-agency)
+(defineCaseframe 'Thing '('stabilisationOfBy stabilised-thing stabilisation-agency)
   :docstring "stabilisation of [stabilised-thing] through [stabilisation-agency]")
 
 (defineCaseframe 'ILO '(actions statable-thing)
   :docstring "state [statable-thing]"
-  :fsymbols '(StateILO WriteILO WriteDownILO ProposeILO RecountILO ReportILO SuggestILO RelateILO))
+  :fsymbols '(stateILO writeILO writeDownILO proposeILO recountILO reportILO suggestILO relateILO))
 
 ;;; T
 
-(defineCaseframe 'Thing '('TypedChemicalReactionOfClass reaction-type reactant-class)
+(defineCaseframe 'Thing '('typedChemicalReactionOfClass reaction-type reactant-class)
   :docstring "[reaction-type] of [reactant-class]")
 
 ;;; U
 
-(defineCaseframe 'Thing '('UnderlyingAssumptionsOf assumption-set)
+(defineCaseframe 'Thing '('underlyingAssumptionsOf assumption-set)
   :docstring "underlying assumptions of [assumption-set]")
 
 (defineCaseframe 'ILO '(actions instrument)
   :docstring "use [instrument]"
-  :fsymbols '(UseILO ApplyILO EmployILO OperateILO))
+  :fsymbols '(useILO applyILO employILO operateILO))
 
-(defineCaseframe 'Thing '('UseOf instrument)
+(defineCaseframe 'Thing '('useOf instrument)
   :docstring "use of [instrument]")
 
-(defineCaseframe 'Thing '('UseAndCircumstanceOf instrument circumstances-of-use)
+(defineCaseframe 'Thing '('useAndCircumstanceOf instrument circumstances-of-use)
   :docstring "use of [instrument] with [circumstances-of-use]")
 
-(defineCaseframe 'Thing '('UsesOfClass class)
+(defineCaseframe 'Thing '('usesOfClass class)
   :docstring "uses of [class]")
 
 
 
 ;;; V
 
-(defineCaseframe 'Thing '('ValueOf quantity)
+(defineCaseframe 'Thing '('valueOf quantity)
  :docstring "value of [quantity]")
 
 ;;; W
 
 (defineCaseframe 'ILO '(actions writable)
     :docstring "write [writable]"
-    :fsymbols '(WriteILO))
+    :fsymbols '(writeILO))
 
 ;;; X
 
