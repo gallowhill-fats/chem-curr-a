@@ -148,8 +148,11 @@
 (defineCaseframe 'Proposition '('HasElectronicConfiguration chemical-referent electronic-configuration)
   :docstring "[chemical-referent] has [electronic-configuration]")
 
-(defineCaseframe 'Proposition '('hasElectrostaticCharge thing-with-charge sign magnitude)
+(defineCaseframe 'Proposition '('HasElectrostaticCharge thing-with-charge sign magnitude)
   :docstring "[thing-with-charge] has charge of [sign] and [magnitude]")
+
+(defineCaseframe 'Proposition '('HasGenericMemberName class generic-member-name)
+  :docstring "[class] has generic member [generic-member-name]")
 
 (defineCasefreme 'Proposition '('HasHalfReaction redox-reaction half-reaction)
   :docstring "[redox-reaction] has [half-reaction]")
@@ -201,6 +204,9 @@
   :docstring "[thing-in-presence] is in presence of [thing-with-presence]")
 
 (defineCaseframe 'Proposition '('InPhysicalState physical-state chemical-substance)
+  :docstring "[chemical-substance] in [physical-state]")
+
+(defineState 'ChemicalSubstance '('inPhysicalState chemical-substance physical-state)
   :docstring "[chemical-substance] in [physical-state]")
 
 (defineCaseframe 'Proposition '('Involves involving-entity involvate)

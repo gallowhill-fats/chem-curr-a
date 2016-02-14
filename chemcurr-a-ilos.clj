@@ -253,7 +253,7 @@
  ;; 52. Describe the standard hydrogen electrode.
  (assert '(Isa (describeILO "standard hydrogen electrode*") "ILO class*"))
  ; 53. Describe methods used to measure the standard electrode potentials of: (i) metals or non-metals in contact with their ions in aqueous solution (ii) ions of the same element in different oxidation states.
-  (assert '(Isa (describeHowILO (measure (namedQuantityOf "standard electrode potential*" (every x (or (Isa x "metal class*") (Isa x "non-metal class*")) (inContactwith x (some y (x) (IsIonOf y x) ) (inState "aqueous solution state*"  x)))))) "ILO class*"))
+  (assert '(Isa (describeHowILO (measure (namedQuantityOf "standard electrode potential*" (every x (or (Isa x "metal class*") (Isa x "non-metal class*")) (inContactwith x (some y (x) (IsIonOf y x) ) (inState x "aqueous solution state*"  )))))) "ILO class*"))
  ; 54. Calculate a standard cell potential by combining two standard electrode potentials.
  (assert '(Isa (calculateILO (every x (Isa x "standard cell potential class*"))) "ILO class*"))
  (assert '(ILOQualifier (calculateILO (every x (Isa x "standard cell potential class*"))) (using (some y () (Isa y "standard electrode potential class*")))) ;where card y = 2?
@@ -270,24 +270,21 @@
  (assert '(Isa (describeILO (namedAspectOf "design*" (every x (Isa x "battery class*"))) "ILO class*"))
  (assert '(ILOQualifier (describeILO (namedAspectOf "design*" (every x (Isa x "battery class*")))) (inTermsOf (setOf (smallerComparative "size*") (smallerComparative "mass*") (greaterComparative "voltage*")))))
  (assert '(Isa (describeILO (namedAspectOf "design*" (every x (Isa x "fuel cell class*"))) "ILO class*"))
-(assert '(ILOQualifier (describeILO (namedAspectOf "design*" (every x (Isa x "fuel cell class*")))) (inTermsOf (setOf (greaterComparative size*) (smallerComparative mass*) (greaterComparative voltage*)))))
+(assert '(ILOQualifier (describeILO (namedAspectOf "design*" (every x (Isa x "fuel cell class*")))) (inTermsOf (setOf (greaterComparative "size*") (smallerComparative "mass*") (greaterComparative "voltage*")))))
  ; 59. State the relationship, F = Le, between the Faraday constant, the Avogadro constant and the charge on the electron.
  (assert '(Isa (stateILO (relationBetween (setof "Faraday constant*" "Avogadro constant*" "electronic charge*"))) "ILO class*"))
  ; 60. Predict the identity of the substance liberated during electrolysis from the state of electrolyte (molten or aqueous), position in the redox series (electrode potential) and concentration.
- (assert '(Isa (predictILO (productOfNamedProcess "electrolysis*")) "ILO class*"))
- (assert '(ILOQualifier (predictILO (productOfNamedProcess "electrolysis*")) (given (setof (identityOf "electrolyte*") (namedPhysicalPropertyOf "state*" "electrolyte*")))))
- ; 61. Calculate: (i) the quantity of charge passed during electrolysis (ii) the mass and/or volume of substance liberated during electrolysis, including those in the electrolysis of H2SO4(aq), Na2SO4(aq).
+ (assert '(Isa (predictILO (productsOf (every x (Isa x "electrolysis system class*") (given (setof (physicalStateOf  (some y (x) (Isa y "electrolyte class*")))  (namedPhysicalQuantityOf "concentration*"  (some y (x) (Isa y "electrolyte class*"))) (some z (x) (Isa z "electrode potential class*") ))) ) "ILO class*"))
+  ; 61. Calculate: (i) the quantity of charge passed during electrolysis (ii) the mass and/or volume of substance liberated during electrolysis, including those in the electrolysis of H2SO4(aq), Na2SO4(aq).
  (assert '(Isa (calculateILO (amountOf "charge passed during electrolysis*")) "ILO class*"))
  (assert '(Isa (calculateILO (amountOf "mass and/or volume of substance liberated during electrolysis*")) "ILO class*"))
  ; 62. Describe the determination of a value of the Avogadro constant by an electrolytic method.
  (assert '(Isa (describeILO (determinationOf (valueOf "Avogadro constant*"))) "ILO class*"))
- (assert '(using (determinationOf (valueOf "Avogadro constant*") "electrolysis*"))
+ (assert '(ILOModifier (describeILO (determinationOf (valueOf "Avogadro constant*"))) (determinationOf (valueOf "Avogadro constant*")) (using "electrolysis*")))
  ; 63. Explain, in terms of rates of the forward and reverse reactions, what is meant by a reversible reaction and dynamic equilibrium.
- (assert '(Isa (explainILO "reversible reaction*") "ILO class*"))
- (assert '(ILOQualifier (explainILO "reversible reaction*") (inTermsOf (rateOf (setof "forward reaction*" "reverse reaction*")))))
- (assert '(Isa (explainILO "dynamic equilibrium*") "ILO class*"))
- (assert '(ILOQualifier (explainILO "dynamic equilibrium*") (inTermsOf (rateOf (setof "forward reaction*" "reverse reaction*")))))
- ;; 64. State Le Chatelier’s Principle and apply it to deduce qualitatively (from appropriate information) the effects of changes in temperature, concentration or pressure, on a system at equilibrium.
+ (assert '(Isa ( explainILO (every x (Isa x "reversible reaction class*") (inTermsOf (setof (rateOf (some y (x) (Isa y "forward reaction class*"))) (rateOf (some y (x) (Isa y "reverse reaction class*"))))))) "ILO class*"))
+(assert '(Isa ( explainILO (namedPropertyOf "dynamic equilibrium*" (every x (Isa x "chemical reaction class*") (inTermsOf (setof (rateOf (some y (x) (Isa y "forward reaction class*"))) (rateOf (some y (x) (Isa y "reverse reaction class*"))))))))) "ILO class*"))
+   ;; 64. State Le Chatelier’s Principle and apply it to deduce qualitatively (from appropriate information) the effects of changes in temperature, concentration or pressure, on a system at equilibrium.
  ;;;REWRITE
  (assert '(Isa (stateILO "Le Chatelier’s Principle*") "ILO class*"))
  (assert '(Isa (deduceILO (effectOfOn (changeIn (namedQuantityOf "temperature*" (every x (Isa x "chemical reaction system class*"))) (some y (x)  (Isa y "equilibrium position class*") (HasEquilibriumPosition x y)))))  "ILO class*"))
@@ -298,17 +295,15 @@
  ; 65. State whether changes in concentration, pressure or temperature or the presence of a catalyst affect the value of the equilibrium constant for a reaction.
  (assert '(Isa (stateILO (every x  (HasEffectOn x (valueOf "equilibrium constant*")))) "ILO class*"))
  ;; 66. Deduce expressions for equilibrium constants in terms of concentrations, Kc, and partial pressures, Kp of the relationship between Kp and Kc is not required?.
- (assert '(Isa (deduceILO (mathematicalExpressionFor "concentration equilibrium constant*")) "ILO class*"))
- (assert '(ILOQualifier (deduceILO (mathematicalExpressionFor "concentration equilibrium constant*")) (inTermsOf "equilibrium concentration*")))
- (assert '(Isa (deduceILO (mathematicalExpressionFor "partial pressure equilibrium constant*")) "ILO class*"))
- (assert '(ILOQualifier (deduceILO (mathematicalExpressionFor "partial pressure equilibrium constant*")) (inTermsOf "equilibrium partial pressure*")))
+ (assert '(Isa (deduceILO (mathematicalExpressionFor (namedDerivedPropertyOf "concentration equilibrium constant class*" (every x (Isa x "chemical reaction class*")) (inTermsOf (namedQuantityOf "concentration*" (some y (x) (or (IsReactant y x) (IsProduct y x))))))))) "ILO class*"))
+ (assert '(Isa (deduceILO (mathematicalExpressionFor (namedDerivedPropertyOf "partial pressure equilibrium constant class*" (every x (Isa x "chemical reaction class*")) (inTermsOf (namedQuantityOf "partial pressure*" (some y (x) (or (IsReactant y x) (IsProduct y x))))))))) "ILO class*"))
   ;; 67. Calculate the values of equilibrium constants in terms of concentrations or partial pressures from appropriate data.
  (assert '(Isa (calculateILO (valueOf (some x (y) (Isa x "concentration equilibrium constant class*") (HasEquilibriumConstant y x)) (every y (Isa y "chemical reaction system class*"))))  "ILO class*"))
  (assert '(Isa (calculateILO (valueOf (some x (y) (Isa x "partial pressure equilibrium constant class*") (HasEquilibriumConstant y x)) (every y (Isa y "chemical reaction system class*"))))  "ILO class*"))
  (assert '(ILOQualifier (calculateILO (valueOf (some x (y) (Isa x "concentration equilibrium constant class*") (HasEquilibriumConstant y x)) (every y (Isa y "chemical reaction system class*"))))  (given (dataOn  "concentration*"))))
  (assert '(ILOQualifier (calculateILO (valueOf (some x (y) (Isa x "partial pressure equilibrium constant class*") (HasEquilibriumConstant y x)) (every y (Isa y "chemical reaction system class*"))))  (given (dataOn  "partial pressure*"))))
  ; 68. Calculate the quantities present at equilibrium, given appropriate data (such calculations will not require the solving of quadratic equations).
- (assert '(Isa (calculateILO (NamedPhysicalPropertyof "concentration*" (some  x (y) (Isa x "chemical species class*") (every y (Isa y "chemical equilibrium reaction system*")))))) "ILO class*"))
+ (assert '(Isa (calculateILO (namedPhysicalPropertyof "concentration*" (some  x (y) (Isa x "chemical species class*") (every y (Isa y "chemical reaction system*")(IsAtEquilibrium y)))))) "ILO class*"))
  ; 69. Describe and explain the conditions used in the Haber process and the Contact process, as examples of the importance of an understanding of chemical equilibrium in the chemical industry (see also Section 9.6).
  (assert '(Isa (describeILO (reactionConditionsOf "Haber process chemical reaction*")) "ILO class*"))
  (assert '(ILOQualifier (describeILO (reactionConditionsOf "Haber process chemical reaction*")) (inRelationTo (equilibriumPositionOf "Haber process chemical reaction*"))
@@ -317,7 +312,7 @@
  ;; 70. Show understanding of, and use, the Brønsted-Lowry theory of acids and bases, including the use of the acid-I, base-II concept.
  ;;;REWRITE
  (assert '(Isa (describeILO "Brønsted-Lowry theory of acids and bases*") "ILO class*"))
- (assert '(inManner (describeILO "Brønsted-Lowry theory of acids and bases*") "brief*"))
+ (assert '(ILOQualifier (describeILO "Brønsted-Lowry theory of acids and bases*") (inManner "brief*")))
  ; 71. Explain qualitatively the differences in behaviour between strong and weak acids and bases and the pH values of their aqueous solutions in terms of the extent of dissociation.
  (assert '(Isa (explainILO (differenceBetween (setof (behaviorOfClass "weak acid class*") (behaviorOfClass "strong acid class*")))) "ILO class*"))
  (assert '(Isa (explainILO (differenceBetween (setof (behaviorOfClass "weak base class*") (behaviorOfClass "strong base class*")))) "ILO class*"))
@@ -336,27 +331,27 @@
  (assert '(Isa (calculateILO (namedUnitaryQuantityOf "molarity*" "hydrogen ion species*"))) "ILO class*"))
  (assert '(Isa (calculateILO (namedUnitaryQuantityOf "molarity*" "hydrogen ion species*"))) "ILO class*"))
  (assert '(Isa (calculateILO (namedUnitaryQuantityOf "molarity*" "hydrogen ion species*"))) "ILO class*"))
- (assert '(Isa (calculateILO (namedUnitaryQuantityOf "molarity*" "hydrogen ion species*"))) "ILO class*"))
- (assert '(Isa (calculateILO (namedUnitaryQuantityOf "molarity*" "hydrogen ion species*"))) "ILO class*"))
- (assert '(Isa (calculateILO (namedUnitaryQuantityOf "molarity*" "hydrogen ion species*"))) "ILO class*"))
- ; 74. Explain the choice of suitable indicators for acid-base titrations, given appropriate data.
- (assert '(Isa (chooseILO (qualifiedTerm "suitable*" "indicator*")) "ILO class*"))
+ (assert '(Isa (calculateILO (namedQuantityOf "pH*" (every x (Isa x "strong acid class*")))) "ILO class*"))
+ (assert '(Isa (calculateILO (namedQuantityOf "pH*" (every x (Isa x "weak acid class*")))) "ILO class*"))
+ (assert '(Isa (calculateILO (namedQuantityOf "pH*" (every x (Isa x "strong base class*")))) "ILO class*"))
+  ; 74. Explain the choice of suitable indicators for acid-base titrations, given appropriate data.
+ (assert '(Isa (chooseILO (some y (x) (Isa y "indicator class*") (every x (Isa x "acid-base titration class*"))) "ILO class*"))
  ; 75. Describe the changes in pH during acid-base titrations and explain these changes in terms of the strengths of the acids and bases.
- (assert '(Isa (describeILO (ChangeIn "pH*")) "ILO class*"))
- (assert '(During (describeILO (ChangeIn "pH*")) "acid-base titration*"))
- (assert '(Isa (explainILO (ChangeIn "pH*")) "ILO class*"))
- (assert '(ILOModifier  (explainILO (ChangeIn "pH*")) (changeIn "pH*") (During "acid-base titration*")))
- (assert '(ILOQualifier (explainILO (ChangeIn "pH*")) (inTermsOf (setof (namedPhysicalPropertyOfClass "strength*" "acid class*") (namedPhysicalPropertyOfClass "strength*" "base class*")))))
+ (assert '(Isa (describeILO (changeIn "pH*")) "ILO class*"))
+ (assert '(ILOModifier  (describeILO (changeIn "pH*")) (changeIn "pH*") (during "acid-base titration*")))
+ (assert '(Isa (explainILO (changeIn "pH*")) "ILO class*"))
+ (assert '(ILOModifier  (explainILO (changeIn "pH*")) (changeIn "pH*") (during "acid-base titration*")))
+ (assert '(ILOQualifier (explainILO (changeIn "pH*")) (inTermsOf (setof (namedPhysicalPropertyOfClass "strength*" "acid class*") (namedPhysicalPropertyOfClass "strength*" "base class*")))))
  ; 76. Explain how buffer solutions control pH (ii) describe and explain their uses, including the role of HCO3 – in controlling pH in blood.
  ;;;REWRITE
  ; 76a. Explain how buffer solutions control pH.
  ; 76b. Describe the uses of buffer solutions, including the role of HCO3 – in controlling pH in blood.
  ; 76b. Explain the uses of buffer solutions, including the role of HCO3 – in controlling pH in blood.
- (assert '(Isa (explainILO (useOf "buffer solution*")) "ILO class*"))
+ (assert '(Isa (explainILO (useOf (every x (Isa x "buffer solution class*")) "ILO class*"))
  (assert '(Isa (explainHowILO (namedActionOn "control*" "buffer solution*" "pH*" )) "ILO class*"))
  (assert '(Isa (describeILO (roleOfIn "hydrogen carbonate ion species*" (namedActionOn "control*" "buffer solution*" "pH*" ))) "ILO class*"))
  ;; 77. Calculate the pH of buffer solutions, given appropriate data.
- (assert '(Isa (calculateILO (NamedClassinRelationToseOf "solubility product*")) "ILO class*"))
+ (assert '(Isa (calculateILO (namedQuantityOfClass "pH*" "buffer solution class*")) "ILO class*"))
  ; 79. Calculate Ksp from concentrations and vice versa.
  (assert '(Isa (calculateILO "solubility product*") "ILO class*"))
  (assert '(ILOQualifier  (calculateILO "solubility product*") (given (dataOn concentration*))))

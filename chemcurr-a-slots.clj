@@ -28,6 +28,7 @@
 (defineSlot chemical-entity :type :ChemicalEntity)
 (defineSlot chemical-equation :type :ChemicalEquation)
 (defineSlot chemical-property :type :ChemicalProperty)
+(defineSlot chemical-substance :type :ChemicalSubstance)
 (defineSlot Circumstance :type :Thing)
 (defineSlot Circumstancing :type :Thing)
 (defineSlot circumstances :type :Thing)
@@ -96,24 +97,26 @@
 
 ;;; G
 
+(defineSlot generic-member-name :type :Name)
+
 ;;; H
 
 (defineSlot half-reaction :type :HalfReaction)
-(defineSlot hasAcceptableCommonName :type :Thing)
-(defineSlot hasAtomName :type :Thing)
-(defineSlot hasChemicalName :type :Thing)
-(defineSlot hasElementName :type :Thing)
-(defineSlot hasGeneralIupacname :type :Thing)
-(defineSlot hasIupacName :type :Thing)
-(defineSlot hasIupacNameSubstitutive :type :Thing)
-(defineSlot hasIupacNameAdditive :type :Thing)
-(defineSlot hasMoleculeName :type :Thing)
-(defineSlot hasName :type :Thing)
-(defineSlot hasOtherName :type :Thing)
-(defineSlot hasPreferredIupacName :type :Thing)
-(defineSlot hasRetainedIupacName :type :Thing)
-(defineSlot hasSubstanceName :type :Thing)
-(defineSlot hasSystematicName :type :Thing)
+(defineSlot HasAcceptableCommonName :type :Thing)
+(defineSlot HasAtomName :type :Thing)
+(defineSlot HasChemicalName :type :Thing)
+(defineSlot HasElementName :type :Thing)
+(defineSlot HasGeneralIupacname :type :Thing)
+(defineSlot HasIupacName :type :Thing)
+(defineSlot HasIupacNameSubstitutive :type :Thing)
+(defineSlot HasIupacNameAdditive :type :Thing)
+(defineSlot HasMoleculeName :type :Thing)
+(defineSlot HasName :type :Thing)
+(defineSlot HasOtherName :type :Thing)
+(defineSlot HasPreferredIupacName :type :Thing)
+(defineSlot HasRetainedIupacName :type :Thing)
+(defineSlot HasSubstanceName :type :Thing)
+(defineSlot HasSystematicName :type :Thing)
 
 
 
