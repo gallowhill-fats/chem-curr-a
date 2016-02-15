@@ -1,3 +1,7 @@
+;;; cardinality
+
+(defineType :Collection (:Thing))
+
 ;;; analysing
 
 (defineType :Analysable (:Thing))
@@ -22,6 +26,8 @@
 
 ;;; chemical reaction
 
+(defineType :Change (:Thing))
+(defineType :ChemicalChange (:Change))
 (defineType :ChemicalReaction (:Thing))
 (defineType :RedoxReaction (:ChemicalReaction))
 (defineType :HalfReaction (:ChemicalReaction))

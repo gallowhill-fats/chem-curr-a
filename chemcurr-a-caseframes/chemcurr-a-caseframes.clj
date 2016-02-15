@@ -196,6 +196,9 @@
   :docstring "[domain-predicate] relates to, refers to, is expressed in terms belonging to [domain]"
   :fsymbols '(InTermsOf InRelationTo WithReferenceTo WithRegardsTo WithParticularReferenceTo AsAppliedTo))
 
+(defineCaseframe '('forChemicalSystem chemical-system)
+  :docstring "relating to [chemical-system]")
+
 (defineCaseframe 'ILO '(actions act)
   :docstring "intentionally carry out [act]"
   :fsymbols '(intentionallyActILO actILO carryOutILO performILO doILO executeILO))
@@ -232,6 +235,9 @@
 
 ;;; N
 
+(defineCaseframe 'Thing '('namedChemicalChangeOfClass chemical-change class)
+  :docstring "[chemical-change] of [class]")
+
 (defineCaseframe 'Thing '('namedChemicalPropertyOf chemical-property thing-with-property)
   :docstring "[chemical-property] of [thing-with-property]")
 
@@ -243,6 +249,9 @@
 
 (defineCaseframe 'Thing '('namedPhysicalPropertyOf physical-property thing-with-property)
   :docstring "[physical-property] of [thing-with-property]")
+
+(defineCaseframe 'Thing '('namedPhysicalPropertyOfClass physical-property class)
+  :docstring "[physical-property] of [class]")
 
 
 (defineCaseframe 'Thing '('namedQuantityOfClass  class-quantity  class)
@@ -259,14 +268,17 @@
 (defineCaseframe 'Act '('performActionOn type-of-action object-of-action)
   :docstring "perform [type-of-action] on [object-of-action]")
 
-(defineCaseframe 'Thing '('physicalPropertiesOf thing-with-property)
+(defineCaseframe 'Collection '('physicalPropertiesOf thing-with-property)
   :docstring "physical properties of [thing-with-property]")
 
-(defineCaseframe 'Thing '('physicalPropertiesOfClass class)
+(defineCaseframe 'Collection '('physicalPropertiesOfClass class)
   :docstring "physical properties of [class]")
 
-(defineCaseframe 'Thing '('propertiesOf thing-with-property)
+(defineCaseframe 'Collection '('propertiesOf thing-with-property)
   :docstring "properties of [thing-with-property]")
+
+(defineCaseframe 'Collection '('propertiesOfClass class)
+  :docstring "properties of [class]")
 
 (defineCaseframe 'Thing '('purpose purpose)
   :docstring "the [purpose]")

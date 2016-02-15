@@ -4,13 +4,13 @@
 (defineSlot Act :type :Thing)
 (defineSlot act :type :Act)
 (defineSlot analysandum :type :Thing)
-(defineSlot AnalyseILO :type :Thing)
-(defineSlot ApplyILO :type :Thing)
+(defineSlot analyseILO :type :Thing)
+(defineSlot applyILO :type :Thing)
 (defineSlot ApproachOfTo :type :Thing)
 (defineSlot ArrivalAt :type :Thing)
 (defineSlot Arrival :type :Thing)
 (defineSlot arriving-thing :type :Thing)
-(defineSlot AscertainILO :type :Thing)
+(defineSlot ascertainILO :type :Thing)
 (defineSlot assumption-set :type :Thing)
 
 ;;; B
@@ -23,12 +23,14 @@
 
 ;;; C
 
-(defineSlot CalculateILO :type :Thing)
-(defineSlot CarryOut :type :Thing)
+(defineSlot calculateILO :type :Thing)
+(defineSlot carryOutILO :type :Thing)
+(defineSlot chemical-change :type :ChemicalChange)
 (defineSlot chemical-entity :type :ChemicalEntity)
 (defineSlot chemical-equation :type :ChemicalEquation)
 (defineSlot chemical-property :type :ChemicalProperty)
 (defineSlot chemical-substance :type :ChemicalSubstance)
+(defineSlot chemical-system :type :Thing)
 (defineSlot Circumstance :type :Thing)
 (defineSlot Circumstancing :type :Thing)
 (defineSlot circumstances :type :Thing)
@@ -42,29 +44,29 @@
 (defineSlot comparative-aspect :type :Comparative)
 (defineSlot comparative-thing :type :Thing)
 (defineSlot comparative-sense :type :Thing)
-(defineSlot CompareILO :type :Thing)
+(defineSlot compareILO :type :Thing)
 (defineSlot comparison-set :type :Thing)
-(defineSlot ConstructedOn :type :Thing)
-(defineSlot Containing :type :Thing)
+(defineSlot constructedOn :type :Thing)
+(defineSlot containing :type :Thing)
 (defineSlot content :type :Thing)
 
 
 
 ;;; D
 
-(defineSlot DeduceHowILO :type :Thing)
+(defineSlot deduceHowILO :type :Thing)
 (defineSlot deducible-entity :type :Entity)
-(defineSlot DeduceILO :type :Thing)
+(defineSlot deduceILO :type :Thing)
 (defineSlot definable-thing :type :DefinableThing)
 (defineSlot dependent-entity :type :Entity)
 (defineSlot departing-thing :type :Thing)
 (defineSlot Departure :type :Thing)
-(defineSlot DepartureOfFrom :type :Thing)
+(defineSlot departureOfFrom :type :Thing)
 (defineSlot dependent-entity :type :Entity)
-(defineSlot DeriveILO :type :Thing)
+(defineSlot deriveILO :type :Thing)
 (defineSlot describable-thing :type :Thing)
-(defineSlot DetermineILO :type :Thing)
-(defineSlot DiscussILO :type :Thing)
+(defineSlot determineILO :type :Thing)
+(defineSlot discussILO :type :Thing)
 (defineSlot discussible-thing :type :Thing)
 (defineSlot distinguishable-things :type :Thing)
 (defineSlot Do :type :Thing)
@@ -77,23 +79,23 @@
 (defineSlot electrode :type :Electrode)
 (defineSlot electrode-potential :type :ElectrodePotential)
 (defineSlot element :type :Thing)
-(defineSlot EmployILO :type :Thing)
+(defineSlot employILO :type :Thing)
 (defineSlot electronic-configuration :type :Property)
 (defineSlot entity-with-base :type :Entity)
 (defineSlot entity-with-circumstances :type :Entity)
 (defineSlot entity-with-explanation :type :Entity)
 (defineSlot essential-for :type :Thing)
 (defineSlot essential-thing :type :Thing)
-(defineSlot ExecuteILO :type :Thing)
+(defineSlot executeILO :type :Thing)
 (defineSlot Explain :type :Thing)
-(defineSlot ExplainWhy :type :Thing)
-(defineSlot ExplainTerm :type :Thing)
-(defineSlot ExplainAndUseTerm :type :Thing)
+(defineSlot explainWhyILO :type :Thing)
+(defineSlot explainTermILO :type :Thing)
+(defineSlot explainAndUseTermILO :type :Thing)
 
 
 ;;; F
 
-(defineSlot FigureOutILO :type :Thing)
+(defineSlot figureOutILO :type :Thing)
 
 ;;; G
 
@@ -123,7 +125,7 @@
 ;;; I
 
 (defineSlot identifiable-thing :type :Thing)
-(defineSlot IdentifyILO :type :Thing)
+(defineSlot identifyILO :type :Thing)
 (defineSlot ilo :type :ILO)
 (defineSlot inChemicalSystem :type :Thing)
 (defineSlot inCircumstances :type :Thing)
@@ -131,7 +133,7 @@
 (defineSlot Inclusion :type :Thing)
 (defineSlot inclusion-set :type :Entity)
 (defineSlot inDomain :type :Thing)
-(defineSlot InferILO :type :Thing)
+(defineSlot inferILO :type :Thing)
 (defineSlot influence :Thing)
 (defineSlot influencing-entity :type :Entity)
 (defineSlot Incorporating :type :Thing)
@@ -158,7 +160,7 @@
 ;;; M
 
 (defineSlot magnitude :type :Number)
-(defineSlot MatchILO :type :Thing)
+(defineSlot matchILO :type :Thing)
 (defineSlot modification :type :Thing :min 0)
 (defineSlot modAsAppliedTo :type :Thing)
 (defineSlot modInDomain :type :Thing)
@@ -180,7 +182,7 @@
 (defineSlot object-of-action :type :Thing)
 (defineSlot object-of-calculation :type :Thing)
 (defineSlot object-of-influence :type :Thing)
-(defineSlot OperateILO :type :Thing)
+(defineSlot operateILO :type :Thing)
 
 ;;; P
 
@@ -188,10 +190,10 @@
 (defineSlot physical-property :type :PhysicalProperty)
 (defineSlot physical-state :type :PhysicalState)
 (defineSlot property :type :Property)
-(defineSlot ProposeILO :type :Thing)
+(defineSlot proposeILO :type :Thing)
 (defineSlot pure-chemical-substance-name :type :Name)
 (defineSlot purpose :type :Thing)
-(defineSlot PuzzleOutILO :type :Thing)
+(defineSlot puzzleOutILO :type :Thing)
 
 ;;; Q
 
@@ -204,12 +206,12 @@
 (defineSlot reactant-class :type :Category)
 (defineSlot reactive-entity :type :Thing)
 (defineSlot reaction-type :type :ReactionType)
-(defineSlot RecountILO :type :Thing)
+(defineSlot recountILO :type :Thing)
 (defineSlot redox-reaction :type :RedoxReaction)
 (defineSlot relate-source :type :Thing)
 (defineSlot relate-sink :type :Thing)
 (defineSlot RelateToILO :type :Thing)
-(defineSlot ReportILO :type :Thing)
+(defineSlot reportILO :type :Thing)
 
 ;;; S
 
@@ -220,7 +222,7 @@
 (defineSlot stabilised-thing :type :Thing)
 (defineSlot stabilisation-agency :type :Thing)
 (defineSlot statable-thing :type :Thing)
-(defineSlot StateILO :type :Thing)
+(defineSlot stateILO :type :Thing)
 (defineSlot symbol :type :Thing)
 (defineSlot symboled-entity :type :Thing)
 (defineSlot derived-property :type :DerivedProperty)
@@ -274,10 +276,10 @@
 (defineSlot withParticularReferenceTo :type :Thing)
 (defineSlot withReferenceTo :type :Thing)
 (defineSlot withRegardsTo :type :Thing)
-(defineSlot WorkOutILO :type :Thing)
+(defineSlot workOutILO :type :Thing)
 (defineSlot writable :type :Thing)
-(defineSlot WriteDownILO :type :Thing)
-(defineSlot WriteILO :type :Thing)
+(defineSlot writeDownILO :type :Thing)
+(defineSlot writeILO :type :Thing)
 
 ;;; X
 
@@ -285,9 +287,6 @@
 
 ;;; Z
 
-(defineCaseframe 'ILO '(action discussible-thing)
-  :docstring "discuss [discussible-thing]"
-  :fsymbol '(DiscussILO))
 
 
 
