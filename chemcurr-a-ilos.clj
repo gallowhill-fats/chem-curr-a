@@ -399,31 +399,38 @@
  (assert '(Isa (defineILO "catalyst*") "ILO class*"))
  (assert '(Isa (describeILO (mechanismOf "catalysis*")) "ILO class*"))
  ; 85b. Explain catalysis in terms of reaction mechanism and activation energy.
- (assert '(Isa (explainILO (namedEffectOfOn "catalysis*"  (every x  (Isa x "rate of reaction class*") (some  y (x) (Isa y "chemical reaction class*" )) (inTermsOf (setof (some z (y) (Isa z "reaction mechanism class*") (some w (y) (Isa w "activation energy class*")))))))) "ILO class*"))
+ (assert '(Isa (explainILO (effectOfInfluenceOn "catalysis*"  (every x  (Isa x "rate of reaction class*") (some  y (x) (Isa y "chemical reaction class*" )) (inTermsOf (setof (some z (y) (Isa z "reaction mechanism class*") (some w (y) (Isa w "activation energy class*")))))))) "ILO class*"))
   ; 86. Interpret catalysis in terms of the Boltzmann distribution.
  (assert '(Isa (interpretILO "catalysis*") "ILO class*"))
  (assert '(ILOQualifier (interpretILO "catalysis*") (inTermsOf "Boltzmann distribution*"))
  ; 87. Describe enzymes as biological catalysts (proteins) which may have specific activity.
  (assert '(Isa (describeILO (propertiesOfClass "enzyme class*")) "ILO class*"))
  (assert '(ILOQualifer (describeILO (propertiesOfClass "enzyme class*"))  (inTermsOf "catalysis*"))))
- ; 88. Construct and use rate equations of the form rate = kA?mB?n (limited to simple cases of single step reactions and of multistep processes with a rate-determining step, for which m and n are 0, 1 or 2), including: (i) deducing the order of a reaction from concentration-time graphs, by the initial rates method and half-life methods (ii) deducing, for zero- and first-order reactions, the order of reaction from concentration-time graphs (iii) verifying that a suggested reaction mechanism is consistent with the observed kinetics (iv) predicting the order that would result from a given reaction mechanism (and vice versa) (v) calculating an initial rate using concentration data forms of rate equations are not required?.
- (assert '(Isa (deduceILO "total order of reaction*") "ILO class*"))
- (assert '(ILOQualifier (deduceILO "total order of reaction*") (using (graphOf "concentration*" "time*")) (withMeans "half-life method*")))
- (assert '(ILOQualifier (deduceILO "total order of reaction*") (using (graphOf "concentration*" "time*")) (withMeans "initial rates method*")))
- (assert '(ILOQualifier (deduceILO "total order of reaction*") (using (graphOf "concentration*" "time*")) (forSystem "zero-order reaction*")))
- (assert '(ILOQualifier (deduceILO "total order of reaction*") (using (graphOf "concentration*" "time*")) (forSystem "first-order reaction*")))
- (assert '(Isa (verifyILO (IsConsistentWith (every x (Isa x "reaction mechanism*")) (namedPropertyOfReaction "kinetics*" x))) "ILO class*"))
- (assert '(ILOQualifier (deduceILO "total order of reaction*") (given "reaction mechanism*")))
- (assert '(Isa (deduceILO "reaction mechanism*") "ILO class*"))
- (assert '(ILOQualifier (deduceILO "reaction mechanism*") (given "total order of reaction*")))
-   ; 89. Show understanding that the half-life of a first-order reaction is independent of concentration (ii) use the half-life of a first-order reaction in calculations.
- (assert '(Isa (understandILO (IsIndependentOf (namedQuantityOf "half-life*" "first-order reaction*") "concentration")) "ILO class*"))
+ ; 88. Construct and use rate equations of the form rate = kA?mB?n (limited to simple cases of single step reactions and of multistep processes with a rate-determining step, for which m and n are 0, 1 or 2), including: (i) deducing the order of a reaction from concentration-time graphs, by the initial rates method and half-life methods (ii) deducing, for zero- and first-order reactions, the order of reaction from concentration-time graphs (iii) verifying that a suggested reaction mechanism is consistent with the observed kinetics (iv) predicting the order that would result from a given reaction mechanism (and vice versa) (v) calculating an initial rate using concentration data forms of rate equations are not required?
+; 88a. construct rate equations of the form r = kA^nB^m for single step reactions and multi-step reactions with a rate-determining  step
+; 88b. deduce the order of a reaction from a concentration-time graph by the initial rates method
+; 88c. deduce the order of a reaction from a concentration-time graph by the half-life method
+; 88d. deduce the order of a zero-order reaction from a concentration-time graph
+; 88e. deduce the order of a first-order reaction from a concentration-time graph
+; 88f. verify that a suggested reaction mechanism is consistent with the observed kinetics
+; 88g. predict the order that would result from a given reaction mechanism
+; 88h. predict the reaction mechanism for a chemical reaction given its order
+  (assert '(Isa (constructILO (every x (Isa x "integrated rate equation class*") (some y (x) (or (Isa y "single-step reaction class*") (Isa y "multi-step reaction with rds class")))  (Isa x "simple things class*"))) "ILO class*")) ; shimple things?? This ilo also needs a cfn for integrated rate laws that incorporates concentrations and their orders
+  (assert '(Isa (deduceILO (namedPropertyOf "total order*" (every x (Isa x "chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*"))))))) "ILO class*"))
+ (assert '(ILOQualifier (deduceILO (namedPropertyOf "total order*" (every x (Isa x "chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*")))))))  (withMeans "initial rates method*")))
+ (assert '(Isa (deduceILO (namedPropertyOf "total order*" (every x (Isa x "zero-order chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*")))))))  "ILO class*"))
+ (assert '(ILOQualifier (deduceILO (namedPropertyOf "total order*" (every x (Isa x "first-order chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*"))))))) "ILO class*"))
+ (assert '(Isa (verifyILO (IsConsistentWith (every x (Isa x "reaction mechanism*")) (namedPropertyOfReaction "kinetics of reaction*" x))) "ILO class*"))
+ (assert '(Isa (deduceILO (namedPropertyOf "total order*" (every x (Isa x "chemical reaction class*") (given (some y (x)  (Isa y "reaction mechanism class*") (HasMechanism x y)))))) "ILO class*"))
+ (assert '(Isa (deduceILO (every x (Isa x "reaction mechanism class*") (some y (x) (Isa y "chemical reaction class*") (given (namedPropertyOf "total order*" y)))))  "ILO class*"))
+    ; 89. Show understanding that the half-life of a first-order reaction is independent of concentration (ii) use the half-life of a first-order reaction in calculations.
+ (assert '(Isa (understandILO (IsIndependentOf (namedQuantityOf "half-life*" (every x "first-order reaction class*")) "concentration*")) "ILO class*"))
  ; 90. Calculate a rate constant, for example by using the initial rates or half-life method.
   ; REWRITE: 90a. Calculate a rate constant using the initial rates method.
  ; 90b. Calculate a rate constant using the half-life method.
- (assert '(Isa (calculateILO "rate constant*") "ILO class*"))
- (assert '(ILOQualifier (calculateILO "rate constant*") (using "half-life method*")))
- (assert '(ILOQualifier (calculateILO "rate constant*") (using "initial rates method*")))
+ (assert '(Isa (calculateILO (every x (Isa x "rate constant class*") (some y (x) (Isa y "chemical reaction class*"))))) "ILO class*"))
+ (assert '(ILOQualifier  (calculateILO (every x (Isa x "rate constant class*") (some y (x) (Isa y "chemical reaction class*")))) (using "half-life method*")))
+ (assert '(ILOQualifier  (calculateILO (every x (Isa x "rate constant class*") (some y (x) (Isa y "chemical reaction class*")))) (using "initial rates method*")))
  ; 91. Devise a suitable experimental technique for studying the rate of a reaction, from given information.
  (assert '(Isa (deviseILO (qualifiedTerm (setof "suitable*" "experimental*") "technique*")) "ILO class*"))
  (assert '(ILOQualifier (deviseILO (qualifiedTerm (setof "suitable*" "experimental*") "technique*")) (forPurpose (StudyOf "reaction rate*"))))
@@ -437,33 +444,51 @@
  (assert '(ILOQualifier (describeILO "heterogeneous catalysis*") (asIn "catalytic conversion*")))
  (assert '(ILOQualifier (describeILO "heterogeneous catalysis*") (asIn (roleOfIn "iron three plus ion species*" )))
  ; 93. Describe qualitatively (and indicate the periodicity in) the variations in atomic radius, ionic radius, melting point and electrical conductivity of the elements (see the dataOn Booklet).
- (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "atomic radius*" (every x (Isa x "element class*")))) "ILO class*"))
- (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "ionic radius*" (every x (Isa x "element class*")))) "ILO class*"))
- (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "melting point*" (every x (Isa x "element class*")))) "ILO class*"))
- (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "electrical conductivity*" (every x (Isa x "element class*")))) "ILO class*"))
+ (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "atomic radius*" (every x (Isa x "element class*")))))) "ILO class*"))
+ (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "ionic radius*" (every x (Isa x "element class*")))))) "ILO class*"))
+ (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "melting point*" (every x (Isa x "element class*")))))) "ILO class*"))
+ (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "electrical conductivity*" (every x (Isa x "element class*")))))) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "atomic radius*" (every x (Isa x "element class*")))))) (inManner "qualitative*")))
+ (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "ionic radius*" (every x (Isa x "element class*")))))) (inManner "qualitative*")))
+ (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "melting point*" (every x (Isa x "element class*")))))) (inManner "qualitative*")))
+ (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "electrical conductivity*" (every x (Isa x "element class*")))))) (inManner "qualitative*")))
  ; 94. Explain qualitatively the variation in atomic radius and ionic radius.
- (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "ionic radius*" (every x (Isa x "element class*")))) "ILO class*"))
- (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "atomic radius*" (every x (Isa x "element class*")))) "ILO class*"))
+ (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "ionic radius*" (every x (Isa x "element class*")))))) "ILO class*"))
+ (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "atomic radius*" (every x (Isa x "element class*")))))) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "ionic radius*" (every x (Isa x "element class*")))))) (inManner "qualitative*")))
+ (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "atomic radius*" (every x (Isa x "element class*")))))) (inManner "qualitative*")))
  ; 95. Interpret the variation in melting point and in electrical conductivity in terms of the presence of simple molecular, giant molecular or metallic bonding in the elements.
  (assert '(Isa (interpretILO (variationIn (unitaryQuantityOf "melting point*" (every x (Isa x "element class*")))) "ILO class*"))
- (assert '(ILOQualifier (interpretILO (variationIn (unitaryQuantityOf "melting point*" (every x (Isa x "element class*"))))  (inTermsOf )(setof "molecular bonding*" "giant molecular bonding*" "metallic bonding*"))))
+ (assert '(ILOQualifier (interpretILO (variationIn (unitaryQuantityOf "melting point*" (every x (Isa x "element class*"))))  (inTermsOf (setof "molecular bonding*" "giant molecular bonding*" "metallic bonding*"))))
+ (assert '(Isa (interpretILO (variationIn (unitaryQuantityOf "electrical conductivity*" (every x (Isa x "element class*")))) "ILO class*"))
+ (assert '(ILOQualifier (interpretILO (variationIn (unitaryQuantityOf "electrical conductivity*" (every x (Isa x "element class*"))))  (inTermsOf (setof "molecular bonding*" "giant molecular bonding*" "metallic bonding*"))))
  ; 96. Explain the variation in first ionisation energy.
- (assert '(Isa (explainILO (variationIn "first ionization energy*") "ILO class*"))
+ (assert '(Isa (explainILO (variationIn (nameQuantityOf "first ionization energy*" (every x (Isa x "element class*"))))))  "ILO class*"))
  ; 97. Describe the reactions, if any, of the elements with oxygen (to give Na2O, MgO, Al 2O3, P4O10?, SO2, SO3), chlorine (to give NaCl? , MgCl? 2, Al 2Cl 6, SiCl? 4, PCl 5) and water (Na and Mg only).
- (assert '(Isa (describeILO (chemicalReactionBySpecies (reactant (setof "sodium element*" "oxygen element*")) (product )) "ILO class*"))
- ; 98. State and explain the variation in oxidation number of the oxides and chlorides in terms of their valance shell electrons.
- (assert '(Isa (stateILO (variationIn (namedQuantityOfClass "oxidation number*" "oxide substance class*"))) "ILO class*"))
- (assert '(inTermsOf (stateILO (variationIn (namedQuantityOfClass "oxidation number*" "oxide substance class*"))) "valence shell electrons*"))
- (assert '(Isa (stateILO (variationIn (namedQuantityOfClass "oxidation number*" "chloride substance class*"))) "ILO class*"))
- (assert '(ILOQualifier (stateILO (variationIn (namedQuantityOfClass "oxidation number*" "chloride substance class*"))) (inTermsOf "valence shell electrons*")))
+ (assert '(Isa (describeILO (chemicalReactionByAllSpecies (setof "sodium element*" "oxygen element*") "sodium oxide substance*")) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByAllSpecies (setof "magnesium element*" "oxygen element*") "sodium oxide substance*")) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByAllSpecies (setof "aluminium element*" "oxygen element*") "aluminium oxide substance*")) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByAllSpecies (setof "phosphorus element*" "oxygen element*") "tetra-phosphorus deca-oxide  substance*")) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByAllSpecies (setof "sulfur element*" "oxygen element*") "sulfur dioxide substance*")) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByAllSpecies (setof "sulfur element*" "oxygen element*") "sulfur trioxide substance*")) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByAllSpecies (setof "sodium element*" "chlorine element*") "sodium chloride substance*")) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByAllSpecies (setof "magnesium element*" "chlorine element*") "magnesium chloride substance*")) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByAllSpecies (setof "aluminium element*" "chlorine element*") "aluminium chloride substance*")) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByAllSpecies (setof "silicon element*" "chlorine element*") "silicon chloride substance*")) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByAllSpecies (setof "phosphorus element*" "chlorine element*") "phosphorus pentachloride  substance*")) "ILO class*"))
+  ; 98. State and explain the variation in oxidation number of the oxides and chlorides in terms of their valence shell electrons.
+ (assert '(Isa (explainILO (variationIn (namedQuantityOfClass "oxidation number*" (every x (isa x "oxide substance class*") (some y (x) (Isa y "element class*") (inTermsOf (valenceShellElectronsOf y))))))) "ILO class*")) ; another way to express valence shell electrons needed
+ (assert '(ILOQualifier (explainILO (variationIn (namedQuantityOfClass "oxidation number*" "oxide substance class*"))) (inTermsOf "valence shell electrons*")))
+ (assert '(Isa (explainILO (variationIn (namedQuantityOfClass "oxidation number*" "chloride substance class*"))) "ILO class*"))
+ (assert '(ILOQualifier (explainILO (variationIn (namedQuantityOfClass "oxidation number*" "chloride substance class*"))) (inTermsOf "valence shell electrons*")))
  ; 99. Describe the reactions of the oxides with water of peroxides and superoxides is not required?.
- (assert '(Isa (describeILO (reactionBetween (setof "oxide substance class*" "water substance*")))  "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof "oxide substance class*" "water substance*")))  "ILO class*"))
   ; 100. Describe and explain the acid/base behaviour of oxides and hydroxides including, where relevant, amphoteric behaviour in reaction with sodium hydroxide (only) and acids.
- (assert '(Isa (describeILO (namedBehaviorOfClass "acid-base behavior*" "oxide substace class*")) "ILO class*"))
- (assert '(Isa (describeILO (namedBehaviorOfClass "acid-base behavior*" "hydroxide substace class*")) "ILO class*"))
+ (assert '(Isa (describeILO (namedBehaviorOfClass "acid-base behavior*" "oxide substance class*")) "ILO class*"))
+ (assert '(Isa (describeILO (namedBehaviorOfClass "acid-base behavior*" "hydroxide substance class*")) "ILO class*"))
  ;; 101. Describe and explain the reactions of the chlorides with water.
- (assert '(Isa (describeILO (reactionBetween (setof "metal chloride substance class*" "water substance*")))  "ILO class*"))
- (assert '(Isa (explainILO (reactionBetween (setof "metal chloride substance class*" "water substance*"))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof "metal chloride substance class*" "water substance*")))  "ILO class*"))
+ (assert '(Isa (explainILO (chemicalReactionByReactants (setof "metal chloride substance class*" "water substance*"))) "ILO class*"))
  ; 102. Interpret the variations and trends in (f), (g), (h), and (i) in terms of bonding and electronegativity.
  (assert '(Isa (interpretILO ) "ILO class*"))
  ; 103. Suggest the types of chemical bonding present in chlorides and oxides from observations of their chemical and physical properties.

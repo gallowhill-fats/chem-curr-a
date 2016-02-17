@@ -46,6 +46,12 @@
 (defineCaseframe 'Thing '('changeIn thing-with-change)
   :docstring "change in [thing-with-change]")
 
+(defineCaseframe 'ChemicalReaction '('chemicalReactionByAllSpecies reactants products)
+  :docstring "chemical reaction involving [reactants] and [products]")
+
+(defineCaseframe 'ChemicalReaction '('chemicalReactionByReactants reactants)
+  :docstring "chemical reaction involving [reactants]")
+
 (defineCaseframe 'Proposition '(Circumstancing entity-with-circumstances circumstances)
     :docstring "[entity-with-circumstances] takes place in [circumstances]"
     :fsymbols '(InCircumstances InSystem InChemicalSystem))
@@ -133,6 +139,9 @@
 
 (defineCaseframe 'Modifier '('given thing-given)
  :docstring "given [thing-given]")
+
+(defineCaseframe 'Category '('graphClass dependent-quantity independent-quantity)
+  :docstring "class of graphs of [dependent-quantity] against [independent-quantity]")
 
 (defineCaseframe 'GreaterComparative '('greaterComparative property)
   :docstring "greater comparative of [property]")
@@ -241,20 +250,22 @@
 (defineCaseframe 'Thing '('namedChemicalPropertyOf chemical-property thing-with-property)
   :docstring "[chemical-property] of [thing-with-property]")
 
-(defineCaseframe 'Thing '('namedDerivedPropertyOf derived-property thing-with-property)
+(defineCaseframe 'Property '('namedDerivedPropertyOf derived-property thing-with-property)
   :docstring "[derived-property] of [thing-with-property]")
 
-(defineCaseframe 'Thing '('namedNonPhysicalPropertyOf non-physical-property thing-with-property)
+(defineCaseframe 'Thing '('effectOfInfluenceOn influencing-thing influenced)
+  :docstring "effect of [influencing-thing] on [influenced]")
+
+(defineCaseframe 'Property '('namedNonPhysicalPropertyOf non-physical-property thing-with-property)
   :docstring "[non-physical-property] of [thing-with-property]")
 
-(defineCaseframe 'Thing '('namedPhysicalPropertyOf physical-property thing-with-property)
+(defineCaseframe 'Property '('namedPhysicalPropertyOf physical-property thing-with-property)
   :docstring "[physical-property] of [thing-with-property]")
 
-(defineCaseframe 'Thing '('namedPhysicalPropertyOfClass physical-property class)
+(defineCaseframe 'Property '('namedPhysicalPropertyOfClass physical-property class)
   :docstring "[physical-property] of [class]")
 
-
-(defineCaseframe 'Thing '('namedQuantityOfClass  class-quantity  class)
+(defineCaseframe 'Quantity '('namedQuantityOfClass  class-quantity  class)
   :docstring "[class-quantity] of [class]")
 
 ;;; O
@@ -345,6 +356,9 @@
 
 
 ;;; V
+
+(defineCaseframe 'Thing '('variationIn quantity)
+ :docstring "variation in  [quantity]")
 
 (defineCaseframe 'Thing '('valueOf quantity)
  :docstring "value of [quantity]")

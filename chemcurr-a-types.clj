@@ -1,7 +1,3 @@
-;;; cardinality
-
-(defineType :Collection (:Thing))
-
 ;;; analysing
 
 (defineType :Analysable (:Thing))
@@ -12,6 +8,10 @@
 (defineType :Float (:Real))
 (defineType :Rational (:Real))
 (defineType :Integer (:Rational))
+
+;;; collections
+
+(defineType :Collection (:Thing))
 
 ;;; chemical types
 (defineType :ChemicalReferent (:Thing))
@@ -96,8 +96,12 @@
 
 ;;; electrochem
 
-(defineType :Electrode (:Thing))
-(defineType :ElectrodePotential (:Thing))
+(defineType :Electrode (:DefinableThing))
+(defineType :ElectrodePotential (:DefinableThing))
+
+;;; statistics
+
+(defineType :ProbabilityDistribution (:DefinableThing))
 
 
 

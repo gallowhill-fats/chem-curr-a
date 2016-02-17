@@ -9,10 +9,11 @@
 (defineTerm "azimuthal quantum number*" ':DefinableThing)
 ;;;B
 (defineTerm "balanced chemical equation*" ':DefinableThing)
+(defineTerm "Boltzmann distribution*" ':ProbabilityDistribution)
 (defineTerm "bond length*" ':DefinableThing)
 (defineTerm "bond energy*" ':DefinableThing)
 (defineTerm "bond enthalpy*" ':DefinableThing)
-(defineTerm "mean bond enthalpy*" ':DefinableThing)
+
 (defineTerm "bond polarity*" ':DefinableThing)
 (defineTerm "boron trifluoride mce*" ':DefinableThing)
 ;;;C
@@ -74,6 +75,7 @@
 (defineTerm "magnetic quantum number*" ':DefinableThing)
 (defineTerm "mass*" ':Thing)
 (defineTerm "mass spectrum*" ':DefinableThing)
+(defineTerm "mean bond enthalpy*" ':DefinableThing)
 (defineTerm "metallic bonding*" ':DefinableThing)
 (defineTerm "mole*" ':DefinableThing)
 (defineTerm "momentum*" ':DefinableThing)
