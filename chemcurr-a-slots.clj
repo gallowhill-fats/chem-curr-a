@@ -48,6 +48,7 @@
 (defineSlot comparison-set :type :Thing)
 (defineSlot constructedOn :type :Thing)
 (defineSlot containing :type :Thing)
+(defineSlot ContainsElement :type :Thing)
 (defineSlot content :type :Thing)
 
 
@@ -79,7 +80,7 @@
 
 (defineSlot electrode :type :Electrode)
 (defineSlot electrode-potential :type :ElectrodePotential)
-(defineSlot element :type :Thing)
+(defineSlot element :type :Element)
 (defineSlot employILO :type :Thing)
 (defineSlot electronic-configuration :type :Property)
 (defineSlot entity-with-base :type :Entity)
@@ -148,7 +149,9 @@
 (defineSlot inTermsOf :type :Thing)
 (defineSlot involving-entity :type :Entity)
 (defineSlot involvate :type :Entity)
+(defineSlot ionic-chemical-referent :type :IonicChemicalReferent)
 (defineSlot isotope :type :Thing)
+(defineSlot IsCompoundOf :Thing)
 
 ;;; J
 
@@ -172,6 +175,7 @@
 (defineSlot modWithReferenceTo :type :Thing)
 (defineSlot modWithRegardsTo :type :Thing)
 (defineSlot modWithParticularReferenceTo :type :Thing)
+(defineSlot MolecularConstitution :type :Thing)
 
 ;;; N
 
@@ -291,7 +295,9 @@
 
 ;;; Z
 
-
+(defineCaseframe 'Proposition '(MolecularConstitution  chemical-entity element)
+  :docstring "[chemical-entity] is a compound of [element]"
+ :fsymbols '(IsCompoundOf ContainsElement))
 
 
 

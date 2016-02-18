@@ -15,6 +15,9 @@
 
 ;;; chemical types
 (defineType :ChemicalReferent (:Thing))
+(defineType :IonicChemicalReferent (:ChemicalReferent))
+(defineType :AnionicChemicalReferent (:IonicChemicalReferent))
+(defineType :CationicChemicalReferent (:IonicChemicalReferent))
 (defineType :ChemicalEntity (:ChemicalReferent))
 (defineType :ChemicalSubstance (:ChemicalReferent))
 (defineType :PureChemicalSubstance (:ChemicalSubstance))
@@ -23,6 +26,9 @@
 (defineType :ChemicalEntity (:ChemicalReferent))
 (defineType :AtomicChemicalEntity (:ChemicalEntity))
 (defineType :MolecularChemicalEntity (:ChemicalEntity))
+(defineType :IonicChemicalEntity (:ChemicalEntity))
+(defineType :AnionicChemicalEntity (:IonicChemicalEntity))
+(defineType :CationicChemicalEntity (:IonicChemicalEntity))
 
 ;;; chemical reaction
 

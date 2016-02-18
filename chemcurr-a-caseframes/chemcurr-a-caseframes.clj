@@ -11,6 +11,9 @@
 (defineCaseframe 'Act '('alterPropertyOf type-of-alteration property thing-with-property)
   :docstring "make [type-of-alteration] to [property] of [thing-with-property]")
 
+(defineCaseframe 'AnionicChemicalEntity '('anionOf ionic-chemical-referent)
+  :docstring "anion of [ionic-chemical-referent]")
+
 ; FrameNet: derived from Arriving
 (defineCaseframe 'Thing '(arrival arriving-thing thing-arrived-at)
   :docstring "arrival of [arriving-thing] at  [thing-arived-at]"
@@ -42,6 +45,9 @@
 
 (defineCaseframe 'Thing '('cardinalityOf thing-with-cardinality)
   :docstring "cardinality of [thing-with-cardinality]")
+
+(defineCaseframe 'CationicChemicalEntity '('cationOf ionic-chemical-referent)
+  :docstring "cation of [ionic-chemical-referent]")
 
 (defineCaseframe 'Thing '('changeIn thing-with-change)
   :docstring "change in [thing-with-change]")
@@ -226,6 +232,10 @@
 
 (defineCaseframe 'Proposition '('IsBalanced chemical-equation)
   :docstring "[chemical-equation] is balanced")
+
+(defineCaseframe 'Proposition '(MolecularConstitution  chemical-entity element)
+  :docstring "[chemical-entity] is a compound of [element]"
+ :fsymbols '(IsCompoundOf ContainsElement))
 
 (defineCaseframe 'Proposition  '('IsIsotopeOf isotope element)
   :docstring "[isotope] is an isotope of [element]")

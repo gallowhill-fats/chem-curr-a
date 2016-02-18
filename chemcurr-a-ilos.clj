@@ -482,13 +482,13 @@
  (assert '(Isa (explainILO (variationIn (namedQuantityOfClass "oxidation number*" "chloride substance class*"))) "ILO class*"))
  (assert '(ILOQualifier (explainILO (variationIn (namedQuantityOfClass "oxidation number*" "chloride substance class*"))) (inTermsOf "valence shell electrons*")))
  ; 99. Describe the reactions of the oxides with water of peroxides and superoxides is not required?.
- (assert '(Isa (describeILO (chemicalReactionByReactants (setof "oxide substance class*" "water substance*")))  "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof (every x (Isa x "oxide substance class*")) "water substance*")))  "ILO class*"))
   ; 100. Describe and explain the acid/base behaviour of oxides and hydroxides including, where relevant, amphoteric behaviour in reaction with sodium hydroxide (only) and acids.
  (assert '(Isa (describeILO (namedBehaviorOfClass "acid-base behavior*" "oxide substance class*")) "ILO class*"))
  (assert '(Isa (describeILO (namedBehaviorOfClass "acid-base behavior*" "hydroxide substance class*")) "ILO class*"))
  ;; 101. Describe and explain the reactions of the chlorides with water.
- (assert '(Isa (describeILO (chemicalReactionByReactants (setof "metal chloride substance class*" "water substance*")))  "ILO class*"))
- (assert '(Isa (explainILO (chemicalReactionByReactants (setof "metal chloride substance class*" "water substance*"))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof (every x (Isa x "metal chloride substance class*")) "water substance*")))  "ILO class*"))
+ (assert '(Isa (explainILO (chemicalReactionByReactants (setof (every x (Isa x "metal chloride substance class*")) "water substance*"))) "ILO class*"))
  ; 102. Interpret the variations and trends in (f), (g), (h), and (i) in terms of bonding and electronegativity.
  (assert '(Isa (interpretILO ) "ILO class*"))
  ; 103. Suggest the types of chemical bonding present in chlorides and oxides from observations of their chemical and physical properties.
@@ -499,66 +499,64 @@
  ; 105. Deduce the nature, possible position in the Periodic Table, and identity of unknown elements from given information about physical and chemical properties.
  (assert '(Isa (deduceILO (identityOf (every x (Isa x "element class") (given (chemicalPropertiesOf x)) (given (PhsyicalProeprtiesOf x)))) "ILO class*"))
  ; 106. describe the reactions of the elements with oxygen, water and dilute acids.
- (assert '(Isa (describeILO (reactionBetween (setof (every x (Isa x "element class*")) "oxygen element*"))) "ILO class*"))
- (assert '(Isa (describeILO (reactionBetween (setof (every x (Isa x "element class*")) "water substance*"))) "ILO class*"))
- (assert '(Isa (describeILO (reactionBetween (setof (every x (Isa x "element class*")) (every y (Isa y "dilute acid class*"))))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof (every x (Isa x "element class*")) "oxygen element*"))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof (every x (Isa x "element class*")) "water substance*"))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof (every x (Isa x "element class*")) (every y (Isa y "acid substance class*") (InState y "dilute aqueous solution state*"))))) "ILO class*"))
  ; 107. Describe the behaviour of the oxides, hydroxides and carbonates with water and with dilute acids.
- (assert '(Isa (describeILO (reactionBetween  (setof "hydroxide substance class*" "water substance*"))) "ILO class*"))
- (assert '(Isa (describeILO (reactionBetween  (setof "carbonate substance class*" "water substance*"))) "ILO class*"))
- (assert '(Isa (describeILO (reactionBetween  (setof "oxide substance class*" "water substance*"))) "ILO class*"))
- (assert '(Isa (describeILO (reactionBetween  (setof "hydroxide substance class*" (every y (Isa y "dilute acid class*"))))) "ILO class*"))
- (assert '(Isa (describeILO (reactionBetween  (setof "carbonate substance class*" (every y (Isa y "dilute acid class*"))))) "ILO class*"))
- (assert '(Isa (describeILO (reactionBetween  (setof "oxide substance class*" (every y (Isa y "dilute acid class*"))))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof "hydroxide substance class*" "water substance*"))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof "carbonate substance class*" "water substance*"))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof "oxide substance class*" "water substance*"))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof "hydroxide substance class*" (every y (Isa y "acid substance class*") (InState y "dilute aqueous solution state*"))))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof "carbonate substance class*" (every y (Isa y "acid substance class*") (InState y "dilute aqueous solution state*"))))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof "oxide substance class*" (every y (Isa y "acid substance class*") (InState y "dilute aqueous solution state*"))))) "ILO class*"))
   ; 108. Describe the thermal decomposition of the nitrates and carbonates.
  (assert '(Isa (describeILO (typeOfReactionOfClass "thermal decomposition*" "nitrate substance class*")) "ILO class*"))
  (assert '(Isa (describeILO (typeOfReactionOfClass "thermal decomposition*" "carbonate substance class*")) "ILO class*"))
  ; 109. Interpret, and make predictions from, the trends in physical and chemical properties of the elements and their compounds.
  (assert (Isa (interpretILO (every x (IstrendIn x (setof (physicalPropertiesOf (every y (Isa y "element class*"))) (chemicalPropertiesOf (every y (Isa y "element class*"))))))) "ILO class*"))
- (assert (Isa (interpretILO (every x (IstrendIn x (setof (physicalPropertiesOf (every y (IsCompoundOf y z))) (chemicalPropertiesOf (every y (IsCompoundOf y z))))))) "ILO class*"))
+ (assert (Isa (interpretILO (every x (IstrendIn x (setof (physicalPropertiesOf (every y (Isa y "chemical substance class*") (some z (y) (Isa z "element class*") (IsCompoundOf y z)))) (chemicalPropertiesOf (every y (Isa y "chemical substance class*") (some z (y) (Isa z "element class*") (IsCompoundOf y z))))))) "ILO class*"))
  ; 110. Explain the use of magnesium oxide as a refractory lining material.
  (assert '(Isa (explainILO (useOfAs "magnesium oxide substance*" "refractory lining material*")) "ILO class*"))
   ; 111. Describe and explain the use of lime in agriculture.
  (assert '(Isa (describeILO (useOfIn "lime*" "agriculture*")) "ILO class*"))
  (assert '(Isa (explainILO (useOfIn "lime*" "agriculture*")) "ILO class*"))
  ; 112. Interpret and explain qualitatively the trend in the thermal stability of the nitrates and carbonates in terms of the charge density of the cation and the polarisability of the large anion.
- (assert '(Isa (explainILO (trendIn (namedPhysicalPropertyOfClass "thermal stability*" "nitrate substance class*"))) "ILO class*"))
-(assert '(ILOQualifier (explainILO (trendIn (namedPhysicalPropertyOfClass "thermal stability*" "nitrate substance class*"))) (inTermsOf (setof (namedPhysicalPropertyOf "charge density*" "cation*") (namedPhysicalPropertyOf "polarisability*" "anion*")))))
- (assert '(Isa (explainILO (trendIn (namedPhysicalPropertyOfClass "thermal stability*" "carbonate substance class*"))) "ILO class*"))
+ (assert '(Isa (explainILO (trendIn (namedPhysicalPropertyOfClass "thermal stability*" (every x (Isa x "nitrate substance class*") (inTermsOf (setof (some y (x) (namedPhysicalPropertyOf "charge density*" (cationOf x))) ((some z (x) (namedPhysicalPropertyOf "polarisability*" (anionOf x) )) ))))))) "ILO class*"))
+(assert '(Isa (explainILO (trendIn (namedPhysicalPropertyOfClass "thermal stability*" (every x (Isa x "carbonate substance class*") (inTermsOf (setof (some y (x) (namedPhysicalPropertyOf "charge density*" (cationOf x))) ((some z (x) (namedPhysicalPropertyOf "polarisability*" (anionOf x) )) ))))))) "ILO class*"))
  ; 113. Interpret and explain qualitatively the variation in solubility of the sulfates in terms of relative magnitudes of the enthalpy change of hydration and the corresponding lattice energy.
- (assert '(Isa (explainILO (variationIn (namedPhysicalPropertyOfClass "solubility*" "sulfate substance class*"))) "ILO class*"))
- (assert '(ILOQualifier (explainILO (variationIn (namedPhysicalPropertyOfClass "solubility*" "sulfate substance class*"))) (inTermsOf (setof (MagnitudeOf "enthalpy of hydration*") (MagnitudeOf "lattice energy*")))))
- ; 114. Outline the variation in melting point and in electrical conductivity of the elements and interpret them in terms of structure and bonding.
- ; 115. Describe and explain the bonding in, molecular shape and volatility of the tetrachlorides.
+ (assert '(Isa (explainILO (variationIn (namedPhysicalPropertyOfClass "solubility*" (every x (Isa x "sulfate substance class*") (inTermsOf (setof (namedThermodynamicPropertyOf "enthalpy of hydration*" x) (namedThermodynamicPropertyOf "lattice energy*" x))))))) "ILO class*"))
+  ; 114. Outline the variation in melting point and in electrical conductivity of the elements and interpret them in terms of structure and bonding.
  (assert '(Isa (describeILO (variationIn (namedPhysicalPropertyOfClass "melting point*" "element class*"))) "ILO class*"))
  (assert '(Isa (describeILO (variationIn (namedPhysicalPropertyOfClass "electrical conductivity*" "element class*"))) "ILO class*"))
- (assert '(Isa (interpretILO (variationIn (namedPhysicalPropertyOfClass "melting point*" "element class*"))) "ILO class*"))
- (assert '(Isa (interpretILO (variationIn (namedPhysicalPropertyOfClass "electrical conductivity*" "element class*"))) "ILO class*"))
- (assert '(ILOQualifier (interpretILO (variationIn (namedPhysicalPropertyOfClass "melting point*" "element class*"))) (inTermsOf (setof "structure*" "bonding*"))))
- (assert '(ILOQualifier (interpretILO (variationIn (namedPhysicalPropertyOfClass "electrical conductivity*" "element class*"))) (inTermsOf (setof "structure*" "bonding*"))))
+ (assert '(Isa (interpretILO (variationIn (namedPhysicalPropertyOfClass "melting point*" (every x (Isa x "element class*") (inTermsOf (setof (some y (x) (HasStructure x y) (HasBonding x y) ))))))) "ILO class*"))
+(assert '(Isa (interpretILO (variationIn (namedPhysicalPropertyOfClass "electrical conductivity*" (every x (Isa x "element class*") (inTermsOf (setof (some y (x) (HasStructure x y) (HasBonding x y) ))))))) "ILO class*"))
+; 115. Describe and explain the bonding in, molecular shape and volatility of the tetrachlorides.
  (assert '(Isa (describeILO (shapeOf (every x (Isa x "tetrachloride molecular class*")))) "ILO class*"))
  (assert '(Isa (describeILO (bondingIn (every x (Isa x "tetrachloride molecular class*")))) "ILO class*"))
  (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "volatility*" "tetrachloride substance class*")) "ILO class*"))
   ; 116. Describe and explain the reactions of the tetrachlorides with water in terms of structure and bonding.
- (assert '(Isa (describeILO (reactionBetween (setof "tetrachloride substance class*" "water substance*"))) "ILO class*"))
- (assert '(Isa (explainILO (reactionBetween (setof "tetrachloride substance class*" "water substance*"))) "ILO class*"))
- (assert '(ILOQualifier (describeILO (reactionBetween (setof "tetrachloride substance class*" "water substance*"))) (inTermsOf (setof "structure*" "bonding*")))))
- (assert '(ILOQualifier (explainILO (reactionBetween (setof "tetrachloride substance class*" "water substance*"))) (inTermsOf (setof "structure*" "bonding*")))))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof (every x (Isa x "tetrachloride substance class*")) "water substance*"))) "ILO class*"))
+ (assert '(Isa (explainILO (chemicalReactionByReactants (setof (every x (Isa x "tetrachloride substance class*")) "water substance*"))) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (reactionBetween (setof (every x (Isa x "tetrachloride substance class*")) "water substance*"))) (inTermsOf (setof "structure*" "bonding*"))))
+ (assert '(ILOQualifier (explainILO (reactionBetween (setof (every x (Isa x "tetrachloride substance class*")) "water substance*"))) (inTermsOf (setof "structure*" "bonding*"))))
  ; 117. Describe and explain the bonding, acid-base nature and thermal stability of the oxides of oxidation states II and IV.
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "II")) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "IV")) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasOxidationState x "II")) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasOxidationState x "IV")) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasOxidationState x "II")) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasOxidationState x "IV")) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "II")) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "IV")) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasNamedQuantityValue "oxidation state*" x "II")) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasNamedQuantityValue "oxidation state*" x "IV")) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasNamedQuantityValue "oxidation state*" x "II")) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasNamedQuantityValue "oxidation state*" x "IV")) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "bonding*"  (every x (Isa x "oxide class*") (HasOxidationState x "II"))))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "IV")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasOxidationState x "II")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasOxidationState x "IV")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasOxidationState x "II")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasOxidationState x "IV")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "II")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "IV")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasNamedQuantityValue "oxidation state*" x "II")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasNamedQuantityValue "oxidation state*" x "IV")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasNamedQuantityValue "oxidation state*" x "II")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasNamedQuantityValue "oxidation state*" x "IV")))) "ILO class*"))
  ; 118. Describe and explain the relative stability of higher and lower oxidation states of the elements in their oxides and aqueous cations including, where relevant, E values.
- (assert '(Isa (describeILO (relativeStabilityOfClass (every x (Isa x "element oxide substance class*") (HasNamedQuantityNamedRange "oxidation state*" x "lower*")) "ILO class*"))
- (assert '(Isa (describeILO (relativeStabilityOfClass (every x (Isa x "element oxide substance class*") (HasNamedQuantityNamedRange "oxidation state*" x "higher*")) "ILO class*"))
+ (assert '(Isa (describeILO (relativeStabilityOf (every x (Isa x "element oxide substance class*") (HasNamedQuantityNamedRange "oxidation state*" x "lower*")) "ILO class*"))
+ (assert '(Isa (describeILO (relativeStabilityOf (every x (Isa x "element oxide substance class*") (HasNamedQuantityNamedRange "oxidation state*" x "higher*")) "ILO class*"))
+(assert '(Isa (describeILO (relativeStabilityOf (every x (Isa x "monatomic cationic entity class*") (InPhysicalState x "aqueous solution state*"))  (HasNamedQuantityNamedRange "oxidation state*" x "lower*")) "ILO class*"))
+ (assert '(Isa (describeILO (relativeStabilityOf (every x (Isa x "monatomic cationic entity  class*") (InPhysicalState x "aqueous solution state*")) (HasNamedQuantityNamedRange "oxidation state*" x "higher*")) "ILO class*")) ; better way to express lower and higher ranges is required
  ;; 119. Describe the colours of, and the trend in volatility of chlorine, bromine and iodine.
   (assert '(Isa (describeILO (trendInSet (setof (namedPhysicalPropertyOf "volatility*" "chlorine element*") (namedPhysicalPropertyOf "volatility*" "bromine element*") (namedPhysicalPropertyOf "volatility*" "iodine element*"))) ) "ILO class*"))
  ;; 120. Interpret the volatility of the elements in terms of van der Waals’ forces.
