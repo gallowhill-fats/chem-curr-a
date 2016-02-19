@@ -136,7 +136,7 @@
  (assert '(ILOQualifier (compareILO (namedChemicalProeprtyOf "reactivity*" (every x (Isa x  "covalent bond class*"))) (namedChemicalProeprtyOf "raectivity*" (every y (Isa y  "covalent bond class*")))) (using (setof "bond energy*" "bond length*" "bond polarity*"))))
  ; 28. Describe intermolecular forces (van der Waals’ forces), based on permanent and induced dipoles, as in CHCl 3(l); Br2(l) and the liquid noble gases
  (assert '(Isa (describeILO "van der Waals forces*") "ILO class*"))
- (assert '(ILOQualifier (describeILO "van der Waals forces*")  (setof (inTermsOf (setof "permanent dipole*" "induced dipole*"))) (asIn (setof  (inPhysicalState "liquid state*" "chloroform molecular substance*") (inPhysicalState "liquid state*" "bromine molecular substance*") (inPhysicalState "liquid state*" (every x (Isa x "noble gas element class*"))) ))))
+ (assert '(ILOQualifier (describeILO "van der Waals forces*")  (setof (inTermsOf (setof "permanent dipole*" "induced dipole*"))) (asIn (setof  (substanceInPhysicalState  "chloroform molecular substance*" "liquid state*") (substanceInPhysicalState  "bromine molecular substance*" "liquid state*") (substanceInPhysicalState (every x (Isa x "noble gas element class*"))  "liquid state*") ))))
  ; 29. Describe metallic bonding in terms of a lattice of positive ions surrounded by mobile electrons.
  (assert '(Isa (describeILO "metallic bonding*") "ILO class*"))
  ; 30. Describe, interpret and/or predict the effect of different types of bonding (ionic bonding, covalent bonding, hydrogen bonding, other intermolecular interactions, metallic bonding) on the physical properties of substances.
@@ -521,15 +521,15 @@
  (assert '(Isa (describeILO (useOfIn "lime*" "agriculture*")) "ILO class*"))
  (assert '(Isa (explainILO (useOfIn "lime*" "agriculture*")) "ILO class*"))
  ; 112. Interpret and explain qualitatively the trend in the thermal stability of the nitrates and carbonates in terms of the charge density of the cation and the polarisability of the large anion.
- (assert '(Isa (explainILO (trendIn (namedPhysicalPropertyOfClass "thermal stability*" (every x (Isa x "nitrate substance class*") (inTermsOf (setof (some y (x) (namedPhysicalPropertyOf "charge density*" (cationOf x))) ((some z (x) (namedPhysicalPropertyOf "polarisability*" (anionOf x) )) ))))))) "ILO class*"))
-(assert '(Isa (explainILO (trendIn (namedPhysicalPropertyOfClass "thermal stability*" (every x (Isa x "carbonate substance class*") (inTermsOf (setof (some y (x) (namedPhysicalPropertyOf "charge density*" (cationOf x))) ((some z (x) (namedPhysicalPropertyOf "polarisability*" (anionOf x) )) ))))))) "ILO class*"))
+ (assert '(Isa (explainILO (trendInProperty "thermal stability*" (every x (Isa x "nitrate substance class*") (inTermsOf (setof (some y (x) (namedPhysicalPropertyOf "charge density*" (cationOf x))) ((some z (x) (namedPhysicalPropertyOf "polarisability*" (anionOf x) )) )))))) "ILO class*"))
+ (assert '(Isa (explainILO (trendInProperty "thermal stability*" (every x (Isa x "carbonate substance class*") (inTermsOf (setof (some y (x) (namedPhysicalPropertyOf "charge density*" (cationOf x))) ((some z (x) (namedPhysicalPropertyOf "polarisability*" (anionOf x) )))))))) "ILO class*"))
  ; 113. Interpret and explain qualitatively the variation in solubility of the sulfates in terms of relative magnitudes of the enthalpy change of hydration and the corresponding lattice energy.
- (assert '(Isa (explainILO (variationIn (namedPhysicalPropertyOfClass "solubility*" (every x (Isa x "sulfate substance class*") (inTermsOf (setof (namedThermodynamicPropertyOf "enthalpy of hydration*" x) (namedThermodynamicPropertyOf "lattice energy*" x))))))) "ILO class*"))
+ (assert '(Isa (explainILO (variationInProperty "solubility*" (every x (Isa x "sulfate substance class*") (inTermsOf (setof (namedThermodynamicPropertyOf "enthalpy of hydration*" x) (namedThermodynamicPropertyOf "lattice energy*" x)))))) "ILO class*"))
   ; 114. Outline the variation in melting point and in electrical conductivity of the elements and interpret them in terms of structure and bonding.
- (assert '(Isa (describeILO (variationIn (namedPhysicalPropertyOfClass "melting point*" "element class*"))) "ILO class*"))
- (assert '(Isa (describeILO (variationIn (namedPhysicalPropertyOfClass "electrical conductivity*" "element class*"))) "ILO class*"))
- (assert '(Isa (interpretILO (variationIn (namedPhysicalPropertyOfClass "melting point*" (every x (Isa x "element class*") (inTermsOf (setof (some y (x) (HasStructure x y) (HasBonding x y) ))))))) "ILO class*"))
-(assert '(Isa (interpretILO (variationIn (namedPhysicalPropertyOfClass "electrical conductivity*" (every x (Isa x "element class*") (inTermsOf (setof (some y (x) (HasStructure x y) (HasBonding x y) ))))))) "ILO class*"))
+ (assert '(Isa (describeILO (variationInPhysicalPropertyOfClass "melting point*" "element class*")) "ILO class*"))
+ (assert '(Isa (describeILO (variationInPhysicalPropertyOfClass "electrical conductivity*" "element class*")) "ILO class*"))
+ (assert '(Isa (interpretILO (variationInPhysicalPropertyOf "melting point*" (every x (Isa x "element class*") (inTermsOf (setof (some y (x) (HasStructure x y)) (some z (x) (HasBonding x z)) ))))) "ILO class*"))
+(assert '(Isa (interpretILO (variationInPhysicalPropertyOfClass "electrical conductivity*" (every x (Isa x "element class*") (inTermsOf (setof (some y (x) (HasStructure x y)) (some z (x) (HasBonding x z)))))))) "ILO class*"))
 ; 115. Describe and explain the bonding in, molecular shape and volatility of the tetrachlorides.
  (assert '(Isa (describeILO (shapeOf (every x (Isa x "tetrachloride molecular class*")))) "ILO class*"))
  (assert '(Isa (describeILO (bondingIn (every x (Isa x "tetrachloride molecular class*")))) "ILO class*"))
@@ -537,52 +537,53 @@
   ; 116. Describe and explain the reactions of the tetrachlorides with water in terms of structure and bonding.
  (assert '(Isa (describeILO (chemicalReactionByReactants (setof (every x (Isa x "tetrachloride substance class*")) "water substance*"))) "ILO class*"))
  (assert '(Isa (explainILO (chemicalReactionByReactants (setof (every x (Isa x "tetrachloride substance class*")) "water substance*"))) "ILO class*"))
- (assert '(ILOQualifier (describeILO (reactionBetween (setof (every x (Isa x "tetrachloride substance class*")) "water substance*"))) (inTermsOf (setof "structure*" "bonding*"))))
- (assert '(ILOQualifier (explainILO (reactionBetween (setof (every x (Isa x "tetrachloride substance class*")) "water substance*"))) (inTermsOf (setof "structure*" "bonding*"))))
+ (assert '(ILOQualifier (describeILO (chemicalReactionByReactants (setof (every x (Isa x "tetrachloride substance class*")) "water substance*"))) (inTermsOf (setof "structure*" "bonding*"))))
+ (assert '(ILOQualifier (explainILO (chemicalReactionByReactants (setof (every x (Isa x "tetrachloride substance class*")) "water substance*"))) (inTermsOf (setof "structure*" "bonding*"))))
  ; 117. Describe and explain the bonding, acid-base nature and thermal stability of the oxides of oxidation states II and IV.
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "bonding*"  (every x (Isa x "oxide class*") (HasOxidationState x "II"))))) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "IV")))) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasOxidationState x "II")))) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasOxidationState x "IV")))) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasOxidationState x "II")))) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasOxidationState x "IV")))) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "II")))) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "IV")))) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasNamedQuantityValue "oxidation state*" x "II")))) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasNamedQuantityValue "oxidation state*" x "IV")))) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasNamedQuantityValue "oxidation state*" x "II")))) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasNamedQuantityValue "oxidation state*" x "IV")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "bonding*"  (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state II*"))))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state IV*")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state II*")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state IV*")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state II*")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state IV*")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state II*")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state IV*")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasOxidationState "oxidation state*" x "oxidation state II*")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasOxidationState "oxidation state*" x "oxidation state IV*")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasOxidationState"oxidation state*" x "oxidation state II*")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasOxidationState "oxidation state*" x "oxidation state IV*")))) "ILO class*"))
  ; 118. Describe and explain the relative stability of higher and lower oxidation states of the elements in their oxides and aqueous cations including, where relevant, E values.
  (assert '(Isa (describeILO (relativeStabilityOf (every x (Isa x "element oxide substance class*") (HasNamedQuantityNamedRange "oxidation state*" x "lower*")) "ILO class*"))
  (assert '(Isa (describeILO (relativeStabilityOf (every x (Isa x "element oxide substance class*") (HasNamedQuantityNamedRange "oxidation state*" x "higher*")) "ILO class*"))
 (assert '(Isa (describeILO (relativeStabilityOf (every x (Isa x "monatomic cationic entity class*") (InPhysicalState x "aqueous solution state*"))  (HasNamedQuantityNamedRange "oxidation state*" x "lower*")) "ILO class*"))
  (assert '(Isa (describeILO (relativeStabilityOf (every x (Isa x "monatomic cationic entity  class*") (InPhysicalState x "aqueous solution state*")) (HasNamedQuantityNamedRange "oxidation state*" x "higher*")) "ILO class*")) ; better way to express lower and higher ranges is required
  ;; 119. Describe the colours of, and the trend in volatility of chlorine, bromine and iodine.
-  (assert '(Isa (describeILO (trendInSet (setof (namedPhysicalPropertyOf "volatility*" "chlorine element*") (namedPhysicalPropertyOf "volatility*" "bromine element*") (namedPhysicalPropertyOf "volatility*" "iodine element*"))) ) "ILO class*"))
+ ; (assert '(Isa (describeILO (trendInPropertyOf "volatility*" (every x (Isa x "halogen element class*") (nor (Equiv x "fluorine element*")) (nor (Equiv x "astatine element*"))))) "ILO class*"))
+  (assert '(Isa (describeILO (trendInPropertyOf  "volatility*" (setof "bromine element*" "chlorine element*" "iodine element*"))) "ILO class*"))
  ;; 120. Interpret the volatility of the elements in terms of van der Waals’ forces.
- (assert '(Isa (interpretILO (namedPhysicalPropertyOfClass "volatility" "element class*")) "ILO class*"))
+ (assert '(Isa (interpretILO (namedPhysicalPropertyOfClass "volatility*" "element class*")) "ILO class*"))
  (assert '(ILOQualifier (interpretILO (namedPhysicalPropertyOfClass "volatility*" "element class*")) (inTermsOf "van der Waals forces*")))
  ; 121. Describe and deduce from E values the relative reactivity of the elements as oxidising agents.
- (assert '(Isa (deduceILO (relativereactivityOf (every x (Isa x "element class*") (Isa x "oxidising agent class*"))))) "ILO class*"))
- (assert '(ILOQualifier (deduceILO (relativereactivityOf (every x (Isa x "element class*") (Isa x "oxidising agent class*"))))) (Grounds "E value*"))
- ;; 122. Describe and explain the reactions of the elements with hydrogen.
- (assert '(Isa (describeILO (reactionsBetween (setof (every x (Isa x "element class*") "hydrogen element*" ))))) "ILO class*"))
- (assert '(Isa (explainILO (reactionsBetween (setof (every x (Isa x "element class*") "hydrogen element*" ))))) "ILO class*"))
+ (assert '(Isa (describeILO (relativeReactivityOf (every x (Isa x "element class*") (Isa x "oxidising agent class*") (grounds (some y (x) (Isa y "E value class*") (HasEValue x y)))))) "ILO class*"))
+ (assert '(Isa (deduceILO (relativeReactivityOf (every x (Isa x "element class*") (Isa x "oxidising agent class*") (grounds (some y (x) (Isa y "E value class*") (HasEValue x y)))))) "ILO class*"))
+  ;; 122. Describe and explain the reactions of the elements with hydrogen.
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof (every x (Isa x "element class*") "hydrogen element*" ))))) "ILO class*"))
+ (assert '(Isa (explainILO (chemicalReactionByReactants (setof (every x (Isa x "element class*") "hydrogen element*" ))))) "ILO class*"))
  ; 123. Describe and explain the relative thermal stabilities of the hydrides (ii) interpret these relative stabilities in terms of bond energies.
  (assert '(Isa (describeILO (relativeNamedPhysicalPropertyOfClass  "thermal stability*" "hydride substance class*")) "ILO class*"))
  (assert '(Isa (explainILO (relativeNamedPhysicalPropertyOfClass  "thermal stability*" "hydride substance class*")) "ILO class*"))
  (assert '(Isa (interpretILO (relativeNamedPhysicalPropertyOfClass  "thermal stability*" "hydride substance class*")) "ILO class*"))
  (assert '(ILOQualifier (interpretILO (relativeNamedPhysicalPropertyOfClass  "thermal stability*" "hydride substance class*")) (inTermsOf "bond energy*")))
  ; 124. Describe and explain the reactions of halide ions with (i) aqueous silver ions followed by aqueous ammonia (ii) concentrated sulfuric acid.
- (assert '(Isa (describeILO (reactionBetween "halide ion species class*" (qualifiedSubstance  "silver ion species class*" (setof (State "aqueous state*") (Temperature "hot*"))))) "ILO class*")) ;;; followed by?
- (assert '(Isa (describeILO (reactionBetween "halide ion species class*" "concentrated sulfuric acid*")) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (every x (Isa x "halide ion species class*")) (substanceInPhysicalState  "silver ion species class*" "aqueous solution state*"))) "ILO class*")) ; 'followed by' needs a process frame
+ (assert '(Isa (describeILO (chemicalReactionByReactants (every x (Isa x "halide ion species class*")) (substanceInPhysicalState "sulfuric acid*" "concentrated aqueous solution*"))) "ILO class*"))
  ; 125. Outline a method for the manufacture of chlorine from brine by a diaphragm cell (see also Section 6).
  (assert '(Isa (outlineILO (some x () (IsMethodFor x (manufactureOfFrom "chlorine element*" "brine*")) (involves x "diaphragm cell*"))) "ILO class*"))
  ; 126. Describe and interpret in terms of changes of oxidation number the reaction of chlorine with cold, and with hot, aqueous sodium hydroxide.
- (assert '(Isa (describeILO (reactionBetween (setof "chlorine element*" (qualifiedSubstance "sodium hydroxide substance*" (setof (State "aqueous*") (Temperature "hot*")))))) "ILO class*"))
- (assert '(Isa (describeILO (reactionBetween (setof "chlorine element*" (qualifiedSubstance "sodium hydroxide substance*" (setof (State "aqueous*") (Temperature "cold*")))))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof "chlorine element*" (substanceInPhysicalState "sodium hydroxide substance*" (setof "aqueous solution state*" "hot state*"))))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof "chlorine element*" (substanceInPhysicalState "sodium hydroxide substance*" (setof "aqueous solution state*" "cold state*"))))) "ILO class*"))
  ;; 127. Explain the use of chlorine in water purification.
- (assert '(Isa (explainILO (useOfFor "hydrogen molecular substance*" (purificationOf "water substance*")) ) "ILO class*"))
+ (assert '(Isa (explainILO (useOfFor "hydrogen element**" (purificationOf "water substance*")) ) "ILO class*"))
   ; 128. State the industrial importance and environmental significance of the halogens and their compounds (e.g. for bleaches, PVC, halogenated hydrocarbons as solvents, refrigerants and in aerosols) (see also Section 10.3)
  (assert '(Isa (State (namedAspectOfClass "industrial importance*" "halogen substance class*"))) "ILO class*"))
  ; 129. Explain what is meant by a transition element, in terms of d-block elements forming one or more stable ions with incomplete d orbitals.

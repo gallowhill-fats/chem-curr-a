@@ -102,6 +102,7 @@
 ;;; G
 
 (defineSlot generic-member-name :type :Name)
+(defineSlot goal :type :Thing)
 
 ;;; H
 
@@ -150,6 +151,8 @@
 (defineSlot involving-entity :type :Entity)
 (defineSlot involvate :type :Entity)
 (defineSlot ionic-chemical-referent :type :IonicChemicalReferent)
+(defineSlot IsMeansFor :type :Thing)
+(defineSlot isMethodFor :type :Thing)
 (defineSlot isotope :type :Thing)
 (defineSlot IsCompoundOf :Thing)
 
@@ -166,7 +169,9 @@
 ;;; M
 
 (defineSlot magnitude :type :Number)
+(defineSlot manufacturand :type :Thing)
 (defineSlot matchILO :type :Thing)
+(defineSlot method :type :Thing)
 (defineSlot modification :type :Thing :min 0)
 (defineSlot modAsAppliedTo :type :Thing)
 (defineSlot modInDomain :type :Thing)
@@ -217,9 +222,11 @@
 (defineSlot recountILO :type :Thing)
 (defineSlot redox-reaction :type :RedoxReaction)
 (defineSlot relate-source :type :Thing)
+(defineSlot reactive-entities :type :ChemicalSpecies :min 2)
 (defineSlot relate-sink :type :Thing)
 (defineSlot RelateToILO :type :Thing)
 (defineSlot reportILO :type :Thing)
+(defineSlot resource :type :Thing)
 
 ;;; S
 
@@ -270,7 +277,9 @@
 (defineSlot thing-with-property :type :Thing)
 (defineSlot thing-with-quantity :type :Thing)
 (defineSlot thing-with-shape :type :Thing)
+(defineSlot things-with-trending-property :type :Thing)
 (defineSlot topic :type :Thing)
+(defineSlot trending-property :type :Thing)
 (defineSlot type-of-action :type :Thing)
 (defineSlot type-of-alteration :type :Thing)
 
@@ -295,9 +304,7 @@
 
 ;;; Z
 
-(defineCaseframe 'Proposition '(MolecularConstitution  chemical-entity element)
-  :docstring "[chemical-entity] is a compound of [element]"
- :fsymbols '(IsCompoundOf ContainsElement))
+
 
 
 

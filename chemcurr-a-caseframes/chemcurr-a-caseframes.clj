@@ -34,6 +34,9 @@
 (defineCaseframe 'Thing '('behaviorOf thing-with-behavior)
   :docstring "behavior of [thing-with-behavior]")
 
+(defineCaseframe 'Bonding '('bondingIn chemical-referent)
+  :docstring "bonding in [chemical-referent]")
+
 (defineCaseframe 'Means '('byReactionOf reactants)
   :docstring "by reaction of [reactants]")
 
@@ -86,23 +89,27 @@
 (defineCaseframe 'Thing '('data thing-with-data)
   :docstring "data on [thing-with-data]")
 
+; from FrameNet frame: Categorization
 (defineCaseframe 'ILO '(actions definable-thing)
   :docstring "define [definable-thing]"
   :fsymbols '(defineILO))
 
+; from FrameNet frame: Communicate_categorization
 (defineCaseframe 'ILO '(actions definable-thing modification)
-  :docstring "Define [definable-thing] with [modification]"
-  :fsymbols '(DefineILO2))
+  :docstring "define [definable-thing] with [modification]"
+  :fsymbols '(defineILO2))
 
+; from FrameNet frame: Communicate_categorization
 (defineCaseframe 'ILO '(actions describable-thing)
-  :docstring "Describe [describable-thing]"
-  :fsymbols '(DescribeILO OutlineILO))
+  :docstring "describe [describable-thing]"
+  :fsymbols '(describeILO outlineILO))
 
+; from FrameNet frame: Coming_to_believe
 (defineCaseframe 'ILO '(actions deducible-entity)
     :docstring "deduce [deducible-entity]"
-    :fsymbols '(deduceILO  workOutILO deriveILO ascertainILO determineILO figureOutILO inferILO puzzleOutILO surmiseILO deduceHowILO))
+    :fsymbols '(deduceILO workOutILO deriveILO ascertainILO determineILO figureOutILO inferILO puzzleOutILO surmiseILO deduceHowILO))
 
-; FrameNet: derived from Departing
+; from FrameNet frame:  Departing
 (defineCaseframe 'Thing '(departure thing-departing thing-departed-from)
   :docstring "departure of [departing-thing] from [thing-departed-from]"
   :fsymbols '(departureOfFrom))
@@ -110,6 +117,7 @@
 (defineCaseframe 'Thing '('determinationOf thing-to-be-determined)
   :docstring "determination of [thing-to-be-determined]")
 
+; from FrameNet frame: Topic
 (defineCaseframe 'ILO '(action discussible-thing)
   :docstring "discuss [discussible-thing]"
   :fsymbol '(discussILO))
@@ -193,15 +201,21 @@
 
 ;;; I
 
-(defineCaseframe 'ILO '(actions identifiable-thing)
+; from FrameNet frame: Categorization
+(defineCaseframe 'ILO '(actions categorizable-thing)
     :docstring "identify [identifiable-thing]"
-    :fsymbols '(identifyILO))
+    :fsymbols '(identifyILO interpretILO))
 
 (defineCaseframe 'Proposition  '('ILOModifier ilo clause modification)
   :docstring "[clause] of [ilo] is modified by [modification]")
 
 (defineCaseframe 'Proposition  '('ILOQualifier ilo qualification)
   :docstring "[ilo] is qualified by [qualification]")
+
+; from FrameNet frame: Categorization
+(defineCaseframe 'ILO '(actions interpretable-thing)
+    :docstring "interpret [interpretable-thing]"
+    :fsymbols '(interpretILO))
 
 (defineCaseframe 'Modifier '(including inclusion-set)
   :docstring "including [inclusion-set]"
@@ -221,10 +235,15 @@
 (defineCaseframe 'Proposition '('InPresenceOf thing-in-presence thing-with-presence)
   :docstring "[thing-in-presence] is in presence of [thing-with-presence]")
 
-(defineCaseframe 'Proposition '('InPhysicalState physical-state chemical-substance)
-  :docstring "[chemical-substance] in [physical-state]")
+; from FrameNet frame: Means
+(defineCaseframe 'Proposition '(Means method goal)
+  :docstring "[method] is method for achieving [goal]"
+  :fsymbols '(IsMethodFor IsMeansFor))
 
-(defineState 'ChemicalSubstance '('inPhysicalState chemical-substance physical-state)
+(defineCaseframe 'Proposition '('SubstanceInPhysicalState chemical-substance  physical-state)
+  :docstring "[chemical-substance] is in [physical-state]")
+
+(defineState 'ChemicalSubstance '('substanceInPhysicalState chemical-substance physical-state)
   :docstring "[chemical-substance] in [physical-state]")
 
 (defineCaseframe 'Proposition '('Involves involving-entity involvate)
@@ -247,6 +266,10 @@
 ;;; L
 
 ;;; M
+
+; from FrameNet resource: Manufacturing
+(defineCaseframe 'Thing '('manufactureOfFrom product resource)
+  :docstring "manufacture of [product] from [resource]")
 
 (defineCaseframe 'Modifier '(modInDomain domain)
   :docstring "[domain]"
@@ -314,6 +337,12 @@
 (defineCaseframe 'Thing '('reactivityOf reactive-entity)
   :docstring "reactivity of [reactive-entity]")
 
+(defineCaseframe 'Thing '('relativeNamedPhysicalPropertyOfClass physical-property class)
+  :docstring "relative [physical-property] of [class]") 
+
+(defineCaseframe 'Thing '('relativeReactivityOf reactive-entities)
+  :docstring "relative reactivity of [reactive-entities]")
+
 (defineCaseframe 'ILO '(action relate-source relate-sink)
   :docstring "relate [relate-source] to [relate-sink]"
   :fsymbols '(relateToILO))
@@ -342,6 +371,9 @@
 
 ;;; T
 
+(defineCaseframe 'Thing '('trendInPropertyOf trending-property things-with-trending-property)
+  :docstring "trend in [trending-property] of [things-with-trending-property]")
+
 (defineCaseframe 'Thing '('typedChemicalReactionOfClass reaction-type reactant-class)
   :docstring "[reaction-type] of [reactant-class]")
 
@@ -369,6 +401,12 @@
 
 (defineCaseframe 'Thing '('variationIn quantity)
  :docstring "variation in  [quantity]")
+
+(defineCaseframe 'Thing '('variationInPhysicalPropertyOf property thing-wth-property)
+ :docstring "variation in  [property] of [thing-with-property]")
+
+(defineCaseframe 'Thing '('variationInPhysicalPropertyOfClass property class)
+ :docstring "variation in  [property] of [class]")
 
 (defineCaseframe 'Thing '('valueOf quantity)
  :docstring "value of [quantity]")

@@ -2,6 +2,10 @@
 
 (defineType :Analysable (:Thing))
 
+;;; bonding
+
+(defineType :Bonding (:Thing))
+
 ;;; number
 (defineType :Number (:Thing))
 (defineType :Real (:Number))
