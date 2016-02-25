@@ -11,6 +11,7 @@
 (defineSlot Arrival :type :Thing)
 (defineSlot arriving-thing :type :Thing)
 (defineSlot ascertainILO :type :Thing)
+(defineSlot aspect :type :Aspect)
 (defineSlot assumption-set :type :Thing)
 
 ;;; B
@@ -201,6 +202,9 @@
 (defineSlot Perform :type :Thing)
 (defineSlot physical-property :type :PhysicalProperty)
 (defineSlot physical-state :type :PhysicalState)
+(defineSlot change-of-state :type :ChangeOfState)
+(defineSlot physical-process :type :PhysicalProcess)
+(defineSlot process :type :Process)
 (defineSlot products :type :Thing)
 (defineSlot property :type :Property)
 (defineSlot proposeILO :type :Thing)

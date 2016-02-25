@@ -583,12 +583,12 @@
  (assert '(Isa (describeILO (chemicalReactionByReactants (setof "chlorine element*" (substanceInPhysicalState "sodium hydroxide substance*" (setof "aqueous solution state*" "hot state*"))))) "ILO class*"))
  (assert '(Isa (describeILO (chemicalReactionByReactants (setof "chlorine element*" (substanceInPhysicalState "sodium hydroxide substance*" (setof "aqueous solution state*" "cold state*"))))) "ILO class*"))
  ;; 127. Explain the use of chlorine in water purification.
- (assert '(Isa (explainILO (useOfFor "hydrogen element**" (purificationOf "water substance*")) ) "ILO class*"))
+ (assert '(Isa (explainILO (useOfFor "hydrogen element*" (namedPhysicalProcessOf "purification*" "water substance*")) ) "ILO class*"))
   ; 128. State the industrial importance and environmental significance of the halogens and their compounds (e.g. for bleaches, PVC, halogenated hydrocarbons as solvents, refrigerants and in aerosols) (see also Section 10.3)
- (assert '(Isa (State (namedAspectOfClass "industrial importance*" "halogen substance class*"))) "ILO class*"))
+ (assert '(Isa (stateILO  (namedAspectOfClass "industrial importance*" "halogen substance class*"))) "ILO class*"))
  ; 129. Explain what is meant by a transition element, in terms of d-block elements forming one or more stable ions with incomplete d orbitals.
  (assert '(Isa (explainTermILO "transition element*") "ILO class*"))
- (assert '(ILOQualifier (explainTermILO "transition element*") (inTermsOf (FormationOfClass "complex ion class*"))))
+ (assert '(ILOQualifier (explainTermILO "transition element*") (inTermsOf (typedReactionOfClass "formation reaction*" "complex ion class*"))))
  ;; 130. State the electronic configuration of a first row transition element and of its ions.
  (assert '(Isa (stateILO (electronicConfigurationOf (every x (Isa x "first row transition element class*"))) "ILO class*")))
  ; 131. Contrast, qualitatively, the melting points and densities of the transition elements with those of calcium as a typical s-block element.

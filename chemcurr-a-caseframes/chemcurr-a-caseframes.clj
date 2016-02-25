@@ -268,14 +268,17 @@
 ;;; M
 
 ; from FrameNet resource: Manufacturing
-(defineCaseframe 'Thing '('manufactureOfFrom product resource)
-  :docstring "manufacture of [product] from [resource]")
+(defineCaseframe 'Thing '('manufactureOfFrom manufacturand resource)
+  :docstring "manufacture of [manufacturand] from [resource]")
 
 (defineCaseframe 'Modifier '(modInDomain domain)
   :docstring "[domain]"
   :fsymbols '(modInTermsOf modInRelationTo modWithReferenceTo modWithRegardsTo modWithParticularReferenceTo modAsAppliedTo))
 
 ;;; N
+
+(defineCaseframe 'Aspect '('namedAspectOfClass aspect class)
+  :docstring "[aspect] of [class]")
 
 (defineCaseframe 'Thing '('namedChemicalChangeOfClass chemical-change class)
   :docstring "[chemical-change] of [class]")
@@ -288,6 +291,9 @@
 
 (defineCaseframe 'Thing '('effectOfInfluenceOn influencing-thing influenced)
   :docstring "effect of [influencing-thing] on [influenced]")
+
+(defineCaseframe 'PhysicalProcess '('namedPhysicalProcessOf physical-process chemical-substance)
+  :docstring "[physical-process] of [chemical-substance]")
 
 (defineCaseframe 'Property '('namedNonPhysicalPropertyOf non-physical-property thing-with-property)
   :docstring "[non-physical-property] of [thing-with-property]")
@@ -312,16 +318,16 @@
 (defineCaseframe 'Act '('performActionOn type-of-action object-of-action)
   :docstring "perform [type-of-action] on [object-of-action]")
 
-(defineCaseframe 'Collection '('physicalPropertiesOf thing-with-property)
+(defineCaseframe 'PhysicalProperties '('physicalPropertiesOf thing-with-property)
   :docstring "physical properties of [thing-with-property]")
 
-(defineCaseframe 'Collection '('physicalPropertiesOfClass class)
+(defineCaseframe 'PhysicalProperties '('physicalPropertiesOfClass class)
   :docstring "physical properties of [class]")
 
-(defineCaseframe 'Collection '('propertiesOf thing-with-property)
+(defineCaseframe 'Properties '('propertiesOf thing-with-property)
   :docstring "properties of [thing-with-property]")
 
-(defineCaseframe 'Collection '('propertiesOfClass class)
+(defineCaseframe 'Properties '('propertiesOfClass class)
   :docstring "properties of [class]")
 
 (defineCaseframe 'Thing '('purpose purpose)
@@ -369,6 +375,9 @@
   :docstring "state [statable-thing]"
   :fsymbols '(stateILO writeILO writeDownILO proposeILO recountILO reportILO suggestILO relateILO))
 
+(defineCaseframe 'ChemicalSubstance '('chemicalSubstanceInPhysicalState chemical-substance physical-state)
+  :docstring "[chemical-substance] in [physical-state]")
+
 ;;; T
 
 (defineCaseframe 'Thing '('trendInPropertyOf trending-property things-with-trending-property)
@@ -379,8 +388,8 @@
 
 ;;; U
 
-(defineCaseframe 'Thing '('underlyingAssumptionsOf assumption-set)
-  :docstring "underlying assumptions of [assumption-set]")
+(defineCaseframe 'Thing '('underlyingAssumptionsOf thing-with-assumptions)
+  :docstring "underlying assumptions of [thing-with-assumptions]")
 
 (defineCaseframe 'ILO '(actions instrument)
   :docstring "use [instrument]"

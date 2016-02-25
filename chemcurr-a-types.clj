@@ -1,6 +1,7 @@
 ;;; analysing
 
 (defineType :Analysable (:Thing))
+(defineType :Aspect (:Thing))
 
 ;;; bonding
 
@@ -67,13 +68,26 @@
 (defineType :NonPhysicalProperty (:Property))
 (defineType :NominalProperty (:Property))
 (defineType :PhysicalProperty (:Property))
+(defineType :PhysicalProperties (:Category))
+(defineType :Properties (:Category))
 (defineType :Property (:Thing))
 (defineType :Quantity (:DefinableThing))
+
+
 
 ;;; State
 
 (defineType :State (:Thing))
 (defineType :PhysicalState (:State))
+(defineType :ChangeOfState (:Thing))
+
+;;; Process
+
+(defineType :Process (:Thing))
+(defineType :PhysicalProcess (:Process))
+(defineType :ChemicalProcess (:Process))
+
+
 
 
 ;;; UseOf
