@@ -196,6 +196,7 @@
 (defineSlot object-of-calculation :type :Thing)
 (defineSlot object-of-influence :type :Thing)
 (defineSlot operateILO :type :Thing)
+(defineSlot oxidant :type :ChemicalReferent)
 
 ;;; P
 
@@ -225,6 +226,7 @@
 (defineSlot reaction-type :type :ReactionType)
 (defineSlot recountILO :type :Thing)
 (defineSlot redox-reaction :type :RedoxReaction)
+(defineSlot reductant :type :ChemicalReferent)
 (defineSlot relate-source :type :Thing)
 (defineSlot reactive-entities :type :ChemicalSpecies :min 2)
 (defineSlot relate-sink :type :Thing)

@@ -123,6 +123,8 @@
 (defineType :Electrode (:DefinableThing))
 (defineType :ElectrodePotential (:DefinableThing))
 
+(defineType :RedoxSystem (:DefinableThing))
+
 ;;; statistics
 
 (defineType :ProbabilityDistribution (:DefinableThing))

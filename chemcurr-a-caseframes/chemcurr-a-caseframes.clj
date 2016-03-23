@@ -343,6 +343,9 @@
 (defineCaseframe 'Thing '('reactivityOf reactive-entity)
   :docstring "reactivity of [reactive-entity]")
 
+(defineCaseframe 'RedoxSystem '('redoxSystem reductant oxidant)
+  :docstring "redox system with [reductant] and [oxidant]")
+
 (defineCaseframe 'Thing '('relativeNamedPhysicalPropertyOfClass physical-property class)
   :docstring "relative [physical-property] of [class]") 
 

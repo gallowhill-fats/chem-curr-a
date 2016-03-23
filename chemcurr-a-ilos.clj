@@ -590,22 +590,21 @@
  (assert '(Isa (explainTermILO "transition element*") "ILO class*"))
  (assert '(ILOQualifier (explainTermILO "transition element*") (inTermsOf (typedReactionOfClass "formation reaction*" "complex ion class*"))))
  ;; 130. State the electronic configuration of a first row transition element and of its ions.
- (assert '(Isa (stateILO (electronicConfigurationOf (every x (Isa x "first row transition element class*"))) "ILO class*")))
+ (assert '(Isa (stateILO (every x (Isa x "electronic configuration class*") (every y (Isa y "first row transition element class*") (hasElectronicConfiguration y x)) ))   "ILO class*"))
  ; 131. Contrast, qualitatively, the melting points and densities of the transition elements with those of calcium as a typical s-block element.
  (assert '(Isa (contrastILO (namedPhysicalPropertyOfClass "melting point*" "transition element class*") (namedPhysicalPropertyOf "melting point*" "calcium element*")) "ILO class*"))
  (assert '(Isa (contrastILO (namedPhysicalPropertyOfClass "density*" "transition element class*") (namedPhysicalPropertyOf "density*" "calcium element*")) "ILO class*"))
  ; 132. Describe the tendency of transition elements to have variable oxidation states
- (assert '(Isa (describeILO (tendency (every x (Isa x "transition element class*")) (HasProperty "variable oxidation state*" x)) "ILO class*"))
+ (assert '(Isa (describeILO (tendency (every x (Isa x "transition element class*") (HasProperty "variable oxidation state*" x))))  "ILO class*"))
  ; 133. Predict from a given electronic configuration, the likely oxidation states of a transition element.
- (assert '(Isa (predictILO (namedQuantityOf "oxidation state*" (every x (Isa x "transition element class*") )) "ILO class*"))
- (assert '(ILOQuantifier (predictILO (namedQuantityOf "oxidation state*" (every x (Isa x "transition element class*") )) (given (electronicConfiguratonOf x)))))
- ; 134. Describe and explain the use of Fe3+/Fe2+, MnO4?−/Mn2+ and Cr2O72?−/Cr3+ as examples of redox systems (see also Section 6).
- (assert '(Isa (describeILO (useOf (redoxSystem "iron III cationic entity*" "iron II cationic entity*")) "ILO class*"))
- (assert '(Isa (explainILO (useOf (redoxSystem "iron III cationic entity*" "iron II cationic entity*")) "ILO class*"))
- (assert '(Isa (describeILO (useOf (redoxSystem "permanganate anionic entity*" "manganese II cationic  entity*")) "ILO class*"))
- (assert '(Isa (explainILO (useOf (redoxSystem "permanganate anionic entity*" "manganese II cationic  entity*")) "ILO class*"))
- (assert '(Isa (describeILO (useOf (redoxSystem "dichromate anionic entity*" "chromium III cationic entity*")) "ILO class*"))
- (assert '(Isa (explainILO (useOf (redoxSystem "dichromate anionic entity*" "chromium III cationic entity*")) "ILO class*"))
+ (assert '(Isa (predictILO (namedQuantityOf "oxidation state*" (every x (Isa x "transition element class*") (given (every y (Isa y "electronic configuration class*") (HasElectronicConfiguration x y)) )))) "ILO class*"))
+  ; 134. Describe and explain the use of Fe3+/Fe2+, MnO4?−/Mn2+ and Cr2O72?−/Cr3+ as examples of redox systems (see also Section 6).
+ (assert '(Isa (describeILO (useOf (redoxSystem "iron III cationic entity*" "iron II cationic entity*"))) "ILO class*"))
+ (assert '(Isa (explainILO (useOf (redoxSystem "iron III cationic entity*" "iron II cationic entity*"))) "ILO class*"))
+ (assert '(Isa (describeILO (useOf (redoxSystem "permanganate anionic entity*" "manganese II cationic  entity*"))) "ILO class*"))
+ (assert '(Isa (explainILO (useOf (redoxSystem "permanganate anionic entity*" "manganese II cationic  entity*"))) "ILO class*"))
+ (assert '(Isa (describeILO (useOf (redoxSystem "dichromate anionic entity*" "chromium III cationic entity*"))) "ILO class*"))
+ (assert '(Isa (explainILO (useOf (redoxSystem "dichromate anionic entity*" "chromium III cationic entity*"))) "ILO class*"))
  ; 135. Predict, using E values, the likelihood of redox reactions.
  (assert '(Isa (predictILO (likelihoodOf (every x (Isa x "redox reaction class*") ))) ILO ))
  (assert '(ILOQualifier  (predictILO (likelihoodOf (every x (Isa x "redox reaction class*") ))) (given (every y (Isa y "E value class*")))))
