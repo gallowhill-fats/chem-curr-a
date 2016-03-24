@@ -11,6 +11,7 @@
 (defineSlot Arrival :type :Thing)
 (defineSlot arriving-thing :type :Thing)
 (defineSlot ascertainILO :type :Thing)
+(defineSlot asExample :type :Thing)
 (defineSlot aspect :type :Aspect)
 (defineSlot assumption-set :type :Thing)
 
@@ -47,6 +48,7 @@
 (defineSlot comparative-sense :type :Thing)
 (defineSlot compareILO :type :Thing)
 (defineSlot comparison-set :type :Thing)
+(defineSlot complex-ion :type :ComplexIon)
 (defineSlot constructedOn :type :Thing)
 (defineSlot containing :type :Thing)
 (defineSlot ContainsElement :type :Thing)
@@ -79,6 +81,7 @@
 
 ;;; E
 
+(defineSlot effectOfOn :type :Thing)
 (defineSlot electrode :type :Electrode)
 (defineSlot electrode-potential :type :ElectrodePotential)
 (defineSlot element :type :Element)
@@ -89,6 +92,10 @@
 (defineSlot entity-with-explanation :type :Entity)
 (defineSlot essential-for :type :Thing)
 (defineSlot essential-thing :type :Thing)
+(defineSlot e-value :type :EValue)
+(defineSlot eventuality :type :Thing)
+(defineSlot example :type :Thing)
+(defineSlot examples :type :Thing)
 (defineSlot executeILO :type :Thing)
 (defineSlot Explain :type :Thing)
 (defineSlot explainWhyILO :type :Thing)
@@ -123,6 +130,7 @@
 (defineSlot HasRetainedIupacName :type :Thing)
 (defineSlot HasSubstanceName :type :Thing)
 (defineSlot HasSystematicName :type :Thing)
+(defineSlot hypothetical-event :type :Thing)
 
 
 
@@ -131,9 +139,11 @@
 (defineSlot identifiable-thing :type :Thing)
 (defineSlot identifyILO :type :Thing)
 (defineSlot ilo :type :ILO)
+(defineSlot impactOfOn :type :Thing)
 (defineSlot inChemicalSystem :type :Thing)
 (defineSlot inCircumstances :type :Thing)
 (defineSlot Including :type :Thing)
+(defineSlot includingExample :type :Thing)
 (defineSlot Inclusion :type :Thing)
 (defineSlot inclusion-set :type :Entity)
 (defineSlot independent-quantity :type :Quantity)
@@ -142,6 +152,7 @@
 (defineSlot influence :Thing)
 (defineSlot influenced :Thing)
 (defineSlot influencing-thing :type :Thing)
+(defineSlot influenceOfOn :type :Thing)
 (defineSlot Incorporating :type :Thing)
 (defineSlot instrument :type :Thing)
 (defineSlot Integrating :type :Thing)
@@ -163,7 +174,7 @@
 
 ;;; L
 
-
+(defineSlot ligand :type :ChemicalReferent)
 (defineSlot locality-of-distribution :type :Thing)
 
 
@@ -172,6 +183,7 @@
 (defineSlot magnitude :type :Number)
 (defineSlot manufacturand :type :Thing)
 (defineSlot matchILO :type :Thing)
+(defineSlot metal-ion :type :MetalIon)
 (defineSlot method :type :Thing)
 (defineSlot modification :type :Thing :min 0)
 (defineSlot modAsAppliedTo :type :Thing)
@@ -191,7 +203,7 @@
 
 ;;; O
 
-(defineSlot ObjectiveInfluence :type :Thing)
+(defineSlot objectiveInfluence :type :Thing)
 (defineSlot object-of-action :type :Thing)
 (defineSlot object-of-calculation :type :Thing)
 (defineSlot object-of-influence :type :Thing)
@@ -205,6 +217,7 @@
 (defineSlot physical-state :type :PhysicalState)
 (defineSlot change-of-state :type :ChangeOfState)
 (defineSlot physical-process :type :PhysicalProcess)
+(defineSlot powerOfOver :type :Thing)
 (defineSlot process :type :Process)
 (defineSlot products :type :Thing)
 (defineSlot property :type :Property)
@@ -226,11 +239,14 @@
 (defineSlot reaction-type :type :ReactionType)
 (defineSlot recountILO :type :Thing)
 (defineSlot redox-reaction :type :RedoxReaction)
+(defineSlot redox-system :type :RedoxSystem)
 (defineSlot reductant :type :ChemicalReferent)
 (defineSlot relate-source :type :Thing)
 (defineSlot reactive-entities :type :ChemicalSpecies :min 2)
 (defineSlot relate-sink :type :Thing)
 (defineSlot RelateToILO :type :Thing)
+(defineSlot removal-source :type :Thing)
+(defineSlot removand :type :Thing)
 (defineSlot reportILO :type :Thing)
 (defineSlot resource :type :Thing)
 
@@ -296,6 +312,7 @@
 
 ;;; W
 
+(defineSlot withExample :type :Thing)
 (defineSlot withParticularReferenceTo :type :Thing)
 (defineSlot withReferenceTo :type :Thing)
 (defineSlot withRegardsTo :type :Thing)
@@ -310,7 +327,9 @@
 
 ;;; Z
 
-
+(defineCaseframe 'Thing '(objectiveInfluence influencing-thing object-of-influence)
+  :docstring "effect of [influencing-thing] on [object-of-influence]"
+  :fsymbols '(effectOfOn influenceOfOn impactOfOn powerOfOver))
 
 
 

@@ -35,6 +35,10 @@
 (defineType :AnionicChemicalEntity (:IonicChemicalEntity))
 (defineType :CationicChemicalEntity (:IonicChemicalEntity))
 
+(defineType :ComplexIon (:IonicChemicalReferent))
+(defineType :MetalIon (:IonicChemicalReferent))
+
+
 ;;; chemical reaction
 
 (defineType :Change (:Thing))
@@ -72,16 +76,25 @@
 (defineType :Properties (:Category))
 (defineType :Property (:Thing))
 (defineType :Quantity (:DefinableThing))
+(defineType :UnitedQuantity (:Quantity))
+
+(defineType :EValue (:UnitedQuantity))
+
+;;; action types
+
+(defineType :ActionType (:Thing))
+
+(defineType :Removal (:ActionType))
 
 
 
-;;; State
+;;; state
 
 (defineType :State (:Thing))
 (defineType :PhysicalState (:State))
 (defineType :ChangeOfState (:Thing))
 
-;;; Process
+;;; process
 
 (defineType :Process (:Thing))
 (defineType :PhysicalProcess (:Process))
@@ -90,7 +103,7 @@
 
 
 
-;;; UseOf
+;;; useOf
 
 (defineType :UseAndCircumstance (:Thing))
 
@@ -98,11 +111,11 @@
 
 (defineType :ReactionType (:Thing))
 
-;;; Means
+;;; means
 
 (defineType :Means (:Thing))
 
-;;; Defining
+;;; defining
 
 (defineType :DefinableThing (:Thing))
 
@@ -110,7 +123,7 @@
 
 (defineType :FundamentalConstant (:DefinableThing))
 
-;;; Modifier
+;;; modifier
 
 (defineType :Modifier (:Thing))
 

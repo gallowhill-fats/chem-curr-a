@@ -606,33 +606,31 @@
  (assert '(Isa (describeILO (useOf (redoxSystem "dichromate anionic entity*" "chromium III cationic entity*"))) "ILO class*"))
  (assert '(Isa (explainILO (useOf (redoxSystem "dichromate anionic entity*" "chromium III cationic entity*"))) "ILO class*"))
  ; 135. Predict, using E values, the likelihood of redox reactions.
- (assert '(Isa (predictILO (likelihoodOf (every x (Isa x "redox reaction class*") ))) ILO ))
- (assert '(ILOQualifier  (predictILO (likelihoodOf (every x (Isa x "redox reaction class*") ))) (given (every y (Isa y "E value class*")))))
+  (assert '(Isa (predictILO (likelihoodOf (every x (Isa x "redox reaction class*") (every y (Isa y "E value class*") (HasEValue x y))))) "ILO class*" ))
  ; 136. Explain the reactions of transition elements with ligands to form complexes, including the complexes of copper(II) ions with water, hydroxide, ammonia and chloride ions.
  (assert '(Isa (describeILO (typedChemicalReactionsOfClass "formation*" "complex ion class*" )) "ILO class*"))
- (assert '(ILOQualifier (describeILO (typedChemicalReactionsOfClass "formation*" "complex ion class*" )) (including (setof (ComplexIon "copper element*" "2" "water molecule*") (complexIon "copper element*" "2" "ammonia molecular entity*") (complexIon "copper element*" "2" "chloride anionic entity*")))))
- ; 137. define the term ligand as a species that contains a lone pair of electrons that forms a dative bond to a central metal atom/ion.
+ (assert '(ILOQualifier (describeILO (typedChemicalReactionsOfClass "formation*" "complex ion class*" )) (including (setof (every x (Isa x "complex ion class*") (HasMetalIon x "copper II metal ion*") (HasLigand x "water molecular entity*")) (every x (Isa x "complex ion class*") (HasMetalIon x "copper II metal ion*") (HasLigand x "ammonia molecular entity*")) (every x (Isa x "complex ion class*") (HasMetalIon x "copper II metal ion*") (HasLigand x "chloride anionic entity*")) (every x (Isa x "complex ion class*") (HasMetalIon x "copper II metal ion*") (HasLigand x "hydroxide  anionic entity*"))))))
+ ; 137. Define the term ligand as a species that contains a lone pair of electrons that forms a dative bond to a central metal atom/ion.
  (assert '(Isa (defineILO "ligand*") "ILO class*"))
  ; 138. define the term complex as a molecule or ion formed by a central metal atom/ion surrounded by one or more ligands.
  (assert '(Isa (defineILO "complex*") "ILO class*"))
  ; 139. Describe transition metal complexes as linear, octahedral, tetrahedral or square planar.
- (assert '(Isa (identifyILO (shapeOf (every x (Isa x "transition metal complex class*"))))  "ILO class*"))
- (assert '(ILOQualifier (identifyILO (shapeOf (every x (Isa x "transition metal complex class*")) )) (fromOptions (setof "linear*" "octahedral*" "tetrahedral*" "square planar*"))))
- ; 140. Explain qualitatively that ligand exchange may occur, including the complexes of copper(II) ions with water, hydroxide, ammonia and chloride ions.
+ (assert '(Isa (describeILO (every x (Isa x "shape class*") (some  y (x)  (Isa y "transition metal complex class*") (or (HasShape y "linear shape*" ) (HasShape y "octahedral shape*" ) (HasShape y "tetrahedral shape*" ) (HasShape y "square planar shape*" ))))) "ILO class*"))
+  ; 140. Explain qualitatively that ligand exchange may occur, including the complexes of copper(II) ions with water, hydroxide, ammonia and chloride ions.
  (assert '(Isa (describeILO "ligand exchange*") "ILO class*") 
- (assert '(ILOQualifier (describeILO "ligand exchange*") (withReferenceTo (setof (InteractionBetween "copper II complex class*" "water substance*") (InteractionBetween "copper II complex class*" "ammonia substance*") (InteractionBetween "copper II complex class*" "chloride ion species*")) ))) 
+ (assert '(ILOQualifier (describeILO "ligand exchange*") (withReferenceTo (setof (interactionBetween "copper II complex class*" "water substance*") (interactionBetween "copper II complex class*" "ammonia substance*") (interactionBetween "copper II complex class*" "chloride ion species*")) ))) 
  ; 141. Describe the shape and symmetry of the d orbitals, and the splitting of degenerate d orbitals into two energy levels in octahedral complexes using the complexes of copper(II) ions with water and ammonia as examples.
  (assert '(Isa (describeILO (namedPropertyOfClass "shape*" "d-orbital class*"))) "ILO class*"))
  (assert '(Isa (describeILO (namedPropertyOfClass "symmetry*" "d-orbital class*"))) "ILO class*"))
- (assert '(Isa (describeILO (removelOfFrom "degeneracy*" "d-orbital class*")) "ILO class*"))
- (assert '(ILOQualifier (describeILO (removelOfFrom "degeneracy*" "d-orbital class*")) (setof (withReferenceTo "octahedral complex class*") (withExamples "copper II water complex class*"))))
- (assert '(ILOQualifier (describeILO (removelOfFrom "degeneracy*" "d-orbital class*"))  (setof (withReferenceTo "octahedral complex class*") (withExamples "copper II ammonia complex class*"))))
+ (assert '(Isa (describeILO (removalOfFrom "degeneracy*" "d-orbital class*")) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (removalOfFrom "degeneracy*" "d-orbital class*")) (setof (withReferenceTo "octahedral complex class*") (withExample "copper II water complex class*"))))
+ (assert '(ILOQualifier (describeILO (removalOfFrom "degeneracy*" "d-orbital class*"))  (setof (withReferenceTo "octahedral complex class*") (withExample "copper II ammonia complex class*"))))
   ; 142. Explain the origin of colour in transition element complexes resulting from the absorption of light energy as an electron moves between two non-degenerate d orbitals.
  (assert '(Isa (explainILO (originOf "color*")) "ILO class*"))
  (assert '(ILOQualifier (explainILO (originOf "color*")) (inDomain "transition element complex ion class*")))
  ; 143. Describe, in qualitative terms, the effects of different ligands on absorption, and hence colour, using the complexes of copper(II) ions with water, hydroxide, ammonia and chloride ions as examples.
- (assert '(Isa (describeILO (effectOfOn (every x (Isa x "ligand class*")) "color**") "ILO class*"))
- (assert '(ILOQualifier (describeILO (effectOfOn (every x (Isa x "ligand class*")) "color**") (withExamples (setof (ComplexIon "copper element*" "2" "water molecule*") (ComplexIon "copper element*" "2" "ammonia molecular entity*") (ComplexIon "copper element*" "2" "chloride anionic entity*"))))))
+ (assert '(Isa (describeILO (effectOfOn (every x (Isa x "ligand class*")) "color*") "ILO class*"))
+ (assert '(ILOQualifier (describeILO (effectOfOn (every x (Isa x "ligand class*")) "color*") (withExamples (setof (ComplexIon "copper element*" "2" "water molecule*") (ComplexIon "copper element*" "2" "ammonia molecular entity*") (ComplexIon "copper element*" "2" "chloride anionic entity*"))))))
  ; 144. Apply the above ideas of ligands and complexes to other metals, given information
  ;; ??
  ; 145. Explain the lack of reactivity of nitrogen
@@ -647,7 +645,7 @@
  ; 149. State and explain the environmental consequences of the uncontrolled use of nitrate fertilisers.
  (assert '(Isa (stateILO (qualifiedTerm "environmental*" (consequencesOf (namedUseOfClass "fertiliser**" "nitrate substance class*"))))) "ILO class*"))
  (assert '(Isa (explainILO (qualifiedTerm "environmental*" (consequencesOf (namedUseOfClass "fertiliser*" "nitrate substance class*"))))) "ILO class*"))
-  ; 150. State and explain the natural and man-made occurrences of oxides of nitrogen and their catalytic removal from the exhaust gases of internal combustion engines.
+  ; 150. State and explain the natural and man-made occurrences of oxides of nitrogen and their catalytic removal from the exhaust gases of internal combustion engines
  (assert '(Isa (explainILO (namedAspectOfClass "natural occurrence*" "oxide of nirogen class*")) "ILO class*"))
  (assert '(Isa (explainILO (namedAspectOfClass "man-made  occurrence*" "oxide of nitrogen class*")) "ILO class*"))
  ; 151. Explain why atmospheric oxides of nitrogen are pollutants, including their catalytic role in the oxidation of atmospheric sulfur dioxide.

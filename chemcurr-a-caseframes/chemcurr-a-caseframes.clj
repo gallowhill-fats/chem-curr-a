@@ -140,8 +140,10 @@
 (defineCaseframe 'Thing '('electronicConfigurationOf chemical-entity)
   :docstring "electronic configuration of [chemical entity]")
 
-(defineCaseframe 'Thing '('effectOfOn influence object-of-influence)
-  :docstring "effect of [influence] on [object-of-influence]")
+; FrameNet: Objective_influence
+(defineCaseframe 'Thing '(objectiveInfluence influencing-thing object-of-influence)
+  :docstring "effect of [influencing-thing] on [object-of-influence]"
+  :fsymbols '(effectOfOn influenceOfOn impactOfOn powerOfOver))
 
 (defineCaseframe 'ILO '(actions entity-with-explanation)
     :docstring "explain the [entity-with-explanation]"
@@ -174,11 +176,20 @@
 (defineCaseframe 'Proposition '('HasElectrostaticCharge thing-with-charge sign magnitude)
   :docstring "[thing-with-charge] has charge of [sign] and [magnitude]")
 
+(defineCaseframe 'Proposition '('HasEValue redox-system e-value)
+  :docstring "[redox-system] has [e-value]")
+
 (defineCaseframe 'Proposition '('HasGenericMemberName class generic-member-name)
   :docstring "[class] has generic member [generic-member-name]")
 
 (defineCasefreme 'Proposition '('HasHalfReaction redox-reaction half-reaction)
   :docstring "[redox-reaction] has [half-reaction]")
+
+(defineCaseframe 'Proposition '('HasLigand complex-ion ligand)
+  :docstring "[complex-ion] has [ligand]")
+
+(defineCaseframe 'Proposition '('HasMetalIon complex-ion metal-ion)
+  :docstring "[complex-ion] has [metal-ion]")
 
 (defineCaseframe 'Proposition '(HasName nameable-thing thing-name)
   :docstring "[nameable-thing] has [thing-name]"
@@ -225,6 +236,10 @@
   :docstring "[domain-predicate] relates to, refers to, is expressed in terms belonging to [domain]"
   :fsymbols '(InTermsOf InRelationTo WithReferenceTo WithRegardsTo WithParticularReferenceTo AsAppliedTo))
 
+(defineCaseframe 'Qualifier '(inDomain domain)
+  :docstring "in [domain]"
+  :fsymbols '(inTermsOf inRelationTo withReferenceTo withRegardsTo withParticularReferenceTo asAppliedTo))
+
 (defineCaseframe '('forChemicalSystem chemical-system)
   :docstring "relating to [chemical-system]")
 
@@ -264,6 +279,10 @@
 ;;; K
 
 ;;; L
+
+; FrameNet: Likelihood
+(defineCaseframe 'Thing '('likelihoodOf hypothetical-event)
+  :docstring "likelihood of [hypothetical-event]")
 
 ;;; M
 
@@ -324,6 +343,11 @@
 (defineCaseframe 'PhysicalProperties '('physicalPropertiesOfClass class)
   :docstring "physical properties of [class]")
 
+; FrameNet: Predicting
+(defineCaseframe 'ILO '(actions eventuality)
+  :docstring "predict [eventuality]"
+  :fsymbols '(predictILO))
+
 (defineCaseframe 'Properties '('propertiesOf thing-with-property)
   :docstring "properties of [thing-with-property]")
 
@@ -351,6 +375,10 @@
 
 (defineCaseframe 'Thing '('relativeReactivityOf reactive-entities)
   :docstring "relative reactivity of [reactive-entities]")
+
+; FrameNet: Removing
+(defineCaseframe 'Removal '('removalOfFrom removand removal-source)
+  :docstring "removal of [removand] from [removal-source]")
 
 (defineCaseframe 'ILO '(action relate-source relate-sink)
   :docstring "relate [relate-source] to [relate-sink]"
@@ -424,6 +452,10 @@
  :docstring "value of [quantity]")
 
 ;;; W
+
+(defineCaseframe 'Qualifier '(examples example)
+  :docstring "with [example]"
+  :fsymbols '(withExample asExample includingExample))
 
 (defineCaseframe 'ILO '(actions writable)
     :docstring "write [writable]"
