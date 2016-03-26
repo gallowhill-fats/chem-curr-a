@@ -417,7 +417,7 @@
 ; 88h. predict the reaction mechanism for a chemical reaction given its order
   (assert '(Isa (constructILO (every x (Isa x "integrated rate equation class*") (some y (x) (or (Isa y "single-step reaction class*") (Isa y "multi-step reaction with rds class")))  (Isa x "simple things class*"))) "ILO class*")) ; shimple things?? This ilo also needs a cfn for integrated rate laws that incorporates concentrations and their orders
   (assert '(Isa (deduceILO (namedPropertyOf "total order*" (every x (Isa x "chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*"))))))) "ILO class*"))
- (assert '(ILOQualifier (deduceILO (namedPropertyOf "total order*" (every x (Isa x "chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*")))))))  (withMeans "initial rates method*")))
+ (assert '(ILOQualifier (deduceILO (namedPropertyOf "total order*" (every x (Isa x "chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*")))))))  (byMeans "initial rates method*")))
  (assert '(Isa (deduceILO (namedPropertyOf "total order*" (every x (Isa x "zero-order chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*")))))))  "ILO class*"))
  (assert '(ILOQualifier (deduceILO (namedPropertyOf "total order*" (every x (Isa x "first-order chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*"))))))) "ILO class*"))
  (assert '(Isa (verifyILO (IsConsistentWith (every x (Isa x "reaction mechanism*")) (namedPropertyOfReaction "kinetics of reaction*" x))) "ILO class*"))
@@ -629,19 +629,27 @@
  (assert '(Isa (explainILO (originOf "color*")) "ILO class*"))
  (assert '(ILOQualifier (explainILO (originOf "color*")) (inDomain "transition element complex ion class*")))
  ; 143. Describe, in qualitative terms, the effects of different ligands on absorption, and hence colour, using the complexes of copper(II) ions with water, hydroxide, ammonia and chloride ions as examples.
- (assert '(Isa (describeILO (effectOfOn (every x (Isa x "ligand class*")) "color*") "ILO class*"))
- (assert '(ILOQualifier (describeILO (effectOfOn (every x (Isa x "ligand class*")) "color*") (withExamples (setof (ComplexIon "copper element*" "2" "water molecule*") (ComplexIon "copper element*" "2" "ammonia molecular entity*") (ComplexIon "copper element*" "2" "chloride anionic entity*"))))))
+ (assert '(Isa (describeILO (effectOfOn (every x (Isa x "ligand class*")) "color*")) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (effectOfOn (every x (Isa x "ligand class*")) "color*")) (withExample (setof (every x (Isa x "complex ion class*") (HasMetalIon x "copper II metal ion*") (HasLigand x "water molecular entity*")) (every x (Isa x "complex ion class*") (HasMetalIon x "copper II metal ion*") (HasLigand x "ammonia molecular entity*")) (every x (Isa x "complex ion class*") (HasMetalIon x "copper II metal ion*") (HasLigand x "chloride anionic entity*")) (every x (Isa x "complex ion class*") (HasMetalIon x "copper II metal ion*") (HasLigand x "hydroxide  anionic entity*"))))))
  ; 144. Apply the above ideas of ligands and complexes to other metals, given information
  ;; ??
  ; 145. Explain the lack of reactivity of nitrogen
- (assert '(Isa (explainILO (namedChemicalProeprtyOf "unreactivity*"  "nitrogen element*")) "ILO class*"))
+ (assert '(Isa (explainILO (namedChemicalPropertyOf "unreactivity*"  "nitrogen element*")) "ILO class*"))
  ; 146. Describe and explain: (i) the basicity of ammonia (see Section 7) (ii) the structure of the ammonium ion and its formation by an acid-base reaction (iii) the displacement of ammonia from its salts.
- (assert '(Isa (describeILO (namedPropertyOf "basicity*" "ammonia substance class*")) "ILO class*"))
- (assert '(Isa (explainILO (namedPropertyOf "basicity*" "ammonia substance class*")) "ILO class*"))
+ (assert '(Isa (describeILO (namedPropertyOf "basicity*" "ammonia substance*")) "ILO class*"))
+ (assert '(Isa (explainILO (namedPropertyOf "basicity*" "ammonia substance*")) "ILO class*"))
+ (assert '(Isa (describeILO (namedPropertyOf "structure*" "ammonium ion*")) "ILO class*"))
+ (assert '(Isa (explainILO (namedPropertyOf "structure*" "ammonium ion*")) "ILO class*"))
+ (assert '(Isa (describeILO (displacementOfFromClass  "ammonia substance*" "ammonia salts class*")) "ILO class*"))
+ (assert '(Isa (explainILO (displacementOfFromClass "ammonia substance*" "ammonia salts class*")) "ILO class*"))
+ (assert '(Isa (describeILO (typedChemicalReactionOf "formation*"  "ammonium ion*")) "ILO class*"))
+ (assert '(Isa (explainILO (typedChemicalReactionOf "formation*" "ammonium ion*")) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (typedChemicalReactionOf "formation*"  "ammonium ion*")) (byMeans "acid-base reaction*")))
+ (assert '(ILOQualifier (explainILO (typedChemicalReactionOf "formation*"  "ammonium ion*")) (byMeans "acid-base reaction*")))
  ; 147. Describe the Haber process for the manufacture of ammonia from its elements, giving essential operating conditions, and interpret these conditions (qualitatively) in terms of the principles of kinetics and equilibria (see also Sections 7 and 8).
  (assert '(Isa (describeILO "Haber process*") "ILO class*"))
  ; 148. State the industrial importance of ammonia and nitrogen compounds derived from ammonia.
- (assert '(Isa (namedAspectOf "industrial importance*" (setof compoundsOf(setof "ammonia element*"  "nitrogen element*"))) "ILO class*"))
+ (assert '(Isa (namedAspectOf "industrial importance*" "ammonia substance*") "ILO class*"))
  ; 149. State and explain the environmental consequences of the uncontrolled use of nitrate fertilisers.
  (assert '(Isa (stateILO (qualifiedTerm "environmental*" (consequencesOf (namedUseOfClass "fertiliser**" "nitrate substance class*"))))) "ILO class*"))
  (assert '(Isa (explainILO (qualifiedTerm "environmental*" (consequencesOf (namedUseOfClass "fertiliser*" "nitrate substance class*"))))) "ILO class*"))
@@ -649,7 +657,7 @@
  (assert '(Isa (explainILO (namedAspectOfClass "natural occurrence*" "oxide of nirogen class*")) "ILO class*"))
  (assert '(Isa (explainILO (namedAspectOfClass "man-made  occurrence*" "oxide of nitrogen class*")) "ILO class*"))
  ; 151. Explain why atmospheric oxides of nitrogen are pollutants, including their catalytic role in the oxidation of atmospheric sulfur dioxide.
- (assert '(Isa (ExplainWhyILO (every x (Isa x (oxide of nitrogen class*)) (Isa x "atmospheric pollutant class*"))) "ILO class*"))
+ (assert '(Isa (explainWhyILO (every x (Isa x (oxide of nitrogen class*)) (Isa x "atmospheric pollutant class*"))) "ILO class*"))
  ; 152. Describe the formation of atmospheric sulfur dioxide from the combustion of sulfur contaminated carbonaceous fuels.
  (assert '(Isa (describeILO (namedAspectOf "origin*" "sulfur dioxide substance*")) "ILO class*"))
  (assert '(ILOQualifier (describeILO (namedAspectOf "origin*" "sulfur dioxide substance*")) (inDomain "atmosphere*")))

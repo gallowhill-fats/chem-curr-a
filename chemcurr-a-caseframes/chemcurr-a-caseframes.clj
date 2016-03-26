@@ -122,6 +122,12 @@
   :docstring "discuss [discussible-thing]"
   :fsymbol '(discussILO))
 
+(defineCaseframe 'ChemicalReaction '('displacementOfFrom displaced-referent substrate-referent)
+  :docstring "displacement reaction of [displaced-referent] from [substrate-referent]")
+
+(defineCaseframe 'ChemicalReaction '('displacementOfFromClass displaced-referent substrate-class)
+  :docstring "displacement reaction of [displaced-referent] from [substrate-class]")
+
 (defineCaseframe 'ILO '(action distinguishable-things)
   :docstring "distinguish between [distinguishable-things]"
   :fsymbol '(distinguishBetweenILO))
@@ -456,6 +462,9 @@
 (defineCaseframe 'Qualifier '(examples example)
   :docstring "with [example]"
   :fsymbols '(withExample asExample includingExample))
+
+(defineCaseframe 'Qualifier '('byMeans means)
+  :docstring "by [means] ")
 
 (defineCaseframe 'ILO '(actions writable)
     :docstring "write [writable]"

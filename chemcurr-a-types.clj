@@ -20,6 +20,7 @@
 
 ;;; chemical types
 (defineType :ChemicalReferent (:Thing))
+(defineType :ChemicalReferentClass (:Category))
 (defineType :IonicChemicalReferent (:ChemicalReferent))
 (defineType :AnionicChemicalReferent (:IonicChemicalReferent))
 (defineType :CationicChemicalReferent (:IonicChemicalReferent))

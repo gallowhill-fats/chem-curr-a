@@ -73,6 +73,7 @@
 (defineSlot determineILO :type :Thing)
 (defineSlot discussILO :type :Thing)
 (defineSlot discussible-thing :type :Thing)
+(defineSlot displaced-referent :type :ChemicalReferent)
 (defineSlot distinguishable-things :type :Thing)
 (defineSlot Do :type :Thing)
 (defineSlot Domain :type :Thing)
@@ -183,6 +184,7 @@
 (defineSlot magnitude :type :Number)
 (defineSlot manufacturand :type :Thing)
 (defineSlot matchILO :type :Thing)
+(defineSlot means :type :Thing)
 (defineSlot metal-ion :type :MetalIon)
 (defineSlot method :type :Thing)
 (defineSlot modification :type :Thing :min 0)
@@ -263,6 +265,8 @@
 (defineSlot symbol :type :Thing)
 (defineSlot symboled-entity :type :Thing)
 (defineSlot derived-property :type :DerivedProperty)
+(defineSlot substrate-referent :type :ChemicalReferent)
+(defineSlot substrate-class :type :ChemicalReferentClass)
 (defineSlot symbolic-property-element :type :Thing)
 (defineSlot symbolic-property-class :type :Category)
 (defineSlot systen :type :Thing)
@@ -327,9 +331,13 @@
 
 ;;; Z
 
-(defineCaseframe 'Thing '(objectiveInfluence influencing-thing object-of-influence)
-  :docstring "effect of [influencing-thing] on [object-of-influence]"
-  :fsymbols '(effectOfOn influenceOfOn impactOfOn powerOfOver))
+
+
+(defineCaseframe 'ChemicalReaction '('displacementOfFrom displaced-referent substrate-referent)
+  :docstring "displacement reaction of [displaced-referent] from [substrate-referent]")
+
+(defineCaseframe 'ChemicalReaction '('displacementOfFromClass displaced-referent substrate-class)
+  :docstring "displacement reaction of [displaced-referent] from [substrate-class]")
 
 
 
