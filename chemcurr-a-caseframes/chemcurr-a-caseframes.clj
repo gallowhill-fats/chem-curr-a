@@ -157,6 +157,9 @@
 
 ;;; F
 
+(defineCaseframe '('forChemicalSystem chemical-system)
+  :docstring "relating to [chemical-system]")
+
 ;;; G
 
 (defineCaseframe 'Modifier '('given thing-given)
@@ -246,9 +249,6 @@
   :docstring "in [domain]"
   :fsymbols '(inTermsOf inRelationTo withReferenceTo withRegardsTo withParticularReferenceTo asAppliedTo))
 
-(defineCaseframe '('forChemicalSystem chemical-system)
-  :docstring "relating to [chemical-system]")
-
 (defineCaseframe 'ILO '(actions act)
   :docstring "intentionally carry out [act]"
   :fsymbols '(intentionallyActILO actILO carryOutILO performILO doILO executeILO))
@@ -273,9 +273,10 @@
 (defineCaseframe 'Proposition '('IsBalanced chemical-equation)
   :docstring "[chemical-equation] is balanced")
 
-(defineCaseframe 'Proposition '(MolecularConstitution  chemical-entity element)
-  :docstring "[chemical-entity] is a compound of [element]"
- :fsymbols '(IsCompoundOf ContainsElement))
+; FrameNet: Causation
+(defineCaseframe 'Proposition '(Causation cause effect)
+  :docstring "[cause] is cause of [effect] "
+  :fsymbols '(IsConsequenceOf IsEffectOf IsResultOf))
 
 (defineCaseframe 'Proposition  '('IsIsotopeOf isotope element)
   :docstring "[isotope] is an isotope of [element]")
@@ -299,6 +300,10 @@
 (defineCaseframe 'Modifier '(modInDomain domain)
   :docstring "[domain]"
   :fsymbols '(modInTermsOf modInRelationTo modWithReferenceTo modWithRegardsTo modWithParticularReferenceTo modAsAppliedTo))
+
+(defineCaseframe 'Proposition '(MolecularConstitution  chemical-entity element)
+  :docstring "[chemical-entity] is a compound of [element]"
+ :fsymbols '(IsCompoundOf ContainsElement))
 
 ;;; N
 

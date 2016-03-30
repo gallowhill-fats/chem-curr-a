@@ -27,6 +27,8 @@
 
 (defineSlot calculateILO :type :Thing)
 (defineSlot carryOutILO :type :Thing)
+(defineSlot Causation :type :Thing)
+(defineSlot cause :type :Thing)
 (defineSlot chemical-change :type :ChemicalChange)
 (defineSlot chemical-entity :type :ChemicalEntity)
 (defineSlot chemical-equation :type :ChemicalEquation)
@@ -82,6 +84,7 @@
 
 ;;; E
 
+(defineSlot effect :type :Thing)
 (defineSlot effectOfOn :type :Thing)
 (defineSlot electrode :type :Electrode)
 (defineSlot electrode-potential :type :ElectrodePotential)
@@ -164,6 +167,9 @@
 (defineSlot involving-entity :type :Entity)
 (defineSlot involvate :type :Entity)
 (defineSlot ionic-chemical-referent :type :IonicChemicalReferent)
+(defineSlot IsConsequenceOf :type :Thing)
+(defineSlot IsEffectOf :type :Thing)
+(defineSlot IsResultOf :type :Thing)
 (defineSlot IsMeansFor :type :Thing)
 (defineSlot isMethodFor :type :Thing)
 (defineSlot isotope :type :Thing)
@@ -333,13 +339,10 @@
 
 
 
-(defineCaseframe 'ChemicalReaction '('displacementOfFrom displaced-referent substrate-referent)
-  :docstring "displacement reaction of [displaced-referent] from [substrate-referent]")
 
-(defineCaseframe 'ChemicalReaction '('displacementOfFromClass displaced-referent substrate-class)
-  :docstring "displacement reaction of [displaced-referent] from [substrate-class]")
-
-
+(defineCaseframe 'Proposition '(Causation cause effect)
+  :docstring "[cause] is cause of [effect] "
+  :fsymbols '(IsConsequenceOf IsEffectOf IsResultOf))
 
 
 
