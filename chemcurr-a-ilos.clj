@@ -748,7 +748,6 @@
  (assert '(Isa (describeILO "structural isomerism*") "ILO class*"))
  (assert '(Isa (describeILO "chain isomerism*") "ILO class*"))
  (assert '(Isa (describeILO "positional isomerism*") "ILO class*"))
- (assert '(Isa (describeILO "functional group isomerism*") "ILO class*"))
  ;; 162. Describe stereoisomerism, and its division into geometrical (cis-trans) and optical isomerism.
  (assert '(Isa (describeILO "stereoisomerism*") "ILO class*"))
  (assert '(Isa (describeILO "geometrical isomerism*") "ILO class*"))
@@ -759,13 +758,14 @@
  ;; 164. Explain what is meant by a chiral centre and that such a centre gives rise to optical isomerism.
  (assert '(Isa (describeILO "chiral centre*") "ILO class*"))
  (assert '(Isa (explainHowILO (GivesRiseTo "chiral centre*" "optical isomerism*")) ))
+ ;(assert '(Isa (explainILO (if  (every x  (Isa x "molecular entity class*") (HasStereogenicCentre x) ) (IsOpticallyActive x)))  "ILO class*")) 
  ; 165. Identify chiral centres and/or cis-trans isomerism in a molecule of given structural formula.
- (assert '(Isa (identifyILO (every x (IsChiralCentreOf x y) (Isa y "organic molecule class*") (given (structuralFormulaOf y))))  "ILO class*"))
- (assert '(Isa (identifyILO (every x (IsGeometricIsomerOf x y) (Isa y "organic molecule class*") (given (structuralFormulaOf y))))  "ILO class*"))
+ (assert '(Isa (identifyILO (every x (Isa x "chiral centre class*") (some y (x) (Isa y "molecular chemical referent  class*")) (given (some z (y) (HasTypedFormula "structural formula" y z)))))   "ILO class*"))
+ (assert '(Isa (identifyILO (every x (HasTypedIsomer "geometric isomer*" x (some  y (x) (Isa y "organic molecular chemical referent class*")))  (given (some z (y) (HasTypedFormula "structural formula*" y z)))))  "ILO class*"))
   ; 166. Deduce the possible isomers for an organic molecule of known molecular formula.
- (assert '(Isa (deduceILO (every x (IsIsomerOf x y) (Isa y "organic molecule class*") (given (TypedFormulaOf "structural formula" y)))) "ILO class*"))
+ (assert '(Isa (deduceILO (every x (HasIsomer x (some y (x) (Isa y "organic molecular entity class*")))) (given (some z (y) (Isa y "molecular formula class*") "ILO class*"))
  ; 167. Deduce the molecular formula of a compound, given its structural, displayed or skeletal formula (see Section 1).
- (assert '(Isa (deduceILO ( (every x (HasMolecularFormula y x) (given (typedFormulaOf "structural formula*" y))))))  "ILO class*"))
+ (assert '(Isa (deduceILO (every x (some y (x) (HasTypedFormula "molecular formula*" y x))) (given (HasTypedFormula "structural formula*" y))))))  "ILO class*"))
  ;; 168. Show awareness of the general unreactivity of alkanes, including towards polar reagents.
  (assert '(Isa (commentOnILO (reactivityOf (every x (Isa x "alkane substance class*") ) )) "ILO class*"))
  (assert '(Reactivitywith (reactivityOf (every x (Isa x "alkane substance class*") ) ) (every y (Isa y "polar reagent class*") )

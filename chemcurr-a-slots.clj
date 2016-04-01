@@ -32,6 +32,7 @@
 (defineSlot chemical-change :type :ChemicalChange)
 (defineSlot chemical-entity :type :ChemicalEntity)
 (defineSlot chemical-equation :type :ChemicalEquation)
+(defineSlot chemical-formula :type :ChemicalFormula)
 (defineSlot chemical-property :type :ChemicalProperty)
 (defineSlot chemical-substance :type :ChemicalSubstance)
 (defineSlot chemical-system :type :Thing)
@@ -110,6 +111,7 @@
 ;;; F
 
 (defineSlot figureOutILO :type :Thing)
+(defineSlot formula-type :type :FormulaType)
 
 ;;; G
 
@@ -172,6 +174,8 @@
 (defineSlot IsResultOf :type :Thing)
 (defineSlot IsMeansFor :type :Thing)
 (defineSlot isMethodFor :type :Thing)
+(defineSlot isomer :type :Isomer)
+(defineSlot isomer-type :type :IsomerType)
 (defineSlot isotope :type :Thing)
 (defineSlot IsCompoundOf :Thing)
 
@@ -339,10 +343,6 @@
 
 
 
-
-(defineCaseframe 'Proposition '(Causation cause effect)
-  :docstring "[cause] is cause of [effect] "
-  :fsymbols '(IsConsequenceOf IsEffectOf IsResultOf))
 
 
 

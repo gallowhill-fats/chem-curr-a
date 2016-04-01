@@ -52,6 +52,11 @@
 (defineCaseframe 'CationicChemicalEntity '('cationOf ionic-chemical-referent)
   :docstring "cation of [ionic-chemical-referent]")
 
+; FrameNet: Causation
+(defineCaseframe 'Proposition '(Causation cause effect)
+  :docstring "[cause] is cause of [effect] "
+  :fsymbols '(IsConsequenceOf IsEffectOf IsResultOf GivesRiseTo))
+
 (defineCaseframe 'Thing '('changeIn thing-with-change)
   :docstring "change in [thing-with-change]")
 
@@ -191,6 +196,9 @@
 (defineCaseframe 'Proposition '('HasGenericMemberName class generic-member-name)
   :docstring "[class] has generic member [generic-member-name]")
 
+(defineCaseframe 'Proposition '('HasTypedIsomer isomer-type chemical-referent isomer)
+  :docstring "[chemical-referent] has [isomer] of type [isomer-type]")
+
 (defineCasefreme 'Proposition '('HasHalfReaction redox-reaction half-reaction)
   :docstring "[redox-reaction] has [half-reaction]")
 
@@ -218,6 +226,9 @@
 
 (defineCaseframe 'Proposition '('HasShapeProperty shape shape-property)
      :docstring "[shape] has [shape-property]")
+
+(defineCaseframe 'Proposition '('HasTypedFormula formula-type chemical-referent chemical-formula)
+  :docstring  "[chemical-formula] is [formula-type] of [chemical-referent]")
 
 ;;; I
 
@@ -272,11 +283,6 @@
 
 (defineCaseframe 'Proposition '('IsBalanced chemical-equation)
   :docstring "[chemical-equation] is balanced")
-
-; FrameNet: Causation
-(defineCaseframe 'Proposition '(Causation cause effect)
-  :docstring "[cause] is cause of [effect] "
-  :fsymbols '(IsConsequenceOf IsEffectOf IsResultOf))
 
 (defineCaseframe 'Proposition  '('IsIsotopeOf isotope element)
   :docstring "[isotope] is an isotope of [element]")

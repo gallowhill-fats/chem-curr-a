@@ -39,6 +39,14 @@
 (defineType :ComplexIon (:IonicChemicalReferent))
 (defineType :MetalIon (:IonicChemicalReferent))
 
+;;; formulas
+
+(defineType :Formula (:Thing))
+(defineType :ChemicalFormula (:Formula))
+
+(defineType :FormulaType (:Thing))
+(defineType :FormulaTypeClass (:Category))
+
 
 ;;; chemical reaction
 
