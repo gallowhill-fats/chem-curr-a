@@ -1,6 +1,9 @@
 
 ;;; A
 
+(defineCaseframe 'ChemicalReaction '('additionReaction substrate added-referent)
+  :docstring "addition reaction in which [added-referent] is added to [substrate]")
+
 (defineCaseframe 'Proposition '('Ako subclass superclass)
   :docstring "Every [subclass] is a [superclass]")
 
@@ -65,6 +68,9 @@
 
 (defineCaseframe 'ChemicalReaction '('chemicalReactionByReactants reactants)
   :docstring "chemical reaction involving [reactants]")
+
+(defineCaseframe 'ChemicalSubstance '('chemicalSubstanceInPhysicalState chemical-substance physical-state)
+  :docstring "[chemical-substance] in [physical-state]")
 
 (defineCaseframe 'Proposition '(Circumstancing entity-with-circumstances circumstances)
     :docstring "[entity-with-circumstances] takes place in [circumstances]"
@@ -384,6 +390,12 @@
 (defineCaseframe 'Thing '('reactivityOf reactive-entity)
   :docstring "reactivity of [reactive-entity]")
 
+(defineCaseframe 'Thing '('reactivityOfClass reactive-class)
+  :docstring "reactivity of [reactive-class]")
+
+(defineCaseframe 'Thing '('reactivityOfClassWithClass  reactive-class-1 reactive-class-2)
+  :docstring "reactivity of [reactive-class-1] with [reactive-class-2]")
+
 (defineCaseframe 'RedoxSystem '('redoxSystem reductant oxidant)
   :docstring "redox system with [reductant] and [oxidant]")
 
@@ -423,8 +435,8 @@
   :docstring "state [statable-thing]"
   :fsymbols '(stateILO writeILO writeDownILO proposeILO recountILO reportILO suggestILO relateILO))
 
-(defineCaseframe 'ChemicalSubstance '('chemicalSubstanceInPhysicalState chemical-substance physical-state)
-  :docstring "[chemical-substance] in [physical-state]")
+(defineCaseframe 'ChemicalReaction '('substitutionReaction reaction-type substrate entering-group leaving-group)
+  :docstring "substitution reaction of [substrate] in which [leaving-group] is substituted by [entering-group]")
 
 ;;; T
 
@@ -433,6 +445,8 @@
 
 (defineCaseframe 'Thing '('typedChemicalReactionOfClass reaction-type reactant-class)
   :docstring "[reaction-type] of [reactant-class]")
+
+
 
 ;;; U
 
@@ -486,3 +500,6 @@
 ;;; Y
 
 ;;; Z
+
+
+(assert '(ILOQualifier (chemistryOf (every x (Isa x "alkane substane class*"))) (asExemplifiedBy (setof (combustionOf "ethane molecular substance*") (typedChemicalReactionOfWithGroups "substitution reaction*" "ethane molecular substance*" "bromine atom*" "hydrogen atom*")))))

@@ -3,6 +3,7 @@
 (defineSlot AccountFor :type :Thing)
 (defineSlot Act :type :Thing)
 (defineSlot act :type :Act)
+(defineSlot added-referent :type :ChemicalReferent)
 (defineSlot analysandum :type :Thing)
 (defineSlot analyseILO :type :Thing)
 (defineSlot applyILO :type :Thing)
@@ -246,8 +247,11 @@
 ;;; R
 
 (defineSlot reactants :type :Thing)
-(defineSlot reactant-class :type :Category)
+(defineSlot reactant-class :type :ChemicalSubstanceClass)
 (defineSlot reactive-entity :type :Thing)
+(defineSlot reactive-class :type :ChemicalSubstanceClass)
+(defineSlot reactive-class-1 :type :ChemicalSubstanceClas)
+(defineSlot reactive-class-1 :type :ChemicalSubstanceClas)
 (defineSlot reaction-type :type :ReactionType)
 (defineSlot recountILO :type :Thing)
 (defineSlot redox-reaction :type :RedoxReaction)
@@ -342,7 +346,8 @@
 ;;; Z
 
 
-
+(defineCaseframe 'ChemicalReaction '('substitutionReaction reaction-type substrate entering-group leaving-group)
+  :docstring "substitution reaction of [substrate] in which [leaving-group] is substituted by [entering-group]")
 
 
 

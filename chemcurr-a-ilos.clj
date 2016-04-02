@@ -763,15 +763,15 @@
  (assert '(Isa (identifyILO (every x (Isa x "chiral centre class*") (some y (x) (Isa y "molecular chemical referent  class*")) (given (some z (y) (HasTypedFormula "structural formula" y z)))))   "ILO class*"))
  (assert '(Isa (identifyILO (every x (HasTypedIsomer "geometric isomer*" x (some  y (x) (Isa y "organic molecular chemical referent class*")))  (given (some z (y) (HasTypedFormula "structural formula*" y z)))))  "ILO class*"))
   ; 166. Deduce the possible isomers for an organic molecule of known molecular formula.
- (assert '(Isa (deduceILO (every x (HasIsomer x (some y (x) (Isa y "organic molecular entity class*")))) (given (some z (y) (Isa y "molecular formula class*") "ILO class*"))
+ (assert '(Isa (deduceILO (every x (HasIsomer x (every y  (Isa y "organic molecular entity class*"))) (given (some z (y) (Isa y "molecular formula class*")))))  "ILO class*"))
  ; 167. Deduce the molecular formula of a compound, given its structural, displayed or skeletal formula (see Section 1).
- (assert '(Isa (deduceILO (every x (some y (x) (HasTypedFormula "molecular formula*" y x))) (given (HasTypedFormula "structural formula*" y))))))  "ILO class*"))
+ (assert '(Isa (deduceILO (every x (some y (x) (HasTypedFormula "molecular formula*" y x)) (given (or (HasTypedFormula "structural formula*" y)  (HasTypedFormula "displayed formula*" y) (HasTypedFormula "skeletal formula*" y)))))  "ILO class*"))
  ;; 168. Show awareness of the general unreactivity of alkanes, including towards polar reagents.
- (assert '(Isa (commentOnILO (reactivityOf (every x (Isa x "alkane substance class*") ) )) "ILO class*"))
- (assert '(Reactivitywith (reactivityOf (every x (Isa x "alkane substance class*") ) ) (every y (Isa y "polar reagent class*") )
+ (assert '(Isa (commentOnILO (reactivityOfClass "alkane substance class*"))  "ILO class*"))
+ (assert '(Isa (commentOnILO '(reactivityOfClassWithClass "alkane substance class*" "polar reagent class*")) "ILO class*"))
  ;; 169. Describe the chemistry of alkanes as exemplified by the following reactions of ethane: (i) combustion (ii) substitution by chlorine and by bromine.
  (assert '(Isa (describeILO  (chemistryOf (every x (Isa x "alkane substance class*")))) "ILO class*"))
- (assert '(ILOQualifier (chemistryOf (every x (Isa x "alkane substane class*"))) (asExemplifiedBy (setof (combustionOf ethane) "substitution by chlorine and by bromine in ethane")))))
+ (assert '(ILOQualifier (chemistryOf (every x (Isa x "alkane substane class*"))) (asExemplifiedBy (setof (combustionOf "ethane molecular substance*") (substitutionReaction "ethane molecular substance*" "bromine atom*" "hydrogen atom*") (substitutionReaction "ethane molecular substance*" "chlorine  atom*" "hydrogen atom*")))))
  ;; 170. Describe the mechanism of free-radical substitution at methyl groups with particular reference to the initiation, propagation and termination reactions.
  (assert '(Isa (describeILO (mechanismOf "free-radical substitution*")) "ILO class*"))
  (assert '(ILOQualifier (describeILO "free-radical substitution*") (withReferenceTo (setof "initiation reaction*" "propagation reaction*" "termination reaction*"))))

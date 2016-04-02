@@ -26,6 +26,7 @@
 (defineType :CationicChemicalReferent (:IonicChemicalReferent))
 (defineType :ChemicalEntity (:ChemicalReferent))
 (defineType :ChemicalSubstance (:ChemicalReferent))
+(defineType :ChemicalSubstanecClass (:Category))
 (defineType :PureChemicalSubstance (:ChemicalSubstance))
 (defineType :ChemicalSpecies (:PureChemicalSubstance))
 (defineType :Element (:ChemicalSpecies))
@@ -46,6 +47,11 @@
 
 (defineType :FormulaType (:Thing))
 (defineType :FormulaTypeClass (:Category))
+
+;;; isomers 
+
+(defineType :Isomer (:Thing))
+(defineType :IsomerType (:Thing))
 
 
 ;;; chemical reaction
