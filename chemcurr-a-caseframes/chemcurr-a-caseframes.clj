@@ -1,8 +1,8 @@
 
 ;;; A
 
-(defineCaseframe 'ChemicalReaction '('additionReaction substrate added-referent)
-  :docstring "addition reaction in which [added-referent] is added to [substrate]")
+(defineCaseframe 'ChemicalReaction '('additionReaction substrate-substance added-substance)
+  :docstring "addition reaction in which [added-substance] is added to [substrate-substance]")
 
 (defineCaseframe 'Proposition '('Ako subclass superclass)
   :docstring "Every [subclass] is a [superclass]")
@@ -36,6 +36,9 @@
 
 (defineCaseframe 'Thing '('behaviorOf thing-with-behavior)
   :docstring "behavior of [thing-with-behavior]")
+
+(defineCaseframe 'Thing '('behaviorOfClass class-with-behavior)
+  :docstring "behavior of [class-with-behavior]")
 
 (defineCaseframe 'Bonding '('bondingIn chemical-referent)
   :docstring "bonding in [chemical-referent]")
@@ -72,15 +75,15 @@
 (defineCaseframe 'ChemicalSubstance '('chemicalSubstanceInPhysicalState chemical-substance physical-state)
   :docstring "[chemical-substance] in [physical-state]")
 
+(defineCaseframe 'Chemistry '('chemistryOf substance)
+  :docstring "chemistry of [substance]")
+
+(defineCaseframe 'Chemistry '('chemistryOf substance-class)
+  :docstring "chemistry of [substance-class]")
+
 (defineCaseframe 'Proposition '(Circumstancing entity-with-circumstances circumstances)
     :docstring "[entity-with-circumstances] takes place in [circumstances]"
     :fsymbols '(InCircumstances InSystem InChemicalSystem))
-
-(defineCaseframe 'Thing '('behaviorOfClass class-with-behavior)
-  :docstring "behavior of [class-with-behavior]")
-
-(defineCaseframe 'Thing '('physicalPropertiesOfClass class-with-physical-properties)
-  :docstring "physical properties of [class-with-physical-properties]")
 
 (defineCaseframe 'Thing '('propertiesOfClass class-with-properties)
   :docstring "properties of [class-with-properties]")
@@ -150,8 +153,6 @@
   :docstring "the [domain]")
 
 
-
-
 ;;; E
 
 (defineCaseframe 'Thing '('electronicConfigurationOf chemical-entity)
@@ -168,8 +169,11 @@
 
 ;;; F
 
-(defineCaseframe '('forChemicalSystem chemical-system)
+(defineCaseframe 'Qualifier '('forChemicalSystem chemical-system)
   :docstring "relating to [chemical-system]")
+
+(defineCaseframe 'Qualifier '('forSubstrateClass substrate-class)
+  :docstring "for [substrate-class]")
 
 ;;; G
 
@@ -201,6 +205,12 @@
 
 (defineCaseframe 'Proposition '('HasGenericMemberName class generic-member-name)
   :docstring "[class] has generic member [generic-member-name]")
+
+(defineCaseframe 'Proposition '('HasIsomer chemical-referent isomer)
+  :docstring "[chemical-referent] has [isomer]")
+
+(defineCaseframe 'Proposition '('HasTypedFormula formula-type chemical-referent formula)
+  :docstring "[chemical-referent] has [formula] of type [formula-type]")
 
 (defineCaseframe 'Proposition '('HasTypedIsomer isomer-type chemical-referent isomer)
   :docstring "[chemical-referent] has [isomer] of type [isomer-type]")
@@ -309,6 +319,12 @@
 (defineCaseframe 'Thing '('manufactureOfFrom manufacturand resource)
   :docstring "manufacture of [manufacturand] from [resource]")
 
+(defineCaseframe 'MechanismOfReactionType '('mechanismOfReactionType reaction-type)
+  :docstring "mechanism of [reaction-type]")
+
+(defineCaseframe 'ChemicalReagent '('modifiedChemicalReagent reagent modification)
+  :docstring "chemical [reagent]  [modification]")
+
 (defineCaseframe 'Modifier '(modInDomain domain)
   :docstring "[domain]"
   :fsymbols '(modInTermsOf modInRelationTo modWithReferenceTo modWithRegardsTo modWithParticularReferenceTo modAsAppliedTo))
@@ -331,9 +347,6 @@
 (defineCaseframe 'Property '('namedDerivedPropertyOf derived-property thing-with-property)
   :docstring "[derived-property] of [thing-with-property]")
 
-(defineCaseframe 'Thing '('effectOfInfluenceOn influencing-thing influenced)
-  :docstring "effect of [influencing-thing] on [influenced]")
-
 (defineCaseframe 'PhysicalProcess '('namedPhysicalProcessOf physical-process chemical-substance)
   :docstring "[physical-process] of [chemical-substance]")
 
@@ -355,6 +368,12 @@
   :docstring "effect of [influencing-entity] on [dependent-entity]"
   :fsymbols '(effectOfOn))
 
+(defineCaseframe 'ChemicalReaction '('oxidationReactionOfToWith reactant product reagent)
+  :docstring "oxidation of [reactant] to [product] with [reagent]")
+
+(defineCaseframe 'ChemicalReaction '('oxidationReactionOfWith reactant reagent)
+  :docstring "oxidation of [reactant]  with [reagent]")
+
 ;;; P
 
 (defineCaseframe 'Act '('performActionOn type-of-action object-of-action)
@@ -365,6 +384,9 @@
 
 (defineCaseframe 'PhysicalProperties '('physicalPropertiesOfClass class)
   :docstring "physical properties of [class]")
+
+(defineCaseframe 'Thing '('physicalPropertiesOfClass class-with-physical-properties)
+  :docstring "physical properties of [class-with-physical-properties]")
 
 ; FrameNet: Predicting
 (defineCaseframe 'ILO '(actions eventuality)

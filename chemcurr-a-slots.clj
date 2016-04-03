@@ -3,7 +3,7 @@
 (defineSlot AccountFor :type :Thing)
 (defineSlot Act :type :Thing)
 (defineSlot act :type :Act)
-(defineSlot added-referent :type :ChemicalReferent)
+(defineSlot added-substance :type :ChemicalSubstance)
 (defineSlot analysandum :type :Thing)
 (defineSlot analyseILO :type :Thing)
 (defineSlot applyILO :type :Thing)
@@ -112,7 +112,8 @@
 ;;; F
 
 (defineSlot figureOutILO :type :Thing)
-(defineSlot formula-type :type :FormulaType)
+(defineSlot formula :type :ChemicalFormula)
+(defineSlot formula-type :type :ChemicalFormulaType)
 
 ;;; G
 
@@ -279,8 +280,10 @@
 (defineSlot symbol :type :Thing)
 (defineSlot symboled-entity :type :Thing)
 (defineSlot derived-property :type :DerivedProperty)
-(defineSlot substrate-referent :type :ChemicalReferent)
-(defineSlot substrate-class :type :ChemicalReferentClass)
+(defineSlot substance :type :ChemicalSubstance)
+(defineSlot substance-class :type :ChemicalSubstanceClass)
+(defineSlot substrate-substance :type :ChemicalSubstance)
+(defineSlot substrate-class :type :ChemicalSubstanceClass)
 (defineSlot symbolic-property-element :type :Thing)
 (defineSlot symbolic-property-class :type :Category)
 (defineSlot systen :type :Thing)
@@ -345,9 +348,6 @@
 
 ;;; Z
 
-
-(defineCaseframe 'ChemicalReaction '('substitutionReaction reaction-type substrate entering-group leaving-group)
-  :docstring "substitution reaction of [substrate] in which [leaving-group] is substituted by [entering-group]")
 
 
 

@@ -770,26 +770,34 @@
  (assert '(Isa (commentOnILO (reactivityOfClass "alkane substance class*"))  "ILO class*"))
  (assert '(Isa (commentOnILO '(reactivityOfClassWithClass "alkane substance class*" "polar reagent class*")) "ILO class*"))
  ;; 169. Describe the chemistry of alkanes as exemplified by the following reactions of ethane: (i) combustion (ii) substitution by chlorine and by bromine.
- (assert '(Isa (describeILO  (chemistryOf (every x (Isa x "alkane substance class*")))) "ILO class*"))
- (assert '(ILOQualifier (chemistryOf (every x (Isa x "alkane substane class*"))) (asExemplifiedBy (setof (combustionOf "ethane molecular substance*") (substitutionReaction "ethane molecular substance*" "bromine atom*" "hydrogen atom*") (substitutionReaction "ethane molecular substance*" "chlorine  atom*" "hydrogen atom*")))))
+ (assert '(Isa (describeILO  (chemistryOfClass "alkane substance class*")) "ILO class*"))
+ (assert '(ILOQualifier  (describeILO  (chemistryOfClass "alkane substance class*")) (asExemplifiedBy (setof (typedReactionOf "combustion*" "ethane molecular substance*") (substitutionReaction "ethane molecular substance*" "bromine atom*" "hydrogen atom*") (substitutionReaction "ethane molecular substance*" "chlorine  atom*" "hydrogen atom*")))))
  ;; 170. Describe the mechanism of free-radical substitution at methyl groups with particular reference to the initiation, propagation and termination reactions.
- (assert '(Isa (describeILO (mechanismOf "free-radical substitution*")) "ILO class*"))
- (assert '(ILOQualifier (describeILO "free-radical substitution*") (withReferenceTo (setof "initiation reaction*" "propagation reaction*" "termination reaction*"))))
+ (assert '(Isa (describeILO (mechanismOfReactionType "free-radical substitution*")) "ILO class*"))
+ (assert '(ILOQualifier  (mechanismOfReactionType "free-radical substitution*") (withReferenceTo (setof "initiation reaction*" "propagation reaction*" "termination reaction*"))))
  ; 171. Describe the chemistry of alkenes as exemplified, where relevant, by the following reactions of ethene and propene (including the Markovnikov addition of asymmetric electrophiles to propene): (i) addition of hydrogen, steam, hydrogen halides and halogens (ii) oxidation by cold, dilute, acidified manganate(VII) ions to form the diol (iii) oxidation by hot, concentrated, acidified manganate(VII) ions leading to the rupture of the carbon-to-carbon double bond in order to determine the position of alkene linkages in larger molecules (iv) polymerisation (see also Section 10.8).
  (assert '(Isa (describeILO (chemistryOfClass "alkene substance class*") "ILO class*"))
  (assert '(Isa (describeILO (additionReaction "hydrogen molecular substance*" "ethene molecular substance*") "ILO class*"))
  (assert '(Isa (describeILO (additionReaction "steam*" "ethene molecular substance*") "ILO class*"))
  (assert '(Isa (describeILO (additionReaction (every x (Isa x "hydrogen halide substance class*")) "ethene molecular substance*")) "ILO class*"))
+ (assert '(Isa (describeILO (additionReaction (every x (Isa x "halogen element  class*")) "ethene molecular substance*")) "ILO class*"))
  (assert '(Isa (describeILO (additionReaction "hydrogen molecular substance*" "propene molecular substance*") "ILO class*"))
  (assert '(Isa (describeILO (additionReaction "steam*" "propene molecular substance*") "ILO class*"))
  (assert '(Isa (describeILO (additionReaction (every x (Isa x "hydrogen halide substance class*")) "propene molecular substance*")) "ILO class*"))
+ (assert '(Isa (describeILO (additionReaction (every x (Isa x "halogen element  class*")) "propene molecular substance*")) "ILO class*"))
+ (assert '(Isa (describeILO (oxidationReactionOfToWith "ethene molecular substance*" "ethane-1,2-diol molecular substance*" (modifiedChemicalReagent "manganate (VII) ionic species" (setof "cold*" "dilute*" "acidified*")))) "ILO class*"))
+ (assert '(Isa (describeILO (oxidationReactionOfToWith "propene molecular substance*" "propane-1,2-diol molecular substance*" (modifiedChemicalReagent "manganate (VII) ionic species" (setof "cold*" "dilute*" "acidified*")))) "ILO class*"))
+ (assert '(Isa (describeILO (oxidationReactionOfWith "ethene molecular substance*"  (modifiedChemicalReagent "manganate (VII) ionic species" (setof "hot*" "concentrated*" "acidified*")))) "ILO class*"))
+ (assert '(Isa (describeILO (oxidationReactionOfWith "propene molecular substance*" (modifiedChemicalReagent "manganate (VII) ionic species" (setof "cold*" "dilute*" "acidified*")))) "ILO class*"))
+ (assert '(Isa (describeILO (typedChemicalReaction "polymerisation*" "ethene molecular substance*") "ILO class*"))
+ (assert '(Isa (describeILO (typedChemicalReaction "polymerisation*" "propene molecular substance*") "ILO class*"))
  ; 172. Describe the mechanism of electrophilic addition in alkenes, using bromine/ethene and hydrogen bromide/propene as examples.
  (assert '(Isa (describeILO (mechanismOfReactionType "electrophilic addition*")) "ILO class*"))
  (assert '(ILOQualifier (describeILO (mechanismOfReactionType "electrophilic addition*")) (setof (forSubstrateClass "alkene substance class*") (withExample (reactionBetween "bromine element*" "ethene substance*")))))
  (assert '(ILOQualifier (describeILO (mechanismOfReactionType "electrophilic addition*")) (setof (forSubstrateClass "alkene substance class*") (withExample (reactionBetween "bromide ion species*" "propene substance*")))))
  ; 173. Explain the use of crude oil as a source of both aliphatic and aromatic hydrocarbons.
- (assert '(Isa (describeILO (useOfFor "crude oil*" (productionOfClass "aliphatic hydrocarbon class*")))) "ILO class*"))
- (assert '(Isa (describeILO (useOfFor "crude oil*" (productionOfClass "aromatic hydrocarbon class*")))) "ILO class*"))
+ (assert '(Isa (describeILO (useOfFor "crude oil*" (productionOfClass "aliphatic hydrocarbon substance class*")))) "ILO class*"))
+ (assert '(Isa (describeILO (useOfFor "crude oil*" (productionOfClass "aromatic hydrocarbon substance class*")))) "ILO class*"))
  ; 174. Suggest how 'cracking' can be used to obtain more useful alkanes and alkenes of lower Mr from larger hydrocarbon molecules.
  (assert '(Isa (describeILO "catalytic cracking*") "ILO class*"))
  ; 175. Describe and explain how the combustion reactions of alkanes lead to their use as fuels in industry, in the home and in transport.
@@ -1025,13 +1033,12 @@
  ; 249. Discuss the challenges of drug delivery and explain in simple terms how materials may be developed to overcome these problems.
  (assert '(Isa ((discussILO (namedAspectOf "challenge*" "drug delivery*"))) "ILO class*"))
  ; 250. Discuss the properties and structure of polymers based on their methods of formation (addition or condensation, link to core syllabus, section 10.8).
- (assert '(Isa (discussILO (propertiesOfClass "polymer substance class*"))))
- (assert '(Isa (discussILO (namedPropertyOfClass "structure*" "polymer substance class*"))))
- ;;; OR
- (assert '(Isa (discussILO (propertiesOfClass "polymer substance class*"))))
- (assert '(Isa (discussILO (namedPropertyOfClass "structure*" "polymer substance class*"))))
-  ; 251. Discuss how the presence of side-chains and intermolecular forces affect the properties of polymeric materials (for example, spider silk).
- (assert '(Isa (effectOfOn (propertiesOfClass "polymer substance class*") "ILO class*"))
+ (assert '(Isa (discussILO (propertiesOfClass "addition polymer substance class*"))))
+ (assert '(Isa (discussILO (namedPropertyOfClass "structure*" "addition polymer substance class*"))))
+ (assert '(Isa (discussILO (propertiesOfClass "condensation polymer substance class*"))))
+ (assert '(Isa (discussILO (namedPropertyOfClass "structure*" "condensation polymer substance class*"))))
+   ; 251. Discuss how the presence of side-chains and intermolecular forces affect the properties of polymeric materials (for example, spider silk).
+ (assert '(Isa (effectOfOn (every x (Isa x "intermolecular force class*")) (propertiesOfClass "polymer substance class*") "ILO class*"))
  ; 252. Show awareness of nanotechnology and, given information and data, be able to discuss the chemistry involved with reference to the core syllabus.
  (assert '(Isa (showAwarenessOfILO "nanotechnology*") "ILO class*"))
  ;;; discussion part not clearly expressed

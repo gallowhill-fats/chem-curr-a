@@ -45,7 +45,7 @@
 (defineType :Formula (:Thing))
 (defineType :ChemicalFormula (:Formula))
 
-(defineType :FormulaType (:Thing))
+(defineType :ChemicalFormulaType (:Thing))
 (defineType :FormulaTypeClass (:Category))
 
 ;;; isomers 
@@ -61,6 +61,11 @@
 (defineType :ChemicalReaction (:Thing))
 (defineType :RedoxReaction (:ChemicalReaction))
 (defineType :HalfReaction (:ChemicalReaction))
+
+;;; mechanism
+
+(defineType :Mechanism (:Thing))
+(defineType :MechanismOfReactionType (:Mechanism))
 
 
 ;;; chemical equation
