@@ -88,6 +88,7 @@
 
 (defineSlot effect :type :Thing)
 (defineSlot effectOfOn :type :Thing)
+(defineSlot effectOfClassOn :type :Thing)
 (defineSlot electrode :type :Electrode)
 (defineSlot electrode-potential :type :ElectrodePotential)
 (defineSlot element :type :Element)
@@ -148,6 +149,7 @@
 (defineSlot identifyILO :type :Thing)
 (defineSlot ilo :type :ILO)
 (defineSlot impactOfOn :type :Thing)
+(defineSlot impactOfClassOn :type :Thing)
 (defineSlot inChemicalSystem :type :Thing)
 (defineSlot inCircumstances :type :Thing)
 (defineSlot Including :type :Thing)
@@ -159,8 +161,10 @@
 (defineSlot inferILO :type :Thing)
 (defineSlot influence :Thing)
 (defineSlot influenced :Thing)
+(defineSlot influencing-class :type :Category)
 (defineSlot influencing-thing :type :Thing)
 (defineSlot influenceOfOn :type :Thing)
+(defineSlot influenceOfClassOn :type :Thing)
 (defineSlot Incorporating :type :Thing)
 (defineSlot instrument :type :Thing)
 (defineSlot Integrating :type :Thing)
@@ -218,6 +222,7 @@
 ;;; O
 
 (defineSlot objectiveInfluence :type :Thing)
+(defineSlot objectiveInfluenceOfClass :type :Thing)
 (defineSlot object-of-action :type :Thing)
 (defineSlot object-of-calculation :type :Thing)
 (defineSlot object-of-influence :type :Thing)
@@ -232,6 +237,7 @@
 (defineSlot change-of-state :type :ChangeOfState)
 (defineSlot physical-process :type :PhysicalProcess)
 (defineSlot powerOfOver :type :Thing)
+(defineSlot powerOfClassOver :type :Thing)
 (defineSlot process :type :Process)
 (defineSlot products :type :Thing)
 (defineSlot property :type :Property)
@@ -247,12 +253,13 @@
 
 ;;; R
 
-(defineSlot reactants :type :Thing)
+(defineSlot reactant :type :ChemicalSubstance)
+(defineSlot reactants :type :ChemicalSubstance)
 (defineSlot reactant-class :type :ChemicalSubstanceClass)
 (defineSlot reactive-entity :type :Thing)
 (defineSlot reactive-class :type :ChemicalSubstanceClass)
-(defineSlot reactive-class-1 :type :ChemicalSubstanceClas)
-(defineSlot reactive-class-1 :type :ChemicalSubstanceClas)
+(defineSlot reactive-class-1 :type :ChemicalSubstanceClass)
+(defineSlot reactive-class-1 :type :ChemicalSubstanceClass)
 (defineSlot reaction-type :type :ReactionType)
 (defineSlot recountILO :type :Thing)
 (defineSlot redox-reaction :type :RedoxReaction)

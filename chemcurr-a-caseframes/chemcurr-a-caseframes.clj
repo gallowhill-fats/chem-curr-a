@@ -66,7 +66,7 @@
 (defineCaseframe 'Thing '('changeIn thing-with-change)
   :docstring "change in [thing-with-change]")
 
-(defineCaseframe 'ChemicalReaction '('chemicalReactionByAllSpecies reactants products)
+(defineCaseframe 'ChemicalReaction '('chemicalReactionReactantsProducts reactants products)
   :docstring "chemical reaction involving [reactants] and [products]")
 
 (defineCaseframe 'ChemicalReaction '('chemicalReactionByReactants reactants)
@@ -162,6 +162,10 @@
 (defineCaseframe 'Thing '(objectiveInfluence influencing-thing object-of-influence)
   :docstring "effect of [influencing-thing] on [object-of-influence]"
   :fsymbols '(effectOfOn influenceOfOn impactOfOn powerOfOver))
+
+(defineCaseframe 'Thing '(objectiveInfluenceOfClass influencing-class object-of-influence)
+  :docstring "effect of [influencing-class] on [object-of-influence]"
+  :fsymbols '(effectOfClassOn influenceOfClassOn impactOfClassOn powerOfClassOver))
 
 (defineCaseframe 'ILO '(actions entity-with-explanation)
     :docstring "explain the [entity-with-explanation]"
@@ -409,6 +413,9 @@
 
 ;;; R
 
+(defineCaseframe 'ChemicalReaction '(reactionBetween reactants)
+  :docstring "chemical reaction between [reactants]")
+
 (defineCaseframe 'Thing '('reactivityOf reactive-entity)
   :docstring "reactivity of [reactive-entity]")
 
@@ -457,7 +464,7 @@
   :docstring "state [statable-thing]"
   :fsymbols '(stateILO writeILO writeDownILO proposeILO recountILO reportILO suggestILO relateILO))
 
-(defineCaseframe 'ChemicalReaction '('substitutionReaction reaction-type substrate entering-group leaving-group)
+(defineCaseframe 'ChemicalReaction '('substitutionReaction substrate entering-group leaving-group)
   :docstring "substitution reaction of [substrate] in which [leaving-group] is substituted by [entering-group]")
 
 ;;; T
@@ -524,4 +531,4 @@
 ;;; Z
 
 
-(assert '(ILOQualifier (chemistryOf (every x (Isa x "alkane substane class*"))) (asExemplifiedBy (setof (combustionOf "ethane molecular substance*") (typedChemicalReactionOfWithGroups "substitution reaction*" "ethane molecular substance*" "bromine atom*" "hydrogen atom*")))))
+

@@ -793,8 +793,8 @@
  (assert '(Isa (describeILO (typedChemicalReaction "polymerisation*" "propene molecular substance*") "ILO class*"))
  ; 172. Describe the mechanism of electrophilic addition in alkenes, using bromine/ethene and hydrogen bromide/propene as examples.
  (assert '(Isa (describeILO (mechanismOfReactionType "electrophilic addition*")) "ILO class*"))
- (assert '(ILOQualifier (describeILO (mechanismOfReactionType "electrophilic addition*")) (setof (forSubstrateClass "alkene substance class*") (withExample (reactionBetween "bromine element*" "ethene substance*")))))
- (assert '(ILOQualifier (describeILO (mechanismOfReactionType "electrophilic addition*")) (setof (forSubstrateClass "alkene substance class*") (withExample (reactionBetween "bromide ion species*" "propene substance*")))))
+ (assert '(ILOQualifier (describeILO (mechanismOfReactionType "electrophilic addition*")) (setof (forSubstrateClass "alkene substance class*") (withExample (reactionBetween (setof "bromine element*" "ethene substance*"))))))
+ (assert '(ILOQualifier (describeILO (mechanismOfReactionType "electrophilic addition*")) (setof (forSubstrateClass "alkene substance class*") (withExample (reactionBetween (setof "bromide ion species*" "propene substance*"))))))
  ; 173. Explain the use of crude oil as a source of both aliphatic and aromatic hydrocarbons.
  (assert '(Isa (describeILO (useOfFor "crude oil*" (productionOfClass "aliphatic hydrocarbon substance class*")))) "ILO class*"))
  (assert '(Isa (describeILO (useOfFor "crude oil*" (productionOfClass "aromatic hydrocarbon substance class*")))) "ILO class*"))
@@ -803,33 +803,43 @@
  ; 175. Describe and explain how the combustion reactions of alkanes lead to their use as fuels in industry, in the home and in transport.
  (assert '(Isa (describeILO (useOf (typedReactionOfClass "combustion*" "alkane substance class*"))) "ILO class*"))
  (assert '(ILOQualifier (describeILO (useOf (typedReactionOfClass "combustion*" "alkane substance class*"))) (inContext "industry*")))
- (assert '(ILOQualifier (describeILO (useOf (typedReactionOfClass "combustion*" "alkane substance class*"))) (inContext "the home*")))
+ (assert '(ILOQualifier (describeILO (useOf (typedReactionOfClass "combustion*" "alkane substance class*"))) (inContext "home*")))
  (assert '(ILOQualifier (describeILO (useOf (typedReactionOfClass "combustion*" "alkane substance class*"))) (inContext "transport*")))
  (assert '(Isa (explainILO (useOf (typedReactionOfClass "combustion*" "alkane substance class*"))) "ILO class*"))
  (assert '(ILOQualifier (explainILO (useOf (typedReactionOfClass "combustion*" "alkane substance class*"))) (inContext "industry*")))
  (assert '(ILOQualifier (explainILO (useOf (typedReactionOfClass "combustion*" "alkane substance class*"))) (inContext "the home*")))
  (assert '(ILOQualifier (explainILO (useOf (typedReactionOfClass "combustion*" "alkane substance class*"))) (inContext "transport*")))
  ; 176. Recognise the environmental consequences of: (i) carbon monoxide, oxides of nitrogen and unburnt hydrocarbons arising from the internal combustion engine and of their catalytic removal (ii) gases that contribute to the enhanced greenhouse effect.
- (assert '(Isa (describeILO (effectOfOn "carbon monoxide*" "atmosphere")) "ILO class*"))
- (assert '(ILOQualifier (effectOfOn "carbon monoxide*" "atmosphere")) (inTermsOf (EffectOn "the environment*")))
- (assert '(Isa (describeILO (effectOfOn "nitrogen oxides class*" "atmosphere")) "ILO class*"))
- (assert '(ILOQualifier (effectOfOn "nitrogen oxides class*" "atmosphere")) (inTermsOf (EffectOn "the environment*")))
- (assert '(Isa (describeILO (effectOfOn "hydrocarbon class*" "atmosphere")) "ILO class*"))
- (assert '(ILOQualifier (effectOfOn "hydrocarbon class*" "atmosphere")) (inTermsOf (EffectOn "the environment*")))
- ;; 177. Describe the chemistry of arenes as exemplified by the following reactions of benzene and methylbenzene:(i) substitution reactions with chlorine and with bromine (ii) nitration (iii) complete oxidation of the side-chain to give a benzoic acid(iv) hydrogenation of the benzene ring to form a cyclohexane ring.
+ (assert '(Isa (describeILO (effectOfOn "carbon monoxide*" "the atmosphere*")) "ILO class*"))
+ (assert '(ILOQualifier (effectOfOn "carbon monoxide*" "the atmosphere*")) (inTermsOf (effectOn "the environment*")))
+ (assert '(Isa (describeILO (effectOfClassOn "nitrogen oxides class*" "the atmosphere*")) "ILO class*"))
+ (assert '(ILOQualifier (effectOfOn "nitrogen oxides class*" "the atmosphere*")) (inTermsOf (effectOn "the environment*")))
+ (assert '(Isa (describeILO (effectOfClassOn "hydrocarbon class*" "the atmosphere*")) "ILO class*"))
+ (assert '(ILOQualifier (effectOfOn "hydrocarbon class*" "the atmosphere")) (inTermsOf (effectOn "the environment*")))
+ (assert '(Isa (describeILO (effectOfClassOn "enhanced greenhouse gas class*" "the environment*")) "ILO class*"))
+  ;; 177. Describe the chemistry of arenes as exemplified by the following reactions of benzene and methylbenzene:(i) substitution reactions with chlorine and with bromine (ii) nitration (iii) complete oxidation of the side-chain to give a benzoic acid (iv) hydrogenation of the benzene ring to form a cyclohexane ring.
  (assert '(Isa (describeILO (chemistryOfClass "arene molecular substance class*")) "ILO class*"))
- (assert '(ILOQualifier (describeILO (chemistryOfClass "arene molecular substance class*"))  (asExemplifiedBy (setof "substitution reactions with chlorine and with bromine" "nitration" "complete oxidation of the side-chain to give a benzoic acid" "hydrogenation of the benzene ring to form a cyclohexane ring")))
+ (assert '(ILOQualifier (describeILO (chemistryOfClass "arene molecular substance class*"))  
+                                 (asExemplifiedBy (setof (substitutionReaction "benzene molecular substance*" "chlorine atom*" "hydrogen atom*")
+                                                                     (substitutionReaction "benzene molecular substance*" "bromine atom*" "hydrogen atom*")
+                                                                     (substitutionReaction "methylbenzene molecular substance*" "chlorine atom*" "hydrogen atom*")
+                                                                     (substitutionReaction "methylbenzene molecular substance*" "bromine atom*" "hydrogen atom*")
+                                                                     (typedChemicalReaction "nitration*" "benzene molecular substance*")
+                                                                     (typedChemicalReaction "nitration*" "methylbenzene molecular substance*")
+                                                                     (typedChemicalReaction "hydrogenation*" "benzene molecular substance*")
+                                                                     (typedChemicalReaction "hydrogenation*" "methylbenzene molecular substance*")
+                                                                     (chemicalReactionReactantsProducts "methylbenzene molecular substance*" "benzoic acid molecular substance*")))))
  ; 178. Describe the mechanism of electrophilic substitution in arenes, as exemplified by the formation of nitrobenzene and bromobenzene.
- (assert '(Isa (describeILO (mechanismOf (ReactionTypeofClass "electrophilic substitution*""arene molecular substance class*"))) "ILO class*"))
+ (assert '(Isa (describeILO (mechanismOfReactionType (reactionTypeOfClass "electrophilic aromatic substitution*" "arene molecular substance class*"))) "ILO class*"))
  ; 179. Suggest the mechanism of other electrophilic substitution reactions, given data.
- (assert '(Isa (suggestILO (mechanismOfReactionType "electrophilic substitution*")) "ILO class*"))
- (assert '(ILOQualifier (suggestILO (mechanismOfReactionType "electrophilic substitution*")) (inSystem 
+ (assert '(Isa (suggestILO (mechanismOfReactionType "electrophilic aromatic substitution*")) "ILO class*"))
+ (assert '(ILOQualifier (suggestILO (mechanismOfReactionType "electrophilic aromatic substitution*")) (inSystem 
  ; 180. Describe the effect of the delocalisation of electrons in arenes in such reactions.
- (assert '(Isa (describeILO (effectOfOn "electron delocalisation*" (typedReactionOfClass "electrophilic substitution*" "arene molecular substance class*"))) "ILO class*"))
+ (assert '(Isa (describeILO (effectOfOn "electron delocalisation*" (typedReactionOfClass "electrophilic aromatic substitution*" "arene molecular substance class*"))) "ILO class*"))
  ; 181. Predict whether halogenation will occur in the side-chain or aromatic nucleus in arenes depending on reaction conditions.
  (assert '(Isa (predictILO (reactionSite )) "ILO class*"))
  ; 182. Apply the knowledge of positions of substitution in the electrophilic substitution of arenes.
- (assert '(Isa (describeILO (effectOfOn "position of substitution*" (typesReactionofClass "electrophilic substitution*" "arene molecular substance class*"))) "ILO class*"))
+ (assert '(Isa (describeILO (effectOfOn "position of substitution*" (typesReactionofClass "electrophilic aromatic substitution*" "arene molecular substance class*"))) "ILO class*"))
  ; 183. Recall the chemistry of halogenoalkanes as exemplified by (i) the following nucleophilic substitution reactions of bromoethane: hydrolysis, formation of nitriles, formation of primary amines by reaction with ammonia (ii) the elimination of hydrogen bromide from 2-bromopropane.
  (assert '(Isa (describeILO (chemistryOfClass "haloalkane substance class*") "ILO class*"))
  (assert '(Isa (describeILO (reactionTypeOnSubstrate "hydrolysis reaction class*"  "bromoethane molecular substance*") "ILO class*"))
@@ -837,8 +847,8 @@
  (assert '(Isa (describeILO (reactionTypeOnSubstrate "primary amine formation reaction class*"  "bromoethane molecular substance*") "ILO class*"))
  (assert '(Isa (describeILO (eliminationTypeOnSubstrate "elimination reaction class*" "hydrogen bromide molecular substance*" "2-bromopropane molecular substance*") "ILO class*"))
  ; 184. Describe the mechanism of nucleophilic substitution (by both SN1 and SN2 mechanisms) in halogenoalkanes.
- (assert '(Isa (describeILO (reactionTypeofClass "sn1 nucleophilic substitution*" "halogenoalkane molecular substance class*") "ILO class*"))
- (assert '(Isa (describeILO (reactionTypeofClass "sn1 nucleophilic substitution*" "halogenoalkane molecular substance class*") "ILO class*"))
+ (assert '(Isa (describeILO (mechanismOfReactionType (reactionTypeofClass "sn1 nucleophilic substitution*" "halogenoalkane molecular substance class*")) "ILO class*"))
+ (assert '(Isa (describeILO (mechanismOfReactionType (reactionTypeofClass "sn1 nucleophilic substitution*" "halogenoalkane molecular substance class*")) "ILO class*"))
  ; 185. Interpret the different reactivities of halogenoalkanes and chlorobenzene (with particular reference to hydrolysis and to the relative strengths of the C-Hal bonds).
  (assert '(Isa (interpretILO (differenceBetween (reactivityOfClass "halogenoalkane substance class*") (reactivityOf "chlorobenzene molecular substancce*")) "ILO class*"))
  ; 186. Explain the uses of fluoroalkanes and fluorohalogenoalkanes in terms of their relative chemical inertness.
