@@ -59,8 +59,13 @@
 (defineType :Change (:Thing))
 (defineType :ChemicalChange (:Change))
 (defineType :ChemicalReaction (:Thing))
+(defineType :SubstitutionChemicalReaction (:ChemicalReaction))
 (defineType :RedoxReaction (:ChemicalReaction))
 (defineType :HalfReaction (:ChemicalReaction))
+
+;;; reaction condition
+
+(defineType :ReactionCondition (:Thing))
 
 ;;; mechanism
 

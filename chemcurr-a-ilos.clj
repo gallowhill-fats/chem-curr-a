@@ -831,15 +831,14 @@
                                                                      (chemicalReactionReactantsProducts "methylbenzene molecular substance*" "benzoic acid molecular substance*")))))
  ; 178. Describe the mechanism of electrophilic substitution in arenes, as exemplified by the formation of nitrobenzene and bromobenzene.
  (assert '(Isa (describeILO (mechanismOfReactionType (reactionTypeOfClass "electrophilic aromatic substitution*" "arene molecular substance class*"))) "ILO class*"))
- ; 179. Suggest the mechanism of other electrophilic substitution reactions, given data.
- (assert '(Isa (suggestILO (mechanismOfReactionType "electrophilic aromatic substitution*")) "ILO class*"))
- (assert '(ILOQualifier (suggestILO (mechanismOfReactionType "electrophilic aromatic substitution*")) (inSystem 
- ; 180. Describe the effect of the delocalisation of electrons in arenes in such reactions.
+ ; 179. Suggest the mechanism of other electrophilic substitution reactions, given data. Poor ILO - what data?
+  (assert '(Isa (suggestILO (mechanismOfReaction (every x (Isa x "electrophilic aromatic substitution reaction class*") (some y (x) (HasEnteringGroup x y))))) "ILO class*"))
+  ; 180. Describe the effect of the delocalisation of electrons in arenes in such reactions.
  (assert '(Isa (describeILO (effectOfOn "electron delocalisation*" (typedReactionOfClass "electrophilic aromatic substitution*" "arene molecular substance class*"))) "ILO class*"))
  ; 181. Predict whether halogenation will occur in the side-chain or aromatic nucleus in arenes depending on reaction conditions.
- (assert '(Isa (predictILO (reactionSite )) "ILO class*"))
- ; 182. Apply the knowledge of positions of substitution in the electrophilic substitution of arenes.
- (assert '(Isa (describeILO (effectOfOn "position of substitution*" (typesReactionofClass "electrophilic aromatic substitution*" "arene molecular substance class*"))) "ILO class*"))
+ (assert '(Isa (predictILO (every x (Isa x "reaction site class*" ) (some y (x) (Isa y "substitution reaction class*")  (given (some z (y) HasReactionCondition y z))))) "ILO class*"))
+ ; 182. Apply the knowledge of positions of substitution in the electrophilic substitution of arenes. ???
+ 
  ; 183. Recall the chemistry of halogenoalkanes as exemplified by (i) the following nucleophilic substitution reactions of bromoethane: hydrolysis, formation of nitriles, formation of primary amines by reaction with ammonia (ii) the elimination of hydrogen bromide from 2-bromopropane.
  (assert '(Isa (describeILO (chemistryOfClass "haloalkane substance class*") "ILO class*"))
  (assert '(Isa (describeILO (reactionTypeOnSubstrate "hydrolysis reaction class*"  "bromoethane molecular substance*") "ILO class*"))

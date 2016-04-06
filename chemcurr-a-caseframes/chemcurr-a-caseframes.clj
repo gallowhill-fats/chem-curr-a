@@ -204,6 +204,9 @@
 (defineCaseframe 'Proposition '('HasElectrostaticCharge thing-with-charge sign magnitude)
   :docstring "[thing-with-charge] has charge of [sign] and [magnitude]")
 
+(defineCaseframe 'Proposition '('HasEnteringGroup substitution-reaction entering-group)
+  :docstring "[substitution-reaction] has [entering-group]")
+
 (defineCaseframe 'Proposition '('HasEValue redox-system e-value)
   :docstring "[redox-system] has [e-value]")
 
@@ -212,6 +215,9 @@
 
 (defineCaseframe 'Proposition '('HasIsomer chemical-referent isomer)
   :docstring "[chemical-referent] has [isomer]")
+
+(defineCaseframe 'Proposition '('HasReactionCondition chemical-reaction reaction-condition)
+  :docstring "[chemical-reaction] has [reaction-condition]")
 
 (defineCaseframe 'Proposition '('HasTypedFormula formula-type chemical-referent formula)
   :docstring "[chemical-referent] has [formula] of type [formula-type]")
