@@ -59,7 +59,24 @@
 (defineType :Change (:Thing))
 (defineType :ChemicalChange (:Change))
 (defineType :ChemicalReaction (:Thing))
-(defineType :SubstitutionChemicalReaction (:ChemicalReaction))
+
+;; organic reaction types
+(defineType :SubstitutionReaction (:ChemicalReaction))
+(defineType :ElectrophilicSubstitutionReaction (:SubstitutionReaction))
+(defineType :ElectrophilicAromaticSubstitutionReaction (:SubstitutionReaction))
+(defineType :NucleophilicAliphaticSubstitutionReaction (:SubstitutionReaction))
+(defineType :NucleophilicAromaticSubstitutionReaction (:SubstitutionReaction))
+(defineType :NucleophilicAcylSubstitutionReaction (:SubstitutionReaction))
+(defineType :RadicalSubstitutionReaction (:SubstitutionReaction :FreeRadicalReaction))
+(defineType :EliminationReaction (:ChemicalReaction))
+(defineType :AdditionReaction (:ChemicalReaction))
+(defineType :NucleophilicAdditionReaction (:AdditionReaction))
+(defineType :ElectrophilicAdditionReaction (:AdditionReaction))
+(defineType :RadicalReaction (:AdditionReaction))
+(defineType :FreeRadicalReaction (:ChemicalReaction))
+(defineType :PericyclicReaction (:ChemicalReaction))
+(defineType :PhotochemicalReaction (:ChemicalReaction))
+(defineType :RearrangementReaction (:ChemicalReaction))
 (defineType :RedoxReaction (:ChemicalReaction))
 (defineType :HalfReaction (:ChemicalReaction))
 
@@ -166,6 +183,12 @@
 ;;; statistics
 
 (defineType :ProbabilityDistribution (:DefinableThing))
+
+;;; comparisons
+
+(defineType :Difference (:Thing))
+(defineType :Similarity (:Thing))
+
 
 
 

@@ -131,6 +131,9 @@
 (defineCaseframe 'Thing '('determinationOf thing-to-be-determined)
   :docstring "determination of [thing-to-be-determined]")
 
+(defineCaseframe 'Difference '('differenceBetween differees)
+  :docstring "difference between [differees]")
+
 ; from FrameNet frame: Topic
 (defineCaseframe 'ILO '(action discussible-thing)
   :docstring "discuss [discussible-thing]"
@@ -157,6 +160,9 @@
 
 (defineCaseframe 'Thing '('electronicConfigurationOf chemical-entity)
   :docstring "electronic configuration of [chemical entity]")
+
+(defineCaseframe 'EliminationReaction '('eliminationOfFromSubstrate eliminate substrate)
+  :docstring "elimination of [eliminate] from [substrate]") 
 
 ; FrameNet: Objective_influence
 (defineCaseframe 'Thing '(objectiveInfluence influencing-thing object-of-influence)
@@ -422,6 +428,12 @@
 (defineCaseframe 'ChemicalReaction '(reactionBetween reactants)
   :docstring "chemical reaction between [reactants]")
 
+(defineCasefame 'ReactionType '('reactionTypeOfClass reaction-type substance-class)
+  :docstring "[reaction-type] reaction of [substance-class]")
+
+(defineCasefame 'ChemicalReaction '('reactionTypeOnSubstrate reaction-type substrate)
+  :docstring "reaction of [reaction-type] on [substrate]")
+
 (defineCaseframe 'Thing '('reactivityOf reactive-entity)
   :docstring "reactivity of [reactive-entity]")
 
@@ -470,7 +482,7 @@
   :docstring "state [statable-thing]"
   :fsymbols '(stateILO writeILO writeDownILO proposeILO recountILO reportILO suggestILO relateILO))
 
-(defineCaseframe 'ChemicalReaction '('substitutionReaction substrate entering-group leaving-group)
+(defineCaseframe 'SubstitutionChemicalReaction '('substitutionReaction substrate entering-group leaving-group)
   :docstring "substitution reaction of [substrate] in which [leaving-group] is substituted by [entering-group]")
 
 ;;; T
@@ -478,10 +490,11 @@
 (defineCaseframe 'Thing '('trendInPropertyOf trending-property things-with-trending-property)
   :docstring "trend in [trending-property] of [things-with-trending-property]")
 
-(defineCaseframe 'Thing '('typedChemicalReactionOfClass reaction-type reactant-class)
-  :docstring "[reaction-type] of [reactant-class]")
+(defineCaseframe 'ChemicalReaction '('typedChemicalReactionOfClass reaction-type substance)
+  :docstring "[reaction-type] reaction of [substance]")
 
-
+(defineCaseframe 'ChemicalReaction '('typedChemicalReactionOfClass reaction-type reactant-class)
+  :docstring "[reaction-type] reaction of [reactant-class]")
 
 ;;; U
 

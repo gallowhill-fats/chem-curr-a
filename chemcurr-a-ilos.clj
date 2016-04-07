@@ -840,25 +840,29 @@
  ; 182. Apply the knowledge of positions of substitution in the electrophilic substitution of arenes. ???
  
  ; 183. Recall the chemistry of halogenoalkanes as exemplified by (i) the following nucleophilic substitution reactions of bromoethane: hydrolysis, formation of nitriles, formation of primary amines by reaction with ammonia (ii) the elimination of hydrogen bromide from 2-bromopropane.
- (assert '(Isa (describeILO (chemistryOfClass "haloalkane substance class*") "ILO class*"))
- (assert '(Isa (describeILO (reactionTypeOnSubstrate "hydrolysis reaction class*"  "bromoethane molecular substance*") "ILO class*"))
- (assert '(Isa (describeILO (reactionTypeOnSubstrate "nitrile formation reaction class*"  "bromoethane molecular substance*") "ILO class*"))
- (assert '(Isa (describeILO (reactionTypeOnSubstrate "primary amine formation reaction class*"  "bromoethane molecular substance*") "ILO class*"))
- (assert '(Isa (describeILO (eliminationTypeOnSubstrate "elimination reaction class*" "hydrogen bromide molecular substance*" "2-bromopropane molecular substance*") "ILO class*"))
+ (assert '(Isa (describeILO (chemistryOfClass "haloalkane substance class*")) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (chemistryOfClass "haloalkane substance class*"))
+                                 (withExample (setof (reactionTypeOnSubstrate "hydrolysis*"  "bromoethane molecular substance*")
+                                                                (reactionTypeOnSubstrate "nitrile formation*"  "bromoethane molecular substance*")
+                                                                (reactionTypeOnSubstrate "primary amine formation*"  "bromoethane molecular substance*") 
+                                                                (eliminationOfFromSubstrate  "hydrogen bromide molecular substance*" "2-bromopropane molecular substance*")))))
  ; 184. Describe the mechanism of nucleophilic substitution (by both SN1 and SN2 mechanisms) in halogenoalkanes.
- (assert '(Isa (describeILO (mechanismOfReactionType (reactionTypeofClass "sn1 nucleophilic substitution*" "halogenoalkane molecular substance class*")) "ILO class*"))
- (assert '(Isa (describeILO (mechanismOfReactionType (reactionTypeofClass "sn1 nucleophilic substitution*" "halogenoalkane molecular substance class*")) "ILO class*"))
+ (assert '(Isa (describeILO (mechanismOfReactionType (reactionTypeOfClass "sn1 nucleophilic substitution*" "halogenoalkane molecular substance class*"))) "ILO class*"))
+ (assert '(Isa (describeILO (mechanismOfReactionType (reactionTypeOfClass "sn1 nucleophilic substitution*" "halogenoalkane molecular substance class*"))) "ILO class*"))
  ; 185. Interpret the different reactivities of halogenoalkanes and chlorobenzene (with particular reference to hydrolysis and to the relative strengths of the C-Hal bonds).
- (assert '(Isa (interpretILO (differenceBetween (reactivityOfClass "halogenoalkane substance class*") (reactivityOf "chlorobenzene molecular substancce*")) "ILO class*"))
+ (assert '(Isa (interpretILO (differenceBetween (setof (reactivityOfClass "halogenoalkane substance class*") (reactivityOf "chlorobenzene molecular substancce*"))))  "ILO class*"))
  ; 186. Explain the uses of fluoroalkanes and fluorohalogenoalkanes in terms of their relative chemical inertness.
  (assert '(Isa (explainILO (useOf "fluoroalkane substance class*")) "ILO class*"))
  (assert '(Isa (explainILO (useOf "fluorohalogenoalkane substance class*")) "ILO class*"))
- (assert '(ILOQualifier (useOf "fluoroalkane substance class*") (inTermsOf (QualifiedProperty "relative" "chemical inertness*"))))
+ (assert '(ILOQualifier (useOf "fluoroalkane substance class*") (inTermsOf "chemical inertness*")))
+ (assert '(ILOQualifier (useOf "fluorohalogenoalkane substance class*") (inTermsOf "chemical inertness*")))
  ; 187. Recognise the concern about the effect of chlorofluoroalkanes on the ozone layer.
  (assert '(Isa (discussILO (effectOfOn "chlorofluoroalkane substance class*" "ozone layer*"))) "ILO class*"))
  ; 188. Recall the chemistry of alcohols, exemplified by ethanol: (i) combustion (ii) substitution to give halogenoalkanes (iii) reaction with sodium (iv) oxidation to carbonyl compounds and carboxylic acids (v) dehydration to alkenes (vi) formation of esters by esterification with carboxylic acids and acylation with acyl chlorides.
  (assert '(Isa (summariseILO (chemistryOfClass "alcohol substance class")) "ILO class*"))
- (assert '(ILOQualifier (summariseILO (chemistryOfClass "alcohol substance class")) (setof (asExemplifiedBy "ethanol substance*") (including "combustion*"))
+ (assert '(ILOQualifier (summariseILO (chemistryOfClass "alcohol substance class")) 
+                                 (asExemplifiedBy (typedChemicalReactionOf "combustion*" "ethanol molecular substance*"))
+                                                            (substitutionReaction "ethanol molecular substance*" "halogen atom*" "hydroxide group*"))
  ; 189. Classify hydroxy compounds into primary, secondary and tertiary alcohols (ii) suggest characteristic distinguishing reactions, e.g. mild oxidation.
  (assert '(Isa (classifyILO "hydroxy substance class*") "ILO class*"))
  (assert '(ILOQualifier (classifyILO "hydroxy substance class*") (ClassificationCategories "primary alcohol class*" "secondary alcohol class*" "tertiary alcohol class*")))
