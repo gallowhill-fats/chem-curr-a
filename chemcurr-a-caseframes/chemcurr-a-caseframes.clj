@@ -55,6 +55,11 @@
 (defineCaseframe 'Thing '('cardinalityOf thing-with-cardinality)
   :docstring "cardinality of [thing-with-cardinality]")
 
+;;; FrameNet: Categorization
+(defineCaseframe 'ILO '(categorise categorisable-thing category )
+  :docstring "categorise [categorisable-thing] into [category]"
+  :fsymbols '(classifyILO categoriseILO))
+
 (defineCaseframe 'CationicChemicalEntity '('cationOf ionic-chemical-referent)
   :docstring "cation of [ionic-chemical-referent]")
 
@@ -184,6 +189,9 @@
 
 (defineCaseframe 'Qualifier '('forSubstrateClass substrate-class)
   :docstring "for [substrate-class]")
+
+(defineCaseframe 'FunctionalGroupTransformation '('functionalGroupTransformation reactant product)
+  :docstring "functional group transformation of  [reactant] to [product]")
 
 ;;; G
 
@@ -338,6 +346,9 @@
 (defineCaseframe 'MechanismOfReactionType '('mechanismOfReactionType reaction-type)
   :docstring "mechanism of [reaction-type]")
 
+(defineCaseframe 'MechanismOfReactionType '('mechanismOfReactionType reaction-type)
+  :docstring "mechanism of [reaction-type]")
+
 (defineCaseframe 'ChemicalReagent '('modifiedChemicalReagent reagent modification)
   :docstring "chemical [reagent]  [modification]")
 
@@ -374,6 +385,9 @@
 
 (defineCaseframe 'Property '('namedPhysicalPropertyOfClass physical-property class)
   :docstring "[physical-property] of [class]")
+
+(defineCaseframe 'Thing '('namedRelativePropertyOf property things-with-property)
+  :docstring "relative [property] of [things-with-property]")
 
 (defineCaseframe 'Quantity '('namedQuantityOfClass  class-quantity  class)
   :docstring "[class-quantity] of [class]")

@@ -859,34 +859,56 @@
  ; 187. Recognise the concern about the effect of chlorofluoroalkanes on the ozone layer.
  (assert '(Isa (discussILO (effectOfOn "chlorofluoroalkane substance class*" "ozone layer*"))) "ILO class*"))
  ; 188. Recall the chemistry of alcohols, exemplified by ethanol: (i) combustion (ii) substitution to give halogenoalkanes (iii) reaction with sodium (iv) oxidation to carbonyl compounds and carboxylic acids (v) dehydration to alkenes (vi) formation of esters by esterification with carboxylic acids and acylation with acyl chlorides.
- (assert '(Isa (summariseILO (chemistryOfClass "alcohol substance class")) "ILO class*"))
- (assert '(ILOQualifier (summariseILO (chemistryOfClass "alcohol substance class")) 
-                                 (asExemplifiedBy (typedChemicalReactionOf "combustion*" "ethanol molecular substance*"))
-                                                            (substitutionReaction "ethanol molecular substance*" "halogen atom*" "hydroxide group*"))
+ (assert '(Isa (summariseILO (chemistryOfClass "ethanol molecular substance class")) "ILO class*"))
+ (assert '(ILOQualifier (summariseILO (chemistryOfClass "ethanol molecular substance class")) 
+                                 (asExemplifiedBy (setof (typedChemicalReactionOf "combustion*" "ethanol molecular substance*")
+                                                            (substitutionReaction "ethanol molecular substance*" "halogen atom*" "hydroxide group*")
+                                                            (chemicalReactionBetween (setof "ethanol molecular substance*" "sodium element*"))
+                                                            (typedChemicalReactionOf "oxidation*" "ethanol molecular substance*")
+                                                            (typedChemicalReactionOf "dehydration*" "ethanol molecular substance*")
+                                                            (typedChemicalReactionOf "esterification*" "ethanol molecular substance*")
+                                                            (typedChemicalReactionOf "acylation*" "ethanol molecular substance*"))))))
  ; 189. Classify hydroxy compounds into primary, secondary and tertiary alcohols (ii) suggest characteristic distinguishing reactions, e.g. mild oxidation.
- (assert '(Isa (classifyILO "hydroxy substance class*") "ILO class*"))
- (assert '(ILOQualifier (classifyILO "hydroxy substance class*") (ClassificationCategories "primary alcohol class*" "secondary alcohol class*" "tertiary alcohol class*")))
- ; 190. Deduce the presence of a CH3CH(OH)– group in an alcohol from its reaction with alkaline aqueous iodine to form tri-iodomethane
- (assert '(Isa (deduceILO (HasGroup "ethyl alcohol group*" (some x ()  (Isa x "alcohol molecule class*")))) "ILO class*"))
- (assert '(ILOQualifier (deduceILO (HasGroup "ethyl alcohol group*" (some x ()  (Isa x "alcohol molecule class*")))) (fromEvidence "iodoform reaction*")))
+ (assert '(Isa (classifyILO "hydroxy substance class*" (setof "primary alcohol class*" "secondary alcohol class*" "tertiary alcohol class*")) "ILO class*"))
+  ; 190. Deduce the presence of a CH3CH(OH)– group in an alcohol from its reaction with alkaline aqueous iodine to form tri-iodomethane
+ (assert '(Isa (deduceILO (HasGroup (every x (Isa x "alcohol molecule class*") (given (some y (x) (Isa y "iodoform reaction class*")))) "ethyl alcohol group*")) "ILO class*"))
  ; 191. Recall the chemistry of phenol, as exemplified by the following reactions: (i) with bases (ii) with sodium (iii) with diazonium salts (Section 10.7) (iv) nitration of, and bromination of, the aromatic ring.
- (assert '(Isa (summariseILO (chemistryOf "phenol substance*")) "ILO class*"))
- (assert '(ILOQualifier (summariseILO (chemistryOf "phenol substance*")) (asExemplifiedBy (setof (reactionBetween "phenol substance*" (every x (Isa x "base class*")))))
+ (assert '(Isa (summariseILO (chemistryOf "phenol molecular substance*")) "ILO class*"))
+ (assert '(ILOQualifier (summariseILO (chemistryOf "phenol molecular substance*")) 
+                                 (asExemplifiedBy (setof (reactionBetween (setof "phenol molecular substance*" (every x (Isa x "base substance class*"))))
+                                                                     (reactionBetween (setof "phenol molecular substance*" "sodium element*"))
+                                                                     (reactionBetween )(setof "phenol molecular substance*" (every x (Isa x "diazonium salt substance class*")))
+                                                                     (typedChemicalReactionOf "nitration*" "phenol molecular substance*") 
+                                                                     (typedChemicalReactionOf "bromination*" "phenol molecular substance*")))))
  ; 192. Describe and explain the relative acidities of water, phenol and ethanol.
- (assert '(Isa (describeILO (namedRelativePropertyOf "acidity*" (setof "water substance*" "phenol substance*" "ethanol substance*"))) "ILO class*"))
+ (assert '(Isa (describeILO (namedRelativePropertyOf "acidity*" (setof "water molecular substance*" "phenol molecular substance*" "ethanol molecularsubstance*"))) "ILO class*"))
  ; 193. Describe (i) the formation of aldehydes and ketones from primary and secondary alcohols respectively using Cr2O7? 2–/H+ (ii) the reduction of aldehydes and ketones e.g. using NaBH4 or LiAlH4? (iii) the reaction of aldehydes and ketones with HCN and NaCN.
- (assert '(Isa (describeILO (typedReactionOfClass "formation*" "aldehyde substance class*")) "ILO class*"))
- (assert '(ILOQualifier (describeILO (typedReactionOfClass "formation*" "aldehyde substance class*")) (setof (fromPrecursorClass (typedReactionOfClass "formation*" "aldehyde substance class*") "primary alcohol substance class*") (inConditions (typedReactionOfClass "formation*" "aldehyde substance class*")  "acidified potassium dichromate*"))))
+ (assert '(Isa (describeILO (functionalGroupTransformation (every x (Isa x "primary alcohol substance class*")) (some y (x) (Isa y "aldehyde substance class*")))) "ILO class*"))
+ (assert '(Isa (describeILO (functionalGroupTransformation (every x (Isa x "secondary alcohol substance class*")) (some y (x) (Isa y "ketone substance class*")))) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (functionalGroupTransformation (every x (Isa x "primary alcohol substance class*")) (some y (x) (Isa y "aldehyde substance class*")))) (withReagent "acidified dichromate*")))
+ (assert '(ILOQualifier (describeILO (functionalGroupTransformation (every x (Isa x "secondary alcohol substance class*")) (some y (x) (Isa y "ketone substance class*")))) (withReagent "acidified dichromate*")))
+ (assert '(Isa (describeILO (functionalGroupTransformation (every x (Isa x "aldehyde substance class*")) (some y (x) (Isa y "primary alcohol substance class*")))) "ILO class*"))
+ (assert '(Isa (describeILO (functionalGroupTransformation (every x (Isa x "ketone substance class*")) (some y (x) (Isa y "secondary alcohol substance class*")))) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (functionalGroupTransformation (every x (Isa x "aldehyde substance class*")) (some y (x) (Isa y "primary alcohol substance class*")))) (withReagent "sodium borohydride substance*")))
+ (assert '(ILOQualifier (describeILO (functionalGroupTransformation (every x (Isa x "ketone substance class*")) (some y (x) (Isa y "secondary alcohol substance class*")))) (withReagent "sodium borohydride substance*")))
+ (assert '(ILOQualifier (describeILO (functionalGroupTransformation (every x (Isa x "aldehyde substance class*")) (some y (x) (Isa y "primary alcohol substance class*")))) (withReagent "lithium aluminium hydride substance*")))
+ (assert '(ILOQualifier (describeILO (functionalGroupTransformation (every x (Isa x "ketone substance class*")) (some y (x) (Isa y "secondary alcohol substance class*")))) (withReagent "lithium aluminium hydride substance*")))
+ (assert '(Isa (describeILO (functionalGroupTransformation (every x (Isa x "aldehyde substance class*")) (some y (x) (Isa y "hydroxynitrile substance class*")))) "ILO class*"))
+ (assert '(Isa (describeILO (functionalGroupTransformation (every x (Isa x "ketone substance class*")) (some y (x) (Isa y "hydroxynitrile substance class*")))) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (functionalGroupTransformation (every x (Isa x "aldehyde substance class*")) (some y (x) (Isa y "primary alcohol substance class*")))) (withReagent "hydrogen cyanide substance*")))
+ (assert '(ILOQualifier (describeILO (functionalGroupTransformation (every x (Isa x "ketone substance class*")) (some y (x) (Isa y "secondary alcohol substance class*")))) (withReagent "hydrogen cyanide substance*")))
+(assert '(ILOQualifier (describeILO (functionalGroupTransformation (every x (Isa x "aldehyde substance class*")) (some y (x) (Isa y "primary alcohol substance class*")))) (withReagent "sodium cyanide substance*")))
+ (assert '(ILOQualifier (describeILO (functionalGroupTransformation (every x (Isa x "ketone substance class*")) (some y (x) (Isa y "secondary alcohol substance class*")))) (withReagent "sodium cyanide substance*")))
  ; 194. Describe the mechanism of the nucleophilic addition reactions of hydrogen cyanide with aldehydes and ketones.
- (assert '(Isa (describeILO (mechanismOf (typedReactionWithClass "nucleophilic addition*" "hydrogen cyanide substance*" "aldehyde substance class*"))) "ILO class*"))
- (assert '(Isa (describeILO (mechanismOf (typedReactionWithClass "nucleophilic addition*" "hydrogen cyanide substance*" "ketone substance class*"))) "ILO class*"))
+ (assert '(Isa (describeILO (mechanismOfReactionType (typedReactionOfWithClass "nucleophilic addition*" "hydrogen cyanide substance*" "aldehyde substance class*"))) "ILO class*"))
+ (assert '(Isa (describeILO (mechanismOfReactionType (typedReactionOfWithClass "nucleophilic addition*" "hydrogen cyanide substance*" "ketone substance class*"))) "ILO class*"))
  ; 195. Describe the use of 2,4-dinitrophenylhydrazine (2,4-DNPH) reagent to detect the presence of carbonyl compounds.
- (assert '(Isa (useOfAs "2,4-dinitrophenylhydrazine substance*" (testForClass "carbonyl substance class*") "ILO class*"))
+ (assert '(Isa (useOfFor "2,4-dinitrophenylhydrazine substance*" (testForClass "carbonyl substance class*") "ILO class*"))
  ; 196. Deduce the nature (aldehyde or ketone) of an unknown carbonyl compound from the results of simple tests (i.e. Fehling’s and Tollens’ reagents; ease of oxidation).
  (assert '(Isa (interpretILO (resultOf (every x (IsFunctionalGroupTestFor  x "aldehyde substance class*")))) "ILO class*"))
  (assert '(Isa (interpretILO (resultOf (every x (IsFunctionalGroupTestFor  x "ketone substance class*")))) "ILO class*"))
  ; 197. Describe the reaction of CH3CO– compounds with alkaline aqueous iodine to give tri-iodomethane.
- (assert '(Isa (describeILO "iodoform reacion*") "ILO class*"))
+ (assert '(Isa (describeILO "iodoform reaction*") "ILO class*"))
  ; 198. Describe the formation of carboxylic acids from alcohols, aldehydes and nitriles.
  (assert '(Isa (describeILO (typedReactionOfClass "formation*" "carboxylic acid substance class*"))) "ILO class*"))
  ; 199. Describe the reactions of carboxylic acids in the formation of (i) salts, by the use of reactive metals, alkalis or carbonates (ii) esters (iii) acyl chlorides.

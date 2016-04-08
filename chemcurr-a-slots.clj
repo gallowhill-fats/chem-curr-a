@@ -28,6 +28,9 @@
 
 (defineSlot calculateILO :type :Thing)
 (defineSlot carryOutILO :type :Thing)
+(defineSlot categoriseILO :type :Thing)
+(defineSlot categorisable-thing :type :Thing)
+(defineSlot category :type :Category)
 (defineSlot Causation :type :Thing)
 (defineSlot cause :type :Thing)
 (defineSlot chemical-change :type :ChemicalChange)
@@ -46,6 +49,7 @@
 (defineSlot class-with-behavior :type :Category)
 (defineSlot class-with-physical-properties :type :Category)
 (defineSlot class-with-properties :type :Category)
+(defineSlot classifyILO :type :Thing)
 (defineSlot clause :type :Thing)
 (defineSlot comparative-aspect :type :Comparative)
 (defineSlot comparative-thing :type :Thing)
@@ -332,7 +336,8 @@
 (defineSlot thing-with-property :type :Thing)
 (defineSlot thing-with-quantity :type :Thing)
 (defineSlot thing-with-shape :type :Thing)
-(defineSlot things-with-trending-property :type :Thing)
+(defineSlot things-with-property :type :Thing :min 2)
+(defineSlot things-with-trending-property :type :Thing :min 2)
 (defineSlot topic :type :Thing)
 (defineSlot trending-property :type :Thing)
 (defineSlot type-of-action :type :Thing)
@@ -360,7 +365,8 @@
 
 ;;; Z
 
-
+(defineCaseframe 'Thing '('namedRelativePropertyOf property things-with-property)
+  :docstring "relative [property] of [things-with-property]")
 
 
 

@@ -74,11 +74,17 @@
 (defineType :ElectrophilicAdditionReaction (:AdditionReaction))
 (defineType :RadicalReaction (:AdditionReaction))
 (defineType :FreeRadicalReaction (:ChemicalReaction))
-(defineType :PericyclicReaction (:ChemicalReaction))
-(defineType :PhotochemicalReaction (:ChemicalReaction))
 (defineType :RearrangementReaction (:ChemicalReaction))
+(defineType :12RearrangementReaction (:RearrangementReaction))
+(defineType :PericyclicReaction (:RearrangementReaction))
+(defineType :MetathesisReaction (:RearrangementReaction))
+(defineType :PhotochemicalReaction (:ChemicalReaction))
+(defineType :PolymerisationReaction (:ChemicalReaction))
+(defineType :CondensationReaction (:ChemicalReaction))
+(defineType :CondensationPolymerisationReaction (:CondensationReaction :PolymerisationReaction))
 (defineType :RedoxReaction (:ChemicalReaction))
 (defineType :HalfReaction (:ChemicalReaction))
+(defineType :FunctionalGroupTransformation (:ChemicalReaction))
 
 ;;; reaction condition
 
