@@ -40,6 +40,7 @@
 (defineSlot chemical-property :type :ChemicalProperty)
 (defineSlot chemical-substance :type :ChemicalSubstance)
 (defineSlot chemical-system :type :Thing)
+(defineSlot chemical-test :type :ChemicalTest)
 (defineSlot Circumstance :type :Thing)
 (defineSlot Circumstancing :type :Thing)
 (defineSlot circumstances :type :Thing)
@@ -219,6 +220,7 @@
 (defineSlot modWithRegardsTo :type :Thing)
 (defineSlot modWithParticularReferenceTo :type :Thing)
 (defineSlot MolecularConstitution :type :Thing)
+(defineSlot molecular-structure :type :MolecularStructure)
 
 ;;; N
 
@@ -318,6 +320,7 @@
 
 ;;; T
 
+(defineSlot tested-for-class :type :Category)
 (defineSlot thing-arrived-at :type :Thing)
 (defineSlot thing-departed-from :type :Thing)
 (defineSlot thing-given :type :Thing)
@@ -365,8 +368,7 @@
 
 ;;; Z
 
-(defineCaseframe 'Thing '('namedRelativePropertyOf property things-with-property)
-  :docstring "relative [property] of [things-with-property]")
+
 
 
 

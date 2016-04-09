@@ -48,6 +48,11 @@
 (defineType :ChemicalFormulaType (:Thing))
 (defineType :FormulaTypeClass (:Category))
 
+;;; structure
+
+(defineType :Structure (:Thing))
+(defineType :MolecularStructure (:Structure))
+
 ;;; isomers 
 
 (defineType :Isomer (:Thing))
@@ -134,8 +139,6 @@
 
 (defineType :Removal (:ActionType))
 
-
-
 ;;; state
 
 (defineType :State (:Thing))
@@ -147,9 +150,6 @@
 (defineType :Process (:Thing))
 (defineType :PhysicalProcess (:Process))
 (defineType :ChemicalProcess (:Process))
-
-
-
 
 ;;; useOf
 
@@ -194,6 +194,13 @@
 
 (defineType :Difference (:Thing))
 (defineType :Similarity (:Thing))
+
+;;; tests
+
+(defineType :ChemicalTest (:Thing)) ; a type of process?
+(defineType :ChemicalTestResult (:Thing))
+
+
 
 
 

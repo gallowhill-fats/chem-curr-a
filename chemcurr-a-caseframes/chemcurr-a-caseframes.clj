@@ -267,6 +267,9 @@
 (defineCaseframe 'Proposition '('HasShapeProperty shape shape-property)
      :docstring "[shape] has [shape-property]")
 
+(defineCaseframe 'Proposition '('HasStructure chemical-referent  molecular-structure)
+     :docstring "[chemical-referent] has [molecular-structure]")
+
 (defineCaseframe 'Proposition '('HasTypedFormula formula-type chemical-referent chemical-formula)
   :docstring  "[chemical-formula] is [formula-type] of [chemical-referent]")
 
@@ -307,22 +310,14 @@
 (defineCaseframe 'Proposition '('InPresenceOf thing-in-presence thing-with-presence)
   :docstring "[thing-in-presence] is in presence of [thing-with-presence]")
 
-; from FrameNet frame: Means
-(defineCaseframe 'Proposition '(Means method goal)
-  :docstring "[method] is method for achieving [goal]"
-  :fsymbols '(IsMethodFor IsMeansFor))
-
-(defineCaseframe 'Proposition '('SubstanceInPhysicalState chemical-substance  physical-state)
-  :docstring "[chemical-substance] is in [physical-state]")
-
-(defineState 'ChemicalSubstance '('substanceInPhysicalState chemical-substance physical-state)
-  :docstring "[chemical-substance] in [physical-state]")
-
 (defineCaseframe 'Proposition '('Involves involving-entity involvate)
   :docstring "[involving-entity] involves [involvate]")
 
 (defineCaseframe 'Proposition '('IsBalanced chemical-equation)
   :docstring "[chemical-equation] is balanced")
+
+(defineCaseframe 'Proposition '('IsFunctionalGroupTestFor chemical-test tested-for-class)
+  :docstring "[chemical-test] is chemical test for members of [tested-for-class]")
 
 (defineCaseframe 'Proposition  '('IsIsotopeOf isotope element)
   :docstring "[isotope] is an isotope of [element]")
@@ -342,6 +337,11 @@
 ; from FrameNet resource: Manufacturing
 (defineCaseframe 'Thing '('manufactureOfFrom manufacturand resource)
   :docstring "manufacture of [manufacturand] from [resource]")
+
+; from FrameNet frame: Means
+(defineCaseframe 'Proposition '(Means method goal)
+  :docstring "[method] is method for achieving [goal]"
+  :fsymbols '(IsMethodFor IsMeansFor))
 
 (defineCaseframe 'MechanismOfReactionType '('mechanismOfReactionType reaction-type)
   :docstring "mechanism of [reaction-type]")
@@ -474,6 +474,9 @@
   :docstring "relate [relate-source] to [relate-sink]"
   :fsymbols '(relateToILO))
 
+(defineCaseframe 'ChemicalTestResult '('chemicalTestResult chemical-test)
+  :docstring "result of [chemical-test]")
+
 ;;; S
 
 (defineCaseframe 'Thing '('shapeOf thing-with-shape)
@@ -496,10 +499,19 @@
   :docstring "state [statable-thing]"
   :fsymbols '(stateILO writeILO writeDownILO proposeILO recountILO reportILO suggestILO relateILO))
 
+(defineCaseframe 'Proposition '('SubstanceInPhysicalState chemical-substance  physical-state)
+  :docstring "[chemical-substance] is in [physical-state]")
+
+(defineState 'ChemicalSubstance '('substanceInPhysicalState chemical-substance physical-state)
+  :docstring "[chemical-substance] in [physical-state]")
+
 (defineCaseframe 'SubstitutionChemicalReaction '('substitutionReaction substrate entering-group leaving-group)
   :docstring "substitution reaction of [substrate] in which [leaving-group] is substituted by [entering-group]")
 
 ;;; T
+
+(defineCaseframe 'ChemicalTest '('testForClass tested-for-class)
+  :docstring "chemical test for members of [tested-for-class]")
 
 (defineCaseframe 'Thing '('trendInPropertyOf trending-property things-with-trending-property)
   :docstring "trend in [trending-property] of [things-with-trending-property]")

@@ -905,20 +905,28 @@
  ; 195. Describe the use of 2,4-dinitrophenylhydrazine (2,4-DNPH) reagent to detect the presence of carbonyl compounds.
  (assert '(Isa (useOfFor "2,4-dinitrophenylhydrazine substance*" (testForClass "carbonyl substance class*") "ILO class*"))
  ; 196. Deduce the nature (aldehyde or ketone) of an unknown carbonyl compound from the results of simple tests (i.e. Fehling’s and Tollens’ reagents; ease of oxidation).
- (assert '(Isa (interpretILO (resultOf (every x (IsFunctionalGroupTestFor  x "aldehyde substance class*")))) "ILO class*"))
- (assert '(Isa (interpretILO (resultOf (every x (IsFunctionalGroupTestFor  x "ketone substance class*")))) "ILO class*"))
+ (assert '(Isa (interpretILO (chemicalTestResult (every x (IsFunctionalGroupTestFor  x "aldehyde substance class*")))) "ILO class*"))
+ (assert '(Isa (interpretILO (chemicalTestResult (every x (IsFunctionalGroupTestFor  x "ketone substance class*")))) "ILO class*"))
  ; 197. Describe the reaction of CH3CO– compounds with alkaline aqueous iodine to give tri-iodomethane.
  (assert '(Isa (describeILO "iodoform reaction*") "ILO class*"))
  ; 198. Describe the formation of carboxylic acids from alcohols, aldehydes and nitriles.
- (assert '(Isa (describeILO (typedReactionOfClass "formation*" "carboxylic acid substance class*"))) "ILO class*"))
+ (assert '(Isa (describeILO (functionalGroupTransformation (every x (Isa x "alcohol molecular substance class*")) (some y (x) (Isa y "carboxylic acid molecular substance class*")))) "ILO class*"))
+ (assert '(Isa (describeILO (functionalGroupTransformation (every x (Isa x "alcohol molecular substance class*")) (some y (x) (Isa y "aldehyde molecular substance class*")))) "ILO class*"))
+ (assert '(Isa (describeILO (functionalGroupTransformation (every x (Isa x "alcohol molecular substance class*")) (some y (x) (Isa y "nitrile molecular substance class*")))) "ILO class*"))
  ; 199. Describe the reactions of carboxylic acids in the formation of (i) salts, by the use of reactive metals, alkalis or carbonates (ii) esters (iii) acyl chlorides.
- (assert '(Isa (describeILO (chemicalReactionsOfClass "carboxylic acid substance class*"))) "ILO class*"))
- (assert '(ILOModifier (describeILO (chemicalReactionsOfClass "carboxylic acid substance class*")) (chemicalReactionsOfClass "carboxylic acid substance class*") (inFormationOfClass "carboxylic acid salt substance class*")))
- (assert '(ILOModifier (describeILO (chemicalReactionsOfClass "carboxylic acid substance class*")) (chemicalReactionsOfClass "carboxylic acid substance class*") (inFormationOfClass "ester  substance class*")))
- (assert '(ILOModifier (describeILO (chemicalReactionsOfClass "carboxylic acid substance class*")) (chemicalReactionsOfClass "carboxylic acid substance class*") (inFormationOfClass "acyl chloride substance class*")))
+ (assert '(Isa (describeILO (chemicalReactionReactantsProducts (every x (Isa x "carboxylic acid molecular substance class*")) (some y (x) (Isa y "carboxylic acid salt substance class*")))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionReactantsProducts (every x (Isa x "carboxylic acid molecular substance class*")) (some y (x) (Isa y "ester molecular substance class*")))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionReactantsProducts (every x (Isa x "carboxylic acid molecular substance class*")) (some y (x) (Isa y "acyl chloride molecular substance class*")))) "ILO class*"))
  ; 200. Explain the acidity of carboxylic acids and of chlorinesubstituted ethanoic acids in terms of their structures.
- (assert '(Isa (explainILO (namedPhysicalPropertyOfClass "acidity*" "carboxylic acid class*")) "ILO class*"))
- (assert '(ILOQualifier (explainILO (namedPhysicalPropertyOfClass "acidity*" "carboxylic acid class*")) (inTermsOf "structure*")))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOfClass "acidity*" "carboxylic acid molecular substance class*")) "ILO class*"))
+ (assert '(ILOQualifier (explainILO (namedPhysicalPropertyOfClass "acidity*" "carboxylic acid molecular substance class*")) (inTermsOf "structure*")))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOfClass "acidity*" "chlorinated carboxylic acid molecular substance class*")) "ILO class*"))
+ (assert '(ILOQualifier (explainILO (namedPhysicalPropertyOfClass "acidity*" "carboxylic acid molecular substance class*")) (inTermsOf "structure*")))
+;or 
+;(assert '(Isa (explainILO (namedPhysicalPropertyOf "acidity*" (every x (Isa "carboxylic acid molecular substance class*"))) (inTermsOf (some y (x) (HasStructure x y))))) "ILO class*"))
+;or 
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "acidity*" (every x (Isa x "carboxylic acid molecular substance class*")))) "ILO class*"))
+ (assert '(ILOQualifier (explainILO (namedPhysicalPropertyOf "acidity*" (every x (Isa x "carboxylic acid molecular substance class*")))) (inTermsOf (some y (x) HasStructure x y))))
  ; 201. Describe the hydrolysis of acyl chlorides.
  (assert '(Isa (describeILO (reactionOfClass "hydrolysis*" "acyl chloride molecular substance class*")) "ILO class*"))
   ; 202. Describe the reactions of acyl chlorides with alcohols, phenols and primary amines.
