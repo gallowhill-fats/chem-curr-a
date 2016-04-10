@@ -190,6 +190,11 @@
 (defineCaseframe 'Qualifier '('forSubstrateClass substrate-class)
   :docstring "for [substrate-class]")
 
+; FrameNet: Creating
+(defineCaseframe 'Creation  '(creating thing-created)
+  :docstring "creation of [thing-created"
+  :fsymbols '(formationOf creationOf generationOf productionOf ))
+
 (defineCaseframe 'FunctionalGroupTransformation '('functionalGroupTransformation reactant product)
   :docstring "functional group transformation of  [reactant] to [product]")
 
@@ -322,6 +327,9 @@
 (defineCaseframe 'Proposition  '('IsIsotopeOf isotope element)
   :docstring "[isotope] is an isotope of [element]")
 
+(defineCaseframe 'Proposition  '('IsSimilarTo similar-things)
+  :docstring "[similar-things] are similar")
+
 ;;; J
 
 ;;; K
@@ -385,6 +393,9 @@
 
 (defineCaseframe 'Property '('namedPhysicalPropertyOfClass physical-property class)
   :docstring "[physical-property] of [class]")
+
+(defineCaseframe 'Process '('namedProcessOf process processed-thing)
+  :docstring "[process] of [processed-thing]")
 
 (defineCaseframe 'Thing '('namedRelativePropertyOf property things-with-property)
   :docstring "relative [property] of [things-with-property]")
@@ -456,6 +467,11 @@
 
 (defineCaseframe 'Thing '('reactivityOfClassWithClass  reactive-class-1 reactive-class-2)
   :docstring "reactivity of [reactive-class-1] with [reactive-class-2]")
+
+; FrameNet: Becoming_aware
+(defineCaseframe 'ILO '(actions recognizable-thing)
+  :docstring "recognize [recognizable-thing]"
+  :fsymbols '(recognizeILO))
 
 (defineCaseframe 'RedoxSystem '('redoxSystem reductant oxidant)
   :docstring "redox system with [reductant] and [oxidant]")

@@ -62,6 +62,7 @@
 (defineSlot containing :type :Thing)
 (defineSlot ContainsElement :type :Thing)
 (defineSlot content :type :Thing)
+(defineSlot creationOf :type :Thing)
 
 
 
@@ -121,11 +122,13 @@
 ;;; F
 
 (defineSlot figureOutILO :type :Thing)
+(defineSlot formationOf :type :Thing)
 (defineSlot formula :type :ChemicalFormula)
 (defineSlot formula-type :type :ChemicalFormulaType)
 
 ;;; G
 
+(defineSlot generationOf :type :Thing)
 (defineSlot generic-member-name :type :Name)
 (defineSlot goal :type :Thing)
 
@@ -248,6 +251,7 @@
 (defineSlot powerOfOver :type :Thing)
 (defineSlot powerOfClassOver :type :Thing)
 (defineSlot process :type :Process)
+(defineSlot productionOf :type :Thing)
 (defineSlot products :type :Thing)
 (defineSlot property :type :Property)
 (defineSlot proposeILO :type :Thing)
@@ -271,6 +275,7 @@
 (defineSlot reactive-class-1 :type :ChemicalSubstanceClass)
 (defineSlot reaction-condition :type :ReactionCondition)
 (defineSlot reaction-type :type :ReactionType)
+(defineSlot recognizable-thing :type :Thing)
 (defineSlot recountILO :type :Thing)
 (defineSlot redox-reaction :type :RedoxReaction)
 (defineSlot redox-system :type :RedoxSystem)
@@ -289,6 +294,7 @@
 (defineSlot shape :type :Thing)
 (defineSlot sign :type :Thing)
 (defineSlot shape-property :type :Thing)
+(defineSlot similar-things :type :Thing :min 2)
 (defineSlot Smaller :type :Thing)
 (defineSlot stabilised-thing :type :Thing)
 (defineSlot stabilisation-agency :type :Thing)
@@ -322,6 +328,7 @@
 
 (defineSlot tested-for-class :type :Category)
 (defineSlot thing-arrived-at :type :Thing)
+(defineSlot thing-created :type :Thing)
 (defineSlot thing-departed-from :type :Thing)
 (defineSlot thing-given :type :Thing)
 (defineSlot thing-in-presence :type :Thing)

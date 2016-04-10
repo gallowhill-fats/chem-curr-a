@@ -150,6 +150,7 @@
 (defineType :Process (:Thing))
 (defineType :PhysicalProcess (:Process))
 (defineType :ChemicalProcess (:Process))
+(defineType :Creation (:Process))
 
 ;;; useOf
 

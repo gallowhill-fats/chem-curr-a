@@ -928,64 +928,70 @@
  (assert '(Isa (explainILO (namedPhysicalPropertyOf "acidity*" (every x (Isa x "carboxylic acid molecular substance class*")))) "ILO class*"))
  (assert '(ILOQualifier (explainILO (namedPhysicalPropertyOf "acidity*" (every x (Isa x "carboxylic acid molecular substance class*")))) (inTermsOf (some y (x) HasStructure x y))))
  ; 201. Describe the hydrolysis of acyl chlorides.
- (assert '(Isa (describeILO (reactionOfClass "hydrolysis*" "acyl chloride molecular substance class*")) "ILO class*"))
+ (assert '(Isa (describeILO (typedReactionOfClass "hydrolysis*" "acyl chloride molecular substance class*")) "ILO class*"))
   ; 202. Describe the reactions of acyl chlorides with alcohols, phenols and primary amines.
- (assert '(Isa (describeILO (reactionBetweenClass "acyl chloride substance class*" "alcohol substance class*") "ILO class*"))
- (assert '(Isa (describeILO (reactionBetweenClass "acyl chloride substance class*" "phenol substance class*") "ILO class*"))
- (assert '(Isa (describeILO (reactionBetweenClass "acyl chloride substance class*" "primary amine substance class*") "ILO class*"))
+ (assert '(Isa (describeILO (reactionBetweenClass "acyl chloride substance class*" "alcohol molecular substance class*") "ILO class*"))
+ (assert '(Isa (describeILO (reactionBetweenClass "acyl chloride substance class*" "phenol molecular substance class*") "ILO class*"))
+ (assert '(Isa (describeILO (reactionBetweenClass "acyl chloride substance class*" "primary amine molecular substance class*") "ILO class*"))
  ; 203. Explain the relative ease of hydrolysis of acyl chlorides, alkyl chlorides and aryl chlorides.
- (assert '(Isa (explainILO (namedRelativePropertyOf "ease*" (typedReactionOfClass "hydrolysis*" "acyl chloride substance class*"))) "ILO class*"))
+ (assert '(Isa (explainILO (namedRelativePropertyOf "ease*" (setof 
+                                                                                               (typedReactionOfClass "hydrolysis*" "acyl chloride molecular substance class*")
+                                                                                               (typedReactionOfClass "hydrolysis*" "alkyl chloride molecular substance class*")
+                                                                                               (typedReactionOfClass "hydrolysis*" "aryl chloride molecular substance class*")))) "ILO class*"))
  ; 204. Describe the formation of esters from carboxylic acids or acyl chlorides, using ethyl ethanoate and phenyl benzoate as examples.
- (assert '(Isa (describeILO (transformationReactionOfClass "ester substance class*" "carboxylic acid substance class*")) "ILO class*"))
- (assert '(ILOQualifier (describeILO (transformationReactionOfClass "ester substance class*" "carboxylic acid substance class*")) (withExamples (setof "ethyl ethanoate substance*" "phenyl benzoate*"))))
- (assert '(Isa (describeILO (transformationReactionOfClass "ester substance class*" "acyl chloride substance class*")) "ILO class*"))
- (assert '(ILOQualifier (describeILO (transformationReactionOfClass "ester substance class*" "acyl chloride substance class*")) (withExamples (setof "ethyl ethanoate substance*" "phenyl benzoate*"))))
+ (assert '(Isa (describeILO (functionalGroupTransformation "ester substance class*" "carboxylic acid substance class*")) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (functionalGroupTransformation "ester substance class*" "carboxylic acid substance class*")) (withExamples (setof "ethyl ethanoate molecular substance*" "phenyl benzoate molecular substance*"))))
+ (assert '(Isa (describeILO (functionalGroupTransformation "ester substance class*" "acyl chloride substance class*")) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (functionalGroupTransformation "ester substance class*" "acyl chloride substance class*")) (withExamples (setof "ethyl ethanoate substance*" "phenyl benzoate*"))))
  ; 205. Describe the acid and base hydrolysis of esters.
- (assert '(Isa (describeILO (typedReactionOfClass "acid hydrolysis*" "ester substance class*"))) "ILO class*"))
- (assert '(Isa (describeILO (typedReactionOfClass "base hydrolysis*" "ester substance class*"))) "ILO class*"))
+ (assert '(Isa (describeILO (typedReactionOfClass "acid hydrolysis*" "ester molecular substance class*"))) "ILO class*"))
+ (assert '(Isa (describeILO (typedReactionOfClass "base hydrolysis*" "ester molecular substance class*"))) "ILO class*"))
  ; 206. State the major commercial uses of esters e.g. solvents, perfumes, flavourings. describe the formation of polyesters (see also Section 10.8).
- (assert '(Isa (stateILO (useOf "ester substance class*")) "ILO class*"))
- (assert '(ILOModifier (stateILO (useOf "ester substance class*") (useOf "ester substance class*") (inDomain "commerce*")))))
+ (assert '(Isa (stateILO (useOf "ester molecular substance class*")) "ILO class*"))
+ (assert '(ILOModifier (stateILO (useOf "ester molecular substance class*") (useOf "ester molecular substance class*") (inDomain "commerce*")))))
  (assert '(describeILO (typedReactionOfClass "formation*" "polyester substance class*")))
  ; 207. Describe the formation of alkyl amines such as ethylamine (by the reaction of ammonia with halogenoalkanes; the reduction of amides with LiAlH4?; the reduction of nitriles with LiAlH4? or H2/Ni) and of phenylamine (by the reduction of nitrobenzene with tin/concentrated HCl).
  (assert '(Isa (describeILO (typedReactionOfClass "formation*" "alkyl amine substance class*")) "ILO class*"))
- (assert '(ILOQualifier (describeILO (typedReactionOfClass "formation*" "alkyl amine substance class*")) (byReactionOf (typedReactionOfClass "formation*" "alkyl amine substance class*") (setof "ammonia substance*" "halogenoalkane substance class*"))))
- (assert '(ILOQualifier (describeILO (typedReactionOfClass "formation*" "alkyl amine substance class*")) (byReactionOf (typedReactionOfClass "formation*" "alkyl amine substance class*") (setof "lithium aluminium hydride substance*" "nitrile  substance class*"))))
- (assert '(ILOQualifier (describeILO (typedReactionOfClass "formation*" "alkyl amine substance class*")) (byReactionOf (typedReactionOfClass "formation*" "alkyl amine substance class*") (setof "lithium aluminium hydride substance*" "amide substance class*"))))
+ (assert '(ILOModifier (describeILO (typedReactionOfClass "formation*" "alkyl amine substance class*")) (typedReactionOfClass "formation*" "alkyl amine substance class*") (byReactionOf  (setof "ammonia substance*" "halogenoalkane substance class*"))))
+ (assert '(ILOModifier (describeILO (typedReactionOfClass "formation*" "alkyl amine substance class*")) (typedReactionOfClass "formation*" "alkyl amine substance class*") (byReactionOf  (setof "lithium aluminium hydride substance*" "nitrile  substance class*"))))
+ (assert '(ILOModifier (describeILO (typedReactionOfClass "formation*" "alkyl amine substance class*")) (typedReactionOfClass "formation*" "alkyl amine substance class*") (byReactionOf  (setof "lithium aluminium hydride substance*" "amide substance class*"))))
  (assert '(Isa (describeILO (typedReactionOf "formation*" "phenylamine substance*")) "ILO class*"))
- (assert '(ILOQualifier (describeILO (typedReactionOf "formation*" "phenylamine substance*")) (byReactionOf (typedReactionOf "formation*" "phenylamine substance*") (setof "nitrobenzene substance*" "tin element*" "concentrated hydrochloric acid substance*"))))
+ (assert '(ILOQualifier (describeILO (typedReactionOf "formation*" "phenylamine substance*")) (typedReactionOf "formation*" "phenylamine substance*") (byReactionOf  (setof "nitrobenzene molecular substance*" "tin element*" "concentrated hydrochloric acid substance*"))))
  ; 208. Describe and explain the basicity of amines.
- (assert '(Isa (describeILO (namedPropertyOfClass "basicity*" "amine substance class*")) "ILO class*"))
- (assert '(Isa (explainILO (namedPropertyOfClass "basicity*" "amine substance class*")) "ILO class*"))
+ (assert '(Isa (describeILO (namedPropertyOfClass "basicity*" "amine molecular substance class*")) "ILO class*"))
+ (assert '(Isa (explainILO (namedPropertyOfClass "basicity*" "amine molecular substance class*")) "ILO class*"))
  ; 209. Explain the relative basicities of ammonia, ethylamine and phenylamine in terms of their structures.
- (assert '(Isa (explainILO (namedRelativeProperty "basicity*" (setof "ammonia substance*" "ethylamine substance*" "phenylamine substance*"))) "ILO class*"))
- (assert '(ILOQualifier (explainILO (namedRelativeProperty "basicity*" (setof "ammonia substance*" "ethylamine substance*" "phenylamine substance*"))) (inTermsOf "molecular structure*")))
+ (assert '(Isa (explainILO (namedRelativeProperty "basicity*" (setof "ammonia molecular substance*" "ethylamine molecular substance*" "phenylamine molecular substance*"))) "ILO class*"))
+ (assert '(ILOQualifier (explainILO (namedRelativeProperty "basicity*" (setof "ammonia molecular substance*" "ethylamine molecular substance*" "phenylamine molecular substance*"))) (inTermsOf "molecular structure*")))
  ; 210. Describe the reaction of phenylamine with: (i) aqueous bromine (ii) nitrous acid to give the diazonium salt and phenol.
- (assert '(Isa (describeILO (chemicalReactionBetween (setof "phenylamine substance*" "aqueous bromine solution*") (setof "diazonium salt*" "phenol substance*"))  "ILO class*"))
- (assert '(Isa (describeILO (chemicalReactionBetween (setof "phenylamine substance*" "nitrous acid substance*") (setof "diazonium salt*" "phenol substance*"))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionReactantsProducts (setof "phenylamine molecular substance*" "aqueous bromine solution*") (setof "diazonium salt*" "phenol molecular substance*"))  "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionReactantsProducts (setof "phenylamine molecular substance*" "nitrous acid substance*") (setof "diazonium salt*" "phenol molecular substance*"))) "ILO class*"))
  ; 211. Describe the coupling of benzenediazonium chloride and phenol and the use of similar reactions in the formation of dyestuff.
- (assert '(Isa (describeILO (typedReactionBetween "coupling*" (setof "benzenediazonium chloride substance*" "phenol substance*"))) "ILO class*"))
- (assert '(Isa (describeILO (useOfFor (every x (Isa x "chemical reaction class*")) (IsSimilarTo x (TypedreactionBetween "coupling*" (setof "benzenediazonium chloride substance*" "phenol substance*"))) (typedReactionOfClass "formation*" "dyestuff class*"))) "ILO class*"))
+ (assert '(Isa (describeILO (typedReactionBetween "coupling*" (setof "benzenediazonium chloride substance*" "phenol molecular substance*"))) "ILO class*"))
+ (assert '(Isa (describeILO (useOfFor (every x (Isa x "chemical reaction class*")) (IsSimilarTo (setof x (typedreactionBetween "coupling*" (setof "benzenediazonium chloride substance*" "phenol substance*")))) (typedReactionOfClass "formation*" "dyestuff class*"))) "ILO class*"))
   ; 212. Describe the formation of amides from the reaction between RNH2 and R’COCl.
- (assert '(Isa (describeILO (typedReactionOfClass "formation*" "amide substance class*") "ILO class*"))
- (assert '(ILOQualifier (describeILO (typedReactionOfClass "formation*" "amide class*") (withMeans (typedReactionOfClass "formation*" "amide class*") (reactionBetween "primary amine class*" "acyl chloride class*")))))
+ (assert '(Isa (describeILO (typedReactionOfClass "formation*" "amide molecular substance class*") "ILO class*"))
+ (assert '(ILOModifier (describeILO (typedReactionOfClass "formation*" "amide molecular substance class*") (typedReactionOfClass "formation*" "amide molecular substance class*") (withMeans (reactionBetween "primary amine molecular substance class*" "acyl chloride molecular substance class*")))))
  ; 213. Recognise that amides are neutral.
- (assert '(Isa (recogniseILO (every x (Isa x "amide substance class*") (Isa x "neutral substance class*"))))) "ILO class*"))
+ (assert '(Isa (recogniseILO (every x (Isa x "amide molecular substance class*") (Isa x "neutral substance class*"))))) "ILO class*"))
  ; 214. Describe amide hydrolysis on treatment with aqueous alkali or acid (ii) describe the reduction of amides with LiAlH4? (i) describe the acid/base properties of amino acids and the formation of zwitterions.
- (assert '(Isa (describeILO (typedChemicalReactionOfClass "hydrolysis*" "amide substance class*")) "ILO class*"))
+ (assert '(Isa (describeILO (typedReactionOfClass "acid hydrolysis*" "amide molecular substance class*")) "ILO class*"))
+ (assert '(Isa (describeILO (typedReactionOfClass "base hydrolysis*" "amide molecular substance class*")) "ILO class*"))
+ (assert '(Isa (describeILO (typedReactionOfClass "reduction*" "amide molecular substance class*")) "ILO class*"))
+ (assert '(Isa (describeILO (namedPropertyOfClass  "acid/base*" "amino acid molecular substance class*")) "ILO class*"))
  ; 215. Describe the formation of peptide bonds between amino acids and, hence, explain protein formation
- (assert '(Isa (explainILO (typedChemicalReactionOfClass "formation*" "protein substance class*")) "ILO class*"))
- (assert '(ILOQualifier (explainILO (typedChemicalReactionOfClass "formation*" "protein substance class*")) (inTermsOf ))
+ (assert '(Isa (explainILO (typedReactionOfClass "formation*" "protein substance class*")) "ILO class*"))
+ (assert '(ILOQualifier (explainILO (typedReactionOfClass "formation*" (every x (Isa x "protein substance class*"))) (inTermsOf (formationOf (some y (x) (Isa y "peptide bond class*")))))))
  ; 216. Describe the hydrolysis of proteins.
- (assert '(Isa (describeILO (typedChemicalReactionOfClass "hydrolysis*" "protein substance class*")) "ILO class*"))
+ (assert '(Isa (describeILO (typedReactionOfClass "hydrolysis*" "protein substance class*")) "ILO class*"))
  ; 217. Describe the formation of polyamides (see also Section 10.8).
- (assert '(Isa (describeILO (typedChemicalReactionOfClass "formation*" "polyamide substance class*")) "ILO class*")) 
+ (assert '(Isa (describeILO (typedReactionOfClass "formation*" "polyamide substance class*")) "ILO class*")) 
  ; 218. Describe the characteristics of addition polymerisation as exemplified by poly(ethene) and PVC.
- (assert '(Isa (describeILO (characteristicsOf "addition polymerisation*")) "ILO class*"))
- (assert '(ILOQualifier (describeILO (characteristicsOf "additionpolymerisation*")) (asExemplifiedBy "polyethene*")))
- (assert '(ILOQualifier (describeILO (characteristicsOf "additionpolymerisation*")) (asExemplifiedBy "PVC*")))
+ (assert '(Isa (describeILO "addition polymerisation*") "ILO class*"))
+ (assert '(ILOQualifier (describeILO "addition polymerisation*") (asExemplifiedBy "polyethene*")))
+ (assert '(ILOQualifier (describeILO "addition polymerisation*") (asExemplifiedBy "polyvinyl chloride*")))
  ; 219. Recognise the difficulty of the disposal of poly(alkene)s, i.e. nonbiodegradability and harmful combustion products.
- (assert '(Isa (recogniseILO (difficultyOf (namedProcessOfClass "disposal*" "polyalkene class*" ))) "ILO class*")) 
+ (assert '(Isa (recogniseILO (namedAspectOfProcess "difficulty*" (namedProcessOfClass "disposal*" "polyalkene class*" ))) "ILO class*")) 
  ; 220. Describe the characteristics of condensation polymerisation (i) in polyesters as exemplified by Terylene (ii) in polyamides as exemplified by peptides, proteins, nylon 6 and nylon 6,6.
  (assert '(Isa (describeILO (characteristicsOf "condensation polymerisation*")) "ILO class*"))
  (assert '(ILOQualifier (describeILO (characteristicsOf "condensation polymerisation*")) (setof (withReferenceTo "polyester polymer class*") (asExemplifiedBy "Terylene*"))))
