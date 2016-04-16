@@ -83,8 +83,11 @@
 (defineCaseframe 'Chemistry '('chemistryOf substance)
   :docstring "chemistry of [substance]")
 
-(defineCaseframe 'Chemistry '('chemistryOf substance-class)
+(defineCaseframe 'Chemistry '('chemistryOfClass substance-class)
   :docstring "chemistry of [substance-class]")
+
+(defineCaseframe 'Chemistry '('chemistryOfProcess process)
+  :docstring "chemistry of [process]")
 
 (defineCaseframe 'Proposition '(Circumstancing entity-with-circumstances circumstances)
     :docstring "[entity-with-circumstances] takes place in [circumstances]"
@@ -102,6 +105,11 @@
 
 (defineCaseframe 'Thing '('conditionsFor thing-with-conditions)
   :docstring "conditions for [thing-with-conditions]")
+
+; FrameNet: Control
+(defineCaseframe 'Proposition '(Control controlling-entity dependent-entity)
+  :docstring "[controlling-entity] controls [dependent-entity]"
+  :fsymbols '(Controls Determines Regulates Commands Encodes))
 
 ;;; D
 
@@ -139,6 +147,11 @@
 (defineCaseframe 'Difference '('differenceBetween differees)
   :docstring "difference between [differees]")
 
+; FrameNet: Differentiation
+(defineCaseframe 'ILO '(actions  phenomena)
+  :docstring "differentiate between [phenomena]"
+  :fsymbols '(differentiateBetweenILO))
+
 ; from FrameNet frame: Topic
 (defineCaseframe 'ILO '(action discussible-thing)
   :docstring "discuss [discussible-thing]"
@@ -170,17 +183,21 @@
   :docstring "elimination of [eliminate] from [substrate]") 
 
 ; FrameNet: Objective_influence
-(defineCaseframe 'Thing '(objectiveInfluence influencing-thing object-of-influence)
+(defineCaseframe 'ObjectiveInfluence '(objectiveInfluence influencing-thing object-of-influence)
   :docstring "effect of [influencing-thing] on [object-of-influence]"
   :fsymbols '(effectOfOn influenceOfOn impactOfOn powerOfOver))
 
-(defineCaseframe 'Thing '(objectiveInfluenceOfClass influencing-class object-of-influence)
+(defineCaseframe 'ObjectiveInfluence '(objectiveInfluenceOfClass influencing-class object-of-influence)
   :docstring "effect of [influencing-class] on [object-of-influence]"
   :fsymbols '(effectOfClassOn influenceOfClassOn impactOfClassOn powerOfClassOver))
 
+(defineCaseframe 'ObjectiveInfluence '(objectiveInfluenceToBringAbout influencing-thing act)
+  :docstring "effect of [influencing-thing] to bring about [act]"
+  :fsymbols '(effectOfTo))
+
 (defineCaseframe 'ILO '(actions entity-with-explanation)
     :docstring "explain the [entity-with-explanation]"
-    :fsymbols '(explain explainWhy accountFor explainTerm explainAndUseTerm))
+    :fsymbols '(explain explainWhyILO accountForILO explainTermILO explainAndUseTermILO))
 
 ;;; F
 
@@ -250,6 +267,9 @@
 (defineCaseframe 'Proposition '('HasLigand complex-ion ligand)
   :docstring "[complex-ion] has [ligand]")
 
+(defineCaseframe 'Proposition '('HasMer mer polymer)
+  :docstring "[polymer] has [mer]")
+
 (defineCaseframe 'Proposition '('HasMetalIon complex-ion metal-ion)
   :docstring "[complex-ion] has [metal-ion]")
 
@@ -259,6 +279,8 @@
               HasIupacNameAdditive HasAcceptableCommonName HasPreferredIupacName 
               HasGeneralIupacName HasRetainedIupacName HasTrivialName HasAtomName 
               HasElementName HasMoleculeName HasSubstanceName HasOtherName))
+
+(defineCaseframe 'Proposition '(HasSection ))
 
 (defineCaseframe 'Proposition '('HasSymbolicPropertyElement symbolic-property-class thing-with-property symbolic-property-element)
   :docstring "[thing-with-property] has [symbolic-property-element] in [symbolic-property-class]")
@@ -315,6 +337,9 @@
 (defineCaseframe 'Proposition '('InPresenceOf thing-in-presence thing-with-presence)
   :docstring "[thing-in-presence] is in presence of [thing-with-presence]")
 
+(defineCaseframe 'Thing '('interactionBetweenClass interactant-classes)
+  :docstring "interaction between [interactant-classes]")
+
 (defineCaseframe 'Proposition '('Involves involving-entity involvate)
   :docstring "[involving-entity] involves [involvate]")
 
@@ -329,6 +354,9 @@
 
 (defineCaseframe 'Proposition  '('IsSimilarTo similar-things)
   :docstring "[similar-things] are similar")
+
+(defineCaseframe 'Proposition  '('IsSubsequenceOf sequence thing-with-sequence)
+  :docstring "[sequence] is subsequence of [thing-with-sequence]")
 
 ;;; J
 
@@ -416,6 +444,9 @@
   :docstring "oxidation of [reactant]  with [reagent]")
 
 ;;; P
+
+(defineCaseframe 'NamedCardinalGroup '('pairOf cardinal-item)
+  :docstring "pair of [cardinal-item]s")
 
 (defineCaseframe 'Act '('performActionOn type-of-action object-of-action)
   :docstring "perform [type-of-action] on [object-of-action]")

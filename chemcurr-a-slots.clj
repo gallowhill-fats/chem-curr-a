@@ -27,6 +27,7 @@
 ;;; C
 
 (defineSlot calculateILO :type :Thing)
+(defineSlot cardinal-item :type :Thing)
 (defineSlot carryOutILO :type :Thing)
 (defineSlot categoriseILO :type :Thing)
 (defineSlot categorisable-thing :type :Thing)
@@ -52,6 +53,7 @@
 (defineSlot class-with-properties :type :Category)
 (defineSlot classifyILO :type :Thing)
 (defineSlot clause :type :Thing)
+(defineSlot Commands :type :Thing)
 (defineSlot comparative-aspect :type :Comparative)
 (defineSlot comparative-thing :type :Thing)
 (defineSlot comparative-sense :type :Thing)
@@ -62,6 +64,8 @@
 (defineSlot containing :type :Thing)
 (defineSlot ContainsElement :type :Thing)
 (defineSlot content :type :Thing)
+(defineSlot controlling-entity :type :Entity)
+(defineSlot Controls :type :Thing)
 (defineSlot creationOf :type :Thing)
 
 
@@ -81,7 +85,9 @@
 (defineSlot deriveILO :type :Thing)
 (defineSlot describable-thing :type :Thing)
 (defineSlot determineILO :type :Thing)
+(defineSlot Determines :type :Thing)
 (defineSlot differees :type :Thing :min 2)
+(defineSLot differentiateBetweenILO :Thing)
 (defineSlot discussILO :type :Thing)
 (defineSlot discussible-thing :type :Thing)
 (defineSlot displaced-referent :type :ChemicalReferent)
@@ -95,6 +101,7 @@
 
 (defineSlot effect :type :Thing)
 (defineSlot effectOfOn :type :Thing)
+(defineSlot effectOfTo :type :Thing)
 (defineSlot effectOfClassOn :type :Thing)
 (defineSlot electrode :type :Electrode)
 (defineSlot electrode-potential :type :ElectrodePotential)
@@ -180,6 +187,7 @@
 (defineSlot instrument :type :Thing)
 (defineSlot Integrating :type :Thing)
 (defineSlot IntentionallyAct :type :Thing)
+(defineSlot Interacting-classes :type :Category :min 2)
 (defineSlot inRelationTo :type :Thing)
 (defineSlot inSystem :type :Thing)
 (defineSlot inTermsOf :type :Thing)
@@ -238,12 +246,14 @@
 (defineSlot object-of-action :type :Thing)
 (defineSlot object-of-calculation :type :Thing)
 (defineSlot object-of-influence :type :Thing)
+(defineSlot objectiveInfluenceToBringAbout :type :Thing)
 (defineSlot operateILO :type :Thing)
 (defineSlot oxidant :type :ChemicalReferent)
 
 ;;; P
 
 (defineSlot Perform :type :Thing)
+(defineSlot phenomena :type :Thing :min 2)
 (defineSlot physical-property :type :PhysicalProperty)
 (defineSlot physical-state :type :PhysicalState)
 (defineSlot change-of-state :type :ChangeOfState)
@@ -282,6 +292,7 @@
 (defineSlot reductant :type :ChemicalReferent)
 (defineSlot relate-source :type :Thing)
 (defineSlot reactive-entities :type :ChemicalSpecies :min 2)
+(defineSlot Regulates :type :Thing)
 (defineSlot relate-sink :type :Thing)
 (defineSlot RelateToILO :type :Thing)
 (defineSlot removal-source :type :Thing)
@@ -291,6 +302,7 @@
 
 ;;; S
 
+(defineSlot sequence :type :Thing)
 (defineSlot shape :type :Thing)
 (defineSlot sign :type :Thing)
 (defineSlot shape-property :type :Thing)
@@ -332,6 +344,7 @@
 (defineSlot thing-departed-from :type :Thing)
 (defineSlot thing-given :type :Thing)
 (defineSlot thing-in-presence :type :Thing)
+(defineSlot thing-with-sequence :type :Thing)
 (defineSlot thing-name :type :Name)
 (defineSlot thing-to-be-determined :type :Thing)
 (defineSlot thing-with-assumptions :type :Thing)
@@ -375,7 +388,9 @@
 
 ;;; Z
 
-
+(defineCaseframe 'ObjectiveInfluence '(objectiveInfluenceToBringAbout influencing-thing action)
+  :docstring "effect of [influencing-thing] to bring about [action]"
+  :fsymbols '(effectOfTo))
 
 
 

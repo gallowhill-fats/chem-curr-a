@@ -14,6 +14,8 @@
 (defineType :Rational (:Real))
 (defineType :Integer (:Rational))
 
+(defineType :NamedCardinalGroup (:Thing))
+
 ;;; collections
 
 (defineType :Collection (:Thing))
@@ -200,6 +202,12 @@
 
 (defineType :ChemicalTest (:Thing)) ; a type of process?
 (defineType :ChemicalTestResult (:Thing))
+
+;;; influence
+
+(defineType :Influence (:Thing))
+(defineType :ObjectiveInfluence (:Influence))
+
 
 
 
