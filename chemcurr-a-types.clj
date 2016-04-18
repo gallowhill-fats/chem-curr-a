@@ -13,6 +13,7 @@
 (defineType :Float (:Real))
 (defineType :Rational (:Real))
 (defineType :Integer (:Rational))
+(defineType :WholeNumber (:Integer))
 
 (defineType :NamedCardinalGroup (:Thing))
 
@@ -42,6 +43,8 @@
 (defineType :ComplexIon (:IonicChemicalReferent))
 (defineType :MetalIon (:IonicChemicalReferent))
 
+(defineType :ToxicThing (:ChemicalReferent))
+
 ;;; formulas
 
 (defineType :Formula (:Thing))
@@ -65,7 +68,7 @@
 
 (defineType :Change (:Thing))
 (defineType :ChemicalChange (:Change))
-(defineType :ChemicalReaction (:Thing))
+(defineType :ChemicalReaction (:Change))
 
 ;; organic reaction types
 (defineType :SubstitutionReaction (:ChemicalReaction))
@@ -101,6 +104,10 @@
 
 (defineType :Mechanism (:Thing))
 (defineType :MechanismOfReactionType (:Mechanism))
+
+;;; categorization
+
+(defineType :Categorization (:Proposition))
 
 
 ;;; chemical equation
@@ -153,9 +160,23 @@
 (defineType :PhysicalProcess (:Process))
 (defineType :ChemicalProcess (:Process))
 (defineType :Creation (:Process))
+(defineType :Separation (:Process))
+(defineType :ChemicalSeparation (:Separation))
+(defineType :PhysicalSeparation (:Separation))
+(defineType :Characterisation (:Process))
+
+
+;;; system
+
+(defineType :System (:Thing))
+
+;;; role in process or event
+
+(defineType :Role (:Thing))
 
 ;;; useOf
 
+(defineType :Use (:Thing))
 (defineType :UseAndCircumstance (:Thing))
 
 ;;; type of chemical reaction

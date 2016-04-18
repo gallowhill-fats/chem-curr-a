@@ -22,6 +22,7 @@
 (defineSlot BasedOn :type :Thing)
 (defineSlot Basing :type :Thing)
 (defineSlot beam-constituent :type :Thing)
+(defineSlot BeingNecessary :type :Thing)
 (defineSlot BuiltOn :type :Thing)
 
 ;;; C
@@ -34,6 +35,7 @@
 (defineSlot category :type :Category)
 (defineSlot Causation :type :Thing)
 (defineSlot cause :type :Thing)
+(defineSlot changeIn :type :Thing)
 (defineSlot chemical-change :type :ChemicalChange)
 (defineSlot chemical-entity :type :ChemicalEntity)
 (defineSlot chemical-equation :type :ChemicalEquation)
@@ -48,6 +50,7 @@
 (defineSlot circumstances-of-use :type :Thing)
 (defineSlot class-name :type :Name)
 (defineSlot class-quantity :type :Quantity)
+(defineSlot class-with-aspect :type :Category)
 (defineSlot class-with-behavior :type :Category)
 (defineSlot class-with-physical-properties :type :Category)
 (defineSlot class-with-properties :type :Category)
@@ -68,14 +71,13 @@
 (defineSlot Controls :type :Thing)
 (defineSlot creationOf :type :Thing)
 
-
-
 ;;; D
 
 (defineSlot deduceHowILO :type :Thing)
 (defineSlot deducible-entity :type :Entity)
 (defineSlot deduceILO :type :Thing)
 (defineSlot definable-thing :type :DefinableThing)
+(defineSlot dependent :type :Thing)
 (defineSlot dependent-entity :type :Entity)
 (defineSlot dependent-quantity :type :Quantity)
 (defineSlot departing-thing :type :Thing)
@@ -100,6 +102,9 @@
 ;;; E
 
 (defineSlot effect :type :Thing)
+(defineSlot Effect :type :Thing)
+(defineSlot effectOf :type :Thing)
+(defineSlot effectOfObjectiveInfluence :type :Thing)
 (defineSlot effectOfOn :type :Thing)
 (defineSlot effectOfTo :type :Thing)
 (defineSlot effectOfClassOn :type :Thing)
@@ -125,10 +130,12 @@
 (defineSlot explainTermILO :type :Thing)
 (defineSlot explainAndUseTermILO :type :Thing)
 
-
 ;;; F
 
 (defineSlot figureOutILO :type :Thing)
+(defineSlot final-category :type :Category)
+(defineSlot final-property :type :Property)
+(defineSlot final-system :type :System)
 (defineSlot formationOf :type :Thing)
 (defineSlot formula :type :ChemicalFormula)
 (defineSlot formula-type :type :ChemicalFormulaType)
@@ -158,8 +165,6 @@
 (defineSlot HasSubstanceName :type :Thing)
 (defineSlot HasSystematicName :type :Thing)
 (defineSlot hypothetical-event :type :Thing)
-
-
 
 ;;; I
 
@@ -196,9 +201,13 @@
 (defineSlot ionic-chemical-referent :type :IonicChemicalReferent)
 (defineSlot IsConsequenceOf :type :Thing)
 (defineSlot IsEffectOf :type :Thing)
+(defineSlot IsEffectOfObjectiveInfluence :Thing) 
+(defineSlot IsEssentialTo  :type :Thing)
 (defineSlot IsResultOf :type :Thing)
 (defineSlot IsMeansFor :type :Thing)
 (defineSlot isMethodFor :type :Thing)
+(defineSlot IsNecessaryFor :type :Thing)
+(defineSlot IsRequiredFor :type :Thing)
 (defineSlot isomer :type :Isomer)
 (defineSlot isomer-type :type :IsomerType)
 (defineSlot isotope :type :Thing)
@@ -212,7 +221,6 @@
 
 (defineSlot ligand :type :ChemicalReferent)
 (defineSlot locality-of-distribution :type :Thing)
-
 
 ;;; M
 
@@ -238,10 +246,12 @@
 (defineSlot nameable-class :type :Category)
 (defineSlot nameable-thing :type :NameableThing)
 (defineSlot non-physical-property :type :NonPhysicalProperty)
+(defineSlot number-of-atoms :type :WholeNumber)
 
 ;;; O
 
 (defineSlot objectiveInfluence :type :Thing)
+(defineSlot objective-influence :type :Thing)
 (defineSlot objectiveInfluenceOfClass :type :Thing)
 (defineSlot object-of-action :type :Thing)
 (defineSlot object-of-calculation :type :Thing)
@@ -260,6 +270,7 @@
 (defineSlot physical-process :type :PhysicalProcess)
 (defineSlot powerOfOver :type :Thing)
 (defineSlot powerOfClassOver :type :Thing)
+(defineSlot problem :type :Thing)
 (defineSlot process :type :Process)
 (defineSlot productionOf :type :Thing)
 (defineSlot products :type :Thing)
@@ -271,6 +282,7 @@
 
 ;;; Q
 
+(defineSlot phenomenon :type :Thing)
 (defineSlot qualification :type :Thing)
 (defineSlot quantity :type :Quantity)
 
@@ -297,13 +309,20 @@
 (defineSlot RelateToILO :type :Thing)
 (defineSlot removal-source :type :Thing)
 (defineSlot removand :type :Thing)
+(defineSlot renewed-thing :type :Thing)
 (defineSlot reportILO :type :Thing)
+(defineSlot requirement :type :Thing)
 (defineSlot resource :type :Thing)
+(defineSlot result-of :type :Thing)
+(defineSlot ResultsIn :type :Thing)
+(defineSlot role :type :Role)
 
 ;;; S
 
+(defineSlot separable-things :type :Thing)
 (defineSlot sequence :type :Thing)
 (defineSlot shape :type :Thing)
+(defineSlot showAwarenessOfILO :Thing)
 (defineSlot sign :type :Thing)
 (defineSlot shape-property :type :Thing)
 (defineSlot similar-things :type :Thing :min 2)
@@ -322,8 +341,7 @@
 (defineSlot substrate-class :type :ChemicalSubstanceClass)
 (defineSlot symbolic-property-element :type :Thing)
 (defineSlot symbolic-property-class :type :Category)
-(defineSlot systen :type :Thing)
-
+(defineSlot system :type :System)
 
 (defineSlot subclass :type Category :negadjust reduce
             :path (compose ! subclass (kstar (compose superclass- ! subclass)))
@@ -344,6 +362,7 @@
 (defineSlot thing-departed-from :type :Thing)
 (defineSlot thing-given :type :Thing)
 (defineSlot thing-in-presence :type :Thing)
+(defineSlot thing-with-aspect :type :Thing)
 (defineSlot thing-with-sequence :type :Thing)
 (defineSlot thing-name :type :Name)
 (defineSlot thing-to-be-determined :type :Thing)
@@ -358,14 +377,15 @@
 (defineSlot thing-with-presence :type :Thing)
 (defineSlot thing-with-property :type :Thing)
 (defineSlot thing-with-quantity :type :Thing)
+(defineSlot thing-with-role :type :Thing)
 (defineSlot thing-with-shape :type :Thing)
 (defineSlot things-with-property :type :Thing :min 2)
 (defineSlot things-with-trending-property :type :Thing :min 2)
 (defineSlot topic :type :Thing)
+(defineSlot toxic-thing :type :ToxicThing)
 (defineSlot trending-property :type :Thing)
 (defineSlot type-of-action :type :Thing)
 (defineSlot type-of-alteration :type :Thing)
-
 
 ;;; U
 
@@ -388,9 +408,8 @@
 
 ;;; Z
 
-(defineCaseframe 'ObjectiveInfluence '(objectiveInfluenceToBringAbout influencing-thing action)
-  :docstring "effect of [influencing-thing] to bring about [action]"
-  :fsymbols '(effectOfTo))
+
+
 
 
 

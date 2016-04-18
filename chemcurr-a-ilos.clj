@@ -21,9 +21,9 @@
  ;; 5. Write and/or construct balanced equations.
  (assert '(Isa (writeILO (every x (Isa x "chemical equation class*") (IsBalanced x))) "ILO class*"))
  ; 6. Perform calculations, including use of the mole concept, involving: (i) reacting masses (from formulae and equations) (ii) volumes of gases (e.g. in the burning of hydrocarbons) (iii) volumes and concentrations of solutions.
- (assert '(Isa (performILO (every x (Isa x Act) (Isa x "molarity calculation class*") (Involves x (dataOn "gas volume*")))) "ILO class*"))
- (assert '(Isa (performILO (every x (Isa x Act) (Isa x "molarity calculation class*") (Involves x (dataOn "reacting mass*")))) "ILO class*"))
- (assert '(Isa (performILO (every x (Isa x Act) (Isa x "molarity calculation class*") (Involves x (setof (dataOn "volume*") (dataOn "concentration*"))))) "ILO class*"))
+ (assert '(Isa (performILO (every x (Isa x Act) (Isa x "molarity calculation class*") (involves x (dataOn "gas volume*")))) "ILO class*"))
+ (assert '(Isa (performILO (every x (Isa x Act) (Isa x "molarity calculation class*") (involves x (dataOn "reacting mass*")))) "ILO class*"))
+ (assert '(Isa (performILO (every x (Isa x Act) (Isa x "molarity calculation class*") (involves x (setof (dataOn "volume*") (dataOn "concentration*"))))) "ILO class*"))
  ; 7. Deduce stoichiometric relationships from calculations such as those in the above.
  (assert '(Isa (deduceILO  (every x (Isa x "stoichiometric relationship class*"))) "ILO class*"))
  (assert '(ILOQualifier (deduceILO  (every x (Isa x "stoichiometric relationship class*"))) (given (dataOn "molarity calculation*"))))
@@ -140,10 +140,10 @@
  ; 29. Describe metallic bonding in terms of a lattice of positive ions surrounded by mobile electrons.
  (assert '(Isa (describeILO "metallic bonding*") "ILO class*"))
  ; 30. Describe, interpret and/or predict the effect of different types of bonding (ionic bonding, covalent bonding, hydrogen bonding, other intermolecular interactions, metallic bonding) on the physical properties of substances.
- (assert '(Isa (describeILO (effectOfOn "ionic bonding*"  (physicalPropertiesOfClass "chemical substance class*") )) "ILO class*"))
- (assert '(Isa (describeILO (effectOfOn "covalent bonding*"  (physicalPropertiesOfClass "chemical substance class*") )) "ILO class*"))
- (assert '(Isa (describeILO (effectOfOn "hydrogen bonding*" (physicalPropertiesOfClass "chemical substance class*") )) "ILO class*"))
- (assert '(Isa (describeILO (effectOfOn "metallic bonding*" (physicalPropertiesOfClass "chemical substance class*") )) "ILO class*"))
+ (assert '(Isa (describeILO (effectOfOn "ionic bonding*"  (physicalPropertiesOfClass "chemical substance class*"))) "ILO class*"))
+ (assert '(Isa (describeILO (effectOfOn "covalent bonding*"  (physicalPropertiesOfClass "chemical substance class*"))) "ILO class*"))
+ (assert '(Isa (describeILO (effectOfOn "hydrogen bonding*" (physicalPropertiesOfClass "chemical substance class*"))) "ILO class*"))
+ (assert '(Isa (describeILO (effectOfOn "metallic bonding*" (physicalPropertiesOfClass "chemical substance class*"))) "ILO class*"))
  ; 31. Deduce the type of bonding present from given information. ???
  ; re-phrase - Deduce the type of bonding in a substance from its physical properties
  (assert '(Isa (deduceILO (bondingIn (every x (Isa x "chemical substance class*") (given (physicalPropertiesOf x))) ))))
@@ -182,17 +182,17 @@
  ; 37c. Describe, in simple terms, the lattice structure of a giant molecular crystalline solid, as in silicon(IV) oxide and the graphite and diamond allotropes of carbon.
  ; 37d. Describe, in simple terms, the lattice structure of a hydrogen-bonded molecular crystalline solid, as in ice.
  ; 37e. Describe, in simple terms, the lattice structure of a metallic crystalline solid, as in copper.
- (assert '(Isa (describeILO (namedPhysicalPropertyOfClass (qualifiedTerm "lattice" "structure*") "ionic crystalline solid class*") "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOfClass (qualifiedTerm "lattice" "structure*") "molecular crystalline solid class*")) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOfClass (qualifiedTerm "lattice" "structure*") "giant molecular crystalline solid class*")) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOfClass (qualifiedTerm "lattice" "structure*") "hydrogen-bonded molecular crystalline solid class*")) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOfClass (qualifiedTerm "lattice" "structure*") "metallic crystalline solid class*")) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOfClass (qualifiedTerm "lattice" "structure*") (every x (Isa x "chemical substance class*") (Isa x "crystalline substance class*") (Isa x "ionic substance class*")))) "ILO class*"))
- (assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass (qualifiedTerm "lattice" "structure*") "molecular crystalline solid class*")) (setof (inManner "simple*") (asIn "iodine element*"))))
- (assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass (qualifiedTerm "lattice" "structure*") "giant molecular crystalline solid class*")) (setof (inManner "simple*") (asIn (setof "graphite*" "diamond*")))))
- (assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass (qualifiedTerm "lattice" "structure*") "hydrogen-bonded molecular crystalline solid class*")) (setof (inManner "simple*") (asIn "ice*" ))))
- (assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass (qualifiedTerm "lattice" "structure*") "metallic crystalline solid class*")) (setof (inManner "simple*") (asIn "copper element*"))))
-(assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass (qualifiedTerm "lattice" "structure*") (every x (Isa x "chemical substance class*") (Isa x "crystalline substance class*") (Isa x "ionic substance class*")))) (asIn "sodium chloride substance*")))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "ionic crystalline solid class*") "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "molecular crystalline solid class*")) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "giant molecular crystalline solid class*")) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "hydrogen-bonded molecular crystalline solid class*")) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "metallic crystalline solid class*")) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" (every x (Isa x "chemical substance class*") (Isa x "crystalline substance class*") (Isa x "ionic substance class*")))) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "molecular crystalline solid class*")) (setof (inManner "simple*") (asIn "iodine element*"))))
+ (assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "giant molecular crystalline solid class*")) (setof (inManner "simple*") (asIn (setof "graphite*" "diamond*")))))
+ (assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "hydrogen-bonded molecular crystalline solid class*")) (setof (inManner "simple*") (asIn "ice*" ))))
+ (assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "metallic crystalline solid class*")) (setof (inManner "simple*") (asIn "copper element*"))))
+(assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass "lattice structure*" (every x (Isa x "chemical substance class*") (Isa x "crystalline substance class*") (Isa x "ionic substance class*")))) (asIn "sodium chloride substance*")))
    ; 38. Explain the strength, high melting point and electrical insulating properties of ceramics in terms of their giant molecular structure.
  (assert '(Isa (explainILO (namedPhysicalPropertyOfClass "strength*" "ceramic class*") "ILO class*"))
  (assert '(Isa (explainILO (namedPhysicalPropertyOfClass (qualifiedTerm "high*" " melting point*") "ceramic class*") "ILO class*"))
@@ -1037,43 +1037,60 @@
   ; 233. Explain the chemistry of DNA mutation from provided data.
  (assert '(Isa (explainILO (chemistryOfProcess (namedProcessOf "mutation*" "DNA*"))) "ILO class*"))
  ;; 234. Discuss the genetic basis of disease (for example, sickle cell anaemia) in terms of altered base sequence, causing alterations in protein structure and function.
- (assert '(Isa (discussILO "genetic basis of disease*") "ILO class*"))
- (assert '(ILOQualifier (discussILO "genetic basis of disease*") (setof (forExample "sickle cell anaemia*") (inTermsOf "causing alterations in protein structure and function and altered base sequence*"))))
+ (assert '(Isa (discussILO (basisOf "genetic disease*")) "ILO class*"))
+ (assert '(ILOQualifier (discussILO (basisOf "genetic disease*")) (setof (forExample "sickle cell anaemia*") (inTermsOf (resultOf (changeIn "DNA base sequence*"))))))
    ; 235 Explain how modification to protein/enzyme primary structure can result in new structure and/or function.
- (assert '(Isa (explainHowILO (ResultsIn (modificationOf "protein primary structure*") "new structure and/or function*"))  "ILO class*"))
+ (assert '(Isa (explainHowILO (or (ResultsIn (modificationOf (every x (Isa x "protein primary structure class*"))) (some y (x) (Isa y "protein structure class*") (Isa y "new thing class*")))
+                                                  (ResultsIn (modificationOf (every x (Isa x "protein primary structure class*"))) (some y (x) (Isa y "protein function class*") (Isa y "new thing class*")))))  "ILO class*")) 
  ; 236. Outline, in terms of the hydrolysis of ATP to ADP + Pi , the provision of energy for the cell.
- (assert '(Isa (outlineILO "provision of energy for the cell*") "ILO class*"))
+ (assert '(Isa (outlineILO (sourceOf "energy*")) "ILO class*"))
+ (assert '(ILOQualifier (outlineILO (sourceOf "energy*")) (setof (inDomain "cell*" (inTermsOf (typedChemicalReactionOf "hydrolysis*" "atp*"))))))
  ; 237. Understand why some metals are essential to life and, given information and with reference to the chemistry of the core syllabus, be able to explain the chemistry involved (for example, iron in haemoglobin (section 9.5 (g) and 11.1(e) and (j)), sodium and potassium in transmission of nerve impulses (section 3, ion solvation and section 5, energetics), zinc as an enzyme cofactor (section 10.1, nucleophilic attack, 11.1(e))).
  (assert '(Isa (understandWhyILO (IsEssentialTo  (some y ()  (Isa y "metal class*")) "Life*")) "ILO class*"))
+ (assert '(ILOQualifier (understandWhyILO (IsEssentialTo  (some y ()  (Isa y "metal class*")) "Life*")) 
+                                 (withReferenceTo (setof (roleOfAs "zinc divalent cation*" "enzyme cofactor*")
+                                                                      (roleOfInProcess (setof "monovalent potassium cation*" "monovalent potassium cation*") (transmissionOf "nerve impulse*"))
+                                                                      (roleOfInSystem "iron element*" "haemoglobin molecule*") ))))
  ; 238. Recognise that some metals are toxic and discuss, in chemical terms, the problems associated with heavy metals in the environment entering the food chain, for example mercury (development of methods to detect and address these problems will be discussed in 11.2(i) and 11.3(f)).
- (assert '(Isa (recogniseThatILO (IsToxic (some x (Isa x "metal class*")) ) "ILO class*"))
- (assert '(Isa (discussILO (namedAspectOf "problem*" (entering (every x (Isa x "heavy metal class*") (IsIn x "environment*")) "food chain*"))) "ILO class*"))
+ (assert '(Isa (recogniseThatILO (IsToxic (some x () (Isa x "metal class*")) ) "ILO class*"))
+ (assert '(Isa (discussILO (namedAspectOf "problem*" (BecomesPartOf (every x (Isa x "heavy metal class*") (IsInSystem  x "environment*")) "food chain*"))) "ILO class*"))
  ; 239. Describe simply the process of electrophoresis and the effect of pH, using peptides and amino acids as examples (link to 11.1 (a)).
  (assert '(Isa (describeILO "electrophoresis*") "ILO class*"))
  (assert '(ILOQualifier  (describeILO "electrophoresis*") (inManner "simply*"))
  (assert '(Isa (describeILO (effectOfOn "pH*" "electrophoresis*")) "ILO class*"))
- (assert '(ILOQualifier (describeILO (effectOfOn "pH*" "electrophoresis*")) (usingAsExample )(setof "peptide class*" "amino acid class*")))
+ (assert '(ILOQualifier (describeILO (effectOfOn "pH*" "electrophoresis*"))  (usingAsExample (setof (some x () (Isa x "peptide class*"))  (some y () (Isa y "amino acid class*"))))))
  ; 240 . Explain, in simple terms, the technique of DNA fingerprinting and its applications in forensic science, archaeology and medicine.
- (assert '(Isa (describeILO "DNA fingerprinting*") "ILO class*"))
+ (assert '(Isa (explainILO "DNA fingerprinting*") "ILO class*"))
  (assert '(ILOQualifier (describeILO "DNA fingerprinting*") (inManner "simply*")))
- (assert '(Isa (describeILO (namedAspectOf "applications*" "DNA fingerprinting*")) "ILO class*"))
+ (assert '(Isa (describeILO (namedAspectOf "application*" "DNA fingerprinting*")) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (namedAspectOf "application*" "DNA fingerprinting*")) (inDomain (setof "forensic science*" "archeology*" "medicine*"))))
  ; 241. Describe the importance to modern medicine, and the challenges, of separating and characterising the proteins in cells (link to 11.1).
- (assert '(Isa (describeILO (namedAspectOf "importance*" (separationOf "cell protein class*") (characterisationOf "cell protein class*"))) "ILO class*"))
- (assert '(ILOQualifier (describeILO (namedAspectOf "importance*" (separationOf "cell protein class*") (characterisationOf "cell protein class*"))) (inDomain "medicine*")))
+ (assert '(Isa (describeILO (namedAspectOf "importance*" (separationOf (every x (Isa x "protein class*") (IsInSystem x "cell*"))))) "ILO class*"))
+ (assert '(Isa (describeILO (namedAspectOf "importance*" (characterisationOf (every x (Isa x "protein class*") (IsInSystem x "cell*"))  "ILO class*"))
+ (assert '(ILOQualifier (describeILO (namedAspectOf "importance*" (separationOf (every x (Isa x "protein class*") (IsInSystem x "cell*")))))  (inDomain "medicine*")))
+ (assert '(ILOQualifier (describeILO (namedAspectOf "importance*" (separationOf (every x (Isa x "protein class*") (IsInSystem x "cell*")))))  (inDomain "medicine*")))
  ; 242. Outline in simple terms the principles of nuclear magnetic resonance in 1H and be able to interpret simple NMR spectra, using chemical shift values, splitting patterns and the effect of adding D2O to a sample.
- (assert '(Isa (outlineILO (namedAspectOf "principle class*" "proton nuclear magnetic resonace*")) "ILO class*"))
+ (assert '(Isa (outlineILO (namedAspectOf "basis*" "proton nuclear magnetic resonance*")) "ILO class*"))
+ (assert '(Isa (interpretILO (every x (Isa x "proton nmr spectrum class*") (Isa x "simple things class*") 
+                   (using (setof (some y (x) (Isa y "chemical shift value class*"))
+                                       (some z (x) (Isa z "splitting pattern class*"))
+                                       "D20 shakeup*")))) "ILO class*"))
  ; 243. Show awareness of the use of NMR and X-ray crystallography in determining the structure of macromolecules and in understanding their function (link to 11.1 (c) and 11.2 (c))
- (assert '(Isa (showAwarenessOfILO (useOfFor "NMR spectroscopy*" (determinationOf (aspectOf "structure*""macromolecule class*")))) "ILO class*"))
- (assert '(Isa (showAwarenessOfILO (useOfFor "x-ray crystallography*" (determinationOf (Aspectof "structure*" "macromolecule class*")))) "ILO class*"))
- (assert '(Isa (showAwarenessOfILO (useOfFor "NMR spectroscopy*" (understandingOf (aspectOf function* "macromolecule class*")))) "ILO class*"))
- (assert '(Isa (showAwarenessOfILO (useOfFor "x-ray crystallography*" (understandingOf (aspectOf function* "macromolecule class*")))) "ILO class*"))
+ (assert '(Isa (showAwarenessOfILO (useOfFor "NMR spectroscopy*" (determinationOf (namedAspectOfClass "structure*""macromolecule class*")))) "ILO class*"))
+ (assert '(Isa (showAwarenessOfILO (useOfFor "x-ray crystallography*" (determinationOf (namedAspectOfClass "structure*" "macromolecule class*")))) "ILO class*"))
+ (assert '(Isa (showAwarenessOfILO (useOfFor "NMR spectroscopy*" (understandingOf (namedAspectOfClass "function*" "macromolecule class*")))) "ILO class*"))
+ (assert '(Isa (showAwarenessOfILO (useOfFor "x-ray crystallography*" (understandingOf (namedAspectOfClass "function*" "macromolecule class*")))) "ILO class*"))
  ; 244. State what is meant by partition coefficient and calculate a partition coefficient for a system in which the solute is in the same molecular state in the two solvents
  (assert '(Isa (defineILO "partition coefficient*") "ILO class*"))
+ (assert '(Isa (calculateILO (every x (Isa x "partition coefficient class*") (inSystem (some y (x) (Isa y "two-solvent system class*") (Isa y "simple class*"))))) "ILO class*"))
  ;; 245. Understand qualitatively paper, high performance liquid, thin layer and gas/liquid chromatography in terms of adsorption and/or partition and be able to interpret data from these techniques.
  (assert '(Isa {understandILO (setof "paper chromatography*" "high performance liquid chromatography*" "thin layer chromatography*" "gas/liquid chromatography*")) "ILO class*"))
- (assert '(ILOQualifier {understandILO (setof "paper chromatography*" "high performance liquid chromatography*" "thin layer chromatography*" "gas/liquid chromatography*")) (inManner qualitatively*)))
+ (assert '(ILOQualifier {understandILO (setof "paper chromatography*" "high performance liquid chromatography*" "thin layer chromatography*" "gas/liquid chromatography*")) (inManner qualitatively*) (inTermsOf (setof "adsorption*" "partition*"))))
   ; 246. Explain the concept of mass spectroscopy, deduce the number of carbon atoms in a compound using the M+1 peak and the presence of bromine and chlorine atoms using the M+2 peak and suggest the identity of molecules formed by simple fragmentation in a given mass spectrum (see also core syllabus, section 1 (c) and (d)).
  (assert '(Isa (explainILO "mass spectrometry*") "ILO class*"))
+ (assert '(Isa (deduceILO (every x (Isa x "whole number class*") (HasNumberOfAtomsOfType (some y (x)  (Isa y "molecular entity class*")) x "carbon element*") (using (some z (y)  (Isa z "nmr spectrum class*"))) (using "M+1 peak method*")))"ILO class*"))
+ (assert '(Isa (deduceILO (every x (Isa x "whole number class*") (HasNumberOfAtomsOfType (some y (x)  (Isa y "molecular entity class*")) x "bromine element*") (using (some z (y)  (Isa z "nmr spectrum class*"))) (using "M+2 peak method*")))"ILO class*"))
+ (assert '(Isa (deduceILO (every x (Isa x "whole number class*") (HasNumberOfAtomsOfType (some y (x)  (Isa y "molecular entity class*")) x "chlorine element*") (using (some z (y)  (Isa z "nmr spectrum class*"))) (using "M+2 peak method*")))"ILO class*"))
  ; 247. Draw conclusions given appropriate information and data from environmental monitoring (for example, PCBs in the atmosphere, isotopic ratios in ice cores).
  ;;; poor ILO
  ; 248. Discuss the challenges of drug design and explain in simple terms how molecules may be identified and developed to overcome these problems
@@ -1086,13 +1103,13 @@
  (assert '(Isa (discussILO (propertiesOfClass "condensation polymer substance class*"))))
  (assert '(Isa (discussILO (namedPropertyOfClass "structure*" "condensation polymer substance class*"))))
    ; 251. Discuss how the presence of side-chains and intermolecular forces affect the properties of polymeric materials (for example, spider silk).
- (assert '(Isa (effectOfOn (every x (Isa x "intermolecular force class*")) (propertiesOfClass "polymer substance class*") "ILO class*"))
+ (assert '(Isa (effectOfOn (every x (Isa x "intermolecular force class*")) (propertiesOfClass "polymer substance class*")) "ILO class*"))
  ; 252. Show awareness of nanotechnology and, given information and data, be able to discuss the chemistry involved with reference to the core syllabus.
  (assert '(Isa (showAwarenessOfILO "nanotechnology*") "ILO class*"))
  ;;; discussion part not clearly expressed
   ; 253. Discuss how a knowledge of chemistry can be used to overcome environmental problems (for example, ground water contamination, oil spillage, CFCs).
- (assert '(Isa (discussILO (useOfTo chemistry* (solveProblems "environment*"))) "ILO class*")) ;;?
+ (assert '(Isa (discussILO (useOfTo "chemistry*" (solveProblem (every x (Isa x "problem class*") (IsInDomain x "environment*"))))) "ILO class*")) ;;?
  ; 254. Discuss how a knowledge of chemistry can be used to extend the life of existing resources, to identify alternative resources and to improve the efficiency of energy production and use.
- (assert '(Isa (discussILO (useOfTo "chemistry*" (alterPropertyOf "extend"* "life*" "natural resource class*"))) "ILO class*")) ;; Use namedPropertyOf for property
- (assert '(Isa (discussILO (useOfTo "chemistry*" (alterPropertyOf "improve"* "efficiency*" (productionOf energy*)))) "ILO class*")) ;; Use namedPropertyOf for property
- (assert '(Isa (discussILO (useOfTo "chemistry*" (alterPropertyOf "improve"* "efficiency*" (useOf energy*)))) "ILO class*")) ;; Use namedPropertyOf for property
+ (assert '(Isa (discussILO (useOfTo "chemistry*" (alterPropertyOfClass "extend*" "life*" "natural resource class*"))) "ILO class*")) ;; Use namedPropertyOf for property
+ (assert '(Isa (discussILO (useOfTo "chemistry*" (alterPropertyOf "improve*" "efficiency*" (productionOf "energy*")))) "ILO class*")) ;; Use namedPropertyOf for property
+ (assert '(Isa (discussILO (useOfTo "chemistry*" (alterPropertyOf "improve*" "efficiency*" (useOf "energy*")))) "ILO class*")) ;; Use namedPropertyOf for property

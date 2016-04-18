@@ -14,6 +14,9 @@
 (defineCaseframe 'Act '('alterPropertyOf type-of-alteration property thing-with-property)
   :docstring "make [type-of-alteration] to [property] of [thing-with-property]")
 
+(defineCaseframe 'Act '('alterPropertyOf type-of-alteration property class-with-property)
+  :docstring "make [type-of-alteration] to [property] of [class-with-property]")
+
 (defineCaseframe 'AnionicChemicalEntity '('anionOf ionic-chemical-referent)
   :docstring "anion of [ionic-chemical-referent]")
 
@@ -25,6 +28,14 @@
 (defineCaseframe 'Thing '('assumptionsOf thing-with-assumptions)
   :docstring "assumptions of  [thing-with-assumptions]")
 
+; FrameNet: Distinctiveness
+(defineCaseframe 'Aspect '('namedAspectOf aspect thing-with-aspect)
+  :docstring "[aspect]  of  [thing-with-aspect]")
+
+; FrameNet: Distinctiveness
+(defineCaseframe 'Aspect '('namedAspectOfClass aspect class-with-aspect)
+  :docstring "[aspect]  of  [class-with-aspect]")
+
 ;;; B
 
 (defineCaseframe 'Proposition '(Basing entity-with-base base)
@@ -33,6 +44,23 @@
 
 (defineCaseframe 'Thing '('beamOf beam-constituent)
   :docstring "a beam of [beam-constituent]s")
+
+; FrameNet: Becoming
+(defineCaseframe 'Proposition '('BecomesCategorised entity final-category)
+  :docstring "[entity] becomes member of [final-category]")
+
+; FrameNet: Becoming
+(defineCaseframe 'Proposition '('BecomesPartOf  entity final-system)
+  :docstring "[entity] becomes part of [final-system]")
+
+; FrameNet: Becoming
+(defineCaseframe 'Proposition '('BecomesPropertied entity final-property)
+  :docstring "[entity] acquires [final-property]")
+
+; FrameNet: Being_necessary
+(defineCaseframe 'Proposition '(BeingNecessary requirement dependent)
+  :docstring "[requirement] is necessary for [dependent]"
+  :fsymbols '(IsEssentialTo IsNecessaryFor IsRequiredFor))
 
 (defineCaseframe 'Thing '('behaviorOf thing-with-behavior)
   :docstring "behavior of [thing-with-behavior]")
@@ -68,8 +96,13 @@
   :docstring "[cause] is cause of [effect] "
   :fsymbols '(IsConsequenceOf IsEffectOf IsResultOf GivesRiseTo))
 
-(defineCaseframe 'Thing '('changeIn thing-with-change)
-  :docstring "change in [thing-with-change]")
+; FrameNet: Cause_change, Undergo_change
+(defineCaseframe 'Change '(change thing-with-change)
+  :docstring "change in [thing-with-change]"
+  :fsymbols '(changeIn modificationOf))
+
+(defineCaseframe 'Characterisation '('characterisationOf chracterisable-thing)
+  :docstring "characterisation of [characterisable-thing]")
 
 (defineCaseframe 'ChemicalReaction '('chemicalReactionReactantsProducts reactants products)
   :docstring "chemical reaction involving [reactants] and [products]")
@@ -176,24 +209,15 @@
 
 ;;; E
 
+(defineCaseframe 'Thing '(effectOfObjectiveInfluence objective-influence)
+  :docstring "effect of [objective-influence]"
+  :fsymbols '(effectOf resultOf))
+
 (defineCaseframe 'Thing '('electronicConfigurationOf chemical-entity)
   :docstring "electronic configuration of [chemical entity]")
 
 (defineCaseframe 'EliminationReaction '('eliminationOfFromSubstrate eliminate substrate)
   :docstring "elimination of [eliminate] from [substrate]") 
-
-; FrameNet: Objective_influence
-(defineCaseframe 'ObjectiveInfluence '(objectiveInfluence influencing-thing object-of-influence)
-  :docstring "effect of [influencing-thing] on [object-of-influence]"
-  :fsymbols '(effectOfOn influenceOfOn impactOfOn powerOfOver))
-
-(defineCaseframe 'ObjectiveInfluence '(objectiveInfluenceOfClass influencing-class object-of-influence)
-  :docstring "effect of [influencing-class] on [object-of-influence]"
-  :fsymbols '(effectOfClassOn influenceOfClassOn impactOfClassOn powerOfClassOver))
-
-(defineCaseframe 'ObjectiveInfluence '(objectiveInfluenceToBringAbout influencing-thing act)
-  :docstring "effect of [influencing-thing] to bring about [act]"
-  :fsymbols '(effectOfTo))
 
 (defineCaseframe 'ILO '(actions entity-with-explanation)
     :docstring "explain the [entity-with-explanation]"
@@ -280,6 +304,9 @@
               HasGeneralIupacName HasRetainedIupacName HasTrivialName HasAtomName 
               HasElementName HasMoleculeName HasSubstanceName HasOtherName))
 
+(defineCaseframe 'Proposition '('HasNumberOfAtomsOfType chemical-referent number-of-atoms element)
+  :docstring "[chemical-referent] has [number-of-atoms] of type [element]")
+
 (defineCaseframe 'Proposition '(HasSection ))
 
 (defineCaseframe 'Proposition '('HasSymbolicPropertyElement symbolic-property-class thing-with-property symbolic-property-element)
@@ -330,6 +357,10 @@
   :docstring "in [domain]"
   :fsymbols '(inTermsOf inRelationTo withReferenceTo withRegardsTo withParticularReferenceTo asAppliedTo))
 
+; related to FrameNet: Categorization
+(defineCaseframe 'Categorization '('IsInDomain entity domain)
+  :docstring "[entity] is in [domain]")
+
 (defineCaseframe 'ILO '(actions act)
   :docstring "intentionally carry out [act]"
   :fsymbols '(intentionallyActILO actILO carryOutILO performILO doILO executeILO))
@@ -346,8 +377,15 @@
 (defineCaseframe 'Proposition '('IsBalanced chemical-equation)
   :docstring "[chemical-equation] is balanced")
 
+(defineCaseframe 'Proposition '(IsEffectOfObjectiveInfluence effect)
+  :docstring "is [effect]"
+  :fsymbols '(Effect ResultsIn))
+
 (defineCaseframe 'Proposition '('IsFunctionalGroupTestFor chemical-test tested-for-class)
   :docstring "[chemical-test] is chemical test for members of [tested-for-class]")
+
+(defineCaseframe 'Proposition '('IsInSystem thing system)
+  :docstring "[thing] is in [system]")
 
 (defineCaseframe 'Proposition  '('IsIsotopeOf isotope element)
   :docstring "[isotope] is an isotope of [element]")
@@ -357,6 +395,9 @@
 
 (defineCaseframe 'Proposition  '('IsSubsequenceOf sequence thing-with-sequence)
   :docstring "[sequence] is subsequence of [thing-with-sequence]")
+
+(defineCaseframe 'Proposition  '('IsToxic toxic-thing)
+  :docstring "[toxic-thing] is toxic")
 
 ;;; J
 
@@ -431,11 +472,30 @@
 (defineCaseframe 'Quantity '('namedQuantityOfClass  class-quantity  class)
   :docstring "[class-quantity] of [class]")
 
+(defineCaseframe 'Thing '('new renewed-thing)
+  :docstring "new version of [renewed-thing]")
+
 ;;; O
 
+; FrameNet: Objective_influence
 (defineCaseframe 'Thing '(objectiveInfluence influencing-entity dependent-entity)
   :docstring "effect of [influencing-entity] on [dependent-entity]"
   :fsymbols '(effectOfOn))
+
+; FrameNet: Objective_influence
+(defineCaseframe 'ObjectiveInfluence '(objectiveInfluence influencing-thing object-of-influence)
+  :docstring "effect of [influencing-thing] on [object-of-influence]"
+  :fsymbols '(effectOfOn influenceOfOn impactOfOn powerOfOver))
+
+; FrameNet: Objective_influence
+(defineCaseframe 'ObjectiveInfluence '(objectiveInfluenceOfClass influencing-class object-of-influence)
+  :docstring "effect of [influencing-class] on [object-of-influence]"
+  :fsymbols '(effectOfClassOn influenceOfClassOn impactOfClassOn powerOfClassOver))
+
+; FrameNet: Objective_influence
+(defineCaseframe 'ObjectiveInfluence '(objectiveInfluenceToBringAbout influencing-thing act)
+  :docstring "effect of [influencing-thing] to bring about [act]"
+  :fsymbols '(effectOfTo))
 
 (defineCaseframe 'ChemicalReaction '('oxidationReactionOfToWith reactant product reagent)
   :docstring "oxidation of [reactant] to [product] with [reagent]")
@@ -524,13 +584,33 @@
 (defineCaseframe 'ChemicalTestResult '('chemicalTestResult chemical-test)
   :docstring "result of [chemical-test]")
 
+(defineCaseframe 'Role '('roleOfAs thing-with-role role)
+  :docstring "[role] of [thing-with-role]")
+
+(defineCaseframe 'Role '('roleOfInProcess thing-with-role process)
+  :docstring "role of [thing-with-role] in [process]")
+
+(defineCaseframe 'Role '('roleOfInSystem thing-with-role system)
+  :docstring "role of [thing-with-role] in [system]")
+
 ;;; S
+
+(defineCaseframe 'Separation '('separationOf separatable-things)
+  :docstring "separation of [separatable-things]")
 
 (defineCaseframe 'Thing '('shapeOf thing-with-shape)
   :docstring "shape of a [thing-with-shape]")
 
+(defineCaseframe 'ILO '(actions phenomenon)
+  :docstring "show awareness of [phenomenon]"
+  :fsymbols '(showAwarenessOfILO))
+
 (defineCaseframe 'SmallerComparative '('smallerComparative property)
   :docstring "smaller comparative of [property]")
+
+; FrameNet: Resolve_problem
+(defineCaseframe 'Act '('solveProblem problem)
+  :docstring "solve [problem]")
 
 (defineCaseframe 'ILO '(actions topic)
   :docstring "summarise [topic]"
@@ -578,16 +658,21 @@
   :docstring "use [instrument]"
   :fsymbols '(useILO applyILO employILO operateILO))
 
-(defineCaseframe 'Thing '('useOf instrument)
+; FrameNet: Using
+(defineCaseframe 'Use '('useOf instrument)
   :docstring "use of [instrument]")
 
-(defineCaseframe 'Thing '('useAndCircumstanceOf instrument circumstances-of-use)
-  :docstring "use of [instrument] with [circumstances-of-use]")
+; FrameNet: Using
+(defineCaseframe 'Use '('useOfFor instrument purpose)
+  :docstring "use of [instrument] for ")
 
-(defineCaseframe 'Thing '('usesOfClass class)
-  :docstring "uses of [class]")
+; FrameNet: Using
+(defineCaseframe 'Use '('useAndCircumstanceOf instrument circumstances-of-use)
+  :docstring "use of [instrument] in  [circumstances-of-use]")
 
-
+; FrameNet: Using
+(defineCaseframe 'Use '('useOfClass class)
+  :docstring "use of [class]")
 
 ;;; V
 
