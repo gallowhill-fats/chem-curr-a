@@ -14,9 +14,6 @@
 (defineCaseframe 'Act '('alterPropertyOf type-of-alteration property thing-with-property)
   :docstring "make [type-of-alteration] to [property] of [thing-with-property]")
 
-(defineCaseframe 'Act '('alterPropertyOf type-of-alteration property class-with-property)
-  :docstring "make [type-of-alteration] to [property] of [class-with-property]")
-
 (defineCaseframe 'AnionicChemicalEntity '('anionOf ionic-chemical-referent)
   :docstring "anion of [ionic-chemical-referent]")
 
@@ -101,7 +98,7 @@
   :docstring "change in [thing-with-change]"
   :fsymbols '(changeIn modificationOf))
 
-(defineCaseframe 'Characterisation '('characterisationOf chracterisable-thing)
+(defineCaseframe 'Characterisation '('characterisationOf characterisable-thing)
   :docstring "characterisation of [characterisable-thing]")
 
 (defineCaseframe 'ChemicalReaction '('chemicalReactionReactantsProducts reactants products)
@@ -110,11 +107,8 @@
 (defineCaseframe 'ChemicalReaction '('chemicalReactionByReactants reactants)
   :docstring "chemical reaction involving [reactants]")
 
-(defineCaseframe 'ChemicalSubstance '('chemicalSubstanceInPhysicalState chemical-substance physical-state)
-  :docstring "[chemical-substance] in [physical-state]")
-
-(defineCaseframe 'Chemistry '('chemistryOf substance)
-  :docstring "chemistry of [substance]")
+(defineCaseframe 'Chemistry '('chemistryOf chemical-substance)
+  :docstring "chemistry of [chemical-substance]")
 
 (defineCaseframe 'Chemistry '('chemistryOfClass substance-class)
   :docstring "chemistry of [substance-class]")
@@ -186,9 +180,9 @@
   :fsymbols '(differentiateBetweenILO))
 
 ; from FrameNet frame: Topic
-(defineCaseframe 'ILO '(action discussible-thing)
+(defineCaseframe 'ILO '(actions discussible-thing)
   :docstring "discuss [discussible-thing]"
-  :fsymbol '(discussILO))
+  :fsymbols '(discussILO))
 
 (defineCaseframe 'ChemicalReaction '('displacementOfFrom displaced-referent substrate-referent)
   :docstring "displacement reaction of [displaced-referent] from [substrate-referent]")
@@ -196,9 +190,9 @@
 (defineCaseframe 'ChemicalReaction '('displacementOfFromClass displaced-referent substrate-class)
   :docstring "displacement reaction of [displaced-referent] from [substrate-class]")
 
-(defineCaseframe 'ILO '(action distinguishable-things)
+(defineCaseframe 'ILO '(actions distinguishable-things)
   :docstring "distinguish between [distinguishable-things]"
-  :fsymbol '(distinguishBetweenILO))
+  :fsymbols '(distinguishBetweenILO))
 
 (defineCaseframe 'Thing '('distributionOf thing-with-distribution)
   :docstring "distribution of [thing-with-distribution]")
@@ -255,8 +249,8 @@
 (defineCaseframe 'Proposition '('HasClassName nameable-class class-name)
   :docstring "[namable-class] has [class-name]")
 
-(defineCaseframe 'Proposition '('HasElectrodePotential electrode electrode-potential
-  :docstring "[electrode] has [electrode-potential]"))
+(defineCaseframe 'Proposition '('HasElectrodePotential electrode electrode-potential)
+  :docstring "[electrode] has [electrode-potential]")
 
 (defineCaseframe 'Proposition '('HasElectronicConfiguration chemical-referent electronic-configuration)
   :docstring "[chemical-referent] has [electronic-configuration]")
@@ -279,13 +273,10 @@
 (defineCaseframe 'Proposition '('HasReactionCondition chemical-reaction reaction-condition)
   :docstring "[chemical-reaction] has [reaction-condition]")
 
-(defineCaseframe 'Proposition '('HasTypedFormula formula-type chemical-referent formula)
-  :docstring "[chemical-referent] has [formula] of type [formula-type]")
-
 (defineCaseframe 'Proposition '('HasTypedIsomer isomer-type chemical-referent isomer)
   :docstring "[chemical-referent] has [isomer] of type [isomer-type]")
 
-(defineCasefreme 'Proposition '('HasHalfReaction redox-reaction half-reaction)
+(defineCaseframe 'Proposition '('HasHalfReaction redox-reaction half-reaction)
   :docstring "[redox-reaction] has [half-reaction]")
 
 (defineCaseframe 'Proposition '('HasLigand complex-ion ligand)
@@ -306,8 +297,6 @@
 
 (defineCaseframe 'Proposition '('HasNumberOfAtomsOfType chemical-referent number-of-atoms element)
   :docstring "[chemical-referent] has [number-of-atoms] of type [element]")
-
-(defineCaseframe 'Proposition '(HasSection ))
 
 (defineCaseframe 'Proposition '('HasSymbolicPropertyElement symbolic-property-class thing-with-property symbolic-property-element)
   :docstring "[thing-with-property] has [symbolic-property-element] in [symbolic-property-class]")
@@ -330,7 +319,7 @@
 ;;; I
 
 ; from FrameNet frame: Categorization
-(defineCaseframe 'ILO '(actions categorizable-thing)
+(defineCaseframe 'ILO '(actions categorisable-thing)
     :docstring "identify [identifiable-thing]"
     :fsymbols '(identifyILO interpretILO))
 
@@ -419,9 +408,6 @@
 (defineCaseframe 'Proposition '(Means method goal)
   :docstring "[method] is method for achieving [goal]"
   :fsymbols '(IsMethodFor IsMeansFor))
-
-(defineCaseframe 'MechanismOfReactionType '('mechanismOfReactionType reaction-type)
-  :docstring "mechanism of [reaction-type]")
 
 (defineCaseframe 'MechanismOfReactionType '('mechanismOfReactionType reaction-type)
   :docstring "mechanism of [reaction-type]")
@@ -541,13 +527,10 @@
 
 ;;; R
 
-(defineCaseframe 'ChemicalReaction '(reactionBetween reactants)
-  :docstring "chemical reaction between [reactants]")
-
-(defineCasefame 'ReactionType '('reactionTypeOfClass reaction-type substance-class)
+(defineCaseframe 'ReactionType '('reactionTypeOfClass reaction-type substance-class)
   :docstring "[reaction-type] reaction of [substance-class]")
 
-(defineCasefame 'ChemicalReaction '('reactionTypeOnSubstrate reaction-type substrate)
+(defineCaseframe 'ChemicalReaction '('reactionTypeOnSubstrate reaction-type substrate)
   :docstring "reaction of [reaction-type] on [substrate]")
 
 (defineCaseframe 'Thing '('reactivityOf reactive-entity)
@@ -577,7 +560,7 @@
 (defineCaseframe 'Removal '('removalOfFrom removand removal-source)
   :docstring "removal of [removand] from [removal-source]")
 
-(defineCaseframe 'ILO '(action relate-source relate-sink)
+(defineCaseframe 'ILO '(actions relate-source relate-sink)
   :docstring "relate [relate-source] to [relate-sink]"
   :fsymbols '(relateToILO))
 
@@ -595,8 +578,8 @@
 
 ;;; S
 
-(defineCaseframe 'Separation '('separationOf separatable-things)
-  :docstring "separation of [separatable-things]")
+(defineCaseframe 'Separation '('separationOf separable-things)
+  :docstring "separation of [separable-things]")
 
 (defineCaseframe 'Thing '('shapeOf thing-with-shape)
   :docstring "shape of a [thing-with-shape]")
@@ -629,10 +612,10 @@
 (defineCaseframe 'Proposition '('SubstanceInPhysicalState chemical-substance  physical-state)
   :docstring "[chemical-substance] is in [physical-state]")
 
-(defineState 'ChemicalSubstance '('substanceInPhysicalState chemical-substance physical-state)
+(defineCaseframe 'ChemicalSubstance '('substanceInPhysicalState chemical-substance physical-state)
   :docstring "[chemical-substance] in [physical-state]")
 
-(defineCaseframe 'SubstitutionChemicalReaction '('substitutionReaction substrate entering-group leaving-group)
+(defineCaseframe 'SubstitutionReaction '('substitutionReaction substrate entering-group leaving-group)
   :docstring "substitution reaction of [substrate] in which [leaving-group] is substituted by [entering-group]")
 
 ;;; T
@@ -650,9 +633,6 @@
   :docstring "[reaction-type] reaction of [reactant-class]")
 
 ;;; U
-
-(defineCaseframe 'Thing '('underlyingAssumptionsOf thing-with-assumptions)
-  :docstring "underlying assumptions of [thing-with-assumptions]")
 
 (defineCaseframe 'ILO '(actions instrument)
   :docstring "use [instrument]"
@@ -676,10 +656,10 @@
 
 ;;; V
 
-(defineCaseframe 'Thing '('variationIn quantity)
+(defineCaseframe 'Variation '('variationIn quantity)
  :docstring "variation in  [quantity]")
 
-(defineCaseframe 'Thing '('variationInPhysicalPropertyOf property thing-wth-property)
+(defineCaseframe 'Thing '('variationInPhysicalPropertyOf property thing-with-property)
  :docstring "variation in  [property] of [thing-with-property]")
 
 (defineCaseframe 'Thing '('variationInPhysicalPropertyOfClass property class)

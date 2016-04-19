@@ -4,6 +4,7 @@
 (load-file "src/chemcurr-a/chemcurr-a-paths.clj")
 (load-file "src/chemcurr-a/chemcurr-a-interrog-functions.clj")
 (load-file "src/chemcurr-a/chemcurr-a-caseframes/chemcurr-a-caseframes.clj")
+(load-file "src/chemcurr-a/chemcurr-a-ilos.clj")
 (load-file "src/chemcurr-a/chemcurr-a-referents/chemcurr-a-organic-referents/chemcurr-a-organic-class-hierarchy.clj")
 (load-file "src/chemcurr-a/chemcurr-a-referents/chemcurr-a-organic-referents/chemcurr-a-alkanes.clj")
 (load-file "src/chemcurr-a/chemcurr-a-referents/chemcurr-a-organic-referents/chemcurr-a-alkenes.clj")

@@ -1,3 +1,7 @@
+;;; Chemistry
+
+(defineType :Chemistry (:Thing))
+
 ;;; analysing
 
 (defineType :Analysable (:Thing))
@@ -29,7 +33,7 @@
 (defineType :CationicChemicalReferent (:IonicChemicalReferent))
 (defineType :ChemicalEntity (:ChemicalReferent))
 (defineType :ChemicalSubstance (:ChemicalReferent))
-(defineType :ChemicalSubstanecClass (:Category))
+(defineType :ChemicalSubstanceClass (:Category))
 (defineType :PureChemicalSubstance (:ChemicalSubstance))
 (defineType :ChemicalSpecies (:PureChemicalSubstance))
 (defineType :Element (:ChemicalSpecies))
@@ -44,6 +48,10 @@
 (defineType :MetalIon (:IonicChemicalReferent))
 
 (defineType :ToxicThing (:ChemicalReferent))
+
+(defineType :PolymerSubstance (:ChemicalSubstance))
+
+(defineType :ChemicalReagent (:ChemicalSubstance))
 
 ;;; formulas
 
@@ -124,6 +132,8 @@
 
 (defineType :ILO (:Act))
 
+(defineType :Qualifier (:Thing))
+
 ;;; naming
 (defineType :Name (:Thing))
 (defineType :NameableThing (:Thing))
@@ -137,6 +147,7 @@
 (defineType :PhysicalProperties (:Category))
 (defineType :Properties (:Category))
 (defineType :Property (:Thing))
+(defineType :DerivedProperty (:Property))
 (defineType :Quantity (:DefinableThing))
 (defineType :UnitedQuantity (:Quantity))
 
@@ -218,6 +229,10 @@
 
 (defineType :Difference (:Thing))
 (defineType :Similarity (:Thing))
+
+(defineType :Variation (:Thing))
+
+
 
 ;;; tests
 
