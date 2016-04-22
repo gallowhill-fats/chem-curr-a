@@ -4,6 +4,7 @@
 (defineSlot Act :type :Thing)
 (defineSlot act :type :Act)
 (defineSlot added-substance :type :ChemicalSubstance)
+(defineSlot analogue :type :Thing)
 (defineSlot analysandum :type :Thing)
 (defineSlot analyseILO :type :Thing)
 (defineSlot applyILO :type :Thing)
@@ -14,6 +15,7 @@
 (defineSlot arriving-thing :type :Thing)
 (defineSlot ascertainILO :type :Thing)
 (defineSlot asExample :type :Thing)
+(defineSlot asIn :type :Thing)
 (defineSlot aspect :type :Aspect)
 (defineSlot assumption-set :type :Thing)
 
@@ -63,6 +65,7 @@
 (defineSlot class-with-property :type :Category)
 (defineSlot classifyILO :type :Thing)
 (defineSlot clause :type :Thing)
+(defineSlot column-in-periodic-table :type :PeriodicTableColumn)
 (defineSlot Commands :type :Thing)
 (defineSlot comparative-aspect :type :Comparative)
 (defineSlot comparative-thing :type :Thing)
@@ -79,10 +82,12 @@
 (defineSlot Controls :type :Thing)
 (defineSlot creating :type :Thing)
 (defineSlot creationOf :type :Thing)
+(defineSlot criterion :type :Thing)
 
 
 ;;; D
 
+(defineSlot dataOn :type :Thing)
 (defineSlot deduceHowILO :type :Thing)
 (defineSlot deducible-entity :type :Entity)
 (defineSlot deduceILO :type :Thing)
@@ -202,12 +207,16 @@
 (defineSlot influencing-thing :type :Thing)
 (defineSlot influenceOfOn :type :Thing)
 (defineSlot influenceOfClassOn :type :Thing)
+(defineSlot information :type :Thing)
+(defineSlot informationOn :type :Thing)
 (defineSlot Incorporating :type :Thing)
 (defineSlot instrument :type :Thing)
 (defineSlot Integrating :type :Thing)
 (defineSlot interactant-classes :type :Category)
 (defineSlot IntentionallyAct :type :Thing)
 (defineSlot Interacting-classes :type :Category :min 2)
+(defineSlot ionisation-ordinal :type :Ordinal)
+(defineSlot ionisation-energy-value :type :UnitedValue)
 (defineSlot inRelationTo :type :Thing)
 (defineSlot inSystem :type :Thing)
 (defineSlot inTermsOf :type :Thing)
@@ -242,6 +251,7 @@
 ;;; M
 
 (defineSlot magnitude :type :Number)
+(defineSlot manner :type :Manner)
 (defineSlot manufacturand :type :Thing)
 (defineSlot matchILO :type :Thing)
 (defineSlot Means :type :Thing)
@@ -288,8 +298,10 @@
 (defineSlot change-of-state :type :ChangeOfState)
 (defineSlot physical-process :type :PhysicalProcess)
 (defineSlot polymer :type :PolymerSubstance)
+(defineSlot position-in-periodic-table :type :PeriodicTablePosition)
 (defineSlot powerOfOver :type :Thing)
 (defineSlot powerOfClassOver :type :Thing)
+(defineSlot present-thing :type :Thing)
 (defineSlot problem :type :Thing)
 (defineSlot process :type :Process)
 (defineSlot processed-thing :type :Thing)
@@ -298,6 +310,7 @@
 (defineSlot products :type :ChemicalSubstance)
 (defineSlot property :type :Property)
 (defineSlot proposeILO :type :Thing)
+(defineSlot proposition :type :Proposition)
 (defineSlot pure-chemical-substance-name :type :Name)
 (defineSlot purpose :type :Thing)
 (defineSlot puzzleOutILO :type :Thing)
@@ -340,6 +353,7 @@
 (defineSlot result-of :type :Thing)
 (defineSlot ResultsIn :type :Thing)
 (defineSlot role :type :Role)
+(defineSlot row-in-periodic-table :type :PeriodicTableRow)
 
 ;;; S
 
@@ -418,6 +432,8 @@
 ;;; U
 
 ;;; V
+
+(defineSlot value :type :Number)
 
 ;;; W
 

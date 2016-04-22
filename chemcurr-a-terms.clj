@@ -36,7 +36,7 @@
 (defineTerm "electrophile*" ':DefinableThing)
 (defineTerm "element*" ':DefinableThing)
 (defineTerm "elimination reaction*" ':DefinableThing)
-(defineTerm "energy*" ':DefinableThing)
+(defineTerm "energy*" ':UnitedQuantity)
 ;;;F
 (defineTerm "f orbital*" ':DefinableThing)
 (defineTerm "Faraday constant*" ':FundamentalConstant)

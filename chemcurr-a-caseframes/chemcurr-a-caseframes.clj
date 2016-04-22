@@ -19,19 +19,13 @@
 
 ; FrameNet: derived from Arriving
 (defineCaseframe 'Thing '(arrival arriving-thing thing-arrived-at)
-  :docstring "arrival of [arriving-thing] at  [thing-arived-at]"
+  :docstring "arrival of [arriving-thing] at [thing-arived-at]"
   :fsymbols '(approachOfTo arrivalAt))
 
 (defineCaseframe 'Thing '('assumptionsOf thing-with-assumptions)
   :docstring "assumptions of  [thing-with-assumptions]")
 
-; FrameNet: Distinctiveness
-(defineCaseframe 'Aspect '('namedAspectOf aspect thing-with-aspect)
-  :docstring "[aspect]  of  [thing-with-aspect]")
 
-; FrameNet: Distinctiveness
-(defineCaseframe 'Aspect '('namedAspectOfClass aspect class-with-aspect)
-  :docstring "[aspect]  of  [class-with-aspect]")
 
 ;;; B
 
@@ -65,8 +59,11 @@
 (defineCaseframe 'Thing '('behaviorOfClass class-with-behavior)
   :docstring "behavior of [class-with-behavior]")
 
-(defineCaseframe 'Bonding '('bondingIn chemical-referent)
-  :docstring "bonding in [chemical-referent]")
+(defineCaseframe 'Bonding '('bondingIn substance)
+  :docstring "bonding in [substance]")
+
+(defineCaseframe 'Qualifier '('byMeans means)
+  :docstring "by [means] ")
 
 (defineCaseframe 'Means '('byReactionOf reactants)
   :docstring "by reaction of [reactants]")
@@ -119,9 +116,6 @@
 (defineCaseframe 'Proposition '(Circumstancing entity-with-circumstances circumstances)
     :docstring "[entity-with-circumstances] takes place in [circumstances]"
     :fsymbols '(InCircumstances InSystem InChemicalSystem))
-
-(defineCaseframe 'Thing '('propertiesOfClass class-with-properties)
-  :docstring "properties of [class-with-properties]")
 
 (defineCaseframe 'Comparative '('comparativeOf comparative-sense  comparative-thing)
   :docstring "comparative of [comparative-thing] in [comparative-sense]")
@@ -215,7 +209,11 @@
 
 (defineCaseframe 'ILO '(actions entity-with-explanation)
     :docstring "explain the [entity-with-explanation]"
-    :fsymbols '(explain explainWhyILO accountForILO explainTermILO explainAndUseTermILO))
+    :fsymbols '(explainILO explainWhyILO accountForILO explainTermILO explainAndUseTermILO))
+
+(defineCaseframe 'Qualifier '(examples example)
+  :docstring "with [example]"
+  :fsymbols '(withExample asExample includingExample asIn analogousTo))
 
 ;;; F
 
@@ -267,6 +265,9 @@
 (defineCaseframe 'Proposition '('HasGenericMemberName class generic-member-name)
   :docstring "[class] has generic member [generic-member-name]")
 
+(defineCaseframe 'Proposition '('HasIonisationEnergy chemical-referent ionisation-ordinal ionisation-energy-value)
+  :docstring "[chemical-referent] has [ionisation-ordinal] ionisation energy of [ionisation-energy-value]")
+
 (defineCaseframe 'Proposition '('HasIsomer chemical-referent isomer)
   :docstring "[chemical-referent] has [isomer]")
 
@@ -298,6 +299,15 @@
 (defineCaseframe 'Proposition '('HasNumberOfAtomsOfType chemical-referent number-of-atoms element)
   :docstring "[chemical-referent] has [number-of-atoms] of type [element]")
 
+(defineCaseframe 'Proposition '('HasPositionInPeriodicTable element position-in-periodic-table)
+  :docstring "[element] has [position-in-periodic-table]")
+
+(defineCaseframe 'Proposition '('HasColumnInPeriodicTable element column-in-periodic-table)
+  :docstring "[element] has [column-in-periodic-table]")
+
+(defineCaseframe 'Proposition '('HasRowInPeriodicTable element row-in-periodic-table)
+  :docstring "[element] has [row-in-periodic-table]")
+
 (defineCaseframe 'Proposition '('HasSymbolicPropertyElement symbolic-property-class thing-with-property symbolic-property-element)
   :docstring "[thing-with-property] has [symbolic-property-element] in [symbolic-property-class]")
 
@@ -316,6 +326,9 @@
 (defineCaseframe 'Proposition '('HasTypedFormula formula-type chemical-referent chemical-formula)
   :docstring  "[chemical-formula] is [formula-type] of [chemical-referent]")
 
+(defineCaseframe 'Proposition '('HasValue quantity value)
+     :docstring "[quantity] has [value]")
+
 ;;; I
 
 ; from FrameNet frame: Categorization
@@ -329,10 +342,12 @@
 (defineCaseframe 'Proposition  '('ILOQualifier ilo qualification)
   :docstring "[ilo] is qualified by [qualification]")
 
-; from FrameNet frame: Categorization
-(defineCaseframe 'ILO '(actions interpretable-thing)
-    :docstring "interpret [interpretable-thing]"
-    :fsymbols '(interpretILO))
+(defineCaseframe 'Qualifier '('inCase proposition)
+  :docstring "in the case of [proposition]")
+
+(defineCaseframe 'Information '(information topic)
+  :docstring "information on [topic]"
+  :fsymbols '(dataOn informationOn))
 
 (defineCaseframe 'Modifier '(including inclusion-set)
   :docstring "including [inclusion-set]"
@@ -345,6 +360,20 @@
 (defineCaseframe 'Qualifier '(inDomain domain)
   :docstring "in [domain]"
   :fsymbols '(inTermsOf inRelationTo withReferenceTo withRegardsTo withParticularReferenceTo asAppliedTo))
+
+(defineCaseframe 'Qualifier '('inManner manner)
+  :docstring "in [manner]")
+
+(defineCaseframe 'Qualifier '('inSystem system)
+  :docstring "in [system]")
+
+; from FrameNet frame: Categorization
+(defineCaseframe 'ILO '(actions interpretable-thing)
+    :docstring "interpret [interpretable-thing]"
+    :fsymbols '(interpretILO))
+
+(defineCaseframe 'Proposition '('IsAnalogousTo entity analogue)
+  :docstring "[entity] is analogous to [analogue]")
 
 ; related to FrameNet: Categorization
 (defineCaseframe 'Categorization '('IsInDomain entity domain)
@@ -359,6 +388,9 @@
 
 (defineCaseframe 'Thing '('interactionBetweenClass interactant-classes)
   :docstring "interaction between [interactant-classes]")
+
+(defineCaseframe 'Qualifier '('inPresenceOf present-thing)
+  :docstring "in presence of [present-thing]")
 
 (defineCaseframe 'Proposition '('Involves involving-entity involvate)
   :docstring "[involving-entity] involves [involvate]")
@@ -425,13 +457,18 @@
 
 ;;; N
 
-(defineCaseframe 'Aspect '('namedAspectOfClass aspect class)
-  :docstring "[aspect] of [class]")
+; FrameNet: Distinctiveness
+(defineCaseframe 'Aspect '('namedAspectOf aspect thing-with-aspect)
+  :docstring "[aspect]  of  [thing-with-aspect]")
+
+; FrameNet: Distinctiveness
+(defineCaseframe 'Aspect '('namedAspectOfClass aspect class-with-aspect)
+  :docstring "[aspect]  of  [class-with-aspect]")
 
 (defineCaseframe 'Thing '('namedChemicalChangeOfClass chemical-change class)
   :docstring "[chemical-change] of [class]")
 
-(defineCaseframe 'Thing '('namedChemicalPropertyOf chemical-property thing-with-property)
+(defineCaseframe 'ChemicalProperty '('namedChemicalPropertyOf chemical-property thing-with-property)
   :docstring "[chemical-property] of [thing-with-property]")
 
 (defineCaseframe 'Property '('namedDerivedPropertyOf derived-property thing-with-property)
@@ -497,13 +534,10 @@
 (defineCaseframe 'Act '('performActionOn type-of-action object-of-action)
   :docstring "perform [type-of-action] on [object-of-action]")
 
-(defineCaseframe 'PhysicalProperties '('physicalPropertiesOf thing-with-property)
-  :docstring "physical properties of [thing-with-property]")
+(defineCaseframe 'PhysicalProperties '('physicalPropertiesOf substance)
+  :docstring "physical properties of [substance]")
 
-(defineCaseframe 'PhysicalProperties '('physicalPropertiesOfClass class)
-  :docstring "physical properties of [class]")
-
-(defineCaseframe 'Thing '('physicalPropertiesOfClass class-with-physical-properties)
+(defineCaseframe 'PhysicalProperties '('physicalPropertiesOfClass class-with-physical-properties)
   :docstring "physical properties of [class-with-physical-properties]")
 
 ; FrameNet: Predicting
@@ -514,8 +548,8 @@
 (defineCaseframe 'Properties '('propertiesOf thing-with-property)
   :docstring "properties of [thing-with-property]")
 
-(defineCaseframe 'Properties '('propertiesOfClass class)
-  :docstring "properties of [class]")
+(defineCaseframe 'Properties '('propertiesOfClass class-with-properties)
+  :docstring "properties of [class-with-properties]")
 
 (defineCaseframe 'Thing '('purpose purpose)
   :docstring "the [purpose]")
@@ -623,16 +657,19 @@
 (defineCaseframe 'ChemicalTest '('testForClass tested-for-class)
   :docstring "chemical test for members of [tested-for-class]")
 
-(defineCaseframe 'Thing '('trendInPropertyOf trending-property things-with-trending-property)
-  :docstring "trend in [trending-property] of [things-with-trending-property]")
+(defineCaseframe 'Trend '('trendIn trending-property)
+  :docstring "trend in [trending-property]")
 
-(defineCaseframe 'ChemicalReaction '('typedChemicalReactionOfClass reaction-type substance)
-  :docstring "[reaction-type] reaction of [substance]")
+(defineCaseframe 'Trend '('trendInPropertyOf trending-property things-with-trending-property)
+  :docstring "trend in [trending-property] of [things-with-trending-property]")
 
 (defineCaseframe 'ChemicalReaction '('typedChemicalReactionOfClass reaction-type reactant-class)
   :docstring "[reaction-type] reaction of [reactant-class]")
 
 ;;; U
+
+(defineCaseframe 'Qualifier '('underCondition reaction-condition)
+  :docstring "under [reaction-condition]")
 
 (defineCaseframe 'ILO '(actions instrument)
   :docstring "use [instrument]"
@@ -654,6 +691,10 @@
 (defineCaseframe 'Use '('useOfClass class)
   :docstring "use of [class]")
 
+; FrameNet: Using
+(defineCaseframe 'UsingQualifier '('using instrument)
+  :docstring "using [instrument]")
+
 ;;; V
 
 (defineCaseframe 'Variation '('variationIn quantity)
@@ -670,12 +711,8 @@
 
 ;;; W
 
-(defineCaseframe 'Qualifier '(examples example)
-  :docstring "with [example]"
-  :fsymbols '(withExample asExample includingExample))
-
-(defineCaseframe 'Qualifier '('byMeans means)
-  :docstring "by [means] ")
+(defineCaseframe 'CriterionQualifier '('withCriterion criterion)
+  :docstring "with [criterion]")
 
 (defineCaseframe 'ILO '(actions writable)
     :docstring "write [writable]"

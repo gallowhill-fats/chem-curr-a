@@ -10,6 +10,15 @@
 ;;; bonding
 
 (defineType :Bonding (:Thing))
+(defineType :ChemicalBond (:Thing))
+(defineType :CovalentBond (:ChemicalBond))
+
+;;; intermolecular forces
+
+(defineType :Force (:Thing))
+(defineType :IntermolecularForce (:Force))
+
+
 
 ;;; number
 (defineType :Number (:Thing))
@@ -20,6 +29,8 @@
 (defineType :WholeNumber (:Integer))
 
 (defineType :NamedCardinalGroup (:Thing))
+
+(defineType :Ordinal (:Thing))
 
 ;;; collections
 
@@ -33,6 +44,7 @@
 (defineType :CationicChemicalReferent (:IonicChemicalReferent))
 (defineType :ChemicalEntity (:ChemicalReferent))
 (defineType :ChemicalSubstance (:ChemicalReferent))
+(defineType :OxideSubstance (:ChemicalSubstance))
 (defineType :ChemicalSubstanceClass (:Category))
 (defineType :PureChemicalSubstance (:ChemicalSubstance))
 (defineType :ChemicalSpecies (:PureChemicalSubstance))
@@ -52,6 +64,14 @@
 (defineType :PolymerSubstance (:ChemicalSubstance))
 
 (defineType :ChemicalReagent (:ChemicalSubstance))
+
+;;; periodic table
+
+(defineType :PeriodicTablePosition (:Thing))
+(defineType :PeriodicTableColumn (:Thing))
+(defineType :PeriodicTableRow (:Thing))
+
+(defineType :NobleGas (:Element))
 
 ;;; formulas
 
@@ -133,6 +153,8 @@
 (defineType :ILO (:Act))
 
 (defineType :Qualifier (:Thing))
+(defineType :CriterionQualifier (:Qualifier))
+(defineType :UsingQualifier (:Qualifier))
 
 ;;; naming
 (defineType :Name (:Thing))
@@ -146,12 +168,19 @@
 (defineType :PhysicalProperty (:Property))
 (defineType :PhysicalProperties (:Category))
 (defineType :Properties (:Category))
-(defineType :Property (:Thing))
+(defineType :Property (:DefinableThing))
 (defineType :DerivedProperty (:Property))
-(defineType :Quantity (:DefinableThing))
+(defineType :Quantity (:Property))
 (defineType :UnitedQuantity (:Quantity))
 
+(defineType :Value (:Number))
+(defineType :UnitedValue (:Thing))
+
 (defineType :EValue (:UnitedQuantity))
+
+;;; trend
+
+(defineType :Trend (:Thing))
 
 ;;; action types
 
@@ -179,7 +208,7 @@
 
 ;;; system
 
-(defineType :System (:Thing))
+(defineType :System (:DefinableThing))
 
 ;;; role in process or event
 
@@ -193,6 +222,10 @@
 ;;; type of chemical reaction
 
 (defineType :ReactionType (:Thing))
+
+;;; manner 
+
+(defineType :Manner (:Thing))
 
 ;;; means
 
@@ -243,6 +276,10 @@
 
 (defineType :Influence (:Thing))
 (defineType :ObjectiveInfluence (:Influence))
+
+;;; information
+
+(defineType :Information (:Thing))
 
 
 

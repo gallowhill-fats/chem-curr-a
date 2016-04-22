@@ -17,13 +17,13 @@
 ;; 4. Calculate the relative atomic mass of an element given the relative abundances of its isotopes, or its mass spectrum.
  (assert '(Isa (calculateILO (valueOf (namedQuantityOfClass "relative atomic mass*" "element class*")))  "ILO class*"))
  (assert '(ILOQualifier (calculateILO (valueOf (namedQuantityOfClass "relative atomic mass*" "element class*"))) (given (dataOn "isotopic relative abundance*"))))
-(assert '(ILOQualifier (calculateILO (valueOf (namedQuantityOfClass "relative atomic mass*" "element class*"))) (given "mass spectrum*")))
+ (assert '(ILOQualifier (calculateILO (valueOf (namedQuantityOfClass "relative atomic mass*" "element class*"))) (given "mass spectrum*")))
  ;; 5. Write and/or construct balanced equations.
  (assert '(Isa (writeILO (every x (Isa x "chemical equation class*") (IsBalanced x))) "ILO class*"))
  ; 6. Perform calculations, including use of the mole concept, involving: (i) reacting masses (from formulae and equations) (ii) volumes of gases (e.g. in the burning of hydrocarbons) (iii) volumes and concentrations of solutions.
- (assert '(Isa (performILO (every x (Isa x Act) (Isa x "molarity calculation class*") (involves x (dataOn "gas volume*")))) "ILO class*"))
- (assert '(Isa (performILO (every x (Isa x Act) (Isa x "molarity calculation class*") (involves x (dataOn "reacting mass*")))) "ILO class*"))
- (assert '(Isa (performILO (every x (Isa x Act) (Isa x "molarity calculation class*") (involves x (setof (dataOn "volume*") (dataOn "concentration*"))))) "ILO class*"))
+ (assert '(Isa (performILO (every x (Isa x Act) (Isa x "molarity calculation class*") (Involves x (dataOn "gas volume*")))) "ILO class*"))
+ (assert '(Isa (performILO (every x (Isa x Act) (Isa x "molarity calculation class*") (Involves x (dataOn "reacting mass*")))) "ILO class*"))
+ (assert '(Isa (performILO (every x (Isa x Act) (Isa x "molarity calculation class*") (Involves x (setof (dataOn "volume*") (dataOn "concentration*"))))) "ILO class*"))
  ; 7. Deduce stoichiometric relationships from calculations such as those in the above.
  (assert '(Isa (deduceILO  (every x (Isa x "stoichiometric relationship class*"))) "ILO class*"))
  (assert '(ILOQualifier (deduceILO  (every x (Isa x "stoichiometric relationship class*"))) (given (dataOn "molarity calculation*"))))
@@ -33,11 +33,11 @@
  (assert '(Isa (identifyILO "neutron*") "ILO class*"))
  (assert '(ILOQualifier (identifyILO "neutron*") (inTermsOf (setof "relative mass*" "relative charge*"))))
  (assert '(Isa (identifyILO "electron*") "ILO class*"))
- (assert '(ILOQualifier  (identifyILO "electron*"))) (inTermsOf (setof "relative mass*" "relative charge*"))))
+ (assert '(ILOQualifier  (identifyILO "electron*") (inTermsOf (setof "relative mass*" "relative charge*"))))
  (assert '(Isa (describeILO "proton*") "ILO class*"))
- (assert '(ILOQualifier (describeILO "proton*"))) (inTermsOf (setof "relative mass*" "relative charge*"))))
+ (assert '(ILOQualifier (describeILO "proton*") (inTermsOf (setof "relative mass*" "relative charge*"))))
  (assert '(Isa (describeILO "neutron*") "ILO class*"))
- (assert '(ILOQualifier (describeILO "neutron*"))) (inTermsOf (setof "relative mass*" "relative charge*"))))
+ (assert '(ILOQualifier (describeILO "neutron*") (inTermsOf (setof "relative mass*" "relative charge*"))))
  (assert '(Isa (describeILO "electron*") "ILO class*"))
  (assert '(ILOQualifier (describeILO "electron*") (inTermsOf (setof "relative mass*" "relative charge*"))))
  ;; 9. Deduce the behaviour of beams of protons, neutrons and electrons in electric fields.
@@ -70,73 +70,73 @@
  ; REWRITE: 12a. define the terms proton number and nucleon number.
  (assert '(Isa (defineILO "proton number*") "ILO class*"))
  (assert '(Isa (defineILO "nucleon number*") "ILO class*"))
- (assert '(Isa (distinguishBetweenILO (every x (IsotopeOf x (every y (Isa y "element class*"))))) "ILO class*"))
- (assert '(ILOQualifier (distinguishBetweenILO (every x (IsotopeOf x y) (every y (Isa y "element class*" )))) (withCriterion "neutron number*")))
+ (assert '(Isa (distinguishBetweenILO (every x (Isa x "isotope class*") (IsIsotopeOf x (some y (x) (Isa y "element class*"))))) "ILO class*"))
+ (assert '(ILOQualifier (distinguishBetweenILO (every x (Isa x "isotope class*") (IsIsotopeOf x (some y (x) (Isa y "element class*"))))) (withCriterion "neutron number*")))
  ; 13. Describe the number and relative energies of the s, p and d orbitals for the principal quantum numbers 1, 2 and 3 and also the 4s and 4p orbitals.
  (assert '(Isa (describeILO (cardinalityOf (setof "s orbital*" "p orbital*" "d orbital*") )) "ILO class*"))
  (assert '(ILOQualifier (describeILO (cardinalityOf (setof "s orbital*" "p orbital*" "d orbital*") )) (inCase (HasValue "principal quantum number*" (setof 1 2 3)))))
- (assert '(Isa (describeILO (relativeEnergyOf (setof "s orbital*" "p orbital*" "d orbital*") )) "ILO class*"))
- (assert '(ILOQualifier (describeILO (relativeEnergyOf (setof "s orbital*" "p orbital*" "d orbital*") )) (inCase (HasValue "principal quantum number*" (setof 1 2 3)))))
+ (assert '(Isa (describeILO (namedRelativePropertyOf "energy*" (setof "s orbital*" "p orbital*" "d orbital*") )) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (namedRelativePropertyOf "energy*" (setof "s orbital*" "p orbital*" "d orbital*") )) (inCase (HasValue "principal quantum number*" (setof 1 2 3)))))
  ;; 14. Describe the shapes of s and p orbitals and d orbitals.
  (assert '(Isa (describeILO (shapeOf "s orbital*")) "ILO class*"))
  (assert '(Isa (describeILO (shapeOf "p orbital*")) "ILO class*"))
  (assert '(Isa (describeILO (shapeOf "d-orbital*")) "ILO class*"))
  ; 15. State the electronic configuration of atoms and ions given the proton number (and charge), using the convention 1s22s22p6 etc.
- (assert '(Isa (stateILO (every x (Isa x "atomic electronic configuration class*"))))  "ILO class*"))
- (assert '(ILOQualifier (stateILO (every x (Isa x "atomic electronic configuration class*"))) (given "proton number*"))))
- (assert '(Isa (stateILO (every x (Isa x "atomic ion electronic configuration class*"))))  "ILO class*"))
- (assert '(ILOQualifier (stateILO (every x (Isa x "atomic ion electronic configuration class*"))) (given (setof "proton number*" "ionic charge*")))))
+ (assert '(Isa (stateILO (every x (Isa x Thing) (Isa x "atomic electronic configuration class*")))  "ILO class*"))
+ (assert '(ILOQualifier (stateILO (every x (Isa x Thing) (Isa x "atomic electronic configuration class*"))) (given "proton number*")))
+ (assert '(Isa (stateILO (every x (Isa x Thing) (Isa x "atomic ion electronic configuration class*")))  "ILO class*"))
+ (assert '(ILOQualifier (stateILO (every x (Isa x Thing) (Isa x "atomic ion electronic configuration class*"))) (given (setof "proton number*" "ionic charge*"))))
  ;; 16. Explain and use the terms ionization energy and electron affinity (ii) explain the factors influencing the ionization energies of elements (iii) explain the trends in ionization energies across a Period and down a Group of the Periodic Table (see also Section 9).
  (assert '(Isa (defineILO "ionization energy*") "ILO class*"))
  (assert '(Isa (defineILO "electron affinity*") "ILO class*"))
  ;; 17. Deduce the electronic configurations of elements from successive ionisation energy data.
- (assert '(Isa (deduceILO (every x (Isa x "electronic configuration class*") (HasElectronicConfiguration x y) (Isa y "element class*"))) "ILO class*"))
- (assert '(ILOQualifier (deduceILO (every x (Isa x "electronic configuration class*") (HasElectronicConfiguration x y) (Isa y "element class*"))) (using "successive ionization energy data*")))
+ (assert '(Isa (deduceILO (every x (Isa x "electronic configuration class*") (HasElectronicConfiguration x (some y (x) (Isa y "element class*"))))) "ILO class*"))
+ (assert '(ILOQualifier (deduceILO (every x (Isa x "electronic configuration class*") (HasElectronicConfiguration x (some y (x) (Isa y "element class*"))))) (using "successive ionization energy data*")))
  ; 18. Interpret successive ionisation energy data of an element in terms of the position of that element within the Periodic Table.
- (assert '(Isa (InterpretILO (trendIn (every z (HasIonisationEnergy x y z)) (some x (Isa y "element class*")) (every z (Isa z "ordinality class*")) )) "ILO class*"))
- (assert '(ILOQualifier  (interpretILO (trendIn (every z (HasIonisationEnergy x y z)) (some x (Isa y "element class*")) (every z (Isa z "ordinal class*")))) (inTermsOf (some p (HasPositionInPeriodicTable y p)))))
+ (assert '(Isa (interpretILO (trendIn (every z (HasIonisationEnergy (some x (z) (Isa x "element class*")) (some y (z) (Isa "ordinal class*")) z)))) "ILO class*"))
+ (assert '(ILOQualifier (interpretILO (trendIn (every z (HasIonisationEnergy (some x (z) (Isa x "element class*")) (some y (z) (Isa "ordinal class*")) z))))  (inTermsOf (some p (y) (HasPositionInPeriodicTable y p)))))
  ;; 19. Describe ionic (electrovalent) bonding, as in sodium chloride and magnesium oxide, including the use of 'dot-and-cross' diagrams.
  (assert '(Isa (describeILO "ionic bonding*") "ILO class*"))
- (assert '(ILOQualifier (describeILO "ionic bonding*") (setof (asIn (setof "sodium chloride*" "magnesium oxide*")) (including (useOf "dot-and-cross diagram*")))))
+ (assert '(ILOQualifier (describeILO "ionic bonding*") (setof (asIn (setof "sodium chloride ionic substance*" "magnesium oxide ionic substance*")) (including (useOf "dot-and-cross diagram*")))))
   ; 20. Describe, including the use of 'dot-and-cross' diagrams, (i) covalent bonding, as in hydrogen, oxygen, chlorine, hydrogen chloride, carbon dioxide, methane, ethene (ii) co-ordinate (dative covalent) bonding, as in the formation of the ammonium ion and in the Al 2Cl 6 molecule.
  (assert '(Isa (describeILO "covalent bonding*") "ILO class*"))
- (assert '(ILOQualifier (describeILO "covalent bonding*")  including (useOf (every x (Isa x "dot-and-cross diagram class*")))))
+ (assert '(ILOQualifier (describeILO "covalent bonding*")  (including (useOf (every x (Isa x Thing) (Isa x "dot-and-cross diagram class*"))))))
  (assert '(ILOQualifier (describeILO "covalent bonding*") (asIn (setof "hydrogen molecular entity*" "oxygen molecular entity*" "chlorine molecular entity*" "hydrogen chloride molecular entity*" "carbon dioxide molecular entity*" "methane molecular entity*" "ethene molecular entity*"))))
  (assert '(Isa (describeILO "coordinate bonding*") "ILO class*"))
  (assert '(ILOQualifier (describeILO "coordinate bonding*")  (setof (including (useOf "dot-and-cross diagram*")) (asIn (setof "ammonium ion molecular cationic entity*" "aluminium chloride molecular entity*")))))
   ; 21. Explain the shapes of, and bond angles in, molecules by using the qualitative model of electron-pair repulsion (including lone pairs), using as simple examples: BF3 (trigonal), CO2 (linear), CH4 (tetrahedral), NH3 (pyramidal), H2O (non-linear), SF6 (octahedral), PF5 (trigonal bipyramid)).
- (assert '(Isa (explainILO (shapeOf (every x (Isa x "molecular entity class*"))) "ILO class*"))
- (assert '(ILOQualifier (explainILO (shapeOf (every x (Isa x "molecular entity class*"))) (withExamples (setof "boron trifluoride molecular entity*" "carbon dioxide molecular entity*" "methane molecular entity*" "ammonia molecular entity*" "water molecular entity*" "sulfur hexafluoride molecular entity*" "phosphorus pentachloride molecular entity*")))))
+ (assert '(Isa (explainILO (shapeOf (every x (Isa x MolecularChemicalEntity) (Isa x "molecular entity class*")))) "ILO class*"))
+ (assert '(ILOQualifier (explainILO (shapeOf (every x (Isa x MolecularChemicalEntity) (Isa x "molecular entity class*")))) (withExample (setof "boron trifluoride molecular entity*" "carbon dioxide molecular entity*" "methane molecular entity*" "ammonia molecular entity*" "water molecular entity*" "sulfur hexafluoride molecular entity*" "phosphorus pentachloride molecular entity*"))))
  ; 22. Describe covalent bonding in terms of orbital overlap, giving σ and π bonds, including the concept of hybridisation to form sp, sp2 and sp3 orbitals
  (assert '(Isa (describeILO "covalent bonding*") "ILO class*"))
  (assert '(ILOQualifier (describeILO "covalent bonding*") (inTermsOf "orbital overlap*")))
  ; 23. Explain the shape of, and bond angles in, the ethane, ethene and benzene molecules in terms of σ and π bonds (see also Section 10.1).
- (assert '(Isa (explainILO (shapeOf (setof "ethane molecule" "ethene molecule" "benzene molecule" ) ) "ILO class*"))
- (assert '(ILOQualifier (explainILO (shapeOf (setof "ethane molecule" "ethene molecule" "benzene molecule")) (including "bond angles")))
+ (assert '(Isa (explainILO (shapeOf (setof "ethane molecule" "ethene molecule" "benzene molecule" ))) "ILO class*"))
+ (assert '(ILOQualifier (explainILO (shapeOf (setof "ethane molecule" "ethene molecule" "benzene molecule"))) (including "bond angles")))
  ; The above is not right wrt "bond angles"
  ; 24. Predict the shapes of, and bond angles in, molecules analogous to those specified in (c) and (e).
- (assert '(Isa (predictILO (shapeOf (every x (Isa x "molecular entity class*") (analogousTo x (setof "ethane molecular entity*" "ethene molecular entity*" "benzene molecular entity*")) "ILO class*"))
+ (assert '(Isa (predictILO (shapeOf (every x (Isa x MolecularChemicalEntity) (Isa x "molecular entity class*") (IsAnalogousTo x (setof "ethane molecular entity*" "ethene molecular entity*" "benzene molecular entity*"))))) "ILO class*"))
  ; 25. Describe hydrogen bonding, using ammonia and water as simple examples of molecules containing N-H and O-H groups.
  (assert '(Isa (describeILO "hydrogen bonding*") "ILO class*"))
- (assert '(ILOQualifier  (describeILO "hydrogen bonding*") (withExamples (setof "ammonia molecular entity*" "water molecular entity*"))))
+ (assert '(ILOQualifier  (describeILO "hydrogen bonding*") (withExample (setof "ammonia molecular entity*" "water molecular entity*"))))
  ;; 26. Understand, in simple terms, the concept of electronegativity and apply it to explain the properties of molecules such as bond polarity (3h), the dipole moments of molecules (3j), the behaviour of oxides with water (9.1j) and the acidities of chlorine-substituted ethanoic acids (10.6c).
  ; REWRITE: 26. Describe, in simple terms, the concept of electronegativity and use it to explain the properties of molecules such as bond polarity (3h), the dipole moments of molecules (3j), the behaviour of oxides with water (9.1j) and the acidities of chlorine-substituted ethanoic acids (10.6c).
  (assert '(Isa (describeILO "electronegativity*") "ILO class*"))
- (assert '(Isa (UseILO "electronegativity*") "ILO class*"))
+ (assert '(Isa (useILO "electronegativity*") "ILO class*"))
  (assert '(Isa (explainILO "bond polarity*") "ILO class*"))
  (assert '(ILOQualifier (explainILO "bond polarity*") (using "electronegativity*")))
- (assert '(Isa (explainILO (explainILO (namedQuantityOf "dipole moment*" (every x (Isa x "molecular entity class*")))) "ILO class*"))
- (assert '(ILOQualifier (explainILO (namedQuantityOf "dipole moment*" (every x (Isa x "molecular entity class*")))) (using "elecronegativity*")))
- (assert '(ILOQualifier (explainILO (behaviorOf (every x (Isa x "oxide substance class*")))) (using "electronegativity*")))
+ (assert '(Isa (explainILO (namedQuantityOf "dipole moment*" (every x (Isa x MolecularChemicalEntity) (Isa x "molecular entity class*")))) "ILO class*"))
+ (assert '(ILOQualifier (explainILO (namedQuantityOf "dipole moment*" (every x (Isa x MolecularChemicalEntity) (Isa x "molecular entity class*")))) (using "elecronegativity*")))
+ (assert '(ILOQualifier (explainILO (behaviorOf (every x (Isa x OxideSubstance) (Isa x "oxide substance class*")))) (using "electronegativity*")))
  ; 27. Explain the terms bond energy, bond length and bond polarity and use them to compare the reactivities of covalent bonds (see also 5b(ii))
  (assert '(Isa (explainILO "bond energy*") "ILO class*"))
  (assert '(Isa (explainILO "bond length*") "ILO class*"))
  (assert '(Isa (explainILO "bond polarity*") "ILO class*"))
- (assert '(compareILO (namedChemicalProeprtyOf "reactivity*" (every x (Isa x  "covalent bond class*"))) (namedChemicalProeprtyOf "reactivity*" (every y (Isa y  "covalent bond class*")))))
- (assert '(ILOQualifier (compareILO (namedChemicalProeprtyOf "reactivity*" (every x (Isa x  "covalent bond class*"))) (namedChemicalProeprtyOf "raectivity*" (every y (Isa y  "covalent bond class*")))) (using (setof "bond energy*" "bond length*" "bond polarity*"))))
+ (assert '(Isa (compareILO (namedChemicalPropertyOf "reactivity*" (every x (Isa x CovalentBond) (Isa x "covalent bond class*"))) (namedChemicalPropertyOf "reactivity*" (every y (Isa y CovalentBond) (Isa y  "covalent bond class*")))) "ILO class*"))
+ (assert '(ILOQualifier (compareILO (namedChemicalPropertyOf "reactivity*" (every x (Isa x CovalentBond) (Isa x "covalent bond class*"))) (namedChemicalPropertyOf "raectivity*" (every y (Isa y CovalentBond) (Isa y "covalent bond class*")))) (using (setof "bond energy*" "bond length*" "bond polarity*"))))
  ; 28. Describe intermolecular forces (van der Waals’ forces), based on permanent and induced dipoles, as in CHCl 3(l); Br2(l) and the liquid noble gases
  (assert '(Isa (describeILO "van der Waals forces*") "ILO class*"))
- (assert '(ILOQualifier (describeILO "van der Waals forces*")  (setof (inTermsOf (setof "permanent dipole*" "induced dipole*"))) (asIn (setof  (substanceInPhysicalState  "chloroform molecular substance*" "liquid state*") (substanceInPhysicalState  "bromine molecular substance*" "liquid state*") (substanceInPhysicalState (every x (Isa x "noble gas element class*"))  "liquid state*") ))))
+ (assert '(ILOQualifier (describeILO "van der Waals forces*")  (setof (inTermsOf (setof "permanent dipole*" "induced dipole*")) (asIn (setof  (substanceInPhysicalState  "chloroform molecular substance*" "liquid state*") (substanceInPhysicalState  "bromine molecular substance*" "liquid state*") (substanceInPhysicalState (every x (Isa x NobleGas) (Isa x "noble gas element class*"))  "liquid state*"))))))
  ; 29. Describe metallic bonding in terms of a lattice of positive ions surrounded by mobile electrons.
  (assert '(Isa (describeILO "metallic bonding*") "ILO class*"))
  ; 30. Describe, interpret and/or predict the effect of different types of bonding (ionic bonding, covalent bonding, hydrogen bonding, other intermolecular interactions, metallic bonding) on the physical properties of substances.
@@ -146,22 +146,27 @@
  (assert '(Isa (describeILO (effectOfOn "metallic bonding*" (physicalPropertiesOfClass "chemical substance class*"))) "ILO class*"))
  ; 31. Deduce the type of bonding present from given information. ???
  ; re-phrase - Deduce the type of bonding in a substance from its physical properties
- (assert '(Isa (deduceILO (bondingIn (every x (Isa x "chemical substance class*") (given (physicalPropertiesOf x))) ))))
+ (assert '(Isa (deduceILO (bondingIn (every x (Isa x ChemicalSubstance) (Isa x "chemical substance class*")))) "ILO class*"))
+ (assert '(ILOQualifier (deduceILO (bondingIn (every x (Isa x ChemicalSubstance) (Isa x "chemical substance class*")))) (given (physicalPropertiesOf x)))) 
   ; 32. Show understanding of chemical reactions in terms of energy transfers associated with the breaking and making of chemical bonds.
- (assert '(Isa (describeILO (every x (Isa x "chemical reaction class*"))) "ILO class*"))
- (assert '(ILOQualifier (describeILO (every x (Isa x "chemical reaction class*"))) (inTermsOf (setof "bond formation*" "bond cleavage*"))))
+ (assert '(Isa (describeILO (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*"))) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*"))) (inTermsOf (setof "bond formation*" "bond cleavage*"))))
  ;; 33. State the basic assumptions of the kinetic theory as applied to an ideal gas.
- (assert '(Isa (stateILO (AssumptionsOf "kinetic theory of gases*"))) "ILO class*"))
- (assert '(ILOModifier  (stateILO (AssumptionsOf "kinetic theory of gases*")) (AssumptionsOf "kinetic theory of gases*") (asAppliedTo "ideal gas*")))
+ (assert '(Isa (stateILO (assumptionsOf "kinetic theory of gases*")) "ILO class*"))
+ (assert '(ILOModifier  (stateILO (assumptionsOf "kinetic theory of gases*")) (assumptionsOf "kinetic theory of gases*") (asAppliedTo "ideal gas*")))
  ;; 34. Explain qualitatively in terms of intermolecular forces and molecular size: (i) the conditions necessary for a gas to approach ideal behaviour (ii) 
  ;REWRITE
  ; 34a.  Explain qualitatively in terms of intermolecular forces and molecular size the conditions necessary for a gas to approach ideal behaviour. 
  ; 34b. Explain qualitatively in terms of intermolecular forces and molecular size the limitations of ideality at very high pressures and very low temperatures.
- (assert '(Isa (explainILO (conditionsFor (approachOfTo  (behaviorOfClass "gas substance class*")  (behaviorOfClass "ideal gas substance class*"))))  "ILO class*" ))
- (assert '(ILOQualifier (explainILO ((ApproachOfTo  (behaviorOfClass "gas substance class*")  (behaviorOfClass "ideal gas substance class*"))))  (setof (inTermsOf (setof (every x (Isa x "intermolecular force class*")) "molecular size*")) (inManner "qualitative*"))))
+ (assert '(Isa (explainILO (conditionsFor (approachOfTo (behaviorOfClass "gas substance class*") (behaviorOfClass "ideal gas substance class*"))))  "ILO class*"))
+ (assert '(ILOQualifier (explainILO (conditionsFor (approachOfTo (behaviorOfClass "gas substance class*") (behaviorOfClass "ideal gas substance class*")))) 
+                        (setof (inTermsOf (setof "intermolecular force class*"  "molecular size*")) 
+                               (inManner "qualitative*")) ))
  (assert '(Isa (explainILO (departureOfFrom  (behaviorOfClass "gas substance class*")  (behaviorOfClass "ideal gas substance class*")))  "ILO class*" ))
- (assert '(ILOQualifier (explainILO (departureOfFrom  (behaviorOfClass "gas substance class*")  (behaviorOfClass "ideal gas substance class*")))  (setof (inTermsOf (setof (every x (Isa x "intermolecular force class*")) "molecular size*")) (inManner "qualitative*"))))
-(assert '(ILOModifier (explainILO (DepartureOfFrom  (behaviorOfClass "gas substance class*")  (behaviorOfClass "ideal gas substance class*")))  (DepartureOfFrom  (behaviorOfClass "gas substance class*")  (behaviorOfClass "ideal gas substance class*")) (underConditions (setof (qualifiedTerm "very low*" "temperature*") (qualifiedTerm "very high*" "pressure*")))))
+ (assert '(ILOQualifier (explainILO (departureOfFrom  (behaviorOfClass "gas substance class*")  (behaviorOfClass "ideal gas substance class*")))  
+                        (setof (inTermsOf (setof "intermolecular force class*"  "molecular size*")) 
+                               (inManner "qualitative*"))))
+ (assert '(ILOModifier (explainILO (departureOfFrom  (behaviorOfClass "gas substance class*")  (behaviorOfClass "ideal gas substance class*")))  (departureOfFrom  (behaviorOfClass "gas substance class*")  (behaviorOfClass "ideal gas substance class*")) (underCondition (setof (qualifiedTerm "very low*" "temperature*") (qualifiedTerm "very high*" "pressure*")))))
  ;; 35. State and use the general gas equation pV = nRT in calculations, including the determination of Mr.
  (assert '(Isa (stateILO "ideal gas equation*") "ILO class*"))
  (assert '(Isa (performCalculationsILO "ideal gas equation*") "ILO class*"))
@@ -187,7 +192,7 @@
  (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "giant molecular crystalline solid class*")) "ILO class*"))
  (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "hydrogen-bonded molecular crystalline solid class*")) "ILO class*"))
  (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "metallic crystalline solid class*")) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" (every x (Isa x "chemical substance class*") (Isa x "crystalline substance class*") (Isa x "ionic substance class*")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" (every x (Isa x ChemicalSubstance) (Isa x "chemical substance class*") (Isa x "crystalline substance class*") (Isa x "ionic substance class*")))) "ILO class*"))
  (assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "molecular crystalline solid class*")) (setof (inManner "simple*") (asIn "iodine element*"))))
  (assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "giant molecular crystalline solid class*")) (setof (inManner "simple*") (asIn (setof "graphite*" "diamond*")))))
  (assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "hydrogen-bonded molecular crystalline solid class*")) (setof (inManner "simple*") (asIn "ice*" ))))
