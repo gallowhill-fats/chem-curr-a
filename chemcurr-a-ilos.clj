@@ -161,12 +161,12 @@
  (assert '(Isa (explainILO (conditionsFor (approachOfTo (behaviorOfClass "gas substance class*") (behaviorOfClass "ideal gas substance class*"))))  "ILO class*"))
  (assert '(ILOQualifier (explainILO (conditionsFor (approachOfTo (behaviorOfClass "gas substance class*") (behaviorOfClass "ideal gas substance class*")))) 
                         (setof (inTermsOf (setof "intermolecular force class*"  "molecular size*")) 
-                               (inManner "qualitative*")) ))
+                               (inManner "qualitative*"))))
  (assert '(Isa (explainILO (departureOfFrom  (behaviorOfClass "gas substance class*")  (behaviorOfClass "ideal gas substance class*")))  "ILO class*" ))
  (assert '(ILOQualifier (explainILO (departureOfFrom  (behaviorOfClass "gas substance class*")  (behaviorOfClass "ideal gas substance class*")))  
                         (setof (inTermsOf (setof "intermolecular force class*"  "molecular size*")) 
                                (inManner "qualitative*"))))
- (assert '(ILOModifier (explainILO (departureOfFrom  (behaviorOfClass "gas substance class*")  (behaviorOfClass "ideal gas substance class*")))  (departureOfFrom  (behaviorOfClass "gas substance class*")  (behaviorOfClass "ideal gas substance class*")) (underCondition (setof (qualifiedTerm "very low*" "temperature*") (qualifiedTerm "very high*" "pressure*")))))
+ (assert '(ILOModifier (explainILO (departureOfFrom  (behaviorOfClass "gas substance class*")  (behaviorOfClass "ideal gas substance class*")))  (departureOfFrom  (behaviorOfClass "gas substance class*")  (behaviorOfClass "ideal gas substance class*")) (underCondition (setof (every x (Isa x Temperature) (Isa x "very high temperature class*")) (every y (Isa y Pressure) (Isa y "very high pressure class*"))))))
  ;; 35. State and use the general gas equation pV = nRT in calculations, including the determination of Mr.
  (assert '(Isa (stateILO "ideal gas equation*") "ILO class*"))
  (assert '(Isa (performCalculationsILO "ideal gas equation*") "ILO class*"))
@@ -187,33 +187,33 @@
  ; 37c. Describe, in simple terms, the lattice structure of a giant molecular crystalline solid, as in silicon(IV) oxide and the graphite and diamond allotropes of carbon.
  ; 37d. Describe, in simple terms, the lattice structure of a hydrogen-bonded molecular crystalline solid, as in ice.
  ; 37e. Describe, in simple terms, the lattice structure of a metallic crystalline solid, as in copper.
- (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "ionic crystalline solid class*") "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "ionic crystalline solid class*")) "ILO class*"))
  (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "molecular crystalline solid class*")) "ILO class*"))
  (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "giant molecular crystalline solid class*")) "ILO class*"))
  (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "hydrogen-bonded molecular crystalline solid class*")) "ILO class*"))
  (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "metallic crystalline solid class*")) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOfClass "lattice structure*" (every x (Isa x ChemicalSubstance) (Isa x "chemical substance class*") (Isa x "crystalline substance class*") (Isa x "ionic substance class*")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "lattice structure*" (every x (Isa x ChemicalSubstance) (Isa x "chemical substance class*") (Isa x "crystalline substance class*") (Isa x "ionic substance class*")))) "ILO class*"))
  (assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "molecular crystalline solid class*")) (setof (inManner "simple*") (asIn "iodine element*"))))
  (assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "giant molecular crystalline solid class*")) (setof (inManner "simple*") (asIn (setof "graphite*" "diamond*")))))
  (assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "hydrogen-bonded molecular crystalline solid class*")) (setof (inManner "simple*") (asIn "ice*" ))))
  (assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass "lattice structure*" "metallic crystalline solid class*")) (setof (inManner "simple*") (asIn "copper element*"))))
-(assert '(ILOQualifier (describeILO (namedPhysicalPropertyOfClass "lattice structure*" (every x (Isa x "chemical substance class*") (Isa x "crystalline substance class*") (Isa x "ionic substance class*")))) (asIn "sodium chloride substance*")))
+(assert '(ILOQualifier (describeILO (namedPhysicalPropertyOf "lattice structure*" (every x (Isa x ChemicalSubstance) (Isa x "chemical substance class*") (Isa x "crystalline substance class*") (Isa x "ionic substance class*")))) (asIn "sodium chloride substance*")))
    ; 38. Explain the strength, high melting point and electrical insulating properties of ceramics in terms of their giant molecular structure.
- (assert '(Isa (explainILO (namedPhysicalPropertyOfClass "strength*" "ceramic class*") "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOfClass (qualifiedTerm "high*" " melting point*") "ceramic class*") "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOfClass  "electrical insulator*" "ceramic class*") "ILO class*"))
- (assert '(ILOQualifier (explainILO (namedPhysicalPropertyOfClass "strength*" "ceramic class*") "ILO class*") (inTermsOf "giant molecular structure*"))))
- (assert '(ILOQualifier (explainILO (namedPhysicalPropertyOfClass (qualifiedTerm "high*" " melting point*") "ceramic class*"))  (inTermsOf "giant molecular structure*"))))
- (assert '(ILOQualifier (explainILO (namedPhysicalPropertyOfClass "electrical insulator*" "ceramic class*"))  (inTermsOf "giant molecular structure*"))))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOfClass "strength*" "ceramic class*")) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOfClass "high melting point*" "ceramic class*")) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOfClass  "electrical insulator*" "ceramic class*")) "ILO class*"))
+ (assert '(ILOQualifier (explainILO (namedPhysicalPropertyOfClass "strength*" "ceramic class*")) (inTermsOf "giant molecular structure*")))
+ (assert '(ILOQualifier (explainILO (namedPhysicalPropertyOfClass "high melting point*" "ceramic class*"))  (inTermsOf "giant molecular structure*")))
+ (assert '(ILOQualifier (explainILO (namedPhysicalPropertyOfClass "electrical insulator*" "ceramic class*"))  (inTermsOf "giant molecular structure*")))
  ; 39. Relate the uses of ceramics, based on magnesium oxide, aluminium oxide and silicon(IV) oxide, to their properties (suitable examples include furnace linings, electrical insulators, glass, crockery).
- (assert '(Isa (RelateToILO (UsesOfClass "ceramic class*")) (propertiesOfClass "ceramic class*"))) "ILO class*"))
+ (assert '(Isa (relateToILO (useOfClass "ceramic class*") (propertiesOfClass "ceramic class*")) "ILO class*"))
  ; 40. Discuss the finite nature of materials as a resource and the importance of recycling processes. 
  (assert '(Isa (discussILO (namedAspectOf "importance*" "recycling*")) "ILO class*"))
  ; 41. Outline the importance of hydrogen bonding to the physical properties of substances, including ice and water (for example, boiling and melting points, viscosity and surface tension)
- (assert '(Isa (OutlineILO (namedAspectOf "importance*" "hydrogen bonding*")) "ILO class*"))
- (assert '(ILOQualifier (outlineILO (namedAspectOf "importance*" "hydrogen bonding*")  (inRelationTo (PhysicalpropertiesOfClass "chemical substance class*"))))
+ (assert '(Isa (outlineILO (namedAspectOf "importance*" "hydrogen bonding*")) "ILO class*"))
+ (assert '(ILOQualifier (outlineILO (namedAspectOf "importance*" "hydrogen bonding*"))  (inRelationTo (physicalPropertiesOfClass "chemical substance class*"))))
  ; 42. Suggest from quoted physical data the type of structure and bonding present in a substance.
- (assert '(Isa (suggestILO (typeOf (every x (Isa x "chemical structure class*") (every y (Isa y "chemical substance class*") (HasChemicalStructure x y)))  (given (PhysicalPropertyOf x))))  "ILO class*"))
+ (assert '(Isa (suggestILO (typeOfThing (every x (Isa x ChemicalStructure) (Isa x "chemical structure class*") (HasChemicalStructure (some y (x) (Isa y ChemicalSubstance)) x))) )  "ILO class*"))
  ; 43. Explain that some chemical reactions are accompanied by energy changes, principally in the form of heat energy; the energy changes can be exothermic (ΔH, negative) or endothermic
  (assert '(Isa (defineILO "thermochemistry*") "ILO class*"))
  (assert '(Isa (defineILO "exothermic*") "ILO class*"))
@@ -233,19 +233,19 @@
  ; 45. Calculate enthalpy changes from appropriate experimental results, including the use of the relationship enthalpy change, ΔH = –mcΔT.
  (assert '(Isa (performCalculationsILO "ΔH = –mcΔT")  "ILO class*"))
   ; 46. Explain, in qualitative terms, the effect of ionic charge and of ionic radius on the numerical magnitude of a lattice energy.
- (assert '(Isa (explainILO (effectOfOn "ionic charge*" (QuantityValue "lattice energy*")) "ILO class*"))
- (assert '(Isa (explainILO (effectOfOn "ionic radius*" (QuantityValue "lattice energy*")) "ILO class*"))
+ (assert '(Isa (explainILO (effectOfOn "ionic charge*" (valueOf "lattice energy*"))) "ILO class*"))
+ (assert '(Isa (explainILO (effectOfOn "ionic radius*" (valueOf "lattice energy*"))) "ILO class*"))
  ; 47. Apply Hess' Law to construct simple energy cycles, and carry out calculations involving such cycles and relevant energy terms, with particular reference to: (i) determining enthalpy changes that cannot be found by direct experiment, e.g. an enthalpy change of formation from enthalpy changes of combustion (ii) average bond energies (iii) the formation of a simple ionic solid and of its aqueous solution (iv) Born-Haber cycles (including ionisation energy and electron affinity).
  (assert '(Isa (performCalculationsILO "Hess's law*") "ILO class*"))
- (assert '(ILOQualifier (performCalculationsILO "Hess's law*") (inOrderTo (performActionOn "construct*"  (every x (Isa x "energy cycle class*"))))  ))
+ (assert '(ILOQualifier (performCalculationsILO "Hess's law*") (inOrderTo (performActionOn "construct*"  (every x (Isa x Thing) (Isa x "energy cycle class*"))))  ))
  (assert '(Isa (performCalculationsILO "Hess's law*") "ILO class*"))
- (assert '(ILOQualifier (performCalculationsILO "Hess's law*") (using (every x (Isa x "mean bond energy class*"))))  ))
+ (assert '(ILOQualifier (performCalculationsILO "Hess's law*") (using (every x (Isa x MeanBondEnergy) (Isa x "mean bond energy class*")))))
  ;; 48. Construct and interpret a reaction pathway diagram, in terms of the enthalpy change of the reaction and of the activation energy (see Section 8)
- (assert '(Isa (constructILO (every x (Isa x "reaction pathway diagram class*"))) "ILO class*"))
- (assert '(Isa (interpretILO (every x (Isa x "reaction pathway diagram class*")) (some y (x) (Isa y "chemical reaction class*") (hasConstituentReaction x y)) (inTermsOf ) "ILO class*"))
- (assert '(ILOQualifier (interpretILO (every x (Isa x "reaction pathway diagram class*"))) (inTermsOf (setof "enthalpy change of reaction*" "activation energy*"))))
+ (assert '(Isa (constructILO (every x (Isa x ReactionPathwayDiagram) (Isa x "reaction pathway diagram class*"))) "ILO class*"))
+ (assert '(Isa (interpretILO (every x (Isa x ReactionPathwayDiagram) (Isa x "reaction pathway diagram class*")))  "ILO class*"))
+ (assert '(ILOQualifier (interpretILO (every x (Isa x ReactionPathwayDiagram) (Isa x "reaction pathway diagram class*"))) (inTermsOf (setof "enthalpy change of reaction*" "activation energy*"))))
  ; 49. Calculate oxidation numbers of elements in compounds and ions (ii) describe and explain redox processes in terms of electron transfer and/or changes in oxidation number (oxidation state) (iii) use changes in oxidation numbers to help balance chemical equations.
- (assert '(Isa (calculateILO (namedQuantityOf "oxidation number*" (every x (Isa x "element class*") (IsConstituentOf x (every y (or (Isa y "chemical substance class*") (Isa y "chemical substance class*")))) "ILO class*"))
+ (assert '(Isa (calculateILO (namedQuantityOf "oxidation number*" (every x (Isa x Element) (Isa x "element class*") (IsConstituentOf x (some y (x) (Isa y ChemicalReferent) (Isa y "chemical referent class*")))))) "ILO class*"))
  (assert '(Isa (describeILO "redox process*") "ILO class*"))
  (assert '(Isa (explainILO  "redox process*") "ILO class*"))
  ;; 50. Explain, including the electrode reactions, the industrial processes of: (i) the electrolysis of brine, using a diaphragm cell (ii) the extraction of aluminium from molten aluminium oxide/cryolite (iii) the electrolytic purification of copper.
@@ -253,24 +253,24 @@
  (assert '(Isa (explainILO "hall-herault industrial process*") "ILO class*"))
  (assert '(Isa (explainILO "electrolytic purification of copper*") "ILO class*"))
  ;; 51. define the terms: (i) standard electrode (redox) potential (ii) standard cell potential.
- (assert '(Isa (defineILO "standard electrode potential*" "ILO class*"))
- (assert '(Isa (defineILO "standard cell potential*" "ILO class*"))
+ (assert '(Isa (defineILO "standard electrode potential*") "ILO class*"))
+ (assert '(Isa (defineILO "standard cell potential*") "ILO class*"))
  ;; 52. Describe the standard hydrogen electrode.
  (assert '(Isa (describeILO "standard hydrogen electrode*") "ILO class*"))
  ; 53. Describe methods used to measure the standard electrode potentials of: (i) metals or non-metals in contact with their ions in aqueous solution (ii) ions of the same element in different oxidation states.
-  (assert '(Isa (describeHowILO (measure (namedQuantityOf "standard electrode potential*" (every x (or (Isa x "metal class*") (Isa x "non-metal class*")) (inContactwith x (some y (x) (IsIonOf y x) ) (inState x "aqueous solution state*"  )))))) "ILO class*"))
+  (assert '(Isa (describeHowILO (measure (namedQuantityOf "standard electrode potential*" (every x (Isa x ChemicalSubstance) (or (Isa x "metal class*") (Isa x "non-metal class*")) (inContactWith x (some y (x) (IsIonOf y x) ) (inState x "aqueous solution state*"  )))))) "ILO class*"))
  ; 54. Calculate a standard cell potential by combining two standard electrode potentials.
  (assert '(Isa (calculateILO (every x (Isa x "standard cell potential class*"))) "ILO class*"))
- (assert '(ILOQualifier (calculateILO (every x (Isa x "standard cell potential class*"))) (using (some y () (Isa y "standard electrode potential class*")))) ;where card y = 2?
+ (assert '(ILOQualifier (calculateILO (every x (Isa x StandardCellPotential) (Isa x "standard cell potential class*"))) (using (some y () (Isa y "standard electrode potential class*")))) ;where card y = 2?
  ; 55. Use standard cell potentials to: (i) explain/deduce the direction of electron flow from a simple cell (ii) predict the feasibility of a reaction.
  (assert '(Isa (explainILO (directionOf "electron flow*")) "ILO class*"))
- (assert '(ILOQualifier  (explainILO (directionOf "electron flow*")) (setof (inChemicalSystem (every x (Isa x "electrochemical cell class*"))) (using (some y (x) (Isa y "standard cell potential class*") (HasStandardCellPotential x y))))))
- (assert '(Isa (predictILO (feasibilityOf (every x (Isa x chemical reaction class*)) (inChemicalSystem (some y (x) (Isa y "electrochemical cell class*"))) (using (some z (y) (Isa y "standard cell potential class*") (HasStandardCellPotential y z))))) "ILO class*"))
+ (assert '(ILOQualifier  (explainILO (directionOf "electron flow*")) (setof (inChemicalSystem (every x (Isa x ElectrochemicalCell) (Isa x "electrochemical cell class*"))) (using (some y (x) (Isa y "standard cell potential class*") (HasStandardCellPotential x y))))))
+ (assert '(Isa (predictILO (feasibilityOf (every x (Isa x ChemicalReaction) (Isa x chemical reaction class*)) (inChemicalSystem (some y (x) (Isa y "electrochemical cell class*"))) (using (some z (y) (Isa z "standard cell potential class*") (HasStandardCellPotential y z))))) "ILO class*"))
    ; 56. Construct redox equations using the relevant half-equations.
- (assert '(Isa (constructILO (every x (Isa x "redox equation class*") (using (some  y (x) (Isa y "redox half-equation class*") (HasHalfEquation x y)))))  "ILO class*"))
+ (assert '(Isa (constructILO (every x (Isa x RedoxEquation) (Isa x "redox equation class*") (using (some  y (x) (Isa y "redox half-equation class*") (HasHalfEquation x y)))))  "ILO class*"))
   ;; 57. Predict qualitatively how the value of an electrode potential varies with the concentration of the aqueous ion.
- (assert '(Isa (predictILO (effectOfOn (concentrationOf (some y  (x) (Isa y "cationic entity class*")))  (valueOf (every x (Isa x "electrode potential class*") (Isa y "electrode class*") (HasElectrodePotential y x)))) "ILO class*"))
- (assert '(ILOQualifier  (predictILO (effectOfOn (concentrationOf (some z  (y) (HasAqueousIon y z)))) (valueOf (every x (Isa x "electrode potential class*") (Isa y "electrode class*") (HasElectrodePotential y x)))) (inManner "qualitatively*")))
+ (assert '(Isa (predictILO (effectOfOn (concentrationOf (some y  (x) (Isa y "cationic entity class*")))  (valueOf (every x (Isa x ElectrodePotential) (Isa x "electrode potential class*") (Isa y "electrode class*") (HasElectrodePotential y x)))) "ILO class*"))
+ (assert '(ILOQualifier  (predictILO (effectOfOn (concentrationOf (some z  (y) (HasAqueousIon y z)))) (valueOf (every x (Isa x ElectrodePotential) (Isa x "electrode potential class*") (Isa y "electrode class*") (HasElectrodePotential y x)))) (inManner "qualitatively*")))
  ; 58. State the possible advantages of developing other types of cell, e.g. the H2/O2 fuel cell and improved batteries (as in electric vehicles) in terms of smaller size, lower mass and higher voltage.
  (assert '(Isa (describeILO (namedAspectOf "design*" (every x (Isa x "battery class*"))) "ILO class*"))
  (assert '(ILOQualifier (describeILO (namedAspectOf "design*" (every x (Isa x "battery class*")))) (inTermsOf (setOf (smallerComparative "size*") (smallerComparative "mass*") (greaterComparative "voltage*")))))
@@ -287,28 +287,28 @@
  (assert '(Isa (describeILO (determinationOf (valueOf "Avogadro constant*"))) "ILO class*"))
  (assert '(ILOModifier (describeILO (determinationOf (valueOf "Avogadro constant*"))) (determinationOf (valueOf "Avogadro constant*")) (using "electrolysis*")))
  ; 63. Explain, in terms of rates of the forward and reverse reactions, what is meant by a reversible reaction and dynamic equilibrium.
- (assert '(Isa ( explainILO (every x (Isa x "reversible reaction class*") (inTermsOf (setof (rateOf (some y (x) (Isa y "forward reaction class*"))) (rateOf (some y (x) (Isa y "reverse reaction class*"))))))) "ILO class*"))
-(assert '(Isa ( explainILO (namedPropertyOf "dynamic equilibrium*" (every x (Isa x "chemical reaction class*") (inTermsOf (setof (rateOf (some y (x) (Isa y "forward reaction class*"))) (rateOf (some y (x) (Isa y "reverse reaction class*"))))))))) "ILO class*"))
+ (assert '(Isa ( explainILO (every x (Isa x ReversibleReaction) (Isa x "reversible reaction class*") (inTermsOf (setof (rateOf (some y (x) (Isa y "forward reaction class*"))) (rateOf (some y (x) (Isa y "reverse reaction class*"))))))) "ILO class*"))
+(assert '(Isa ( explainILO (namedPropertyOf "dynamic equilibrium*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*") (inTermsOf (setof (rateOf (some y (x) (Isa y "forward reaction class*"))) (rateOf (some y (x) (Isa y "reverse reaction class*"))))))))) "ILO class*"))
    ;; 64. State Le Chatelier’s Principle and apply it to deduce qualitatively (from appropriate information) the effects of changes in temperature, concentration or pressure, on a system at equilibrium.
  ;;;REWRITE
  (assert '(Isa (stateILO "Le Chatelier’s Principle*") "ILO class*"))
- (assert '(Isa (deduceILO (effectOfOn (changeIn (namedQuantityOf "temperature*" (every x (Isa x "chemical reaction system class*"))) (some y (x)  (Isa y "equilibrium position class*") (HasEquilibriumPosition x y)))))  "ILO class*"))
-  (assert '(ILOQualifier (deduceILO (effectOfOn (changeIn (namedQuantityOf "temperature*" (every x (Isa x "chemical reaction system class*"))) (some y (x)  (Isa y "equilibrium position class*") (HasEquilibriumPosition x y)))))  (using "Le Chatelier’s Principle*")))                 
- (assert '(ILOQualifier  (deduceILO (effectOfOn (changeIn (namedQuantityOf "concentration*" (every x (Isa x "chemical reaction system class*"))) (some y (x)  (Isa y "equilibrium position class*") (HasEquilibriumPosition x y))))) (using "Le Chatelier’s Principle*")))    
+ (assert '(Isa (deduceILO (effectOfOn (changeIn (namedQuantityOf "temperature*" (every x (Isa x ChemicalReactionSystem) (Isa x "chemical reaction system class*"))) (some y (x)  (Isa y "equilibrium position class*") (HasEquilibriumPosition x y)))))  "ILO class*"))
+  (assert '(ILOQualifier (deduceILO (effectOfOn (changeIn (namedQuantityOf "temperature*" (every x (Isa x ChemicalReactionSystem) (Isa x "chemical reaction system class*"))) (some y (x)  (Isa y "equilibrium position class*") (HasEquilibriumPosition x y)))))  (using "Le Chatelier’s Principle*")))                 
+ (assert '(ILOQualifier  (deduceILO (effectOfOn (changeIn (namedQuantityOf "concentration*" (every x (Isa x ChemicalReactionSystem) (Isa x "chemical reaction system class*"))) (some y (x)  (Isa y "equilibrium position class*") (HasEquilibriumPosition x y))))) (using "Le Chatelier’s Principle*")))    
 ; note that concentration is a property of individual reactants while temperature and volume are properties of the system, but stet             
- (assert '(ILOQualifier  (deduceILO (effectOfOn (changeIn (namedQuantityOf "pressure*" (every x (Isa x "chemical reaction system class*"))) (some y (x)  (Isa y "equilibrium position class*") (HasEquilibriumPosition x y))))) (using "Le Chatelier’s Principle*")))                 
+ (assert '(ILOQualifier  (deduceILO (effectOfOn (changeIn (namedQuantityOf "pressure*" (every x (Isa x ChemicalReactionSystem) (Isa x "chemical reaction system class*"))) (some y (x)  (Isa y "equilibrium position class*") (HasEquilibriumPosition x y))))) (using "Le Chatelier’s Principle*")))                 
  ; 65. State whether changes in concentration, pressure or temperature or the presence of a catalyst affect the value of the equilibrium constant for a reaction.
  (assert '(Isa (stateILO (every x  (HasEffectOn x (valueOf "equilibrium constant*")))) "ILO class*"))
  ;; 66. Deduce expressions for equilibrium constants in terms of concentrations, Kc, and partial pressures, Kp of the relationship between Kp and Kc is not required?.
- (assert '(Isa (deduceILO (mathematicalExpressionFor (namedDerivedPropertyOf "concentration equilibrium constant class*" (every x (Isa x "chemical reaction class*")) (inTermsOf (namedQuantityOf "concentration*" (some y (x) (or (IsReactant y x) (IsProduct y x))))))))) "ILO class*"))
- (assert '(Isa (deduceILO (mathematicalExpressionFor (namedDerivedPropertyOf "partial pressure equilibrium constant class*" (every x (Isa x "chemical reaction class*")) (inTermsOf (namedQuantityOf "partial pressure*" (some y (x) (or (IsReactant y x) (IsProduct y x))))))))) "ILO class*"))
+ (assert '(Isa (deduceILO (mathematicalExpressionFor (namedDerivedPropertyOf "concentration equilibrium constant class*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*")) (inTermsOf (namedQuantityOf "concentration*" (some y (x) (or (IsReactant y x) (IsProduct y x))))))))) "ILO class*"))
+ (assert '(Isa (deduceILO (mathematicalExpressionFor (namedDerivedPropertyOf "partial pressure equilibrium constant class*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*")) (inTermsOf (namedQuantityOf "partial pressure*" (some y (x) (or (IsReactant y x) (IsProduct y x))))))))) "ILO class*"))
   ;; 67. Calculate the values of equilibrium constants in terms of concentrations or partial pressures from appropriate data.
- (assert '(Isa (calculateILO (valueOf (some x (y) (Isa x "concentration equilibrium constant class*") (HasEquilibriumConstant y x)) (every y (Isa y "chemical reaction system class*"))))  "ILO class*"))
- (assert '(Isa (calculateILO (valueOf (some x (y) (Isa x "partial pressure equilibrium constant class*") (HasEquilibriumConstant y x)) (every y (Isa y "chemical reaction system class*"))))  "ILO class*"))
- (assert '(ILOQualifier (calculateILO (valueOf (some x (y) (Isa x "concentration equilibrium constant class*") (HasEquilibriumConstant y x)) (every y (Isa y "chemical reaction system class*"))))  (given (dataOn  "concentration*"))))
- (assert '(ILOQualifier (calculateILO (valueOf (some x (y) (Isa x "partial pressure equilibrium constant class*") (HasEquilibriumConstant y x)) (every y (Isa y "chemical reaction system class*"))))  (given (dataOn  "partial pressure*"))))
+ (assert '(Isa (calculateILO (valueOf (every x  (Isa x "concentration equilibrium constant class*") (some y (x)  (Isa y "chemical reaction system class*")) (HasEquilibriumConstant y x))))  "ILO class*"))
+ (assert '(Isa (calculateILO (valueOf (every x  (Isa x "partial pressure  equilibrium constant class*") (some y (x)  (Isa y "chemical reaction system class*")) (HasEquilibriumConstant y x))))  "ILO class*"))
+  (assert '(ILOQualifier (calculateILO (valueOf (every x  (Isa x "concentration equilibrium constant class*") (some y (x)  (Isa y "chemical reaction system class*")) (HasEquilibriumConstant y x))))  (given (dataOn  "concentration*"))))
+ (assert '(ILOQualifier (calculateILO (valueOf (every x  (Isa x "partial pressure  equilibrium constant class*") (some y (x)  (Isa y "chemical reaction system class*")) (HasEquilibriumConstant y x))))  (given (dataOn  "partial pressure*"))))
  ; 68. Calculate the quantities present at equilibrium, given appropriate data (such calculations will not require the solving of quadratic equations).
- (assert '(Isa (calculateILO (namedPhysicalPropertyof "concentration*" (some  x (y) (Isa x "chemical species class*") (every y (Isa y "chemical reaction system*")(IsAtEquilibrium y)))))) "ILO class*"))
+ (assert '(Isa (calculateILO (namedPhysicalPropertyof "concentration*" (every  x  (Isa x ChemicalSpecies) (Isa x "chemical species class*") (some  y (x) (Isa y "chemical reaction system*")(IsAtEquilibrium y)))))) "ILO class*"))
  ; 69. Describe and explain the conditions used in the Haber process and the Contact process, as examples of the importance of an understanding of chemical equilibrium in the chemical industry (see also Section 9.6).
  (assert '(Isa (describeILO (reactionConditionsOf "Haber process chemical reaction*")) "ILO class*"))
  (assert '(ILOQualifier (describeILO (reactionConditionsOf "Haber process chemical reaction*")) (inRelationTo (equilibriumPositionOf "Haber process chemical reaction*"))
@@ -335,11 +335,11 @@
  (assert '(ILOQualifier (calculateILO (namedUnitaryQuantityOf "molarity*" "hydrogen ion species*")) (forChemicalSystem "strong acid*")))
  (assert '(ILOQualifier (calculateILO (namedUnitaryQuantityOf "molarity*" "hydrogen ion species*")) (forChemicalSystem "weak acid*")))
  (assert '(ILOQualifier (calculateILO (namedUnitaryQuantityOf "molarity*" "hydrogen ion species*")) (forChemicalSystem "strong base*") ))
-  (assert '(Isa (calculateILO (namedQuantityOf "pH*" (every x (Isa x "strong acid class*")))) "ILO class*"))
- (assert '(Isa (calculateILO (namedQuantityOf "pH*" (every x (Isa x "weak acid class*")))) "ILO class*"))
- (assert '(Isa (calculateILO (namedQuantityOf "pH*" (every x (Isa x "strong base class*")))) "ILO class*"))
+  (assert '(Isa (calculateILO (namedQuantityOf "pH*" (every x (Isa x StrongAcid) (Isa x "strong acid class*")))) "ILO class*"))
+ (assert '(Isa (calculateILO (namedQuantityOf "pH*" (every x (Isa x WeakAcid) (Isa x "weak acid class*")))) "ILO class*"))
+ (assert '(Isa (calculateILO (namedQuantityOf "pH*" (every x (Isa x StrongBase) (Isa x "strong base class*")))) "ILO class*"))
   ; 74. Explain the choice of suitable indicators for acid-base titrations, given appropriate data.
- (assert '(Isa (chooseILO (some y (x) (Isa y "indicator class*") (every x (Isa x "acid-base titration class*"))) "ILO class*"))
+ (assert '(Isa (chooseILO (every x  (Isa x Indicator) (Isa x "indicator class*") (some y (x) (Isa y AcidBaseTitration) (Isa y "acid-base titration class*"))) "ILO class*"))
  ; 75. Describe the changes in pH during acid-base titrations and explain these changes in terms of the strengths of the acids and bases.
  (assert '(Isa (describeILO (changeIn "pH*")) "ILO class*"))
  (assert '(ILOModifier  (describeILO (changeIn "pH*")) (changeIn "pH*") (during "acid-base titration*")))
@@ -351,7 +351,7 @@
  ; 76a. Explain how buffer solutions control pH.
  ; 76b. Describe the uses of buffer solutions, including the role of HCO3 – in controlling pH in blood.
  ; 76b. Explain the uses of buffer solutions, including the role of HCO3 – in controlling pH in blood.
- (assert '(Isa (explainILO (useOf (every x (Isa x "buffer solution class*")) "ILO class*"))
+ (assert '(Isa (explainILO (useOf (every x (Isa x BufferSolution) (Isa x "buffer solution class*")))) "ILO class*"))
  (assert '(Isa (explainHowILO (namedActionOn "control*" "buffer solution*" "pH*" )) "ILO class*"))
  (assert '(Isa (describeILO (roleOfIn "hydrogen carbonate ion species*" (namedActionOn "control*" "buffer solution*" "pH*" ))) "ILO class*"))
  ;; 77. Calculate the pH of buffer solutions, given appropriate data.
@@ -385,7 +385,7 @@
  (assert '(Isa (defineILO "activation energy*") "ILO class*"))
  ; 81d. State the Arrhenius equation and use this to explain the effect of activation energy on reaction rate.
  (assert '(Isa (stateILO "Arrhenius equation*") "ILO class*"))
- (assert '(Isa (explainILO (effectOfOn (some y (x) (Isa y "activation energy class*"))  (every x (Isa x  "rate of reaction class*")))) "ILO class*"))
+ (assert '(Isa (explainILO (effectOfOn (every x  (Isa x ActivationEnergy) (Isa x "activation energy class*"))  (some y (x)  (Isa y  "rate of reaction class*")))) "ILO class*"))
  (assert '(ILOQualifier (explainILO (effectOfOn (some y (x) (Isa y "activation energy class*")) (every x (Isa x  "rate of reaction class*")))) (using "Arrhenius equation*")))
  ; Catalysis moved to 85.
  ; 82. Explain qualitatively, in terms of collisions, the effect of concentration changes on the rate of a reaction.
@@ -404,7 +404,7 @@
  (assert '(Isa (defineILO "catalyst*") "ILO class*"))
  (assert '(Isa (describeILO (mechanismOf "catalysis*")) "ILO class*"))
  ; 85b. Explain catalysis in terms of reaction mechanism and activation energy.
- (assert '(Isa (explainILO (effectOfInfluenceOn "catalysis*"  (every x  (Isa x "rate of reaction class*") (some  y (x) (Isa y "chemical reaction class*" )) (inTermsOf (setof (some z (y) (Isa z "reaction mechanism class*") (some w (y) (Isa w "activation energy class*")))))))) "ILO class*"))
+ (assert '(Isa (explainILO (effectOfInfluenceOn "catalysis*"  (every x  (Isa x ReactionRate) (Isa x "rate of reaction class*") (some  y (x) (Isa y "chemical reaction class*" )) (inTermsOf (setof (some z (y) (Isa z "reaction mechanism class*") (some w (y) (Isa w "activation energy class*")))))))) "ILO class*"))
   ; 86. Interpret catalysis in terms of the Boltzmann distribution.
  (assert '(Isa (interpretILO "catalysis*") "ILO class*"))
  (assert '(ILOQualifier (interpretILO "catalysis*") (inTermsOf "Boltzmann distribution*"))
@@ -420,22 +420,22 @@
 ; 88f. verify that a suggested reaction mechanism is consistent with the observed kinetics
 ; 88g. predict the order that would result from a given reaction mechanism
 ; 88h. predict the reaction mechanism for a chemical reaction given its order
-  (assert '(Isa (constructILO (every x (Isa x "integrated rate equation class*") (some y (x) (or (Isa y "single-step reaction class*") (Isa y "multi-step reaction with rds class")))  (Isa x "simple things class*"))) "ILO class*")) ; shimple things?? This ilo also needs a cfn for integrated rate laws that incorporates concentrations and their orders
-  (assert '(Isa (deduceILO (namedPropertyOf "total order*" (every x (Isa x "chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*"))))))) "ILO class*"))
- (assert '(ILOQualifier (deduceILO (namedPropertyOf "total order*" (every x (Isa x "chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*")))))))  (byMeans "initial rates method*")))
- (assert '(Isa (deduceILO (namedPropertyOf "total order*" (every x (Isa x "zero-order chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*")))))))  "ILO class*"))
- (assert '(ILOQualifier (deduceILO (namedPropertyOf "total order*" (every x (Isa x "first-order chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*"))))))) "ILO class*"))
- (assert '(Isa (verifyILO (IsConsistentWith (every x (Isa x "reaction mechanism*")) (namedPropertyOfReaction "kinetics of reaction*" x))) "ILO class*"))
- (assert '(Isa (deduceILO (namedPropertyOf "total order*" (every x (Isa x "chemical reaction class*") (given (some y (x)  (Isa y "reaction mechanism class*") (HasMechanism x y)))))) "ILO class*"))
- (assert '(Isa (deduceILO (every x (Isa x "reaction mechanism class*") (some y (x) (Isa y "chemical reaction class*") (given (namedPropertyOf "total order*" y)))))  "ILO class*"))
+  (assert '(Isa (constructILO (every x (Isa x IntegratedRateEquation) (Isa x "integrated rate equation class*") (some y (x) (or (Isa y "single-step reaction class*") (Isa y "multi-step reaction with rds class")))  (Isa x "simple things class*"))) "ILO class*")) ; shimple things?? This ilo also needs a cfn for integrated rate laws that incorporates concentrations and their orders
+  (assert '(Isa (deduceILO (namedPropertyOf "total order*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*"))))))) "ILO class*"))
+ (assert '(ILOQualifier (deduceILO (namedPropertyOf "total order*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*")))))))  (byMeans "initial rates method*")))
+ (assert '(Isa (deduceILO (namedPropertyOf "total order*" (every x (Isa x ZeroOrderChemicalReaction) (Isa x "zero-order chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*")))))))  "ILO class*"))
+ (assert '(ILOQualifier (deduceILO (namedPropertyOf "total order*" (every x (Isa x FirstOrderChemicalReaction) (Isa x "first-order chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*"))))))) "ILO class*"))
+ (assert '(Isa (verifyILO (IsConsistentWith (every x (Isa x ReactionMechanism) (Isa x "reaction mechanism*")) (namedPropertyOfReaction "kinetics of reaction*" x))) "ILO class*"))
+ (assert '(Isa (deduceILO (namedPropertyOf "total order*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*") (given (some y (x)  (Isa y "reaction mechanism class*") (HasMechanism x y)))))) "ILO class*"))
+ (assert '(Isa (deduceILO (every x (Isa x ReactionMechanism) (Isa x "reaction mechanism class*") (some y (x) (Isa y "chemical reaction class*") (given (namedPropertyOf "total order*" y)))))  "ILO class*"))
     ; 89. Show understanding that the half-life of a first-order reaction is independent of concentration (ii) use the half-life of a first-order reaction in calculations.
  (assert '(Isa (understandILO (IsIndependentOf (namedQuantityOf "half-life*" (every x "first-order reaction class*")) "concentration*")) "ILO class*"))
  ; 90. Calculate a rate constant, for example by using the initial rates or half-life method.
   ; REWRITE: 90a. Calculate a rate constant using the initial rates method.
  ; 90b. Calculate a rate constant using the half-life method.
  (assert '(Isa (calculateILO (every x (Isa x "rate constant class*") (some y (x) (Isa y "chemical reaction class*"))))) "ILO class*"))
- (assert '(ILOQualifier  (calculateILO (every x (Isa x "rate constant class*") (some y (x) (Isa y "chemical reaction class*")))) (using "half-life method*")))
- (assert '(ILOQualifier  (calculateILO (every x (Isa x "rate constant class*") (some y (x) (Isa y "chemical reaction class*")))) (using "initial rates method*")))
+ (assert '(ILOQualifier  (calculateILO (every x (Isa x RateConstant) (Isa x "rate constant class*") (some y (x) (Isa y "chemical reaction class*")))) (using "half-life method*")))
+ (assert '(ILOQualifier  (calculateILO (every x (Isa x RateConstant) (Isa x "rate constant class*") (some y (x) (Isa y "chemical reaction class*")))) (using "initial rates method*")))
  ; 91. Devise a suitable experimental technique for studying the rate of a reaction, from given information.
  (assert '(Isa (deviseILO (qualifiedTerm (setof "suitable*" "experimental*") "technique*")) "ILO class*"))
  (assert '(ILOQualifier (deviseILO (qualifiedTerm (setof "suitable*" "experimental*") "technique*")) (forPurpose (StudyOf "reaction rate*"))))
@@ -449,24 +449,24 @@
  (assert '(ILOQualifier (describeILO "heterogeneous catalysis*") (asIn "catalytic conversion*")))
  (assert '(ILOQualifier (describeILO "heterogeneous catalysis*") (asIn (roleOfIn "iron three plus ion species*" )))
  ; 93. Describe qualitatively (and indicate the periodicity in) the variations in atomic radius, ionic radius, melting point and electrical conductivity of the elements (see the dataOn Booklet).
- (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "atomic radius*" (every x (Isa x "element class*")))))) "ILO class*"))
- (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "ionic radius*" (every x (Isa x "element class*")))))) "ILO class*"))
- (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "melting point*" (every x (Isa x "element class*")))))) "ILO class*"))
- (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "electrical conductivity*" (every x (Isa x "element class*")))))) "ILO class*"))
- (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "atomic radius*" (every x (Isa x "element class*")))))) (inManner "qualitative*")))
- (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "ionic radius*" (every x (Isa x "element class*")))))) (inManner "qualitative*")))
- (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "melting point*" (every x (Isa x "element class*")))))) (inManner "qualitative*")))
- (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "electrical conductivity*" (every x (Isa x "element class*")))))) (inManner "qualitative*")))
+ (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "atomic radius*" (every x (Isa x Element) (Isa x "element class*")))))) "ILO class*"))
+ (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "ionic radius*" (every x (Isa x Element) (Isa x "element class*")))))) "ILO class*"))
+ (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "melting point*" (every x (Isa x Element) (Isa x "element class*")))))) "ILO class*"))
+ (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "electrical conductivity*" (every x (Isa x Element) (Isa x "element class*"))))) "ILO class*"))
+ (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "atomic radius*" (every x (Isa x Element) (Isa x "element class*"))))) (inManner "qualitative*")))
+ (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "ionic radius*" (every x (Isa x Element) (Isa x "element class*"))))) (inManner "qualitative*")))
+ (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "melting point*" (every x (Isa x Element) (Isa x "element class*"))))) (inManner "qualitative*")))
+ (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "electrical conductivity*" (every x (Isa x Element) (Isa x "element class*"))))) (inManner "qualitative*")))
  ; 94. Explain qualitatively the variation in atomic radius and ionic radius.
  (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "ionic radius*" (every x (Isa x "element class*")))))) "ILO class*"))
  (assert '(Isa (describeILO (variationIn (unitaryQuantityOf "atomic radius*" (every x (Isa x "element class*")))))) "ILO class*"))
  (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "ionic radius*" (every x (Isa x "element class*")))))) (inManner "qualitative*")))
  (assert '(ILOQualifier (describeILO (variationIn (unitaryQuantityOf "atomic radius*" (every x (Isa x "element class*")))))) (inManner "qualitative*")))
  ; 95. Interpret the variation in melting point and in electrical conductivity in terms of the presence of simple molecular, giant molecular or metallic bonding in the elements.
- (assert '(Isa (interpretILO (variationIn (unitaryQuantityOf "melting point*" (every x (Isa x "element class*")))) "ILO class*"))
- (assert '(ILOQualifier (interpretILO (variationIn (unitaryQuantityOf "melting point*" (every x (Isa x "element class*"))))  (inTermsOf (setof "molecular bonding*" "giant molecular bonding*" "metallic bonding*"))))
- (assert '(Isa (interpretILO (variationIn (unitaryQuantityOf "electrical conductivity*" (every x (Isa x "element class*")))) "ILO class*"))
- (assert '(ILOQualifier (interpretILO (variationIn (unitaryQuantityOf "electrical conductivity*" (every x (Isa x "element class*"))))  (inTermsOf (setof "molecular bonding*" "giant molecular bonding*" "metallic bonding*"))))
+ (assert '(Isa (interpretILO (variationIn (unitaryQuantityOf "melting point*" (every x (Isa x Element) (Isa x "element class*")))) "ILO class*"))
+ (assert '(ILOQualifier (interpretILO (variationIn (unitaryQuantityOf "melting point*" (every x (Isa x Element) (Isa x "element class*"))))  (inTermsOf (setof "molecular bonding*" "giant molecular bonding*" "metallic bonding*"))))
+ (assert '(Isa (interpretILO (variationIn (unitaryQuantityOf "electrical conductivity*" (every x (Isa x Element) (Isa x "element class*")))) "ILO class*"))
+ (assert '(ILOQualifier (interpretILO (variationIn (unitaryQuantityOf "electrical conductivity*" (every x (Isa x Element) (Isa x "element class*"))))  (inTermsOf (setof "molecular bonding*" "giant molecular bonding*" "metallic bonding*"))))
  ; 96. Explain the variation in first ionisation energy.
  (assert '(Isa (explainILO (variationIn (nameQuantityOf "first ionization energy*" (every x (Isa x "element class*"))))))  "ILO class*"))
  ; 97. Describe the reactions, if any, of the elements with oxygen (to give Na2O, MgO, Al 2O3, P4O10?, SO2, SO3), chlorine (to give NaCl? , MgCl? 2, Al 2Cl 6, SiCl? 4, PCl 5) and water (Na and Mg only).
@@ -482,7 +482,7 @@
  (assert '(Isa (describeILO (chemicalReactionByAllSpecies (setof "silicon element*" "chlorine element*") "silicon chloride substance*")) "ILO class*"))
  (assert '(Isa (describeILO (chemicalReactionByAllSpecies (setof "phosphorus element*" "chlorine element*") "phosphorus pentachloride  substance*")) "ILO class*"))
   ; 98. State and explain the variation in oxidation number of the oxides and chlorides in terms of their valence shell electrons.
- (assert '(Isa (explainILO (variationIn (namedQuantityOfClass "oxidation number*" (every x (isa x "oxide substance class*") (some y (x) (Isa y "element class*") (inTermsOf (valenceShellElectronsOf y))))))) "ILO class*")) ; another way to express valence shell electrons needed
+ (assert '(Isa (explainILO (variationIn (namedQuantityOfClass "oxidation number*" (every x (Isa x OxideSubstance) (Isa x "oxide substance class*") (some y (x) (Isa y "element class*") (inTermsOf (valenceShellElectronsOf y))))))) "ILO class*")) ; another way to express valence shell electrons needed
  (assert '(ILOQualifier (explainILO (variationIn (namedQuantityOfClass "oxidation number*" "oxide substance class*"))) (inTermsOf "valence shell electrons*")))
  (assert '(Isa (explainILO (variationIn (namedQuantityOfClass "oxidation number*" "chloride substance class*"))) "ILO class*"))
  (assert '(ILOQualifier (explainILO (variationIn (namedQuantityOfClass "oxidation number*" "chloride substance class*"))) (inTermsOf "valence shell electrons*")))
@@ -497,39 +497,39 @@
  ; 102. Interpret the variations and trends in (f), (g), (h), and (i) in terms of bonding and electronegativity.
  (assert '(Isa (interpretILO ) "ILO class*"))
  ; 103. Suggest the types of chemical bonding present in chlorides and oxides from observations of their chemical and physical properties.
- (assert '(Isa (suggestILO (namedPropertyOf "bonding*" (every x (Isa x "chloride substance class*") (given (setof (chemicalPropertiesOf x) (physicalPropertiesOf x)))))) "ILO class*"))
+ (assert '(Isa (suggestILO (namedPropertyOf "bonding*" (every x (Isa x ChlorideSubstance) (Isa x "chloride substance class*") (given (setof (chemicalPropertiesOf x) (physicalPropertiesOf x)))))) "ILO class*"))
  ; 104. Predict the characteristic properties of an element in a given group by using knowledge of chemical periodicity.
- (assert '(Isa (predictILO (every x (Isa x "element class*") (inGroup x (every y (Isa y "periodic table group class*")))))  "ILO class*"))
- (assert '(ILOQualifier (predictILO (every x (Isa x "element class*") (inGroup x (every y (Isa y "periodic table group class*"))))) (using "chemical periodicity*")))
+ (assert '(Isa (predictILO (every x (Isa x Element) (Isa x "element class*") (inGroup x (some  y (x) (Isa y "periodic table group class*")))))  "ILO class*"))
+ (assert '(ILOQualifier (predictILO (every x (Isa x Element) (Isa x "element class*") (inGroup x (some y (x) (Isa y "periodic table group class*"))))) (using "chemical periodicity*")))
  ; 105. Deduce the nature, possible position in the Periodic Table, and identity of unknown elements from given information about physical and chemical properties.
- (assert '(Isa (deduceILO (identityOf (every x (Isa x "element class") (given (chemicalPropertiesOf x)) (given (PhsyicalProeprtiesOf x)))) "ILO class*"))
+ (assert '(Isa (deduceILO (identityOf (every x (Isa x Element) (Isa x "element class") (given (chemicalPropertiesOf x)) (given (physicalProeprtiesOf x)))) "ILO class*"))
  ; 106. describe the reactions of the elements with oxygen, water and dilute acids.
- (assert '(Isa (describeILO (chemicalReactionByReactants (setof (every x (Isa x "element class*")) "oxygen element*"))) "ILO class*"))
- (assert '(Isa (describeILO (chemicalReactionByReactants (setof (every x (Isa x "element class*")) "water substance*"))) "ILO class*"))
- (assert '(Isa (describeILO (chemicalReactionByReactants (setof (every x (Isa x "element class*")) (every y (Isa y "acid substance class*") (InState y "dilute aqueous solution state*"))))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof (every x (Isa x Element) (Isa x "element class*")) "oxygen element*"))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof (every x (Isa x Element) (Isa x "element class*")) "water substance*"))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof (every x (Isa x Element) (Isa x "element class*")) (every y (Isa y "acid substance class*") (InState y "dilute aqueous solution state*"))))) "ILO class*"))
  ; 107. Describe the behaviour of the oxides, hydroxides and carbonates with water and with dilute acids.
  (assert '(Isa (describeILO (chemicalReactionByReactants (setof "hydroxide substance class*" "water substance*"))) "ILO class*"))
  (assert '(Isa (describeILO (chemicalReactionByReactants (setof "carbonate substance class*" "water substance*"))) "ILO class*"))
  (assert '(Isa (describeILO (chemicalReactionByReactants (setof "oxide substance class*" "water substance*"))) "ILO class*"))
- (assert '(Isa (describeILO (chemicalReactionByReactants (setof "hydroxide substance class*" (every y (Isa y "acid substance class*") (InState y "dilute aqueous solution state*"))))) "ILO class*"))
- (assert '(Isa (describeILO (chemicalReactionByReactants (setof "carbonate substance class*" (every y (Isa y "acid substance class*") (InState y "dilute aqueous solution state*"))))) "ILO class*"))
- (assert '(Isa (describeILO (chemicalReactionByReactants (setof "oxide substance class*" (every y (Isa y "acid substance class*") (InState y "dilute aqueous solution state*"))))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof "hydroxide substance class*" (every y (Isa x Acid) (Isa y "acid substance class*") (InState y "dilute aqueous solution state*"))))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof "carbonate substance class*" (every y (Isa x Acid) (Isa y "acid substance class*") (InState y "dilute aqueous solution state*"))))) "ILO class*"))
+ (assert '(Isa (describeILO (chemicalReactionByReactants (setof "oxide substance class*" (every y (Isa x Acid) (Isa y "acid substance class*") (InState y "dilute aqueous solution state*"))))) "ILO class*"))
   ; 108. Describe the thermal decomposition of the nitrates and carbonates.
  (assert '(Isa (describeILO (typeOfReactionOfClass "thermal decomposition*" "nitrate substance class*")) "ILO class*"))
  (assert '(Isa (describeILO (typeOfReactionOfClass "thermal decomposition*" "carbonate substance class*")) "ILO class*"))
  ; 109. Interpret, and make predictions from, the trends in physical and chemical properties of the elements and their compounds.
- (assert (Isa (interpretILO (every x (IstrendIn x (setof (physicalPropertiesOf (every y (Isa y "element class*"))) (chemicalPropertiesOf (every y (Isa y "element class*"))))))) "ILO class*"))
- (assert (Isa (interpretILO (every x (IstrendIn x (setof (physicalPropertiesOf (every y (Isa y "chemical substance class*") (some z (y) (Isa z "element class*") (IsCompoundOf y z)))) (chemicalPropertiesOf (every y (Isa y "chemical substance class*") (some z (y) (Isa z "element class*") (IsCompoundOf y z))))))) "ILO class*"))
+ (assert (Isa (interpretILO (every x (IsTrendIn x (setof (physicalPropertiesOf (every y (Isa x Element) (Isa y "element class*"))) (chemicalPropertiesOf (every y (Isa x Element) (Isa y "element class*"))))))) "ILO class*"))
+ (assert (Isa (interpretILO (every x (IsTrendIn x (setof (physicalPropertiesOf (every y (Isa x ChemicalSubstance) (Isa y "chemical substance class*") (some z (y) (Isa z "element class*") (IsCompoundOf y z)))) (chemicalPropertiesOf (every y (Isa x ChemicalSubstance) (Isa y "chemical substance class*") (some z (y) (Isa z "element class*") (IsCompoundOf y z))))))) "ILO class*"))
  ; 110. Explain the use of magnesium oxide as a refractory lining material.
  (assert '(Isa (explainILO (useOfAs "magnesium oxide substance*" "refractory lining material*")) "ILO class*"))
   ; 111. Describe and explain the use of lime in agriculture.
  (assert '(Isa (describeILO (useOfIn "lime*" "agriculture*")) "ILO class*"))
  (assert '(Isa (explainILO (useOfIn "lime*" "agriculture*")) "ILO class*"))
  ; 112. Interpret and explain qualitatively the trend in the thermal stability of the nitrates and carbonates in terms of the charge density of the cation and the polarisability of the large anion.
- (assert '(Isa (explainILO (trendInProperty "thermal stability*" (every x (Isa x "nitrate substance class*") (inTermsOf (setof (some y (x) (namedPhysicalPropertyOf "charge density*" (cationOf x))) ((some z (x) (namedPhysicalPropertyOf "polarisability*" (anionOf x) )) )))))) "ILO class*"))
- (assert '(Isa (explainILO (trendInProperty "thermal stability*" (every x (Isa x "carbonate substance class*") (inTermsOf (setof (some y (x) (namedPhysicalPropertyOf "charge density*" (cationOf x))) ((some z (x) (namedPhysicalPropertyOf "polarisability*" (anionOf x) )))))))) "ILO class*"))
+ (assert '(Isa (explainILO (trendInProperty "thermal stability*" (every x (Isa x NitrateSubstance) (Isa x "nitrate substance class*") (inTermsOf (setof (some y (x) (namedPhysicalPropertyOf "charge density*" (cationOf x))) ((some z (x) (namedPhysicalPropertyOf "polarisability*" (anionOf x) )) )))))) "ILO class*"))
+ (assert '(Isa (explainILO (trendInProperty "thermal stability*" (every x ((Isa x CarbonateSubstance) Isa x "carbonate substance class*") (inTermsOf (setof (some y (x) (namedPhysicalPropertyOf "charge density*" (cationOf x))) ((some z (x) (namedPhysicalPropertyOf "polarisability*" (anionOf x) )))))))) "ILO class*"))
  ; 113. Interpret and explain qualitatively the variation in solubility of the sulfates in terms of relative magnitudes of the enthalpy change of hydration and the corresponding lattice energy.
- (assert '(Isa (explainILO (variationInProperty "solubility*" (every x (Isa x "sulfate substance class*") (inTermsOf (setof (namedThermodynamicPropertyOf "enthalpy of hydration*" x) (namedThermodynamicPropertyOf "lattice energy*" x)))))) "ILO class*"))
+ (assert '(Isa (explainILO (variationInProperty "solubility*" (every x (Isa x SulfateSubstance) (Isa x "sulfate substance class*") (inTermsOf (setof (namedThermodynamicPropertyOf "enthalpy of hydration*" x) (namedThermodynamicPropertyOf "lattice energy*" x)))))) "ILO class*"))
   ; 114. Outline the variation in melting point and in electrical conductivity of the elements and interpret them in terms of structure and bonding.
  (assert '(Isa (describeILO (variationInPhysicalPropertyOfClass "melting point*" "element class*")) "ILO class*"))
  (assert '(Isa (describeILO (variationInPhysicalPropertyOfClass "electrical conductivity*" "element class*")) "ILO class*"))
@@ -545,18 +545,18 @@
  (assert '(ILOQualifier (describeILO (chemicalReactionByReactants (setof (every x (Isa x "tetrachloride substance class*")) "water substance*"))) (inTermsOf (setof "structure*" "bonding*"))))
  (assert '(ILOQualifier (explainILO (chemicalReactionByReactants (setof (every x (Isa x "tetrachloride substance class*")) "water substance*"))) (inTermsOf (setof "structure*" "bonding*"))))
  ; 117. Describe and explain the bonding, acid-base nature and thermal stability of the oxides of oxidation states II and IV.
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "bonding*"  (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state II*"))))) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state IV*")))) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state II*")))) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state IV*")))) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state II*")))) "ILO class*"))
- (assert '(Isa (describeILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state IV*")))) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state II*")))) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide class*") (HasOxidationState x "oxidation state IV*")))) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasOxidationState "oxidation state*" x "oxidation state II*")))) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide class*") (HasOxidationState "oxidation state*" x "oxidation state IV*")))) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasOxidationState"oxidation state*" x "oxidation state II*")))) "ILO class*"))
- (assert '(Isa (explainILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide class*") (HasOxidationState "oxidation state*" x "oxidation state IV*")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "bonding*"  (every x (Isa x "oxide substance class*") (HasOxidationState x "oxidation state II*"))))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide substance class*") (HasOxidationState x "oxidation state IV*")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide substance class*") (HasOxidationState x "oxidation state II*")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide substance class*") (HasOxidationState x "oxidation state IV*")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide substance class*") (HasOxidationState x "oxidation state II*")))) "ILO class*"))
+ (assert '(Isa (describeILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide substance class*") (HasOxidationState x "oxidation state IV*")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide substance class*") (HasOxidationState x "oxidation state II*")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "bonding*" (every x (Isa x "oxide substance class*") (HasOxidationState x "oxidation state IV*")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide substance class*") (HasOxidationState "oxidation state*" x "oxidation state II*")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "acid-base nature*" (every x (Isa x "oxide substance class*") (HasOxidationState "oxidation state*" x "oxidation state IV*")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide substance class*") (HasOxidationState"oxidation state*" x "oxidation state II*")))) "ILO class*"))
+ (assert '(Isa (explainILO (namedPhysicalPropertyOf "thermal stability*" (every x (Isa x "oxide substance class*") (HasOxidationState "oxidation state*" x "oxidation state IV*")))) "ILO class*"))
  ; 118. Describe and explain the relative stability of higher and lower oxidation states of the elements in their oxides and aqueous cations including, where relevant, E values.
  (assert '(Isa (describeILO (relativeStabilityOf (every x (Isa x "element oxide substance class*") (HasNamedQuantityNamedRange "oxidation state*" x "lower*")) "ILO class*"))
  (assert '(Isa (describeILO (relativeStabilityOf (every x (Isa x "element oxide substance class*") (HasNamedQuantityNamedRange "oxidation state*" x "higher*")) "ILO class*"))

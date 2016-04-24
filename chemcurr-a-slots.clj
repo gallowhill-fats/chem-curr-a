@@ -49,6 +49,7 @@
 (defineSlot chemical-property :type :ChemicalProperty)
 (defineSlot chemical-reaction :type :ChemicalReaction)
 (defineSlot chemical-referent :type :ChemicalReferent)
+(defineSlot chemical-structure :type :ChemicalStructure)
 (defineSlot chemical-substance :type :ChemicalSubstance)
 (defineSlot chemical-system :type :Thing)
 (defineSlot chemical-test :type :ChemicalTest)
@@ -74,6 +75,8 @@
 (defineSlot comparison-set :type :Thing)
 (defineSlot complex-ion :type :ComplexIon)
 (defineSlot constructedOn :type :Thing)
+(defineSlot constructible-thing :type :Thing)
+(defineSlot constructILO :type :ILO)
 (defineSlot containing :type :Thing)
 (defineSlot ContainsElement :type :Thing)
 (defineSlot content :type :Thing)
@@ -292,6 +295,7 @@
 ;;; P
 
 (defineSlot Perform :type :Thing)
+(defineSlot performCalculationsILO :type :Thing)
 (defineSlot phenomena :type :Thing :min 2)
 (defineSlot physical-property :type :PhysicalProperty)
 (defineSlot physical-state :type :PhysicalState)
@@ -312,7 +316,7 @@
 (defineSlot proposeILO :type :Thing)
 (defineSlot proposition :type :Proposition)
 (defineSlot pure-chemical-substance-name :type :Name)
-(defineSlot purpose :type :Thing)
+(defineSlot purpose :type :Act)
 (defineSlot puzzleOutILO :type :Thing)
 
 ;;; Q
@@ -351,6 +355,7 @@
 (defineSlot requirement :type :Thing)
 (defineSlot resource :type :Thing)
 (defineSlot result-of :type :Thing)
+(defineSlot result-of-calculation :type :Thing)
 (defineSlot ResultsIn :type :Thing)
 (defineSlot role :type :Role)
 (defineSlot row-in-periodic-table :type :PeriodicTableRow)
@@ -421,6 +426,7 @@
 (defineSlot thing-with-quantity :type :Thing)
 (defineSlot thing-with-role :type :Thing)
 (defineSlot thing-with-shape :type :Thing)
+(defineSlot thing-with-type :type :Thing)
 (defineSlot things-with-property :type :Thing :min 2)
 (defineSlot things-with-trending-property :type :Thing :min 2)
 (defineSlot topic :type :Thing)

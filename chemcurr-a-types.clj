@@ -63,7 +63,22 @@
 
 (defineType :PolymerSubstance (:ChemicalSubstance))
 
+(defineType :OxideSubstance (:ChemicalSubstance))
+(defineType :ChlorideSubstance (:ChemicalSubstance))
+(defineType :BromideSubstance (:ChemicalSubstance))
+(defineType :FluorideSubstance (:ChemicalSubstance))
+(defineType :IodideSubstance (:ChemicalSubstance))
+
+(defineType :NitrateSubstance (:ChemicalSubstance))
+(defineType :CarbonateSubstance (:ChemicalSubstance))
+(defineType :HydroxideSubstance (:ChemicalSubstance))
+(defineType :SulfateSubstance (:ChemicalSubstance))
+
 (defineType :ChemicalReagent (:ChemicalSubstance))
+
+;;; structure
+
+(defineType :ChemicalStructure (:Thing))
 
 ;;; periodic table
 
@@ -97,6 +112,11 @@
 (defineType :Change (:Thing))
 (defineType :ChemicalChange (:Change))
 (defineType :ChemicalReaction (:Change))
+(defineType :ReversibleReaction (:ChemicalReaction))
+
+(defineType :ZeroOrderChemicalReaction (:ChemicalReaction))
+(defineType :FirstOrderChemicalReaction (:ChemicalReaction))
+(defineType :SecondOrderChemicalReaction (:ChemicalReaction))
 
 ;; organic reaction types
 (defineType :SubstitutionReaction (:ChemicalReaction))
@@ -155,6 +175,7 @@
 (defineType :Qualifier (:Thing))
 (defineType :CriterionQualifier (:Qualifier))
 (defineType :UsingQualifier (:Qualifier))
+(defineType :PurposeQualifier (:Qualifier))
 
 ;;; naming
 (defineType :Name (:Thing))
@@ -178,6 +199,35 @@
 
 (defineType :EValue (:UnitedQuantity))
 
+(defineType :Temperature (:UnitedQuantity :ReactionCondition))
+(defineType :Pressure (:UnitedQuantity :ReactionCondition))
+
+(defineType :MeanBondEnergy (:UnitedQuantity))
+(defineType :CellPotential (:UnitedQuantity))
+(defineType :StandardCellPotential (:CellPotential))
+
+
+(defineType :ActivationEnergy (:UnitedQuantity))
+
+(defineType :ReactionRate (:UnitedQuantity))
+
+
+;;; equations
+
+(defineType :Equation (:Thing))
+(defineType :RateEquation (:Equation))
+
+(defineType :IntegratedRateEquation (:RateEquation))
+
+
+
+;;; range qualifiers
+
+(defineType :Low (:Quantity))
+(defineType :High (:Quantity))
+(defineType :VeryLow (:Quantity))
+(defineType :VeryHigh (:Quantity))
+
 ;;; trend
 
 (defineType :Trend (:Thing))
@@ -196,7 +246,7 @@
 
 ;;; process
 
-(defineType :Process (:Thing))
+(defineType :Process (:DefinableThing))
 (defineType :PhysicalProcess (:Process))
 (defineType :ChemicalProcess (:Process))
 (defineType :Creation (:Process))
@@ -205,10 +255,16 @@
 (defineType :PhysicalSeparation (:Separation))
 (defineType :Characterisation (:Process))
 
+(defineType :Titration (:Process))
+(defineType :AcidBaseTitration (:Titration))
+
+
+
 
 ;;; system
 
 (defineType :System (:DefinableThing))
+(defineType :ChemicalReactionSystem (:System))
 
 ;;; role in process or event
 
@@ -254,6 +310,10 @@
 
 (defineType :RedoxSystem (:DefinableThing))
 
+(defineType :ElectrochemicalCell (:DefinableThing))
+
+
+
 ;;; statistics
 
 (defineType :ProbabilityDistribution (:DefinableThing))
@@ -264,8 +324,6 @@
 (defineType :Similarity (:Thing))
 
 (defineType :Variation (:Thing))
-
-
 
 ;;; tests
 
@@ -280,6 +338,25 @@
 ;;; information
 
 (defineType :Information (:Thing))
+
+;;; diagrams & graphs
+
+(defineType :Diagram (:Thing))
+(defineType :ReactionPathwayDiagram (:Diagram))
+
+;;; artifacts
+
+(defineType :Acid (:ChemicalSubstance))
+(defineType :StrongAcid (:Acid))
+(defineType :WeakAcid (:Acid))
+(defineType :Base (:ChemicalSubstance))
+(defineType :StrongBase (:Base))
+(defineType :WeakBase (:Base))
+
+(defineType :Indicator (:ChemicalSubstance))
+
+(defineType :ChemicalSolution (:ChemicalSystem))
+(defineType :BufferSolution (:ChemicalSolution))
 
 
 

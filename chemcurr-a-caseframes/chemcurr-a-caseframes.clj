@@ -70,8 +70,8 @@
 
 ;;; C
 
-(defineCaseframe 'ILO '(actions object-of-calculation)
-    :docstring "calculate [object-of-calculation]"
+(defineCaseframe 'ILO '(actions result-of-calculation)
+    :docstring "calculate [result-of-calculation]"
     :fsymbols '(calculateILO))
 
 (defineCaseframe 'Thing '('cardinalityOf thing-with-cardinality)
@@ -131,6 +131,10 @@
 (defineCaseframe 'Proposition '(Control controlling-entity dependent-entity)
   :docstring "[controlling-entity] controls [dependent-entity]"
   :fsymbols '(Controls Determines Regulates Commands Encodes))
+
+(defineCaseframe 'ILO '(actions constructible-thing)
+  :docstring "construct  [constructible-thing]"
+  :fsymbols '(constructILO))
 
 ;;; D
 
@@ -243,6 +247,9 @@
   :docstring "greater comparative of [property]")
 
 ;;; H
+
+(defineCaseframe 'Proposition '('HasChemicalStructure chemical-referent chemical-structure)
+  :docstring "[chemical-referent] has [chemical-structure]")
 
 (defineCaseframe 'Proposition '('HasClassName nameable-class class-name)
   :docstring "[namable-class] has [class-name]")
@@ -374,6 +381,9 @@
 
 (defineCaseframe 'Proposition '('IsAnalogousTo entity analogue)
   :docstring "[entity] is analogous to [analogue]")
+
+(defineCaseframe 'Proposition '('IsConstituentOf element chemical-referent)
+  :docstring "[element] is constituent of [chemical-referent]")
 
 ; related to FrameNet: Categorization
 (defineCaseframe 'Categorization '('IsInDomain entity domain)
@@ -534,6 +544,10 @@
 (defineCaseframe 'Act '('performActionOn type-of-action object-of-action)
   :docstring "perform [type-of-action] on [object-of-action]")
 
+(defineCaseframe 'ILO '(actions object-of-calculation)
+  :fsymbols '(performCalculationsILO))
+  :docstring "perform calculations involving [object-of-calculation]"
+
 (defineCaseframe 'PhysicalProperties '('physicalPropertiesOf substance)
   :docstring "physical properties of [substance]")
 
@@ -551,8 +565,9 @@
 (defineCaseframe 'Properties '('propertiesOfClass class-with-properties)
   :docstring "properties of [class-with-properties]")
 
-(defineCaseframe 'Thing '('purpose purpose)
-  :docstring "the [purpose]")
+(defineCaseframe 'PurposeQualifier '(purpose purpose)
+  :docstring "the [purpose]"
+  :fsymbols '(inOrderTo))
 
 ;;; Q
 
@@ -665,6 +680,9 @@
 
 (defineCaseframe 'ChemicalReaction '('typedChemicalReactionOfClass reaction-type reactant-class)
   :docstring "[reaction-type] reaction of [reactant-class]")
+
+(defineCaseframe 'Thing '('typeOfThing thing-with-type)
+  :docstring "type of [thing-with-type]")
 
 ;;; U
 

@@ -69,7 +69,7 @@
 
 ;;;L
 
-(defineTerm "lattice energy*" ':PhysicalProperty)
+(defineTerm "lattice energy*" ' :UnitedQuantity)
 
 ;;;M
 (defineTerm "magnetic quantum number*" ':DefinableThing)
