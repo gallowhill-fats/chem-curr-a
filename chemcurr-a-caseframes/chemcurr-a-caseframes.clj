@@ -14,8 +14,8 @@
 (defineCaseframe 'Act '('alterPropertyOf type-of-alteration property thing-with-property)
   :docstring "make [type-of-alteration] to [property] of [thing-with-property]")
 
-(defineCaseframe 'AnionicChemicalEntity '('anionOf ionic-chemical-referent)
-  :docstring "anion of [ionic-chemical-referent]")
+(defineCaseframe 'AnionicChemicalEntity '('anionOf chemical-referent)
+  :docstring "anion of [chemical-referent]")
 
 ; FrameNet: derived from Arriving
 (defineCaseframe 'Thing '(arrival arriving-thing thing-arrived-at)
@@ -82,8 +82,8 @@
   :docstring "categorise [categorisable-thing] into [category]"
   :fsymbols '(classifyILO categoriseILO))
 
-(defineCaseframe 'CationicChemicalEntity '('cationOf ionic-chemical-referent)
-  :docstring "cation of [ionic-chemical-referent]")
+(defineCaseframe 'CationicChemicalEntity '('cationOf chemical-referent)
+  :docstring "cation of [chemical-referent]")
 
 ; FrameNet: Causation
 (defineCaseframe 'Proposition '(Causation cause effect)
@@ -119,6 +119,9 @@
 
 (defineCaseframe 'Comparative '('comparativeOf comparative-sense  comparative-thing)
   :docstring "comparative of [comparative-thing] in [comparative-sense]")
+
+(defineCaseframe 'Conc '('concentrationOf chemical-referent)
+  :docstring "concentration of  [chemical-referent]")
 
 (defineCaseframe 'ILO '(actions comparison-set)
   :docstring "compare [comparison-set]"
@@ -177,6 +180,9 @@
   :docstring "differentiate between [phenomena]"
   :fsymbols '(differentiateBetweenILO))
 
+(defineCaseframe 'Direction '('directionOf thing-with-direction)
+  :docstring "direction of [thing-with-direction]")
+
 ; from FrameNet frame: Topic
 (defineCaseframe 'ILO '(actions discussible-thing)
   :docstring "discuss [discussible-thing]"
@@ -221,8 +227,8 @@
 
 ;;; F
 
-(defineCaseframe 'Qualifier '('forChemicalSystem chemical-system)
-  :docstring "relating to [chemical-system]")
+(defineCaseframe 'Feasibility '('feasibilityOf chemical-reaction)
+  :docstring "feasibility of  [chemical-reaction]")
 
 (defineCaseframe 'Qualifier '('forSubstrateClass substrate-class)
   :docstring "for [substrate-class]")
@@ -315,6 +321,9 @@
 (defineCaseframe 'Proposition '('HasRowInPeriodicTable element row-in-periodic-table)
   :docstring "[element] has [row-in-periodic-table]")
 
+(defineCaseframe 'Proposition '('HasStandardCellPotential electrochemical-cell standard-cell-potential)
+  :docstring "[electrochemical-cell] has [standard-cell-potential]")
+
 (defineCaseframe 'Proposition '('HasSymbolicPropertyElement symbolic-property-class thing-with-property symbolic-property-element)
   :docstring "[thing-with-property] has [symbolic-property-element] in [symbolic-property-class]")
 
@@ -352,9 +361,8 @@
 (defineCaseframe 'Qualifier '('inCase proposition)
   :docstring "in the case of [proposition]")
 
-(defineCaseframe 'Information '(information topic)
-  :docstring "information on [topic]"
-  :fsymbols '(dataOn informationOn))
+(defineCaseframe 'Qualifier '('inChemicalSystem chemical-system)
+  :docstring "in [chemical-system]")
 
 (defineCaseframe 'Modifier '(including inclusion-set)
   :docstring "including [inclusion-set]"
@@ -368,8 +376,17 @@
   :docstring "in [domain]"
   :fsymbols '(inTermsOf inRelationTo withReferenceTo withRegardsTo withParticularReferenceTo asAppliedTo))
 
+(defineCaseframe 'Information '(information topic)
+  :docstring "information on [topic]"
+  :fsymbols '(dataOn informationOn))
+
 (defineCaseframe 'Qualifier '('inManner manner)
   :docstring "in [manner]")
+
+(defineCaseframe 'ChemicalSubstance '('inPhysicalState chemical-substance physical-state)
+  :docstring "[chemical-substance] in [physical-state]")
+
+
 
 (defineCaseframe 'Qualifier '('inSystem system)
   :docstring "in [system]")
@@ -391,7 +408,7 @@
 
 (defineCaseframe 'ILO '(actions act)
   :docstring "intentionally carry out [act]"
-  :fsymbols '(intentionallyActILO actILO carryOutILO performILO doILO executeILO))
+  :fsymbols '(intentionallyActILO actILO carryOutILO performILO doILO executeILO describeHowToILO))
 
 (defineCaseframe 'Proposition '('InPresenceOf thing-in-presence thing-with-presence)
   :docstring "[thing-in-presence] is in presence of [thing-with-presence]")
@@ -415,8 +432,17 @@
 (defineCaseframe 'Proposition '('IsFunctionalGroupTestFor chemical-test tested-for-class)
   :docstring "[chemical-test] is chemical test for members of [tested-for-class]")
 
+(defineCaseframe 'Proposition '('IsInContactWith contacters)
+  :docstring "[contacters] are in contact")
+
+(defineCaseframe 'Proposition '('IsInState chemical-referent physical-state)
+  :docstring "[chemical-referent] is in [physical-state]")
+
 (defineCaseframe 'Proposition '('IsInSystem thing system)
   :docstring "[thing] is in [system]")
+
+(defineCaseframe 'Proposition '('IsIonOf ionic-referent chemical-referent)
+  :docstring "[ionic referent] is ion of  [chemical-referent]")
 
 (defineCaseframe 'Proposition  '('IsIsotopeOf isotope element)
   :docstring "[isotope] is an isotope of [element]")
@@ -445,6 +471,9 @@
 ; from FrameNet resource: Manufacturing
 (defineCaseframe 'Thing '('manufactureOfFrom manufacturand resource)
   :docstring "manufacture of [manufacturand] from [resource]")
+
+(defineCaseframe 'Act '('measure measurable-thing)
+  :docstring "measure [measurable-thing]")
 
 ; from FrameNet frame: Means
 (defineCaseframe 'Proposition '(Means method goal)
@@ -658,11 +687,7 @@
   :docstring "state [statable-thing]"
   :fsymbols '(stateILO writeILO writeDownILO proposeILO recountILO reportILO suggestILO relateILO))
 
-(defineCaseframe 'Proposition '('SubstanceInPhysicalState chemical-substance  physical-state)
-  :docstring "[chemical-substance] is in [physical-state]")
 
-(defineCaseframe 'ChemicalSubstance '('substanceInPhysicalState chemical-substance physical-state)
-  :docstring "[chemical-substance] in [physical-state]")
 
 (defineCaseframe 'SubstitutionReaction '('substitutionReaction substrate entering-group leaving-group)
   :docstring "substitution reaction of [substrate] in which [leaving-group] is substituted by [entering-group]")

@@ -56,6 +56,11 @@
 (defineType :AnionicChemicalEntity (:IonicChemicalEntity))
 (defineType :CationicChemicalEntity (:IonicChemicalEntity))
 
+(defineType :Solution (:ChemicalSubstance))
+
+(defineType :Metal (:ChemicalSubstance))
+(defineType :NonMetal (:ChemicalSubstance))
+
 (defineType :ComplexIon (:IonicChemicalReferent))
 (defineType :MetalIon (:IonicChemicalReferent))
 
@@ -117,6 +122,8 @@
 (defineType :ZeroOrderChemicalReaction (:ChemicalReaction))
 (defineType :FirstOrderChemicalReaction (:ChemicalReaction))
 (defineType :SecondOrderChemicalReaction (:ChemicalReaction))
+
+(defineType :Feasibility (:Thing)) ; reaction property?
 
 ;; organic reaction types
 (defineType :SubstitutionReaction (:ChemicalReaction))
@@ -206,6 +213,8 @@
 (defineType :CellPotential (:UnitedQuantity))
 (defineType :StandardCellPotential (:CellPotential))
 
+(defineType :Conc (:UnitedQuantity)) ; solution property?
+
 
 (defineType :ActivationEnergy (:UnitedQuantity))
 
@@ -264,6 +273,7 @@
 ;;; system
 
 (defineType :System (:DefinableThing))
+(defineType :ChemicalSystem (:System))
 (defineType :ChemicalReactionSystem (:System))
 
 ;;; role in process or event
@@ -308,10 +318,12 @@
 (defineType :Electrode (:DefinableThing))
 (defineType :ElectrodePotential (:DefinableThing))
 
-(defineType :RedoxSystem (:DefinableThing))
+(defineType :RedoxSystem (:ChemicalSystem))
 
-(defineType :ElectrochemicalCell (:DefinableThing))
-
+(defineType :ElectricalCell (:ChemicalSystem))
+(defineType :ElectrochemicalCell (:ElectricalCell))
+(defineType :Battery (:Thing))
+(defineType :FuelCell (:ElectricalCell))
 
 
 ;;; statistics
@@ -357,6 +369,10 @@
 
 (defineType :ChemicalSolution (:ChemicalSystem))
 (defineType :BufferSolution (:ChemicalSolution))
+
+;;; direction 
+
+(defineType :Direction (:Thing))
 
 
 
