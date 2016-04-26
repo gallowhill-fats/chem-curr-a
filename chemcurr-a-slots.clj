@@ -140,6 +140,8 @@
 (defineSlot entity-with-base :type :Entity)
 (defineSlot entity-with-circumstances :type :Entity)
 (defineSlot entity-with-explanation :type :Entity)
+(defineSlot equilibrium-constant :type :EquilibriumConstant)
+(defineSlot equilibrium-position :type :EquilibriumPosition)
 (defineSlot essential-for :type :Thing)
 (defineSlot essential-thing :type :Thing)
 (defineSlot e-value :type :EValue)
@@ -174,6 +176,7 @@
 (defineSlot HasAcceptableCommonName :type :Thing)
 (defineSlot HasAtomName :type :Thing)
 (defineSlot HasChemicalName :type :Thing)
+(defineSlot HasEffectOn :type :Thing)
 (defineSlot HasElementName :type :Thing)
 (defineSlot HasGeneralIupacname :type :Thing)
 (defineSlot HasIupacName :type :Thing)
@@ -286,6 +289,7 @@
 
 ;;; O
 
+(defineSlot ObjectiveInfluence :type :Thing)
 (defineSlot objectiveInfluence :type :Thing)
 (defineSlot objective-influence :type :Thing)
 (defineSlot objectiveInfluenceOfClass :type :Thing)
@@ -351,6 +355,7 @@
 (defineSlot reactive-entities :type :ChemicalSpecies :min 2)
 (defineSlot Regulates :type :Thing)
 (defineSlot relate-sink :type :Thing)
+(defineSlot related-things :type :Thing :min 2)
 (defineSlot RelateToILO :type :Thing)
 (defineSlot removal-source :type :Thing)
 (defineSlot removand :type :Thing)
@@ -418,6 +423,7 @@
 (defineSlot thing-with-sequence :type :Thing)
 (defineSlot thing-name :type :Name)
 (defineSlot thing-to-be-determined :type :Thing)
+(defineSlot thing-with-amount :type :Thing)
 (defineSlot thing-with-assumptions :type :Thing)
 (defineSlot thing-with-behavior :type :Thing)
 (defineSlot thing-with-cardinality :type :Thing)

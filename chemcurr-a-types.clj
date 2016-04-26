@@ -220,6 +220,11 @@
 
 (defineType :ReactionRate (:UnitedQuantity))
 
+(defineType :EquilibriumConstant (:Quantity))
+
+(defineType :EquilibriumPosition (:Thing))
+
+(defineType :Amount (:UnitedQuantity))
 
 ;;; equations
 
@@ -303,7 +308,7 @@
 
 ;;; fundamental constants
 
-(defineType :FundamentalConstant (:DefinableThing))
+(defineType :FundamentalConstant (:DefinableThing :Quantity))
 
 ;;; modifier
 
@@ -369,6 +374,9 @@
 
 (defineType :ChemicalSolution (:ChemicalSystem))
 (defineType :BufferSolution (:ChemicalSolution))
+
+(defineType :Reactant (:ChemicalSubstance))
+(defineType :Product (:ChemicalSubstance))
 
 ;;; direction 
 

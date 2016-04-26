@@ -14,6 +14,9 @@
 (defineCaseframe 'Act '('alterPropertyOf type-of-alteration property thing-with-property)
   :docstring "make [type-of-alteration] to [property] of [thing-with-property]")
 
+(defineCaseframe 'Amount '('amountOf thing-with-amount)
+  :docstring "amount of [thing-with-amount]")
+
 (defineCaseframe 'AnionicChemicalEntity '('anionOf chemical-referent)
   :docstring "anion of [chemical-referent]")
 
@@ -272,6 +275,12 @@
 (defineCaseframe 'Proposition '('HasEnteringGroup substitution-reaction entering-group)
   :docstring "[substitution-reaction] has [entering-group]")
 
+(defineCaseframe 'Proposition '('HasEquilibriumConstant chemical-reaction equilibrium-constant)
+  :docstring "[chemical-reaction] has [equilibrium-constant]")
+
+(defineCaseframe 'Proposition '('HasEquilibriumPosition chemical-reaction equilibrium-position)
+  :docstring "[chemical-reaction] has [equilibrium-position]")
+
 (defineCaseframe 'Proposition '('HasEValue redox-system e-value)
   :docstring "[redox-system] has [e-value]")
 
@@ -522,6 +531,9 @@
 (defineCaseframe 'Property '('namedPhysicalPropertyOf physical-property thing-with-property)
   :docstring "[physical-property] of [thing-with-property]")
 
+(defineCaseframe 'Quantity '('namedPhysicalQuantityOf quantity thing-with-quantity)
+  :docstring "[physical-quantity] of [thing-with-quantity]")
+
 (defineCaseframe 'Property '('namedPhysicalPropertyOfClass physical-property class)
   :docstring "[physical-property] of [class]")
 
@@ -540,9 +552,14 @@
 ;;; O
 
 ; FrameNet: Objective_influence
-(defineCaseframe 'Thing '(objectiveInfluence influencing-entity dependent-entity)
-  :docstring "effect of [influencing-entity] on [dependent-entity]"
-  :fsymbols '(effectOfOn))
+(defineCaseframe 'Proposition '(ObjectiveInfluence influencing-entity dependent-entity)
+  :docstring "[influencing-entity] has effect on [dependent-entity]"
+  :fsymbols '(HasEffectOn))
+
+; FrameNet: Objective_influence
+;(defineCaseframe 'Thing '(objectiveInfluence influencing-entity dependent-entity)
+ ; :docstring "effect of [influencing-entity] on [dependent-entity]"
+ ; :fsymbols '(effectOfOn))
 
 ; FrameNet: Objective_influence
 (defineCaseframe 'ObjectiveInfluence '(objectiveInfluence influencing-thing object-of-influence)
@@ -583,10 +600,16 @@
 (defineCaseframe 'PhysicalProperties '('physicalPropertiesOfClass class-with-physical-properties)
   :docstring "physical properties of [class-with-physical-properties]")
 
+(defineCaseframe 'PhysicalState '('physicalStateOf chemical-substance)
+  :docstring "physical state of [chemical-substance]")
+
 ; FrameNet: Predicting
 (defineCaseframe 'ILO '(actions eventuality)
   :docstring "predict [eventuality]"
   :fsymbols '(predictILO))
+
+(defineCaseframe 'Product '('productsOf chemical-reaction)
+  :docstring "products of  [chemical-reaction]")
 
 (defineCaseframe 'Properties '('propertiesOf thing-with-property)
   :docstring "properties of [thing-with-property]")
@@ -604,6 +627,9 @@
   :docstring "[quantity] of [thing-with-quantity")
 
 ;;; R
+
+(defineCaseframe 'ReactionRate '('rateOf chemical-reaction)
+  :docstring "rate of [chemical-reaction]")
 
 (defineCaseframe 'ReactionType '('reactionTypeOfClass reaction-type substance-class)
   :docstring "[reaction-type] reaction of [substance-class]")
@@ -627,6 +653,9 @@
 
 (defineCaseframe 'RedoxSystem '('redoxSystem reductant oxidant)
   :docstring "redox system with [reductant] and [oxidant]")
+
+(defineCaseframe 'Thing '('relationBetween related-things)
+  :docstring "relation between [related-things]")
 
 (defineCaseframe 'Thing '('relativeNamedPhysicalPropertyOfClass physical-property class)
   :docstring "relative [physical-property] of [class]") 
