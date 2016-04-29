@@ -293,8 +293,10 @@
  (assert '(Isa (describeILO (determinationOf (valueOf "Avogadro constant*"))) "ILO class*"))
  (assert '(ILOModifier (describeILO (determinationOf (valueOf "Avogadro constant*"))) (determinationOf (valueOf "Avogadro constant*")) (using "electrolysis*")))
  ; 63. Explain, in terms of rates of the forward and reverse reactions, what is meant by a reversible reaction and dynamic equilibrium.
- (assert '(Isa (explainILO (every x (Isa x ReversibleReaction) (Isa x "reversible reaction class*") (inTermsOf (setof (rateOf (some y (x) (Isa y "forward reaction class*"))) (rateOf (some z (x) (Isa z "reverse reaction class*"))))))) "ILO class*"))
-(assert '(Isa (explainILO (namedPropertyOf "dynamic equilibrium*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*") (inTermsOf (setof (rateOf (some y (x) (Isa y "forward reaction class*"))) (rateOf (some y (x) (Isa y "reverse reaction class*"))))))))) "ILO class*"))
+ (assert '(Isa (explainILO (every x (Isa x ReversibleReaction) (Isa x "reversible reaction class*"))) "ILO class*"))
+ (assert '(ILOQualifier (explainILO (every x (Isa x ReversibleReaction) (Isa x "reversible reaction class*"))) (inTermsOf (setof (rateOf (some y (x) (Isa y "forward reaction class*"))) (rateOf (some z (x) (Isa z "reverse reaction class*")))))))
+(assert '(Isa (explainILO (namedPhysicalPropertyOf "dynamic equilibrium*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*")))) "ILO class*"))
+(assert '(ILOQualifier (explainILO (namedPhysicalPropertyOf "dynamic equilibrium*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*")))) (inTermsOf (setof (rateOf (some y (x) (Isa y "forward reaction class*"))) (rateOf (some z (x) (Isa z "reverse reaction class*")))))))
    ;; 64. State Le Chatelier’s Principle and apply it to deduce qualitatively (from appropriate information) the effects of changes in temperature, concentration or pressure, on a system at equilibrium.
  ;;;REWRITE
  (assert '(Isa (stateILO "Le Chatelier’s Principle*") "ILO class*"))
@@ -306,24 +308,20 @@
  ; 65. State whether changes in concentration, pressure or temperature or the presence of a catalyst affect the value of the equilibrium constant for a reaction.
  (assert '(Isa (stateILO (every x  (Isa x Thing) (HasEffectOn x (valueOf "equilibrium constant*")))) "ILO class*"))
  ;; 66. Deduce expressions for equilibrium constants in terms of concentrations, Kc, and partial pressures, Kp of the relationship between Kp and Kc is not required?.
- (assert '(Isa (deduceILO (mathematicalExpressionFor (namedDerivedPropertyOf "concentration equilibrium constant class*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*"))))) "ILO class*"))
- (assert '(ILOQualifier (deduceILO (mathematicalExpressionFor (namedDerivedPropertyOf "concentration equilibrium constant class*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*"))))) (inTermsOf (namedQuantityOf "concentration*" (some y (x) (or (IsReactant y x) (IsProduct y x))))) ))
- (assert '(Isa (deduceILO (mathematicalExpressionFor (namedDerivedPropertyOf "partial pressure equilibrium constant class*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*"))))) "ILO class*"))
- (assert '(ILOQualifier (deduceILO (mathematicalExpressionFor (namedDerivedPropertyOf "partial pressure equilibrium constant class*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*"))))) (inTermsOf (namedQuantityOf "partial pressure*" (some y (x) (or (IsReactant y x) (IsProduct y x))))) ))
-
-
-
- 
+ (assert '(Isa (deduceILO (mathematicalExpressionFor (namedDerivedPropertyOf "concentration equilibrium constant*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*"))))) "ILO class*"))
+ (assert '(ILOQualifier (deduceILO (mathematicalExpressionFor (namedDerivedPropertyOf "concentration equilibrium constant*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*"))))) (inTermsOf (namedQuantityOf "concentration*" (some y (x) (Isa y ChemicalSubstance) (IsReactantOrProductOf y x))))))
+ (assert '(Isa (deduceILO (mathematicalExpressionFor (namedDerivedPropertyOf "partial pressure equilibrium constant*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*"))))) "ILO class*"))
+ (assert '(ILOQualifier (deduceILO (mathematicalExpressionFor (namedDerivedPropertyOf "partial pressure equilibrium constant*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*"))))) (inTermsOf (namedQuantityOf "partial pressure*" (some y (x) (Isa y ChemicalSubstance) (IsReactantOrProductOf y x) ))) ))
   ;; 67. Calculate the values of equilibrium constants in terms of concentrations or partial pressures from appropriate data.
- (assert '(Isa (calculateILO (valueOf (every x  (Isa x "concentration equilibrium constant class*") (some y (x)  (Isa y "chemical reaction system class*")) (HasEquilibriumConstant y x))))  "ILO class*"))
- (assert '(Isa (calculateILO (valueOf (every x  (Isa x "partial pressure  equilibrium constant class*") (some y (x)  (Isa y "chemical reaction system class*")) (HasEquilibriumConstant y x))))  "ILO class*"))
-  (assert '(ILOQualifier (calculateILO (valueOf (every x  (Isa x "concentration equilibrium constant class*") (some y (x)  (Isa y "chemical reaction system class*")) (HasEquilibriumConstant y x))))  (given (dataOn  "concentration*"))))
- (assert '(ILOQualifier (calculateILO (valueOf (every x  (Isa x "partial pressure  equilibrium constant class*") (some y (x)  (Isa y "chemical reaction system class*")) (HasEquilibriumConstant y x))))  (given (dataOn  "partial pressure*"))))
+ (assert '(Isa (calculateILO (valueOf (every x  (Isa x EquilibriumConstant) (Isa x "concentration equilibrium constant class*") (HasEquilibriumConstant (some y (x)  (Isa y "chemical reaction system class*")) x))))  "ILO class*"))
+ (assert '(Isa (calculateILO (valueOf (every x  (Isa x EquilibriumConstant) (Isa x "partial pressure  equilibrium constant class*")  (HasEquilibriumConstant (some y (x)  (Isa y "chemical reaction system class*")) x))))  "ILO class*"))
+ ; (assert '(ILOQualifier (calculateILO (valueOf (every x  (Isa x EquilibriumConstant) (Isa x "concentration equilibrium constant class*")  (HasEquilibriumConstant (some y (x)  (Isa y "chemical reaction system class*")) x) )))  (given (dataOn  "concentration*"))))
+; (assert '(ILOQualifier (calculateILO (valueOf (every x  (Isa x EquilibriumConstant) (Isa x "partial pressure  equilibrium constant class*")  (HasEquilibriumConstant (some y (x)  (Isa y "chemical reaction system class*")) x))))  (given (dataOn  "partial pressure*"))))
  ; 68. Calculate the quantities present at equilibrium, given appropriate data (such calculations will not require the solving of quadratic equations).
- (assert '(Isa (calculateILO (namedPhysicalPropertyof "concentration*" (every  x  (Isa x ChemicalSpecies) (Isa x "chemical species class*") (some  y (x) (Isa y "chemical reaction system*")(IsAtEquilibrium y)))))) "ILO class*"))
+ (assert '(Isa (calculateILO (namedQuantityOf "concentration*" (every  x  (Isa x ChemicalSpecies) (Isa x "chemical species class*") (IsReactantOrProductOf x (some y (x) (Isa y "chemical reaction class*") (IsAtEquilibrium y))) )))  "ILO class*"))
  ; 69. Describe and explain the conditions used in the Haber process and the Contact process, as examples of the importance of an understanding of chemical equilibrium in the chemical industry (see also Section 9.6).
  (assert '(Isa (describeILO (reactionConditionsOf "Haber process chemical reaction*")) "ILO class*"))
- (assert '(ILOQualifier (describeILO (reactionConditionsOf "Haber process chemical reaction*")) (inRelationTo (equilibriumPositionOf "Haber process chemical reaction*"))
+ (assert '(ILOQualifier (describeILO (reactionConditionsOf "Haber process chemical reaction*")) (inRelationTo (equilibriumPositionOf "Haber process chemical reaction*"))))
  (assert '(Isa (describeILO (reactionConditionsOf "contact process*")) "ILO class*"))
  (assert '(ILOQualifier  (describeILO (reactionConditionsOf "contact process*")) (inRelationTo "position of equilibrium*")))
  ;; 70. Show understanding of, and use, the Brønsted-Lowry theory of acids and bases, including the use of the acid-I, base-II concept.
@@ -334,14 +332,14 @@
  (assert '(Isa (explainILO (differenceBetween (setof (behaviorOfClass "weak acid class*") (behaviorOfClass "strong acid class*")))) "ILO class*"))
  (assert '(Isa (explainILO (differenceBetween (setof (behaviorOfClass "weak base class*") (behaviorOfClass "strong base class*")))) "ILO class*"))
  ;; 72. Explain the terms pH, Ka, pKa, Kw and use them in calculations.
- (assert '(Isa (explainILO "pH*" )))
- (assert '(Isa (explainILO "acid dissociation constant*" )))
- (assert '(Isa (explainILO "pKa*" )))
- (assert '(Isa (explainILO "dissociation constant of water*" )))
- (assert '(Isa (performCalculationsILO "pH*" )))
- (assert '(Isa (performCalculationsILO "acid dissociation constant*")))
- (assert '(Isa (performCalculationsILO "pKa*"))
- (assert '(Isa (performCalculationsILO "dissociation constant of water*")))
+ (assert '(Isa (explainILO "pH*" ) "ILO class*"))
+ (assert '(Isa (explainILO "acid dissociation constant*" ) "ILO class*"))
+ (assert '(Isa (explainILO "pKa*" ) "ILO class*"))
+ (assert '(Isa (explainILO "dissociation constant of water*" ) "ILO class*"))
+ (assert '(Isa (performCalculationsILO "pH*" ) "ILO class*"))
+ (assert '(Isa (performCalculationsILO "acid dissociation constant*") "ILO class*"))
+ (assert '(Isa (performCalculationsILO "pKa*") "ILO class*"))
+ (assert '(Isa (performCalculationsILO "dissociation constant of water*") "ILO class*"))
  ; 73. Calculate [H+(aq)] and pH values for strong and weak acids and strong bases.
  (assert '(Isa (calculateILO (namedUnitaryQuantityOf "molarity*" "hydrogen ion species*")) "ILO class*"))
  (assert '(ILOQualifier (calculateILO (namedUnitaryQuantityOf "molarity*" "hydrogen ion species*")) (inChemicalSystem "strong acid*")))

@@ -228,7 +228,8 @@
 
 ;;; equations
 
-(defineType :Equation (:Thing))
+(defineType :MathematicalExpression (:Thing))
+(defineType :Equation (:MathematicalExpression))
 (defineType :RateEquation (:Equation))
 
 (defineType :IntegratedRateEquation (:RateEquation))

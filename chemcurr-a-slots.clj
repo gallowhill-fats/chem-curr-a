@@ -263,6 +263,7 @@
 (defineSlot manner :type :Manner)
 (defineSlot manufacturand :type :Thing)
 (defineSlot matchILO :type :Thing)
+(defineSlot math-expressible-entity :type :Entity)
 (defineSlot Means :type :Thing)
 (defineSlot means :type :Thing)
 (defineSlot measurable-thing :type :Thing)

@@ -218,7 +218,10 @@
   :docstring "electronic configuration of [chemical entity]")
 
 (defineCaseframe 'EliminationReaction '('eliminationOfFromSubstrate eliminate substrate)
-  :docstring "elimination of [eliminate] from [substrate]") 
+  :docstring "elimination of [eliminate] from [substrate]")
+
+(defineCaseframe 'EquilibriumPosition '('equilibriumPositionOf chemical-reaction)
+  :docstring "equilibrium position of [chemical-reaction]") 
 
 (defineCaseframe 'ILO '(actions entity-with-explanation)
     :docstring "explain the [entity-with-explanation]"
@@ -431,6 +434,9 @@
 (defineCaseframe 'Proposition '('Involves involving-entity involvate)
   :docstring "[involving-entity] involves [involvate]")
 
+(defineCaseframe 'Proposition '('IsAtEquilibrium chemical-reaction)
+  :docstring "[chemical-reaction] is at equilibrium")
+
 (defineCaseframe 'Proposition '('IsBalanced chemical-equation)
   :docstring "[chemical-equation] is balanced")
 
@@ -456,6 +462,15 @@
 (defineCaseframe 'Proposition  '('IsIsotopeOf isotope element)
   :docstring "[isotope] is an isotope of [element]")
 
+(defineCaseframe 'Proposition  '('IsProductOf product chemical-reaction)
+  :docstring "[product] is product of [chemical-reaction]")
+
+(defineCaseframe 'Proposition  '('IsReactantOf reactant chemical-reaction)
+  :docstring "[reactant] is reactant of [chemical-reaction]")
+
+(defineCaseframe 'Proposition  '('IsReactantOrProductOf chemical-substance chemical-reaction)
+  :docstring "[chemical-substance] is reactant or product of [chemical-reaction]")
+
 (defineCaseframe 'Proposition  '('IsSimilarTo similar-things)
   :docstring "[similar-things] are similar")
 
@@ -480,6 +495,9 @@
 ; from FrameNet resource: Manufacturing
 (defineCaseframe 'Thing '('manufactureOfFrom manufacturand resource)
   :docstring "manufacture of [manufacturand] from [resource]")
+
+(defineCaseframe 'MathematicalExpression '('mathematicalExpressionFor math-expressible-entity)
+  :docstring "mathematical expression for [math-expressible-entity]")
 
 (defineCaseframe 'Act '('measure measurable-thing)
   :docstring "measure [measurable-thing]")
@@ -630,6 +648,9 @@
 
 (defineCaseframe 'ReactionRate '('rateOf chemical-reaction)
   :docstring "rate of [chemical-reaction]")
+
+(defineCaseframe 'ReactionCondition '('reactionConditionsOf chemical-reaction)
+  :docstring " reaction conditions of [chemical-reaction]")
 
 (defineCaseframe 'ReactionType '('reactionTypeOfClass reaction-type substance-class)
   :docstring "[reaction-type] reaction of [substance-class]")
