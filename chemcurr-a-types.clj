@@ -118,6 +118,7 @@
 (defineType :ChemicalChange (:Change))
 (defineType :ChemicalReaction (:Change))
 (defineType :ReversibleReaction (:ChemicalReaction))
+(defineType :MultiStepChemicalReaction (:ChemicalReaction))
 
 (defineType :ZeroOrderChemicalReaction (:ChemicalReaction))
 (defineType :FirstOrderChemicalReaction (:ChemicalReaction))
@@ -183,6 +184,7 @@
 (defineType :CriterionQualifier (:Qualifier))
 (defineType :UsingQualifier (:Qualifier))
 (defineType :PurposeQualifier (:Qualifier))
+(defineType :During (:Qualifier))
 
 ;;; naming
 (defineType :Name (:Thing))
@@ -234,8 +236,6 @@
 
 (defineType :IntegratedRateEquation (:RateEquation))
 
-
-
 ;;; range qualifiers
 
 (defineType :Low (:Quantity))
@@ -272,9 +272,6 @@
 
 (defineType :Titration (:Process))
 (defineType :AcidBaseTitration (:Titration))
-
-
-
 
 ;;; system
 

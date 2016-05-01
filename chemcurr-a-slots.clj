@@ -1,9 +1,11 @@
 ;;; A
 
 (defineSlot AccountFor :type :Thing)
+(defineSlot acid-base-titration :type :AcidBaseTitration)
 (defineSlot Act :type :Thing)
 (defineSlot act :type :Act)
 (defineSlot added-substance :type :ChemicalSubstance)
+(defineSlot agency :type :Thing)
 (defineSlot analogue :type :Thing)
 (defineSlot analysandum :type :Thing)
 (defineSlot analyseILO :type :Thing)
@@ -17,6 +19,7 @@
 (defineSlot asExample :type :Thing)
 (defineSlot asIn :type :Thing)
 (defineSlot aspect :type :Aspect)
+(defineSlot associatedWith :type :Thing)
 (defineSlot assumption-set :type :Thing)
 
 ;;; B
@@ -189,6 +192,7 @@
 (defineSlot HasRetainedIupacName :type :Thing)
 (defineSlot HasSubstanceName :type :Thing)
 (defineSlot HasSystematicName :type :Thing)
+(defineSlot howable-thing :type :Act)
 (defineSlot hypothetical-event :type :Thing)
 
 ;;; I
@@ -206,6 +210,7 @@
 (defineSlot Inclusion :type :Thing)
 (defineSlot inclusion-set :type :Entity)
 (defineSlot independent-quantity :type :Quantity)
+(defineSlot indicator :type :Indicator)
 (defineSlot InDomain :type :Thing)
 (defineSlot inDomain :type :Thing)
 (defineSlot inferILO :type :Thing)
@@ -280,6 +285,7 @@
 (defineSlot modWithParticularReferenceTo :type :Thing)
 (defineSlot MolecularConstitution :type :Thing)
 (defineSlot molecular-structure :type :MolecularStructure)
+(defineSlot multi-step-reaction :type :MultiStepChemicalReaction)
 
 ;;; N
 
@@ -312,6 +318,7 @@
 (defineSlot physical-process :type :PhysicalProcess)
 (defineSlot polymer :type :PolymerSubstance)
 (defineSlot position-in-periodic-table :type :PeriodicTablePosition)
+(defineSlot possibilities :type :Thing)
 (defineSlot powerOfOver :type :Thing)
 (defineSlot powerOfClassOver :type :Thing)
 (defineSlot present-thing :type :Thing)
@@ -414,6 +421,7 @@
 
 (defineSlot tested-for-class :type :Category)
 (defineSlot thing :type :Thing)
+(defineSlot thing-acted-upon :type :Thing)
 (defineSlot thing-arrived-at :type :Thing)
 (defineSlot thing-created :type :Thing)
 (defineSlot thing-departed-from :type :Thing)
@@ -449,6 +457,8 @@
 (defineSlot type-of-alteration :type :Thing)
 
 ;;; U
+
+(defineSlot united-quantity :type :UnitedQuantity)
 
 ;;; V
 

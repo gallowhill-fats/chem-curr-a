@@ -80,6 +80,11 @@
 (defineCaseframe 'Thing '('cardinalityOf thing-with-cardinality)
   :docstring "cardinality of [thing-with-cardinality]")
 
+;;; FrameNet: Choosing
+(defineCaseframe 'ILO '(actions possibilities)
+  :docstring "choose [possibilities]"
+  :fsymbols '(chooseILO))
+
 ;;; FrameNet: Categorization
 (defineCaseframe 'ILO '(categorise categorisable-thing category )
   :docstring "categorise [categorisable-thing] into [category]"
@@ -207,6 +212,9 @@
 (defineCaseframe 'Thing '('domain domain)
   :docstring "the [domain]")
 
+(defineCaseframe 'During '('during process)
+  :docstring "during [process]")
+
 
 ;;; E
 
@@ -226,6 +234,10 @@
 (defineCaseframe 'ILO '(actions entity-with-explanation)
     :docstring "explain the [entity-with-explanation]"
     :fsymbols '(explainILO explainWhyILO accountForILO explainTermILO explainAndUseTermILO))
+
+(defineCaseframe 'ILO '(actions howable-thing)
+  :docstring "explain how [howable-thing]"
+  :fsymbols '(explainHowILO))
 
 (defineCaseframe 'Qualifier '(examples example)
   :docstring "with [example]"
@@ -249,7 +261,7 @@
 
 ;;; G
 
-(defineCaseframe 'Modifier '('given thing-given)
+(defineCaseframe 'Qualifier '('given thing-given)
  :docstring "given [thing-given]")
 
 (defineCaseframe 'Category '('graphClass dependent-quantity independent-quantity)
@@ -330,6 +342,9 @@
 (defineCaseframe 'Proposition '('HasColumnInPeriodicTable element column-in-periodic-table)
   :docstring "[element] has [column-in-periodic-table]")
 
+(defineCaseframe 'Proposition '('HasRateDeterminingStep multi-step-reaction)
+  :docstring "[multi-step-reaction] has rate-determing step]")
+
 (defineCaseframe 'Proposition '('HasRowInPeriodicTable element row-in-periodic-table)
   :docstring "[element] has [row-in-periodic-table]")
 
@@ -386,7 +401,7 @@
 
 (defineCaseframe 'Qualifier '(inDomain domain)
   :docstring "in [domain]"
-  :fsymbols '(inTermsOf inRelationTo withReferenceTo withRegardsTo withParticularReferenceTo asAppliedTo))
+  :fsymbols '(inTermsOf inRelationTo withReferenceTo withRegardsTo withParticularReferenceTo asAppliedTo associatedWith))
 
 (defineCaseframe 'Information '(information topic)
   :docstring "information on [topic]"
@@ -450,6 +465,9 @@
 (defineCaseframe 'Proposition '('IsInContactWith contacters)
   :docstring "[contacters] are in contact")
 
+(defineCaseframe 'Proposition '('IsIndicatorFor indicator acid-base-titration)
+  :docstring "[indicator] is indicator for [acid-base-titration]")
+
 (defineCaseframe 'Proposition '('IsInState chemical-referent physical-state)
   :docstring "[chemical-referent] is in [physical-state]")
 
@@ -507,6 +525,9 @@
   :docstring "[method] is method for achieving [goal]"
   :fsymbols '(IsMethodFor IsMeansFor))
 
+(defineCaseframe 'Mechanism '('mechanismOf process)
+  :docstring "mechanism of [process]")
+
 (defineCaseframe 'MechanismOfReactionType '('mechanismOfReactionType reaction-type)
   :docstring "mechanism of [reaction-type]")
 
@@ -522,6 +543,9 @@
  :fsymbols '(IsCompoundOf ContainsElement))
 
 ;;; N
+
+(defineCaseframe 'Act '('namedActionOn act agency thing-acted-upon)
+  :docstring "[act] by [agency] on  [thing-acted-upon]")
 
 ; FrameNet: Distinctiveness
 (defineCaseframe 'Aspect '('namedAspectOf aspect thing-with-aspect)
@@ -563,6 +587,9 @@
 
 (defineCaseframe 'Quantity '('namedQuantityOfClass  class-quantity  class)
   :docstring "[class-quantity] of [class]")
+
+(defineCaseframe 'UnitedQuantity '('namedUnitedQuantityOf  united-quantity  thing-with-quantity)
+  :docstring "[united-quantity] of [thing-with-quantity]")
 
 (defineCaseframe 'Thing '('new renewed-thing)
   :docstring "new version of [renewed-thing]")
@@ -697,6 +724,9 @@
 
 (defineCaseframe 'Role '('roleOfAs thing-with-role role)
   :docstring "[role] of [thing-with-role]")
+
+(defineCaseframe 'Role '('roleOfInAct thing-with-role act)
+  :docstring "role of [thing-with-role] in [act]")
 
 (defineCaseframe 'Role '('roleOfInProcess thing-with-role process)
   :docstring "role of [thing-with-role] in [process]")

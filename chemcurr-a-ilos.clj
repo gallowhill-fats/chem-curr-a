@@ -315,8 +315,8 @@
   ;; 67. Calculate the values of equilibrium constants in terms of concentrations or partial pressures from appropriate data.
  (assert '(Isa (calculateILO (valueOf (every x  (Isa x EquilibriumConstant) (Isa x "concentration equilibrium constant class*") (HasEquilibriumConstant (some y (x)  (Isa y "chemical reaction system class*")) x))))  "ILO class*"))
  (assert '(Isa (calculateILO (valueOf (every x  (Isa x EquilibriumConstant) (Isa x "partial pressure  equilibrium constant class*")  (HasEquilibriumConstant (some y (x)  (Isa y "chemical reaction system class*")) x))))  "ILO class*"))
- ; (assert '(ILOQualifier (calculateILO (valueOf (every x  (Isa x EquilibriumConstant) (Isa x "concentration equilibrium constant class*")  (HasEquilibriumConstant (some y (x)  (Isa y "chemical reaction system class*")) x) )))  (given (dataOn  "concentration*"))))
-; (assert '(ILOQualifier (calculateILO (valueOf (every x  (Isa x EquilibriumConstant) (Isa x "partial pressure  equilibrium constant class*")  (HasEquilibriumConstant (some y (x)  (Isa y "chemical reaction system class*")) x))))  (given (dataOn  "partial pressure*"))))
+  (assert '(ILOQualifier (calculateILO (valueOf (every x  (Isa x EquilibriumConstant) (Isa x "concentration equilibrium constant class*")  (HasEquilibriumConstant (some y (x)  (Isa y "chemical reaction system class*")) x) )))  (given (dataOn  "concentration*"))))
+ (assert '(ILOQualifier (calculateILO (valueOf (every x  (Isa x EquilibriumConstant) (Isa x "partial pressure  equilibrium constant class*")  (HasEquilibriumConstant (some y (x)  (Isa y "chemical reaction system class*")) x))))  (given (dataOn  "partial pressure*"))))
  ; 68. Calculate the quantities present at equilibrium, given appropriate data (such calculations will not require the solving of quadratic equations).
  (assert '(Isa (calculateILO (namedQuantityOf "concentration*" (every  x  (Isa x ChemicalSpecies) (Isa x "chemical species class*") (IsReactantOrProductOf x (some y (x) (Isa y "chemical reaction class*") (IsAtEquilibrium y))) )))  "ILO class*"))
  ; 69. Describe and explain the conditions used in the Haber process and the Contact process, as examples of the importance of an understanding of chemical equilibrium in the chemical industry (see also Section 9.6).
@@ -341,15 +341,16 @@
  (assert '(Isa (performCalculationsILO "pKa*") "ILO class*"))
  (assert '(Isa (performCalculationsILO "dissociation constant of water*") "ILO class*"))
  ; 73. Calculate [H+(aq)] and pH values for strong and weak acids and strong bases.
- (assert '(Isa (calculateILO (namedUnitaryQuantityOf "molarity*" "hydrogen ion species*")) "ILO class*"))
- (assert '(ILOQualifier (calculateILO (namedUnitaryQuantityOf "molarity*" "hydrogen ion species*")) (inChemicalSystem "strong acid*")))
- (assert '(ILOQualifier (calculateILO (namedUnitaryQuantityOf "molarity*" "hydrogen ion species*")) (inChemicalSystem "weak acid*")))
- (assert '(ILOQualifier (calculateILO (namedUnitaryQuantityOf "molarity*" "hydrogen ion species*")) (inChemicalSystem "strong base*") ))
+ (assert '(Isa (calculateILO (namedUnitedQuantityOf "molarity*" "hydrogen ion species*")) "ILO class*"))
+ (assert '(ILOQualifier (calculateILO (namedUnitedQuantityOf "molarity*" "hydrogen ion species*")) (inChemicalSystem "strong acid*")))
+ (assert '(ILOQualifier (calculateILO (namedUnitedQuantityOf "molarity*" "hydrogen ion species*")) (inChemicalSystem "weak acid*")))
+ (assert '(ILOQualifier (calculateILO (namedUnitedQuantityOf "molarity*" "hydrogen ion species*")) (inChemicalSystem "strong base*") ))
  (assert '(Isa (calculateILO (namedQuantityOf "pH*" (every x (Isa x StrongAcid) (Isa x "strong acid class*")))) "ILO class*"))
  (assert '(Isa (calculateILO (namedQuantityOf "pH*" (every x (Isa x WeakAcid) (Isa x "weak acid class*")))) "ILO class*"))
  (assert '(Isa (calculateILO (namedQuantityOf "pH*" (every x (Isa x StrongBase) (Isa x "strong base class*")))) "ILO class*"))
   ; 74. Explain the choice of suitable indicators for acid-base titrations, given appropriate data.
- (assert '(Isa (chooseILO (every x  (Isa x Indicator) (Isa x "indicator class*") (some y (x) (Isa y AcidBaseTitration) (Isa y "acid-base titration class*"))) "ILO class*"))
+ (assert '(Isa (chooseILO (every x  (Isa x Indicator) (Isa x "indicator class*")  (IsIndicatorFor x  (some y (x) (Isa y "acid-base titration class*"))))) "ILO class*"))
+ (assert '(Isa (explainHowILO (chooseILO (every x  (Isa x Indicator) (Isa x "indicator class*")  (IsIndicatorFor x  (some y (x) (Isa y "acid-base titration class*")))))) "ILO class*"))
  ; 75. Describe the changes in pH during acid-base titrations and explain these changes in terms of the strengths of the acids and bases.
  (assert '(Isa (describeILO (changeIn "pH*")) "ILO class*"))
  (assert '(ILOModifier  (describeILO (changeIn "pH*")) (changeIn "pH*") (during "acid-base titration*")))
@@ -363,7 +364,7 @@
  ; 76b. Explain the uses of buffer solutions, including the role of HCO3 – in controlling pH in blood.
  (assert '(Isa (explainILO (useOf (every x (Isa x BufferSolution) (Isa x "buffer solution class*")))) "ILO class*"))
  (assert '(Isa (explainHowILO (namedActionOn "control*" "buffer solution*" "pH*" )) "ILO class*"))
- (assert '(Isa (describeILO (roleOfIn "hydrogen carbonate ion species*" (namedActionOn "control*" "buffer solution*" "pH*" ))) "ILO class*"))
+ (assert '(Isa (describeILO (roleOfInAct "hydrogen carbonate ion species*" (namedActionOn "control*" "buffer solution*" "pH*" ))) "ILO class*"))
  ;; 77. Calculate the pH of buffer solutions, given appropriate data.
  (assert '(Isa (calculateILO (namedQuantityOfClass "pH*" "buffer solution class*")) "ILO class*"))
  ; 79. Calculate Ksp from concentrations and vice versa.
@@ -395,8 +396,8 @@
  (assert '(Isa (defineILO "activation energy*") "ILO class*"))
  ; 81d. State the Arrhenius equation and use this to explain the effect of activation energy on reaction rate.
  (assert '(Isa (stateILO "Arrhenius equation*") "ILO class*"))
- (assert '(Isa (explainILO (effectOfOn (every x  (Isa x ActivationEnergy) (Isa x "activation energy class*"))  (some y (x)  (Isa y  "rate of reaction class*")))) "ILO class*"))
- (assert '(ILOQualifier (explainILO (effectOfOn (some y (x) (Isa y "activation energy class*")) (every x (Isa x  "rate of reaction class*")))) (using "Arrhenius equation*")))
+ (assert '(Isa (explainILO (effectOfOn (every x  (Isa x ActivationEnergy) (Isa x "activation energy class*"))  (some z (x) (Isa z ReactionRate)))) "ILO class*"))
+ (assert '(ILOQualifier (explainILO (effectOfOn (every x  (Isa x ActivationEnergy) (Isa x "activation energy class*"))  (some y (x) (Isa y ReactionRate)))) (using "Arrhenius equation*")))
  ; Catalysis moved to 85.
  ; 82. Explain qualitatively, in terms of collisions, the effect of concentration changes on the rate of a reaction.
  (assert '(Isa (explainILO (effectOfOn (changeIn "concentration*") "rate of reaction*")) "ILO class*"))
@@ -407,20 +408,24 @@
  (assert '(ILOQualifier (describeILO "activation energy*") (inRelationTo "Boltzmann distribution*")))
  ; 84. Explain qualitatively, in terms both of the Boltzmann distribution and of collision frequency, the effect of temperature change on the rate of a reaction.
  (assert '(Isa (explainILO (effectOfOn (changeIn "temperature*") "rate of reaction*" )) "ILO class*"))
- (assert '(ILOQualifier (explainILO (effectOfOn (changeIn "temperature*") "rate of reaction*" )) (namedPhysicalPropertyOfClass "strength*" "acid class*")(namedPhysicalPropertyOfClass "strength*" "acid class*") (inTermsOf (setof "Boltzmann distribution*" "collision frequency*"))))
+ (assert '(ILOQualifier (explainILO (effectOfOn (changeIn "temperature*") "rate of reaction*" ))  (inTermsOf (setof "Boltzmann distribution*" "collision frequency*"))))
  ;; 85. Explain that, in the presence of a catalyst, a reaction has a different mechanism, i.e. one of lower activation energy.
  ; REWRITE: 85a. define the term catalysis.
  (assert '(Isa (defineILO "catalysis*") "ILO class*"))
  (assert '(Isa (defineILO "catalyst*") "ILO class*"))
  (assert '(Isa (describeILO (mechanismOf "catalysis*")) "ILO class*"))
  ; 85b. Explain catalysis in terms of reaction mechanism and activation energy.
- (assert '(Isa (explainILO (effectOfInfluenceOn "catalysis*"  (every x  (Isa x ReactionRate) (Isa x "rate of reaction class*") (some  y (x) (Isa y "chemical reaction class*" )) (inTermsOf (setof (some z (y) (Isa z "reaction mechanism class*") (some w (y) (Isa w "activation energy class*")))))))) "ILO class*"))
+ (assert '(Isa (explainILO (effectOfOn "catalysis*"  (every x  (Isa x ReactionRate) (Isa x "rate of reaction class*"))))  "ILO class*"))
+ (assert '(ILOQualifier (explainILO (effectOfOn "catalysis*"  (every x  (Isa x ReactionRate) (Isa x "rate of reaction class*")))) 
+                                 (setof (inTermsOf (some  y (x) (Isa y "chemical reaction class*" ))) 
+                                           (inTermsOf (some z (y) (Isa z "reaction mechanism class*"))) 
+                                           (inTermsOf (some w (y) (Isa w "activation energy class*"))))))
   ; 86. Interpret catalysis in terms of the Boltzmann distribution.
  (assert '(Isa (interpretILO "catalysis*") "ILO class*"))
  (assert '(ILOQualifier (interpretILO "catalysis*") (inTermsOf "Boltzmann distribution*")))
  ; 87. Describe enzymes as biological catalysts (proteins) which may have specific activity.
  (assert '(Isa (describeILO (propertiesOfClass "enzyme class*")) "ILO class*"))
- (assert '(ILOQualifer (describeILO (propertiesOfClass "enzyme class*"))  (inTermsOf "catalysis*")))
+ (assert '(ILOQualifier (describeILO (propertiesOfClass "enzyme class*"))  (inTermsOf "catalysis*")))
  ; 88. Construct and use rate equations of the form rate = kA?mB?n (limited to simple cases of single step reactions and of multistep processes with a rate-determining step, for which m and n are 0, 1 or 2), including: (i) deducing the order of a reaction from concentration-time graphs, by the initial rates method and half-life methods (ii) deducing, for zero- and first-order reactions, the order of reaction from concentration-time graphs (iii) verifying that a suggested reaction mechanism is consistent with the observed kinetics (iv) predicting the order that would result from a given reaction mechanism (and vice versa) (v) calculating an initial rate using concentration data forms of rate equations are not required?
 ; 88a. construct rate equations of the form r = kA^nB^m for single step reactions and multi-step reactions with a rate-determining  step
 ; 88b. deduce the order of a reaction from a concentration-time graph by the initial rates method
@@ -430,20 +435,31 @@
 ; 88f. verify that a suggested reaction mechanism is consistent with the observed kinetics
 ; 88g. predict the order that would result from a given reaction mechanism
 ; 88h. predict the reaction mechanism for a chemical reaction given its order
-  (assert '(Isa (constructILO (every x (Isa x IntegratedRateEquation) (Isa x "integrated rate equation class*") (some y (x) (or (Isa y "single-step reaction class*") (Isa y "multi-step reaction with rds class")))  (Isa x "simple things class*"))) "ILO class*")) ; shimple things?? This ilo also needs a cfn for integrated rate laws that incorporates concentrations and their orders
-  (assert '(Isa (deduceILO (namedPropertyOf "total order*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*"))))))) "ILO class*"))
- (assert '(ILOQualifier (deduceILO (namedPropertyOf "total order*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*")))))))  (byMeans "initial rates method*")))
- (assert '(Isa (deduceILO (namedPropertyOf "total order*" (every x (Isa x ZeroOrderChemicalReaction) (Isa x "zero-order chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*")))))))  "ILO class*"))
- (assert '(ILOQualifier (deduceILO (namedPropertyOf "total order*" (every x (Isa x FirstOrderChemicalReaction) (Isa x "first-order chemical reaction class*") (using (some y (x) (Isa y (graphClass "concentration*" "time*"))))))) "ILO class*"))
+ (assert '(Isa (constructILO (every x (Isa x IntegratedRateEquation) (Isa x "integrated rate equation class*"))) "ILO class*"))
+ (assert '(ILOQualifier (constructILO (every x (Isa x IntegratedRateEquation) (Isa x "integrated rate equation class*")))
+                                 (associatedWith (some y (x) (Isa y "single-step reaction class*")  (Isa y Simple)))))
+ (assert '(ILOQualifier (constructILO (every x (Isa x IntegratedRateEquation) (Isa x "integrated rate equation class*")))
+                                 (associatedWith (some y (x) (Isa y "multi-step reaction class*") (HasRateDeterminingStep y) (Isa y Simple)))))
+  ; shimple things?? This ilo also needs a cfn for integrated rate laws that incorporates concentrations and their orders
+ (assert '(Isa (deduceILO (namedDerivedPropertyOf "total order*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*")))) "ILO class*"))
+ (assert '(ILOQualifier (deduceILO (namedDerivedPropertyOf "total order*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*"))))
+                                  (setof (using (some y (x) (Isa y (graphClass "concentration*" "time*")))) (byMeans "initial rates method*"))))
+ (assert '(ILOQualifier (deduceILO (namedDerivedPropertyOf "total order*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*"))))
+                                  (setof (using (some y (x) (Isa y (graphClass "concentration*" "time*")))) (byMeans "half-life method*"))))
+ (assert '(Isa (deduceILO (namedDerivedPropertyOf "total order*" (every x (Isa x ZeroOrderChemicalReaction) (Isa x "zero-order chemical reaction class*"))))  "ILO class*"))
+ (assert '(ILOQualifier (deduceILO (namedDerivedPropertyOf "total order*" (every x (Isa x ZeroOrderChemicalReaction) (Isa x "zero-order chemical reaction class*"))))
+                                 (using (some y (x) (Isa y (graphClass "concentration*" "time*"))))))
+ (assert '(ILOQualifier (deduceILO (namedDerivedPropertyOf "total order*" (every x (Isa x FirstOrderChemicalReaction) (Isa x "first-order chemical reaction class*"))))
+                                 (using (some y (x) (Isa y (graphClass "concentration*" "time*"))))))
  (assert '(Isa (verifyILO (IsConsistentWith (every x (Isa x ReactionMechanism) (Isa x "reaction mechanism*")) (namedPropertyOfReaction "kinetics of reaction*" x))) "ILO class*"))
  (assert '(Isa (deduceILO (namedPropertyOf "total order*" (every x (Isa x ChemicalReaction) (Isa x "chemical reaction class*") (given (some y (x)  (Isa y "reaction mechanism class*") (HasMechanism x y)))))) "ILO class*"))
  (assert '(Isa (deduceILO (every x (Isa x ReactionMechanism) (Isa x "reaction mechanism class*") (some y (x) (Isa y "chemical reaction class*") (given (namedPropertyOf "total order*" y)))))  "ILO class*"))
-    ; 89. Show understanding that the half-life of a first-order reaction is independent of concentration (ii) use the half-life of a first-order reaction in calculations.
+ ; 89. Show understanding that the half-life of a first-order reaction is independent of concentration (ii) use the half-life of a first-order reaction in calculations.
  (assert '(Isa (understandILO (IsIndependentOf (namedQuantityOf "half-life*" (every x "first-order reaction class*")) "concentration*")) "ILO class*"))
  ; 90. Calculate a rate constant, for example by using the initial rates or half-life method.
   ; REWRITE: 90a. Calculate a rate constant using the initial rates method.
  ; 90b. Calculate a rate constant using the half-life method.
- (assert '(Isa (calculateILO (every x (Isa x "rate constant class*") (some y (x) (Isa y "chemical reaction class*"))))) "ILO class*"))
+ (assert '(Isa (calculateILO (every x (Isa x "rate constant class*") (some y (x) (Isa y "chemical reaction class*")))) "ILO class*"))
  (assert '(ILOQualifier  (calculateILO (every x (Isa x RateConstant) (Isa x "rate constant class*") (some y (x) (Isa y "chemical reaction class*")))) (using "half-life method*")))
  (assert '(ILOQualifier  (calculateILO (every x (Isa x RateConstant) (Isa x "rate constant class*") (some y (x) (Isa y "chemical reaction class*")))) (using "initial rates method*")))
  ; 91. Devise a suitable experimental technique for studying the rate of a reaction, from given information.
